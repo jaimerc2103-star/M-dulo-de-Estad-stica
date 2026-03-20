@@ -54,7 +54,7 @@ El objetivo es representar gráficamente los datos para interpretar su distribuc
 
 ```{r}
 hist(energia,
-     col = "lightblue",
+     col = "red",
      main = "Histograma de producción diaria de energía",
      xlab = "Producción (kWh)",
      ylab = "Frecuencia",

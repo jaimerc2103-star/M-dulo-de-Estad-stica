@@ -1,6 +1,6 @@
 ---
 title: "Estadística Aplicada para Ingeniería"
-author: "Ing. Jaime Rojas C, Mgtr."
+author: "Ing. Jaime Rojas Coronel, Mgtr."
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -47,6 +47,11 @@ Este bloque se organiza en los siguientes capítulos:
 
 <!--chapter:end:index.Rmd-->
 
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Introducción al análisis descriptivo de datos
 
 ## Concepto teórico
@@ -354,7 +359,7 @@ El objetivo es representar gráficamente los datos para interpretar su distribuc
 
 ```{r}
 hist(energia,
-     col = "lightblue",
+     col = "red",
      main = "Histograma de producción diaria de energía",
      xlab = "Producción (kWh)",
      ylab = "Frecuencia",
