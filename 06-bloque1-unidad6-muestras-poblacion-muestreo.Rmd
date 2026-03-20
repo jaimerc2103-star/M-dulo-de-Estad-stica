@@ -1,29 +1,38 @@
 # Muestras, población y muestreo
 
-```{r setup6, include=FALSE}
-knitr::opts_chunk$set(
-  echo = TRUE,
-  message = FALSE,
-  warning = FALSE,
-  fig.align = "center",
-  out.width = "85%"
-)
-```
-
 ## Concepto teórico
 
-En estadística, la **población** es el conjunto total de elementos sobre los cuales se desea realizar un estudio, mientras que la **muestra** es un subconjunto de dicha población seleccionado para recolectar información.
+En estadística, la **población** es el conjunto total de elementos sobre los cuales se desea realizar un estudio, mientras que la **muestra** es un subconjunto de la población seleccionado para recolectar información.
 
-Dado que en muchos contextos reales no es factible estudiar toda la población, se emplean técnicas de **muestreo**, que permiten obtener información representativa con menor costo y tiempo.
+Cuando estudiar toda la población resulta costoso o impracticable, se recurre al muestreo. La calidad del análisis depende en gran medida de que la muestra sea representativa.
 
-Principales métodos de muestreo:
+### Muestreo aleatorio simple
 
-- **Muestreo aleatorio simple**: todos los elementos tienen la misma probabilidad de ser seleccionados.
-- **Muestreo sistemático**: se selecciona cada \(k\)-ésimo elemento de una lista.
-- **Muestreo estratificado**: la población se divide en grupos homogéneos y se toma una muestra de cada uno.
-- **Muestreo por conglomerados**: se divide la población en grupos naturales y se seleccionan algunos conglomerados completos.
+Cada elemento de la población tiene la misma probabilidad de ser seleccionado:
 
-La correcta selección de la muestra es esencial para que las conclusiones del análisis sean útiles y técnicamente válidas.
+\[
+P(\text{selección}) = \frac{1}{N}
+\]
+
+donde \(N\) es el tamaño de la población.
+
+### Muestreo sistemático
+
+Se selecciona cada \(k\)-ésimo elemento de la población ordenada, donde:
+
+\[
+k = \frac{N}{n}
+\]
+
+siendo \(n\) el tamaño de la muestra.
+
+### Muestreo estratificado
+
+La población se divide en estratos homogéneos y se toma una muestra de cada uno. Es útil cuando se desea representación de todos los subgrupos importantes.
+
+### Muestreo por conglomerados
+
+La población se divide en grupos naturales y se seleccionan algunos conglomerados completos. Se usa mucho cuando la población está distribuida geográficamente.
 
 ## Ejemplo aplicado
 
@@ -78,6 +87,14 @@ muestra <- sample(poblacion, 12)
 muestra
 ```
 
+### Visualización simple de una muestra
+
+```{r}
+plot(sample(1:100, 20), pch = 19, col = "blue",
+     main = "Ejemplo de muestra aleatoria",
+     xlab = "Posición", ylab = "Elemento seleccionado")
+```
+
 ### Organización de estratos en una base simple
 
 ```{r}
@@ -113,8 +130,8 @@ En **ingeniería civil**, el muestreo se aplica al seleccionar puntos de ensayo 
 
 En **ingeniería eléctrica**, se utiliza para analizar equipos, circuitos o transformadores dentro de una red.
 
-En **ingeniería industrial**, el muestreo es indispensable en control de calidad, tiempos y movimientos, e inspección de lotes.
+En **ingeniería industrial**, el muestreo es indispensable en control de calidad, tiempos y movimientos e inspección de lotes.
 
 En **energías renovables**, se emplea para seleccionar periodos de medición, equipos o ubicaciones de monitoreo de recursos energéticos.
 
-La representatividad de la muestra es una condición esencial para que los resultados del análisis estadístico tengan validez técnica.
+Una muestra bien seleccionada garantiza que las conclusiones del análisis estadístico tengan validez técnica y utilidad práctica.

@@ -1,31 +1,68 @@
 # Medidas de dispersión y forma
 
-```{r setup5, include=FALSE}
-knitr::opts_chunk$set(
-  echo = TRUE,
-  message = FALSE,
-  warning = FALSE,
-  fig.align = "center",
-  out.width = "85%"
-)
-```
-
 ## Concepto teórico
 
-Las medidas de dispersión cuantifican el grado de variabilidad de un conjunto de datos respecto a un valor central. Permiten determinar si los datos están concentrados o dispersos.
+Las medidas de dispersión indican cuánto se alejan los datos respecto a un valor central. Mientras las medidas de tendencia central responden dónde se concentran los datos, las de dispersión indican qué tan homogéneo o variable es el conjunto.
 
-Principales medidas de dispersión:
+### Rango
 
-- **Rango**: diferencia entre el máximo y el mínimo.
-- **Varianza**: promedio de las desviaciones cuadráticas respecto a la media.
-- **Desviación estándar**: raíz cuadrada de la varianza.
-- **Coeficiente de variación**: relación entre la desviación estándar y la media, expresada en porcentaje.
+Es la diferencia entre el valor máximo y el mínimo:
 
-Además, para estudiar la forma de la distribución se emplean:
+\[
+R = x_{\max} - x_{\min}
+\]
 
-- **Asimetría**: indica si la distribución es simétrica o sesgada.
-- **Curtosis**: mide el grado de concentración de los datos alrededor de la media y el peso de las colas.
-- **Teorema de Chebyshev**: establece que para cualquier distribución, al menos \(1 - 1/k^2\) de los datos se encuentra dentro de \(k\) desviaciones estándar de la media, con \(k > 1\).
+### Varianza
+
+La varianza muestral se define como:
+
+\[
+s^2 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}
+\]
+
+Mide la dispersión cuadrática de los datos respecto a la media.
+
+### Desviación estándar
+
+Es la raíz cuadrada de la varianza:
+
+\[
+s = \sqrt{s^2}
+\]
+
+Tiene la ventaja de expresarse en las mismas unidades que los datos originales.
+
+### Coeficiente de variación
+
+Permite comparar dispersión relativa entre conjuntos de datos con distintas escalas:
+
+\[
+CV = \frac{s}{\bar{x}} \times 100
+\]
+
+### Asimetría
+
+Indica si la distribución es simétrica o si presenta sesgo hacia la izquierda o hacia la derecha.
+
+### Curtosis
+
+Mide el grado de concentración de los datos alrededor de la media y el peso de las colas de la distribución.
+
+### Teorema de Chebyshev
+
+Para cualquier conjunto de datos y para \(k > 1\), al menos:
+
+\[
+1 - \frac{1}{k^2}
+\]
+
+de las observaciones se encuentra dentro del intervalo:
+
+\[
+\bar{x} \pm ks
+\]
+
+Este teorema es útil cuando no se conoce la forma exacta de la distribución.
 
 ## Ejemplo aplicado
 
@@ -67,7 +104,7 @@ skewness(voltaje)
 kurtosis(voltaje)
 ```
 
-### Aplicación del teorema de Chebyshev
+### Aplicación del teorema de Chebyshev para \(k = 2\)
 
 ```{r}
 media <- mean(voltaje)
@@ -77,6 +114,14 @@ lim_inf <- media - 2 * desv
 lim_sup <- media + 2 * desv
 
 sum(voltaje >= lim_inf & voltaje <= lim_sup) / length(voltaje)
+```
+
+### Visualización de la dispersión
+
+```{r}
+hist(voltaje, col = "lightgray", main = "Distribución del voltaje",
+     xlab = "Voltaje (V)", ylab = "Frecuencia")
+abline(v = mean(voltaje), col = "red", lwd = 2)
 ```
 
 ## Ejercicio propuesto
@@ -98,12 +143,12 @@ Realice lo siguiente:
 
 ## Caso real (ingeniería)
 
-En **ingeniería eléctrica**, una baja dispersión en el voltaje refleja estabilidad del sistema.
+En **ingeniería eléctrica**, una baja dispersión en el voltaje indica estabilidad del sistema y menor probabilidad de fallos.
 
-En **ingeniería industrial**, la desviación estándar permite evaluar la consistencia de tiempos de producción o dimensiones de productos fabricados.
+En **ingeniería industrial**, la desviación estándar permite evaluar la consistencia de tiempos de producción, masas, dimensiones o consumos.
 
-En **ingeniería civil**, el coeficiente de variación se emplea para juzgar la uniformidad de resultados en ensayos de materiales.
+En **ingeniería civil**, el coeficiente de variación se usa para juzgar la uniformidad de resultados en ensayos de materiales.
 
-En **energías renovables**, la variabilidad de la generación solar o eólica puede analizarse mediante rango, desviación estándar y asimetría, identificando condiciones de operación más o menos estables.
+En **energías renovables**, la variabilidad de la generación solar o eólica puede analizarse mediante rango, desviación estándar y asimetría, identificando condiciones de operación estables o inestables.
 
-Las medidas de dispersión y forma son clave para pasar de una descripción superficial a una evaluación rigurosa de la estabilidad y comportamiento de los datos.
+Estas medidas permiten pasar de una descripción básica a una evaluación rigurosa de la confiabilidad de los datos.

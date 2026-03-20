@@ -10,6 +10,15 @@ output:
 ---
 
 # Portada {-}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  out.width = "85%"
+)
+```
 
 ```{r portada, echo=FALSE, out.width="45%", fig.align="center"}
 knitr::include_graphics("cover.png")

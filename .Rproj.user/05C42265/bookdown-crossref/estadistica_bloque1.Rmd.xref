@@ -22,40 +22,62 @@ h2:ejercicio-propuesto-1 Ejercicio propuesto
 h2:caso-real-ingeniería-1 Caso real (ingeniería)
 h1:representación-gráfica-de-datos Representación gráfica de datos
 h2:concepto-teórico-2 Concepto teórico
-h2:ejemplo-aplicado-2 Ejemplo aplicado
-h2:implementación-en-r-2 Implementación en R
+h3:diagrama-de-barras Diagrama de barras
 h3:histograma Histograma
 h3:polígono-de-frecuencias Polígono de frecuencias
 h3:ojiva Ojiva
+h3:diagrama-de-caja-y-bigotes Diagrama de caja y bigotes
+h2:ejemplo-aplicado-2 Ejemplo aplicado
+h2:implementación-en-r-2 Implementación en R
+h3:histograma-1 Histograma
+h3:polígono-de-frecuencias-1 Polígono de frecuencias
+h3:ojiva-1 Ojiva
 h3:diagrama-de-caja Diagrama de caja
 h3:ejemplo-con-ggplot2 Ejemplo con 
 h2:ejercicio-propuesto-2 Ejercicio propuesto
 h2:caso-real-ingeniería-2 Caso real (ingeniería)
 h1:medidas-de-tendencia-central-y-de-posición Medidas de tendencia central y de posición
 h2:concepto-teórico-3 Concepto teórico
+h3:media-aritmética Media aritmética
+h3:mediana Mediana
+h3:moda Moda
+h3:media-geométrica Media geométrica
+h3:medidas-de-posición Medidas de posición
 h2:ejemplo-aplicado-3 Ejemplo aplicado
 h2:implementación-en-r-3 Implementación en R
 h3:media-mediana-y-moda Media, mediana y moda
-h3:media-geométrica Media geométrica
+h3:media-geométrica-1 Media geométrica
 h3:cuartiles Cuartiles
 h3:deciles Deciles
 h3:percentiles-seleccionados Percentiles seleccionados
-h3:resumen-general Resumen general
+h3:gráfico-interpretativo Gráfico interpretativo
 h2:ejercicio-propuesto-3 Ejercicio propuesto
 h2:caso-real-ingeniería-3 Caso real (ingeniería)
 h1:medidas-de-dispersión-y-forma Medidas de dispersión y forma
 h2:concepto-teórico-4 Concepto teórico
+h3:rango Rango
+h3:varianza Varianza
+h3:desviación-estándar Desviación estándar
+h3:coeficiente-de-variación Coeficiente de variación
+h3:asimetría Asimetría
+h3:curtosis Curtosis
+h3:teorema-de-chebyshev Teorema de Chebyshev
 h2:ejemplo-aplicado-4 Ejemplo aplicado
 h2:implementación-en-r-4 Implementación en R
-h3:rango Rango
+h3:rango-1 Rango
 h3:varianza-y-desviación-estándar Varianza y desviación estándar
-h3:coeficiente-de-variación Coeficiente de variación
+h3:coeficiente-de-variación-1 Coeficiente de variación
 h3:asimetría-y-curtosis Asimetría y curtosis
-h3:aplicación-del-teorema-de-chebyshev Aplicación del teorema de Chebyshev
+h3:aplicación-del-teorema-de-chebyshev-para-k-2 Aplicación del teorema de Chebyshev para (k = 2)
+h3:visualización-de-la-dispersión Visualización de la dispersión
 h2:ejercicio-propuesto-4 Ejercicio propuesto
 h2:caso-real-ingeniería-4 Caso real (ingeniería)
 h1:muestras-población-y-muestreo Muestras, población y muestreo
 h2:concepto-teórico-5 Concepto teórico
+h3:muestreo-aleatorio-simple Muestreo aleatorio simple
+h3:muestreo-sistemático Muestreo sistemático
+h3:muestreo-estratificado Muestreo estratificado
+h3:muestreo-por-conglomerados Muestreo por conglomerados
 h2:ejemplo-aplicado-5 Ejemplo aplicado
 h3:muestra-aleatoria-simple Muestra aleatoria simple
 h3:muestra-sistemática Muestra sistemática
@@ -63,14 +85,17 @@ h3:ejemplo-de-muestreo-estratificado Ejemplo de muestreo estratificado
 h2:implementación-en-r-5 Implementación en R
 h3:tamaño-de-la-población Tamaño de la población
 h3:generación-de-una-muestra-aleatoria Generación de una muestra aleatoria
+h3:visualización-simple-de-una-muestra Visualización simple de una muestra
 h3:organización-de-estratos-en-una-base-simple Organización de estratos en una base simple
 h2:ejercicio-propuesto-5 Ejercicio propuesto
 h2:caso-real-ingeniería-5 Caso real (ingeniería)
 h1:medidas-de-asociación Medidas de asociación
 h2:concepto-teórico-6 Concepto teórico
+h3:covarianza Covarianza
+h3:correlación-de-pearson Correlación de Pearson
 h2:ejemplo-aplicado-6 Ejemplo aplicado
 h2:implementación-en-r-6 Implementación en R
-h3:covarianza Covarianza
+h3:covarianza-1 Covarianza
 h3:correlación Correlación
 h3:diagrama-de-dispersión Diagrama de dispersión
 h3:correlación-con-ggplot2 Correlación con 

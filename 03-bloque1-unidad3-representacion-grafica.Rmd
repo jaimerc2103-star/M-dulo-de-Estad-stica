@@ -1,29 +1,40 @@
 # Representación gráfica de datos
 
-```{r setup3, include=FALSE}
-knitr::opts_chunk$set(
-  echo = TRUE,
-  message = FALSE,
-  warning = FALSE,
-  fig.align = "center",
-  out.width = "85%"
-)
-```
-
 ## Concepto teórico
 
-La representación gráfica de datos es una herramienta fundamental de la estadística descriptiva, ya que permite visualizar de manera rápida la distribución, concentración, dispersión y posibles patrones de un conjunto de observaciones. En ingeniería, los gráficos ayudan a transformar datos numéricos en información interpretable para la toma de decisiones técnicas.
+La representación gráfica de datos es una herramienta esencial de la estadística descriptiva porque permite resumir visualmente la información, identificar patrones, detectar valores atípicos y comparar distribuciones. En contextos de ingeniería, los gráficos ayudan a interpretar el comportamiento de variables como tiempos de producción, consumos energéticos, resistencia de materiales, temperaturas, voltajes o caudales.
 
-Entre los gráficos más utilizados se encuentran:
+La elección del gráfico depende del tipo de variable y del objetivo del análisis. Entre las representaciones más utilizadas se encuentran:
 
-- **Diagrama de barras**, adecuado para variables cualitativas o cuantitativas discretas.
-- **Histograma**, útil para variables cuantitativas continuas o datos agrupados.
-- **Polígono de frecuencias**, que resalta la forma general de la distribución.
-- **Ojiva**, empleada para analizar frecuencias acumuladas.
-- **Diagrama circular**, útil para mostrar proporciones en variables cualitativas.
-- **Diagrama de caja y bigotes**, que permite identificar mediana, cuartiles y posibles valores atípicos.
+### Diagrama de barras
 
-La elección correcta del gráfico depende del tipo de variable, del tamaño de la muestra y del objetivo del análisis. En las distintas ingenierías, una mala elección del gráfico puede conducir a interpretaciones erróneas sobre eficiencia, estabilidad, calidad o comportamiento de un sistema.
+Se utiliza principalmente para variables cualitativas o cuantitativas discretas. Cada barra representa una categoría o valor y su altura es proporcional a la frecuencia.
+
+### Histograma
+
+Se emplea para variables cuantitativas continuas o datos agrupados en intervalos. A diferencia del diagrama de barras, en el histograma las barras se presentan unidas, reflejando continuidad.
+
+Si \(f_i\) representa la frecuencia de la clase \(i\), entonces cada barra resume el número de observaciones contenidas en el intervalo correspondiente.
+
+### Polígono de frecuencias
+
+Se construye uniendo con segmentos de recta las marcas de clase \((x_i)\) con sus frecuencias \((f_i)\). Es útil para visualizar la forma general de la distribución y comparar varios conjuntos de datos.
+
+### Ojiva
+
+La ojiva representa las frecuencias acumuladas. Si \(F_i\) es la frecuencia acumulada hasta la clase \(i\), entonces:
+
+\[
+F_i = \sum_{j=1}^{i} f_j
+\]
+
+Este gráfico es útil para responder preguntas del tipo: “¿cuántos datos son menores o iguales que cierto valor?”
+
+### Diagrama de caja y bigotes
+
+Resume visualmente la distribución mediante el mínimo, primer cuartil \(Q_1\), mediana \(Q_2\), tercer cuartil \(Q_3\) y máximo. También permite identificar posibles valores atípicos.
+
+En ingeniería, estas representaciones permiten detectar comportamientos anómalos, comparar desempeño entre sistemas y apoyar decisiones técnicas basadas en evidencia.
 
 ## Ejemplo aplicado
 
@@ -35,7 +46,7 @@ energia <- c(18, 20, 19, 22, 24, 21, 23, 25, 26, 20, 19, 18,
 energia
 ```
 
-Se desea representar gráficamente estos datos para analizar su comportamiento general.
+El objetivo es representar gráficamente los datos para interpretar su distribución.
 
 ## Implementación en R
 
@@ -116,7 +127,7 @@ Realice lo siguiente:
 
 ## Caso real (ingeniería)
 
-En **ingeniería civil**, los histogramas se emplean para analizar la resistencia a compresión del hormigón o la distribución de tiempos de ejecución de partidas de obra.
+En **ingeniería civil**, los histogramas se utilizan para analizar la resistencia a compresión del hormigón, la variación en dimensiones de elementos prefabricados o la distribución de tiempos de ejecución de partidas de obra.
 
 En **ingeniería eléctrica**, las ojivas ayudan a estudiar distribuciones acumuladas de voltaje, corriente o factor de potencia.
 
@@ -124,4 +135,4 @@ En **ingeniería industrial**, los diagramas de caja permiten comparar tiempos d
 
 En **energías renovables**, los gráficos estadísticos facilitan el análisis de producción eólica o solar, detectando periodos de máxima generación y comportamiento irregular del sistema.
 
-La representación gráfica adecuada es, por tanto, una herramienta visual esencial para el diagnóstico técnico y la mejora continua.
+La representación gráfica adecuada permite transformar datos en evidencia visual útil para el diagnóstico técnico y la mejora continua.
