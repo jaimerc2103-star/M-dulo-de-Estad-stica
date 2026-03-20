@@ -177,8 +177,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">1</span> Introducción al análisis descriptivo de datos<a href="introducción-al-análisis-descriptivo-de-datos.html#introducci%C3%B3n-al-an%C3%A1lisis-descriptivo-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="concepto-teórico" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Concepto teórico<a href="introducción-al-análisis-descriptivo-de-datos.html#concepto-te%C3%B3rico" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La estadística descriptiva es la rama de la estadística encargada de recolectar, organizar, resumir y presentar datos de manera clara y comprensible. Su objetivo principal es transformar datos en información útil que permita describir un fenómeno y facilitar la toma de decisiones.</p>
-<p>En el ámbito de la ingeniería, la estadística descriptiva es fundamental para analizar procesos, evaluar variabilidad, interpretar mediciones y detectar patrones en datos experimentales o reales.</p>
+<p>La estadística descriptiva es la rama de la estadística encargada de recolectar, organizar, resumir y presentar datos de manera clara y comprensible. Su objetivo principal es transformar datos en información útil que permita describir un fenómeno y facilitar la toma de decisiones.
+<span class="math display">\[\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i\]</span>
+En el ámbito de la ingeniería, la estadística descriptiva es fundamental para analizar procesos, evaluar variabilidad, interpretar mediciones y detectar patrones en datos experimentales o reales.</p>
 <p>Los datos pueden clasificarse según su naturaleza en cualitativos y cuantitativos. Los datos cualitativos describen atributos o categorías, mientras que los cuantitativos representan cantidades numéricas. A su vez, los datos cuantitativos pueden ser discretos, si toman valores enteros, o continuos, si pueden asumir cualquier valor dentro de un intervalo.</p>
 </div>
 <div id="ejemplo-aplicado" class="section level2 hasAnchor" number="1.2">
@@ -255,6 +256,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

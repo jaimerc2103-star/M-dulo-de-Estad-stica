@@ -3,7 +3,7 @@
 ## Concepto teórico
 
 La estadística descriptiva es la rama de la estadística encargada de recolectar, organizar, resumir y presentar datos de manera clara y comprensible. Su objetivo principal es transformar datos en información útil que permita describir un fenómeno y facilitar la toma de decisiones.
-
+$$\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i$$
 En el ámbito de la ingeniería, la estadística descriptiva es fundamental para analizar procesos, evaluar variabilidad, interpretar mediciones y detectar patrones en datos experimentales o reales.
 
 Los datos pueden clasificarse según su naturaleza en cualitativos y cuantitativos. Los datos cualitativos describen atributos o categorías, mientras que los cuantitativos representan cantidades numéricas. A su vez, los datos cuantitativos pueden ser discretos, si toman valores enteros, o continuos, si pueden asumir cualquier valor dentro de un intervalo.
