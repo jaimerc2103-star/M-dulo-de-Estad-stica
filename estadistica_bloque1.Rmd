@@ -1,5 +1,5 @@
 ---
-title: "Estadística Aplicada para Ingeniería"
+title: "Estadística Aplicada para Ingeniería en Energías Renovables"
 author: "Ing. Jaime Rojas Coronel, Mgtr."
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
