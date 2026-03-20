@@ -1,0 +1,23 @@
+# Datos y tablas de frecuencia
+
+## Concepto teórico
+
+Los datos constituyen la materia prima del análisis estadístico. En cualquier estudio, experimento o proceso de observación, los datos permiten representar características de un fenómeno, sistema o población. Para analizarlos correctamente, primero es necesario clasificarlos según su naturaleza y escala de medición.
+
+Las variables pueden ser cualitativas o cuantitativas. Las variables cualitativas describen atributos o categorías, mientras que las cuantitativas expresan cantidades numéricas. Las variables cuantitativas, a su vez, pueden ser discretas o continuas. También pueden clasificarse según su escala de medición en nominal, ordinal, de intervalo y de razón.
+
+Una vez identificada la variable, los datos deben organizarse de forma sistemática. Una de las herramientas más importantes para este fin es la **tabla de frecuencia**, que resume cuántas veces aparece cada valor o grupo de valores. Las tablas de frecuencia pueden construirse para datos no agrupados o para datos agrupados en intervalos de clase.
+
+La organización de los datos mediante tablas permite interpretar distribuciones, identificar concentraciones, detectar dispersión y preparar información para gráficos y análisis posteriores.
+
+## Ejemplo aplicado
+
+Supóngase que se registran las edades de 20 estudiantes de un curso:
+
+```{r}
+edades <- c(18, 19, 20, 18, 21, 19, 20, 22, 18, 19,
+            20, 21, 19, 18, 20, 22, 21, 19, 20, 18)
+edades
+```
+
+

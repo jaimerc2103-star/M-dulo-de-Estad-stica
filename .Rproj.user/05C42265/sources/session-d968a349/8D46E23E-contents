@@ -1,0 +1,8 @@
+book_filename: "estadistica_bloque1"
+output_dir: "docs"
+delete_merged_file: false
+
+rmd_files:
+  - index.Rmd
+  - 01-bloque1-introduccion.Rmd
+  - 02-datos-y-tablas.Rmd

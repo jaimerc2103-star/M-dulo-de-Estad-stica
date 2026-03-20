@@ -1,0 +1,6 @@
+introducción-al-análisis-descriptivo-de-datos
+concepto-teórico
+ejemplo-aplicado
+datos-y-tablas-de-frecuencia
+concepto-teórico-1
+ejemplo-aplicado-1

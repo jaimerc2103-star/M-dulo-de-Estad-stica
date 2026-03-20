@@ -1,0 +1,83 @@
+---
+title: "Estadística Aplicada para Ingeniería"
+author: "Tu nombre"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook: default
+---
+
+# Presentación {-}
+
+Este libro ha sido diseñado como apoyo para la asignatura de **Estadística**.
+
+En esta primera versión se desarrolla el **Bloque 1: Estadística Descriptiva**, que incluye la organización de datos, tablas de frecuencia, medidas descriptivas, muestreo y asociación entre variables.
+
+## Objetivo del bloque {-}
+
+Analizar datos estadísticos reales mediante herramientas de estadística descriptiva, incluyendo el análisis crítico e interpretación de resultados, con el propósito de sustentar decisiones informadas en contextos académicos y profesionales.
+
+## Estructura del bloque {-}
+
+Este bloque se organiza en los siguientes capítulos:
+
+1. Introducción al análisis descriptivo de datos.
+2. Datos y tablas de frecuencia.
+3. Medidas de tendencia central y posición.
+4. Medidas de dispersión.
+5. Población, muestra y muestreo.
+6. Medidas de asociación.
+
+<!--chapter:end:index.Rmd-->
+
+# Introducción al análisis descriptivo de datos
+
+## Concepto teórico
+
+La estadística descriptiva es la rama de la estadística encargada de recolectar, organizar, resumir y presentar datos de manera clara y comprensible. Su objetivo principal es transformar datos en información útil que permita describir un fenómeno y facilitar la toma de decisiones.
+
+En el ámbito de la ingeniería, la estadística descriptiva es fundamental para analizar procesos, evaluar variabilidad, interpretar mediciones y detectar patrones en datos experimentales o reales.
+
+Los datos pueden clasificarse según su naturaleza en cualitativos y cuantitativos. Los datos cualitativos describen atributos o categorías, mientras que los cuantitativos representan cantidades numéricas. A su vez, los datos cuantitativos pueden ser discretos, si toman valores enteros, o continuos, si pueden asumir cualquier valor dentro de un intervalo.
+
+## Ejemplo aplicado
+
+Un docente registra las calificaciones de 10 estudiantes en una evaluación.
+
+```{r}
+calificaciones <- c(68, 75, 80, 72, 90, 85, 78, 88, 92, 76)
+calificaciones
+jornada <- c("Matutina", "Matutina", "Nocturna", "Matutina", "Nocturna",
+             "Matutina", "Nocturna", "Matutina", "Nocturna", "Matutina")
+jornada
+```
+
+<!--chapter:end:01-bloque1-introduccion.Rmd-->
+
+# Datos y tablas de frecuencia
+
+## Concepto teórico
+
+Los datos constituyen la materia prima del análisis estadístico. En cualquier estudio, experimento o proceso de observación, los datos permiten representar características de un fenómeno, sistema o población. Para analizarlos correctamente, primero es necesario clasificarlos según su naturaleza y escala de medición.
+
+Las variables pueden ser cualitativas o cuantitativas. Las variables cualitativas describen atributos o categorías, mientras que las cuantitativas expresan cantidades numéricas. Las variables cuantitativas, a su vez, pueden ser discretas o continuas. También pueden clasificarse según su escala de medición en nominal, ordinal, de intervalo y de razón.
+
+Una vez identificada la variable, los datos deben organizarse de forma sistemática. Una de las herramientas más importantes para este fin es la **tabla de frecuencia**, que resume cuántas veces aparece cada valor o grupo de valores. Las tablas de frecuencia pueden construirse para datos no agrupados o para datos agrupados en intervalos de clase.
+
+La organización de los datos mediante tablas permite interpretar distribuciones, identificar concentraciones, detectar dispersión y preparar información para gráficos y análisis posteriores.
+
+## Ejemplo aplicado
+
+Supóngase que se registran las edades de 20 estudiantes de un curso:
+
+```{r}
+edades <- c(18, 19, 20, 18, 21, 19, 20, 22, 18, 19,
+            20, 21, 19, 18, 20, 22, 21, 19, 20, 18)
+edades
+```
+
+
+
+<!--chapter:end:02-datos-y-tablas.Rmd-->
+

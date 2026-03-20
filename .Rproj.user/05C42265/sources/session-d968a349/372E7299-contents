@@ -1,0 +1,30 @@
+---
+title: "Estadística Aplicada para Ingeniería"
+author: "Tu nombre"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook: default
+---
+
+# Presentación {-}
+
+Este libro ha sido diseñado como apoyo para la asignatura de **Estadística**.
+
+En esta primera versión se desarrolla el **Bloque 1: Estadística Descriptiva**, que incluye la organización de datos, tablas de frecuencia, medidas descriptivas, muestreo y asociación entre variables.
+
+## Objetivo del bloque {-}
+
+Analizar datos estadísticos reales mediante herramientas de estadística descriptiva, incluyendo el análisis crítico e interpretación de resultados, con el propósito de sustentar decisiones informadas en contextos académicos y profesionales.
+
+## Estructura del bloque {-}
+
+Este bloque se organiza en los siguientes capítulos:
+
+1. Introducción al análisis descriptivo de datos.
+2. Datos y tablas de frecuencia.
+3. Medidas de tendencia central y posición.
+4. Medidas de dispersión.
+5. Población, muestra y muestreo.
+6. Medidas de asociación.
