@@ -12,3 +12,6 @@ caso-real-ingeniería
 datos-y-tablas-de-frecuencia
 concepto-teórico-1
 ejemplo-aplicado-1
+implementación-en-r-1
+ejercicio-propuesto-1
+caso-real-ingeniería-1
