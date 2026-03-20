@@ -215,6 +215,15 @@ El número de clases puede estimarse con la regla de Sturges:
 
 k = 1 + log2(n)
 
+## Como Agrupar los Datos 
+1. Calcular el Rango de la distribución 
+$R=x_max-x_min$
+2. Obtener el número de clases $k$ (regla de Sturges)
+3. Amplitud de clase 
+$A=\frac{R}{k}$para clases de igual amplitud
+4. Calcular la marca de de clase
+$x_i=\frac{L_i+L_{i+1}}{2}$
+
 ---
 
 ## Ejemplo aplicado

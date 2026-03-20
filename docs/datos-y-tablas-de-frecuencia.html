@@ -164,10 +164,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html"><i class="fa fa-check"></i><b>2</b> Datos y tablas de frecuencia</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#concepto-te%C3%B3rico-1"><i class="fa fa-check"></i><b>2.1</b> Concepto teórico</a></li>
-<li class="chapter" data-level="2.2" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#ejemplo-aplicado-1"><i class="fa fa-check"></i><b>2.2</b> Ejemplo aplicado</a></li>
-<li class="chapter" data-level="2.3" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#implementaci%C3%B3n-en-r-1"><i class="fa fa-check"></i><b>2.3</b> Implementación en R</a></li>
-<li class="chapter" data-level="2.4" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#ejercicio-propuesto-1"><i class="fa fa-check"></i><b>2.4</b> Ejercicio propuesto</a></li>
-<li class="chapter" data-level="2.5" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#caso-real-ingenier%C3%ADa-1"><i class="fa fa-check"></i><b>2.5</b> Caso real (ingeniería)</a></li>
+<li class="chapter" data-level="2.2" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#como-agrupar-los-datos"><i class="fa fa-check"></i><b>2.2</b> Como Agrupar los Datos</a></li>
+<li class="chapter" data-level="2.3" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#ejemplo-aplicado-1"><i class="fa fa-check"></i><b>2.3</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="2.4" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#implementaci%C3%B3n-en-r-1"><i class="fa fa-check"></i><b>2.4</b> Implementación en R</a></li>
+<li class="chapter" data-level="2.5" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#ejercicio-propuesto-1"><i class="fa fa-check"></i><b>2.5</b> Ejercicio propuesto</a></li>
+<li class="chapter" data-level="2.6" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#caso-real-ingenier%C3%ADa-1"><i class="fa fa-check"></i><b>2.6</b> Caso real (ingeniería)</a></li>
 </ul></li>
 </ul>
 
@@ -208,17 +209,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>El número de clases puede estimarse con la regla de Sturges:</p>
 <p>k = 1 + log2(n)</p>
+</div>
+<div id="como-agrupar-los-datos" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Como Agrupar los Datos<a href="datos-y-tablas-de-frecuencia.html#como-agrupar-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Calcular el Rango de la distribución
+<span class="math inline">\(R=x_max-x_min\)</span></li>
+<li>Obtener el número de clases <span class="math inline">\(k\)</span> (regla de Sturges)</li>
+<li>Amplitud de clase
+<span class="math inline">\(A=\frac{R}{k}\)</span>para clases de igual amplitud</li>
+<li>Calcular la marca de de clase
+<span class="math inline">\(x_i=\frac{L_i+L_{i+1}}{2}\)</span></li>
+</ol>
 <hr />
 </div>
-<div id="ejemplo-aplicado-1" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Ejemplo aplicado<a href="datos-y-tablas-de-frecuencia.html#ejemplo-aplicado-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ejemplo-aplicado-1" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Ejemplo aplicado<a href="datos-y-tablas-de-frecuencia.html#ejemplo-aplicado-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En un proyecto de ingeniería civil se registran tiempos (minutos) de ejecución:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="datos-y-tablas-de-frecuencia.html#cb16-1" tabindex="-1"></a>tiempos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">42</span>,<span class="dv">58</span>,<span class="dv">79</span>,<span class="dv">86</span>,<span class="dv">98</span>,<span class="dv">120</span>,<span class="dv">134</span>,<span class="dv">120</span>,<span class="dv">59</span>,<span class="dv">62</span>,</span>
 <span id="cb16-2"><a href="datos-y-tablas-de-frecuencia.html#cb16-2" tabindex="-1"></a>             <span class="dv">85</span>,<span class="dv">89</span>,<span class="dv">76</span>,<span class="dv">110</span>,<span class="dv">104</span>,<span class="dv">78</span>,<span class="dv">84</span>,<span class="dv">96</span>,<span class="dv">90</span>,<span class="dv">75</span>)</span></code></pre></div>
 <hr />
 </div>
-<div id="implementación-en-r-1" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Implementación en R<a href="datos-y-tablas-de-frecuencia.html#implementaci%C3%B3n-en-r-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="implementación-en-r-1" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Implementación en R<a href="datos-y-tablas-de-frecuencia.html#implementaci%C3%B3n-en-r-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="datos-y-tablas-de-frecuencia.html#cb17-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(tiempos)</span>
 <span id="cb17-2"><a href="datos-y-tablas-de-frecuencia.html#cb17-2" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">log2</span>(n))</span>
 <span id="cb17-3"><a href="datos-y-tablas-de-frecuencia.html#cb17-3" tabindex="-1"></a></span>
@@ -245,8 +258,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 [122,138)  1 20 0.05 1.00</code></pre>
 <hr />
 </div>
-<div id="ejercicio-propuesto-1" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Ejercicio propuesto<a href="datos-y-tablas-de-frecuencia.html#ejercicio-propuesto-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ejercicio-propuesto-1" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Ejercicio propuesto<a href="datos-y-tablas-de-frecuencia.html#ejercicio-propuesto-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Se registran niveles de producción energética (kWh):</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="datos-y-tablas-de-frecuencia.html#cb19-1" tabindex="-1"></a>energia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">20</span>,<span class="dv">22</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">28</span>,<span class="dv">26</span>,<span class="dv">24</span>,</span>
 <span id="cb19-2"><a href="datos-y-tablas-de-frecuencia.html#cb19-2" tabindex="-1"></a>             <span class="dv">23</span>,<span class="dv">21</span>,<span class="dv">19</span>,<span class="dv">17</span>,<span class="dv">16</span>,<span class="dv">14</span>,<span class="dv">13</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">10</span>)</span></code></pre></div>
@@ -259,8 +272,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <hr />
 </div>
-<div id="caso-real-ingeniería-1" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Caso real (ingeniería)<a href="datos-y-tablas-de-frecuencia.html#caso-real-ingenier%C3%ADa-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="caso-real-ingeniería-1" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Caso real (ingeniería)<a href="datos-y-tablas-de-frecuencia.html#caso-real-ingenier%C3%ADa-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Las tablas de frecuencia son ampliamente utilizadas en:</p>
 <ul>
 <li>Ingeniería industrial: análisis de tiempos de producción<br />
