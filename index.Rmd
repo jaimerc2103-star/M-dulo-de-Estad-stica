@@ -1,5 +1,5 @@
 ---
-title: "Estadística Aplicada para Ingeniería UCACUE"
+title: "Estadística Aplicada para Ingeniería JERC"
 author: "Ing. Jaime Rojas C, Mgtr."
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -9,11 +9,7 @@ output:
     css: style.css
 ---
 
-<div style="text-align:center;">
-<img src="cover.png" width="400"/>
-</div>
-
-<br>
+![](cover.png){ width=60% }
 
 # Presentación {-}
 
