@@ -1,12 +1,19 @@
 ---
-title: "Estadística Aplicada para Ingeniería en Energías Renovables"
-author: "Ing. Jaime Rojas Coronel, Mgtr."
+title: "Estadística Aplicada para Ingeniería"
+author: "Ing. Jaime Rojas C, Mgtr."
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 output:
-  bookdown::gitbook: default
+  bookdown::gitbook:
+    css: style.css
 ---
+
+<div style="text-align:center;">
+<img src="cover.png" width="400"/>
+</div>
+
+<br>
 
 # Presentación {-}
 
