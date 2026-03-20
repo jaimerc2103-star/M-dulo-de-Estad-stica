@@ -9,7 +9,9 @@ output:
     css: style.css
 ---
 
-![](cover.png){ width=60% }
+```{r, echo=FALSE, out.width="60%", fig.align="center"}
+knitr::include_graphics("cover.png")
+```
 
 # Presentación {-}
 
