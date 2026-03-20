@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Presentación | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <title>5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="introducción-al-análisis-descriptivo-de-datos.html"/>
+<link rel="prev" href="medidas-de-tendencia-central-y-de-posición.html"/>
+<link rel="next" href="muestras-población-y-muestreo.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -265,25 +265,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="presentación" class="section level1 unnumbered hasAnchor">
-<h1>Presentación<a href="presentación.html#presentaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Este libro ha sido diseñado como apoyo para la asignatura de <strong>Estadística</strong>.</p>
-<p>En esta primera versión se desarrolla el <strong>Bloque 1: Estadística Descriptiva</strong>, que incluye la organización de datos, tablas de frecuencia, medidas descriptivas, muestreo y asociación entre variables.</p>
-<div id="objetivo-del-bloque" class="section level2 unnumbered hasAnchor">
-<h2>Objetivo del bloque<a href="presentación.html#objetivo-del-bloque" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Analizar datos estadísticos reales mediante herramientas de estadística descriptiva, incluyendo el análisis crítico e interpretación de resultados, con el propósito de sustentar decisiones informadas en contextos académicos y profesionales.</p>
+<div id="medidas-de-dispersión-y-forma" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Medidas de dispersión y forma<a href="medidas-de-dispersión-y-forma.html#medidas-de-dispersi%C3%B3n-y-forma" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-4" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Concepto teórico<a href="medidas-de-dispersión-y-forma.html#concepto-te%C3%B3rico-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las medidas de dispersión cuantifican el grado de variabilidad de un conjunto de datos respecto a un valor central. Permiten determinar si los datos están concentrados o dispersos.</p>
+<p>Principales medidas de dispersión:</p>
+<ul>
+<li><strong>Rango</strong>: diferencia entre el máximo y el mínimo.</li>
+<li><strong>Varianza</strong>: promedio de las desviaciones cuadráticas respecto a la media.</li>
+<li><strong>Desviación estándar</strong>: raíz cuadrada de la varianza.</li>
+<li><strong>Coeficiente de variación</strong>: relación entre la desviación estándar y la media, expresada en porcentaje.</li>
+</ul>
+<p>Además, para estudiar la forma de la distribución se emplean:</p>
+<ul>
+<li><strong>Asimetría</strong>: indica si la distribución es simétrica o sesgada.</li>
+<li><strong>Curtosis</strong>: mide el grado de concentración de los datos alrededor de la media y el peso de las colas.</li>
+<li><strong>Teorema de Chebyshev</strong>: establece que para cualquier distribución, al menos <span class="math inline">\(1 - 1/k^2\)</span> de los datos se encuentra dentro de <span class="math inline">\(k\)</span> desviaciones estándar de la media, con <span class="math inline">\(k &gt; 1\)</span>.</li>
+</ul>
 </div>
-<div id="estructura-del-bloque" class="section level2 unnumbered hasAnchor">
-<h2>Estructura del bloque<a href="presentación.html#estructura-del-bloque" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Este bloque se organiza en los siguientes capítulos:</p>
+<div id="ejemplo-aplicado-4" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Ejemplo aplicado<a href="medidas-de-dispersión-y-forma.html#ejemplo-aplicado-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se registran voltajes de operación (V) en un sistema eléctrico:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="medidas-de-dispersión-y-forma.html#cb49-1" tabindex="-1"></a>voltaje <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">218</span>, <span class="dv">220</span>, <span class="dv">221</span>, <span class="dv">219</span>, <span class="dv">222</span>, <span class="dv">223</span>, <span class="dv">217</span>, <span class="dv">218</span>, <span class="dv">220</span>, <span class="dv">221</span>,</span>
+<span id="cb49-2"><a href="medidas-de-dispersión-y-forma.html#cb49-2" tabindex="-1"></a>             <span class="dv">224</span>, <span class="dv">219</span>, <span class="dv">220</span>, <span class="dv">222</span>, <span class="dv">223</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">219</span>, <span class="dv">218</span>, <span class="dv">222</span>)</span>
+<span id="cb49-3"><a href="medidas-de-dispersión-y-forma.html#cb49-3" tabindex="-1"></a>voltaje</span></code></pre></div>
+<pre><code>##  [1] 218 220 221 219 222 223 217 218 220 221 224 219 220 222 223 221 220 219 218 222</code></pre>
+</div>
+<div id="implementación-en-r-4" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Implementación en R<a href="medidas-de-dispersión-y-forma.html#implementaci%C3%B3n-en-r-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rango" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Rango<a href="medidas-de-dispersión-y-forma.html#rango" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="medidas-de-dispersión-y-forma.html#cb51-1" tabindex="-1"></a><span class="fu">max</span>(voltaje) <span class="sc">-</span> <span class="fu">min</span>(voltaje)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+</div>
+<div id="varianza-y-desviación-estándar" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Varianza y desviación estándar<a href="medidas-de-dispersión-y-forma.html#varianza-y-desviaci%C3%B3n-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="medidas-de-dispersión-y-forma.html#cb53-1" tabindex="-1"></a><span class="fu">var</span>(voltaje)</span></code></pre></div>
+<pre><code>## [1] 3.713158</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="medidas-de-dispersión-y-forma.html#cb55-1" tabindex="-1"></a><span class="fu">sd</span>(voltaje)</span></code></pre></div>
+<pre><code>## [1] 1.926956</code></pre>
+</div>
+<div id="coeficiente-de-variación" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Coeficiente de variación<a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="medidas-de-dispersión-y-forma.html#cb57-1" tabindex="-1"></a>(<span class="fu">sd</span>(voltaje) <span class="sc">/</span> <span class="fu">mean</span>(voltaje)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<pre><code>## [1] 0.8744977</code></pre>
+</div>
+<div id="asimetría-y-curtosis" class="section level3 hasAnchor" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Asimetría y curtosis<a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa-y-curtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="medidas-de-dispersión-y-forma.html#cb59-1" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb59-2"><a href="medidas-de-dispersión-y-forma.html#cb59-2" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="medidas-de-dispersión-y-forma.html#cb59-3" tabindex="-1"></a><span class="fu">skewness</span>(voltaje)</span></code></pre></div>
+<pre><code>## [1] 0.1212412</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="medidas-de-dispersión-y-forma.html#cb61-1" tabindex="-1"></a><span class="fu">kurtosis</span>(voltaje)</span></code></pre></div>
+<pre><code>## [1] 2.11502</code></pre>
+</div>
+<div id="aplicación-del-teorema-de-chebyshev" class="section level3 hasAnchor" number="5.3.5">
+<h3><span class="header-section-number">5.3.5</span> Aplicación del teorema de Chebyshev<a href="medidas-de-dispersión-y-forma.html#aplicaci%C3%B3n-del-teorema-de-chebyshev" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="medidas-de-dispersión-y-forma.html#cb63-1" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(voltaje)</span>
+<span id="cb63-2"><a href="medidas-de-dispersión-y-forma.html#cb63-2" tabindex="-1"></a>desv <span class="ot">&lt;-</span> <span class="fu">sd</span>(voltaje)</span>
+<span id="cb63-3"><a href="medidas-de-dispersión-y-forma.html#cb63-3" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="medidas-de-dispersión-y-forma.html#cb63-4" tabindex="-1"></a>lim_inf <span class="ot">&lt;-</span> media <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> desv</span>
+<span id="cb63-5"><a href="medidas-de-dispersión-y-forma.html#cb63-5" tabindex="-1"></a>lim_sup <span class="ot">&lt;-</span> media <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> desv</span>
+<span id="cb63-6"><a href="medidas-de-dispersión-y-forma.html#cb63-6" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="medidas-de-dispersión-y-forma.html#cb63-7" tabindex="-1"></a><span class="fu">sum</span>(voltaje <span class="sc">&gt;=</span> lim_inf <span class="sc">&amp;</span> voltaje <span class="sc">&lt;=</span> lim_sup) <span class="sc">/</span> <span class="fu">length</span>(voltaje)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+</div>
+</div>
+<div id="ejercicio-propuesto-4" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Ejercicio propuesto<a href="medidas-de-dispersión-y-forma.html#ejercicio-propuesto-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En una práctica de ingeniería civil se registran resistencias a compresión (MPa) de probetas de hormigón:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="medidas-de-dispersión-y-forma.html#cb65-1" tabindex="-1"></a>resistencia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">24.8</span>, <span class="fl">25.1</span>, <span class="fl">24.5</span>, <span class="fl">25.7</span>, <span class="fl">26.0</span>, <span class="fl">24.9</span>, <span class="fl">25.3</span>, <span class="fl">25.8</span>,</span>
+<span id="cb65-2"><a href="medidas-de-dispersión-y-forma.html#cb65-2" tabindex="-1"></a>                 <span class="fl">24.7</span>, <span class="fl">25.0</span>, <span class="fl">25.4</span>, <span class="fl">25.9</span>, <span class="fl">24.6</span>, <span class="fl">25.2</span>, <span class="fl">25.6</span>)</span></code></pre></div>
+<p>Realice lo siguiente:</p>
 <ol style="list-style-type: decimal">
-<li>Introducción al análisis descriptivo de datos.</li>
-<li>Datos y tablas de frecuencia.</li>
-<li>Medidas de tendencia central y posición.</li>
-<li>Medidas de dispersión.</li>
-<li>Población, muestra y muestreo.</li>
-<li>Medidas de asociación.</li>
+<li>Calcule rango, varianza y desviación estándar.</li>
+<li>Obtenga el coeficiente de variación.</li>
+<li>Calcule asimetría y curtosis.</li>
+<li>Aplique el teorema de Chebyshev para <span class="math inline">\(k = 2\)</span>.</li>
+<li>Interprete la estabilidad del conjunto de datos.</li>
 </ol>
+</div>
+<div id="caso-real-ingeniería-4" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Caso real (ingeniería)<a href="medidas-de-dispersión-y-forma.html#caso-real-ingenier%C3%ADa-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería eléctrica</strong>, una baja dispersión en el voltaje refleja estabilidad del sistema.</p>
+<p>En <strong>ingeniería industrial</strong>, la desviación estándar permite evaluar la consistencia de tiempos de producción o dimensiones de productos fabricados.</p>
+<p>En <strong>ingeniería civil</strong>, el coeficiente de variación se emplea para juzgar la uniformidad de resultados en ensayos de materiales.</p>
+<p>En <strong>energías renovables</strong>, la variabilidad de la generación solar o eólica puede analizarse mediante rango, desviación estándar y asimetría, identificando condiciones de operación más o menos estables.</p>
+<p>Las medidas de dispersión y forma son clave para pasar de una descripción superficial a una evaluación rigurosa de la estabilidad y comportamiento de los datos.</p>
 
 </div>
 </div>
@@ -292,8 +361,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-al-análisis-descriptivo-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="medidas-de-tendencia-central-y-de-posición.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="muestras-población-y-muestreo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,120 @@
+# Muestras, población y muestreo
+
+```{r setup6, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  out.width = "85%"
+)
+```
+
+## Concepto teórico
+
+En estadística, la **población** es el conjunto total de elementos sobre los cuales se desea realizar un estudio, mientras que la **muestra** es un subconjunto de dicha población seleccionado para recolectar información.
+
+Dado que en muchos contextos reales no es factible estudiar toda la población, se emplean técnicas de **muestreo**, que permiten obtener información representativa con menor costo y tiempo.
+
+Principales métodos de muestreo:
+
+- **Muestreo aleatorio simple**: todos los elementos tienen la misma probabilidad de ser seleccionados.
+- **Muestreo sistemático**: se selecciona cada \(k\)-ésimo elemento de una lista.
+- **Muestreo estratificado**: la población se divide en grupos homogéneos y se toma una muestra de cada uno.
+- **Muestreo por conglomerados**: se divide la población en grupos naturales y se seleccionan algunos conglomerados completos.
+
+La correcta selección de la muestra es esencial para que las conclusiones del análisis sean útiles y técnicamente válidas.
+
+## Ejemplo aplicado
+
+Se desea estudiar el consumo de energía de 100 viviendas de una comunidad:
+
+```{r}
+poblacion <- 1:100
+```
+
+### Muestra aleatoria simple
+
+```{r}
+set.seed(123)
+sample(poblacion, 10)
+```
+
+### Muestra sistemática
+
+```{r}
+k <- 10
+poblacion[seq(1, 100, by = k)]
+```
+
+### Ejemplo de muestreo estratificado
+
+```{r}
+estrato_A <- 1:40
+estrato_B <- 41:70
+estrato_C <- 71:100
+
+set.seed(123)
+muestra_A <- sample(estrato_A, 4)
+muestra_B <- sample(estrato_B, 3)
+muestra_C <- sample(estrato_C, 3)
+
+c(muestra_A, muestra_B, muestra_C)
+```
+
+## Implementación en R
+
+### Tamaño de la población
+
+```{r}
+length(poblacion)
+```
+
+### Generación de una muestra aleatoria
+
+```{r}
+set.seed(321)
+muestra <- sample(poblacion, 12)
+muestra
+```
+
+### Organización de estratos en una base simple
+
+```{r}
+datos_poblacion <- data.frame(
+  vivienda = 1:12,
+  sector = c("Norte", "Norte", "Norte", "Centro", "Centro", "Centro",
+             "Sur", "Sur", "Sur", "Rural", "Rural", "Rural"),
+  consumo = c(180, 190, 175, 210, 205, 198, 160, 170, 165, 145, 150, 148)
+)
+
+datos_poblacion
+```
+
+## Ejercicio propuesto
+
+En una empresa de manufactura existen 120 motores divididos en tres áreas:
+
+- Producción: 50
+- Ensamble: 40
+- Control: 30
+
+Realice lo siguiente:
+
+1. Identifique la población del estudio.
+2. Diseñe una muestra aleatoria simple de tamaño 12.
+3. Diseñe una muestra estratificada proporcional.
+4. Explique qué método sería más apropiado si se desea representación de todas las áreas.
+5. Implemente ambos métodos en R.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, el muestreo se aplica al seleccionar puntos de ensayo de suelos, probetas o segmentos de una vía.
+
+En **ingeniería eléctrica**, se utiliza para analizar equipos, circuitos o transformadores dentro de una red.
+
+En **ingeniería industrial**, el muestreo es indispensable en control de calidad, tiempos y movimientos, e inspección de lotes.
+
+En **energías renovables**, se emplea para seleccionar periodos de medición, equipos o ubicaciones de monitoreo de recursos energéticos.
+
+La representatividad de la muestra es una condición esencial para que los resultados del análisis estadístico tengan validez técnica.

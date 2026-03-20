@@ -1,0 +1,109 @@
+# Medidas de dispersión y forma
+
+```{r setup5, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  out.width = "85%"
+)
+```
+
+## Concepto teórico
+
+Las medidas de dispersión cuantifican el grado de variabilidad de un conjunto de datos respecto a un valor central. Permiten determinar si los datos están concentrados o dispersos.
+
+Principales medidas de dispersión:
+
+- **Rango**: diferencia entre el máximo y el mínimo.
+- **Varianza**: promedio de las desviaciones cuadráticas respecto a la media.
+- **Desviación estándar**: raíz cuadrada de la varianza.
+- **Coeficiente de variación**: relación entre la desviación estándar y la media, expresada en porcentaje.
+
+Además, para estudiar la forma de la distribución se emplean:
+
+- **Asimetría**: indica si la distribución es simétrica o sesgada.
+- **Curtosis**: mide el grado de concentración de los datos alrededor de la media y el peso de las colas.
+- **Teorema de Chebyshev**: establece que para cualquier distribución, al menos \(1 - 1/k^2\) de los datos se encuentra dentro de \(k\) desviaciones estándar de la media, con \(k > 1\).
+
+## Ejemplo aplicado
+
+Se registran voltajes de operación (V) en un sistema eléctrico:
+
+```{r}
+voltaje <- c(218, 220, 221, 219, 222, 223, 217, 218, 220, 221,
+             224, 219, 220, 222, 223, 221, 220, 219, 218, 222)
+voltaje
+```
+
+## Implementación en R
+
+### Rango
+
+```{r}
+max(voltaje) - min(voltaje)
+```
+
+### Varianza y desviación estándar
+
+```{r}
+var(voltaje)
+sd(voltaje)
+```
+
+### Coeficiente de variación
+
+```{r}
+(sd(voltaje) / mean(voltaje)) * 100
+```
+
+### Asimetría y curtosis
+
+```{r}
+library(moments)
+
+skewness(voltaje)
+kurtosis(voltaje)
+```
+
+### Aplicación del teorema de Chebyshev
+
+```{r}
+media <- mean(voltaje)
+desv <- sd(voltaje)
+
+lim_inf <- media - 2 * desv
+lim_sup <- media + 2 * desv
+
+sum(voltaje >= lim_inf & voltaje <= lim_sup) / length(voltaje)
+```
+
+## Ejercicio propuesto
+
+En una práctica de ingeniería civil se registran resistencias a compresión (MPa) de probetas de hormigón:
+
+```{r eval=FALSE}
+resistencia <- c(24.8, 25.1, 24.5, 25.7, 26.0, 24.9, 25.3, 25.8,
+                 24.7, 25.0, 25.4, 25.9, 24.6, 25.2, 25.6)
+```
+
+Realice lo siguiente:
+
+1. Calcule rango, varianza y desviación estándar.
+2. Obtenga el coeficiente de variación.
+3. Calcule asimetría y curtosis.
+4. Aplique el teorema de Chebyshev para \(k = 2\).
+5. Interprete la estabilidad del conjunto de datos.
+
+## Caso real (ingeniería)
+
+En **ingeniería eléctrica**, una baja dispersión en el voltaje refleja estabilidad del sistema.
+
+En **ingeniería industrial**, la desviación estándar permite evaluar la consistencia de tiempos de producción o dimensiones de productos fabricados.
+
+En **ingeniería civil**, el coeficiente de variación se emplea para juzgar la uniformidad de resultados en ensayos de materiales.
+
+En **energías renovables**, la variabilidad de la generación solar o eólica puede analizarse mediante rango, desviación estándar y asimetría, identificando condiciones de operación más o menos estables.
+
+Las medidas de dispersión y forma son clave para pasar de una descripción superficial a una evaluación rigurosa de la estabilidad y comportamiento de los datos.

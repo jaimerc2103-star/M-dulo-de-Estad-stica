@@ -1,0 +1,111 @@
+# Medidas de tendencia central y de posición
+
+```{r setup4, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  out.width = "85%"
+)
+```
+
+## Concepto teórico
+
+Las medidas de tendencia central son valores numéricos que resumen un conjunto de datos indicando su comportamiento representativo o central. Las principales son:
+
+- **Media aritmética**: promedio de los datos.
+- **Mediana**: valor central cuando los datos se ordenan.
+- **Moda**: valor que más se repite.
+- **Media geométrica**: útil en tasas de crecimiento, índices y razones multiplicativas.
+
+Por otro lado, las medidas de posición permiten dividir el conjunto de datos ordenados en partes iguales:
+
+- **Cuartiles**: dividen en 4 partes.
+- **Deciles**: dividen en 10 partes.
+- **Percentiles**: dividen en 100 partes.
+
+Estas medidas son fundamentales para comparar rendimientos, ubicar observaciones específicas dentro de una distribución y analizar comportamientos típicos en distintos contextos de ingeniería.
+
+## Ejemplo aplicado
+
+Se registran los consumos diarios de energía (kWh) de un pequeño sistema en 15 días:
+
+```{r}
+consumo <- c(18, 20, 19, 21, 25, 24, 22, 23, 20, 19, 18, 26, 24, 22, 21)
+consumo
+```
+
+## Implementación en R
+
+### Media, mediana y moda
+
+```{r}
+mean(consumo)
+median(consumo)
+```
+
+```{r}
+tabla_moda <- table(consumo)
+tabla_moda
+moda <- as.numeric(names(tabla_moda)[tabla_moda == max(tabla_moda)])
+moda
+```
+
+### Media geométrica
+
+```{r}
+exp(mean(log(consumo)))
+```
+
+### Cuartiles
+
+```{r}
+quantile(consumo, probs = c(0.25, 0.50, 0.75))
+```
+
+### Deciles
+
+```{r}
+quantile(consumo, probs = seq(0.1, 0.9, by = 0.1))
+```
+
+### Percentiles seleccionados
+
+```{r}
+quantile(consumo, probs = c(0.10, 0.25, 0.50, 0.75, 0.90))
+```
+
+### Resumen general
+
+```{r}
+summary(consumo)
+```
+
+## Ejercicio propuesto
+
+En una planta industrial se registran temperaturas de operación (°C) en 16 mediciones:
+
+```{r eval=FALSE}
+temperaturas <- c(68, 70, 72, 69, 71, 73, 75, 74, 70, 69, 68, 72, 71, 70, 74, 73)
+```
+
+Realice lo siguiente:
+
+1. Calcule la media, mediana y moda.
+2. Calcule la media geométrica.
+3. Determine Q1, Q2 y Q3.
+4. Obtenga el percentil 90.
+5. Interprete los resultados desde el punto de vista técnico.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, la media y la mediana se utilizan para resumir resultados de ensayos de materiales, como resistencia del hormigón o contenidos de humedad.
+
+En **ingeniería eléctrica**, los percentiles pueden emplearse para identificar niveles críticos de carga o picos de demanda.
+
+En **ingeniería industrial**, los cuartiles son útiles para comparar tiempos de producción entre distintos grupos de trabajo.
+
+En **energías renovables**, la mediana y los percentiles permiten describir la generación típica y extrema de sistemas fotovoltaicos o eólicos, aportando criterios para el dimensionamiento y evaluación del desempeño.
+
+Estas medidas no solo resumen datos, sino que ayudan a interpretar el comportamiento característico de procesos y sistemas reales.

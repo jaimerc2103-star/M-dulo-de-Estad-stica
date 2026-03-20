@@ -1,0 +1,107 @@
+# Medidas de asociación
+
+```{r setup7, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  out.width = "85%"
+)
+```
+
+## Concepto teórico
+
+Las medidas de asociación permiten analizar la relación entre dos variables. En estadística descriptiva, las más utilizadas son:
+
+- **Covarianza**: mide cómo varían conjuntamente dos variables.
+- **Correlación**: cuantifica la intensidad y dirección de la relación lineal entre variables.
+
+La covarianza puede ser positiva, negativa o cercana a cero, pero su interpretación depende de las unidades de medición. Por ello, la medida más utilizada es el **coeficiente de correlación de Pearson**, cuyo valor se encuentra entre -1 y 1:
+
+- cercano a **1**: asociación lineal positiva fuerte,
+- cercano a **-1**: asociación lineal negativa fuerte,
+- cercano a **0**: relación lineal débil o inexistente.
+
+Estas medidas son especialmente útiles para estudiar relaciones entre variables técnicas, operativas y de desempeño en distintas ramas de la ingeniería.
+
+## Ejemplo aplicado
+
+Se analiza la relación entre horas de funcionamiento y consumo de energía de un equipo:
+
+```{r}
+horas <- c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+consumo <- c(15, 18, 20, 24, 26, 29, 33, 35, 38, 41)
+
+datos <- data.frame(horas, consumo)
+datos
+```
+
+## Implementación en R
+
+### Covarianza
+
+```{r}
+cov(horas, consumo)
+```
+
+### Correlación
+
+```{r}
+cor(horas, consumo)
+```
+
+### Diagrama de dispersión
+
+```{r}
+plot(horas, consumo,
+     pch = 19,
+     col = "blue",
+     main = "Horas de funcionamiento vs consumo",
+     xlab = "Horas de funcionamiento",
+     ylab = "Consumo de energía")
+abline(lm(consumo ~ horas), col = "red", lwd = 2)
+```
+
+### Correlación con `ggplot2`
+
+```{r}
+library(ggplot2)
+
+ggplot(datos, aes(x = horas, y = consumo)) +
+  geom_point(color = "steelblue", size = 3) +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  labs(title = "Relación entre horas de funcionamiento y consumo",
+       x = "Horas",
+       y = "Consumo") +
+  theme_minimal()
+```
+
+## Ejercicio propuesto
+
+En un sistema de bombeo se registran caudal (L/s) y consumo eléctrico (kW) en distintas condiciones de operación:
+
+```{r eval=FALSE}
+caudal <- c(12, 14, 15, 17, 18, 20, 21, 23, 24, 26)
+potencia <- c(4.5, 5.0, 5.2, 5.8, 6.0, 6.5, 6.8, 7.2, 7.4, 7.9)
+```
+
+Realice lo siguiente:
+
+1. Calcule la covarianza.
+2. Calcule el coeficiente de correlación.
+3. Construya un diagrama de dispersión.
+4. Interprete si existe asociación lineal entre las variables.
+5. Explique el significado técnico del resultado.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, la correlación puede usarse para estudiar la relación entre contenido de humedad y resistencia del suelo, o entre carga y deformación.
+
+En **ingeniería eléctrica**, permite analizar la asociación entre carga y consumo energético, o entre corriente y temperatura de operación.
+
+En **ingeniería industrial**, se utiliza para relacionar tiempo de producción con número de unidades fabricadas o nivel de desperdicio.
+
+En **energías renovables**, es útil para estudiar la relación entre irradiancia solar y producción fotovoltaica, o entre velocidad del viento y potencia generada.
+
+Estas medidas ayudan a identificar relaciones clave entre variables, sentando bases para análisis posteriores como la regresión lineal del siguiente bloque.

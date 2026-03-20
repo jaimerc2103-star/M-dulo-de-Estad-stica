@@ -1,0 +1,127 @@
+# Representación gráfica de datos
+
+```{r setup3, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  out.width = "85%"
+)
+```
+
+## Concepto teórico
+
+La representación gráfica de datos es una herramienta fundamental de la estadística descriptiva, ya que permite visualizar de manera rápida la distribución, concentración, dispersión y posibles patrones de un conjunto de observaciones. En ingeniería, los gráficos ayudan a transformar datos numéricos en información interpretable para la toma de decisiones técnicas.
+
+Entre los gráficos más utilizados se encuentran:
+
+- **Diagrama de barras**, adecuado para variables cualitativas o cuantitativas discretas.
+- **Histograma**, útil para variables cuantitativas continuas o datos agrupados.
+- **Polígono de frecuencias**, que resalta la forma general de la distribución.
+- **Ojiva**, empleada para analizar frecuencias acumuladas.
+- **Diagrama circular**, útil para mostrar proporciones en variables cualitativas.
+- **Diagrama de caja y bigotes**, que permite identificar mediana, cuartiles y posibles valores atípicos.
+
+La elección correcta del gráfico depende del tipo de variable, del tamaño de la muestra y del objetivo del análisis. En las distintas ingenierías, una mala elección del gráfico puede conducir a interpretaciones erróneas sobre eficiencia, estabilidad, calidad o comportamiento de un sistema.
+
+## Ejemplo aplicado
+
+En un laboratorio de energías renovables se registra la producción diaria de energía solar (kWh) durante 24 días:
+
+```{r}
+energia <- c(18, 20, 19, 22, 24, 21, 23, 25, 26, 20, 19, 18,
+             17, 21, 22, 23, 24, 26, 27, 25, 22, 21, 20, 19)
+energia
+```
+
+Se desea representar gráficamente estos datos para analizar su comportamiento general.
+
+## Implementación en R
+
+### Histograma
+
+```{r}
+hist(energia,
+     col = "lightblue",
+     main = "Histograma de producción diaria de energía",
+     xlab = "Producción (kWh)",
+     ylab = "Frecuencia",
+     border = "white")
+```
+
+### Polígono de frecuencias
+
+```{r}
+frecuencias <- table(energia)
+plot(as.numeric(names(frecuencias)), as.numeric(frecuencias),
+     type = "b", pch = 19,
+     main = "Polígono de frecuencias",
+     xlab = "Producción (kWh)",
+     ylab = "Frecuencia")
+```
+
+### Ojiva
+
+```{r}
+frecuencia_acumulada <- cumsum(as.numeric(frecuencias))
+plot(as.numeric(names(frecuencias)), frecuencia_acumulada,
+     type = "o", pch = 16,
+     main = "Ojiva de producción diaria",
+     xlab = "Producción (kWh)",
+     ylab = "Frecuencia acumulada")
+```
+
+### Diagrama de caja
+
+```{r}
+boxplot(energia,
+        horizontal = TRUE,
+        col = "lightgreen",
+        main = "Diagrama de caja de la producción diaria",
+        xlab = "Producción (kWh)")
+```
+
+### Ejemplo con `ggplot2`
+
+```{r}
+library(ggplot2)
+
+df_energia <- data.frame(energia = energia)
+
+ggplot(df_energia, aes(x = energia)) +
+  geom_histogram(binwidth = 2, fill = "steelblue", color = "white") +
+  labs(title = "Histograma con ggplot2",
+       x = "Producción (kWh)",
+       y = "Frecuencia") +
+  theme_minimal()
+```
+
+## Ejercicio propuesto
+
+En una práctica de ingeniería industrial se registran los tiempos de operación (minutos) de una máquina:
+
+```{r eval=FALSE}
+tiempos <- c(42, 45, 47, 44, 43, 46, 50, 52, 48, 49,
+             51, 47, 46, 45, 44, 43, 42, 48, 49, 50)
+```
+
+Realice lo siguiente:
+
+1. Construya un histograma.
+2. Elabore un polígono de frecuencias.
+3. Genere la ojiva.
+4. Construya un diagrama de caja.
+5. Interprete cuál gráfico resulta más útil para estudiar dispersión y posibles valores atípicos.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, los histogramas se emplean para analizar la resistencia a compresión del hormigón o la distribución de tiempos de ejecución de partidas de obra.
+
+En **ingeniería eléctrica**, las ojivas ayudan a estudiar distribuciones acumuladas de voltaje, corriente o factor de potencia.
+
+En **ingeniería industrial**, los diagramas de caja permiten comparar tiempos de proceso entre turnos o líneas de producción, identificando variabilidad y datos atípicos.
+
+En **energías renovables**, los gráficos estadísticos facilitan el análisis de producción eólica o solar, detectando periodos de máxima generación y comportamiento irregular del sistema.
+
+La representación gráfica adecuada es, por tanto, una herramienta visual esencial para el diagnóstico técnico y la mejora continua.

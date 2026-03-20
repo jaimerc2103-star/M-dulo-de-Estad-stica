@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Presentación | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <title>6 Muestras, población y muestreo | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="6 Muestras, población y muestreo | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="6 Muestras, población y muestreo | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="6 Muestras, población y muestreo | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="introducción-al-análisis-descriptivo-de-datos.html"/>
+<link rel="prev" href="medidas-de-dispersión-y-forma.html"/>
+<link rel="next" href="medidas-de-asociación.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -265,25 +265,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="presentación" class="section level1 unnumbered hasAnchor">
-<h1>Presentación<a href="presentación.html#presentaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Este libro ha sido diseñado como apoyo para la asignatura de <strong>Estadística</strong>.</p>
-<p>En esta primera versión se desarrolla el <strong>Bloque 1: Estadística Descriptiva</strong>, que incluye la organización de datos, tablas de frecuencia, medidas descriptivas, muestreo y asociación entre variables.</p>
-<div id="objetivo-del-bloque" class="section level2 unnumbered hasAnchor">
-<h2>Objetivo del bloque<a href="presentación.html#objetivo-del-bloque" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Analizar datos estadísticos reales mediante herramientas de estadística descriptiva, incluyendo el análisis crítico e interpretación de resultados, con el propósito de sustentar decisiones informadas en contextos académicos y profesionales.</p>
+<div id="muestras-población-y-muestreo" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Muestras, población y muestreo<a href="muestras-población-y-muestreo.html#muestras-poblaci%C3%B3n-y-muestreo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-5" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Concepto teórico<a href="muestras-población-y-muestreo.html#concepto-te%C3%B3rico-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En estadística, la <strong>población</strong> es el conjunto total de elementos sobre los cuales se desea realizar un estudio, mientras que la <strong>muestra</strong> es un subconjunto de dicha población seleccionado para recolectar información.</p>
+<p>Dado que en muchos contextos reales no es factible estudiar toda la población, se emplean técnicas de <strong>muestreo</strong>, que permiten obtener información representativa con menor costo y tiempo.</p>
+<p>Principales métodos de muestreo:</p>
+<ul>
+<li><strong>Muestreo aleatorio simple</strong>: todos los elementos tienen la misma probabilidad de ser seleccionados.</li>
+<li><strong>Muestreo sistemático</strong>: se selecciona cada <span class="math inline">\(k\)</span>-ésimo elemento de una lista.</li>
+<li><strong>Muestreo estratificado</strong>: la población se divide en grupos homogéneos y se toma una muestra de cada uno.</li>
+<li><strong>Muestreo por conglomerados</strong>: se divide la población en grupos naturales y se seleccionan algunos conglomerados completos.</li>
+</ul>
+<p>La correcta selección de la muestra es esencial para que las conclusiones del análisis sean útiles y técnicamente válidas.</p>
 </div>
-<div id="estructura-del-bloque" class="section level2 unnumbered hasAnchor">
-<h2>Estructura del bloque<a href="presentación.html#estructura-del-bloque" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Este bloque se organiza en los siguientes capítulos:</p>
+<div id="ejemplo-aplicado-5" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Ejemplo aplicado<a href="muestras-población-y-muestreo.html#ejemplo-aplicado-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se desea estudiar el consumo de energía de 100 viviendas de una comunidad:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="muestras-población-y-muestreo.html#cb66-1" tabindex="-1"></a>poblacion <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span></code></pre></div>
+<div id="muestra-aleatoria-simple" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Muestra aleatoria simple<a href="muestras-población-y-muestreo.html#muestra-aleatoria-simple" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="muestras-población-y-muestreo.html#cb67-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb67-2"><a href="muestras-población-y-muestreo.html#cb67-2" tabindex="-1"></a><span class="fu">sample</span>(poblacion, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] 31 79 51 14 67 42 50 43 97 25</code></pre>
+</div>
+<div id="muestra-sistemática" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Muestra sistemática<a href="muestras-población-y-muestreo.html#muestra-sistem%C3%A1tica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="muestras-población-y-muestreo.html#cb69-1" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb69-2"><a href="muestras-población-y-muestreo.html#cb69-2" tabindex="-1"></a>poblacion[<span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">100</span>, <span class="at">by =</span> k)]</span></code></pre></div>
+<pre><code>##  [1]  1 11 21 31 41 51 61 71 81 91</code></pre>
+</div>
+<div id="ejemplo-de-muestreo-estratificado" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Ejemplo de muestreo estratificado<a href="muestras-población-y-muestreo.html#ejemplo-de-muestreo-estratificado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="muestras-población-y-muestreo.html#cb71-1" tabindex="-1"></a>estrato_A <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span></span>
+<span id="cb71-2"><a href="muestras-población-y-muestreo.html#cb71-2" tabindex="-1"></a>estrato_B <span class="ot">&lt;-</span> <span class="dv">41</span><span class="sc">:</span><span class="dv">70</span></span>
+<span id="cb71-3"><a href="muestras-población-y-muestreo.html#cb71-3" tabindex="-1"></a>estrato_C <span class="ot">&lt;-</span> <span class="dv">71</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb71-4"><a href="muestras-población-y-muestreo.html#cb71-4" tabindex="-1"></a></span>
+<span id="cb71-5"><a href="muestras-población-y-muestreo.html#cb71-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb71-6"><a href="muestras-población-y-muestreo.html#cb71-6" tabindex="-1"></a>muestra_A <span class="ot">&lt;-</span> <span class="fu">sample</span>(estrato_A, <span class="dv">4</span>)</span>
+<span id="cb71-7"><a href="muestras-población-y-muestreo.html#cb71-7" tabindex="-1"></a>muestra_B <span class="ot">&lt;-</span> <span class="fu">sample</span>(estrato_B, <span class="dv">3</span>)</span>
+<span id="cb71-8"><a href="muestras-población-y-muestreo.html#cb71-8" tabindex="-1"></a>muestra_C <span class="ot">&lt;-</span> <span class="fu">sample</span>(estrato_C, <span class="dv">3</span>)</span>
+<span id="cb71-9"><a href="muestras-población-y-muestreo.html#cb71-9" tabindex="-1"></a></span>
+<span id="cb71-10"><a href="muestras-población-y-muestreo.html#cb71-10" tabindex="-1"></a><span class="fu">c</span>(muestra_A, muestra_B, muestra_C)</span></code></pre></div>
+<pre><code>##  [1] 31 15 14  3 50 58 62 81 75 90</code></pre>
+</div>
+</div>
+<div id="implementación-en-r-5" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Implementación en R<a href="muestras-población-y-muestreo.html#implementaci%C3%B3n-en-r-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tamaño-de-la-población" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Tamaño de la población<a href="muestras-población-y-muestreo.html#tama%C3%B1o-de-la-poblaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="muestras-población-y-muestreo.html#cb73-1" tabindex="-1"></a><span class="fu">length</span>(poblacion)</span></code></pre></div>
+<pre><code>## [1] 100</code></pre>
+</div>
+<div id="generación-de-una-muestra-aleatoria" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Generación de una muestra aleatoria<a href="muestras-población-y-muestreo.html#generaci%C3%B3n-de-una-muestra-aleatoria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="muestras-población-y-muestreo.html#cb75-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">321</span>)</span>
+<span id="cb75-2"><a href="muestras-población-y-muestreo.html#cb75-2" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">sample</span>(poblacion, <span class="dv">12</span>)</span>
+<span id="cb75-3"><a href="muestras-población-y-muestreo.html#cb75-3" tabindex="-1"></a>muestra</span></code></pre></div>
+<pre><code>##  [1] 54 77 88 80 58 17 47 11 25 31 82 79</code></pre>
+</div>
+<div id="organización-de-estratos-en-una-base-simple" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Organización de estratos en una base simple<a href="muestras-población-y-muestreo.html#organizaci%C3%B3n-de-estratos-en-una-base-simple" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="muestras-población-y-muestreo.html#cb77-1" tabindex="-1"></a>datos_poblacion <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb77-2"><a href="muestras-población-y-muestreo.html#cb77-2" tabindex="-1"></a>  <span class="at">vivienda =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,</span>
+<span id="cb77-3"><a href="muestras-población-y-muestreo.html#cb77-3" tabindex="-1"></a>  <span class="at">sector =</span> <span class="fu">c</span>(<span class="st">&quot;Norte&quot;</span>, <span class="st">&quot;Norte&quot;</span>, <span class="st">&quot;Norte&quot;</span>, <span class="st">&quot;Centro&quot;</span>, <span class="st">&quot;Centro&quot;</span>, <span class="st">&quot;Centro&quot;</span>,</span>
+<span id="cb77-4"><a href="muestras-población-y-muestreo.html#cb77-4" tabindex="-1"></a>             <span class="st">&quot;Sur&quot;</span>, <span class="st">&quot;Sur&quot;</span>, <span class="st">&quot;Sur&quot;</span>, <span class="st">&quot;Rural&quot;</span>, <span class="st">&quot;Rural&quot;</span>, <span class="st">&quot;Rural&quot;</span>),</span>
+<span id="cb77-5"><a href="muestras-población-y-muestreo.html#cb77-5" tabindex="-1"></a>  <span class="at">consumo =</span> <span class="fu">c</span>(<span class="dv">180</span>, <span class="dv">190</span>, <span class="dv">175</span>, <span class="dv">210</span>, <span class="dv">205</span>, <span class="dv">198</span>, <span class="dv">160</span>, <span class="dv">170</span>, <span class="dv">165</span>, <span class="dv">145</span>, <span class="dv">150</span>, <span class="dv">148</span>)</span>
+<span id="cb77-6"><a href="muestras-población-y-muestreo.html#cb77-6" tabindex="-1"></a>)</span>
+<span id="cb77-7"><a href="muestras-población-y-muestreo.html#cb77-7" tabindex="-1"></a></span>
+<span id="cb77-8"><a href="muestras-población-y-muestreo.html#cb77-8" tabindex="-1"></a>datos_poblacion</span></code></pre></div>
+<pre><code>##    vivienda sector consumo
+## 1         1  Norte     180
+## 2         2  Norte     190
+## 3         3  Norte     175
+## 4         4 Centro     210
+## 5         5 Centro     205
+## 6         6 Centro     198
+## 7         7    Sur     160
+## 8         8    Sur     170
+## 9         9    Sur     165
+## 10       10  Rural     145
+## 11       11  Rural     150
+## 12       12  Rural     148</code></pre>
+</div>
+</div>
+<div id="ejercicio-propuesto-5" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Ejercicio propuesto<a href="muestras-población-y-muestreo.html#ejercicio-propuesto-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En una empresa de manufactura existen 120 motores divididos en tres áreas:</p>
+<ul>
+<li>Producción: 50</li>
+<li>Ensamble: 40</li>
+<li>Control: 30</li>
+</ul>
+<p>Realice lo siguiente:</p>
 <ol style="list-style-type: decimal">
-<li>Introducción al análisis descriptivo de datos.</li>
-<li>Datos y tablas de frecuencia.</li>
-<li>Medidas de tendencia central y posición.</li>
-<li>Medidas de dispersión.</li>
-<li>Población, muestra y muestreo.</li>
-<li>Medidas de asociación.</li>
+<li>Identifique la población del estudio.</li>
+<li>Diseñe una muestra aleatoria simple de tamaño 12.</li>
+<li>Diseñe una muestra estratificada proporcional.</li>
+<li>Explique qué método sería más apropiado si se desea representación de todas las áreas.</li>
+<li>Implemente ambos métodos en R.</li>
 </ol>
+</div>
+<div id="caso-real-ingeniería-5" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Caso real (ingeniería)<a href="muestras-población-y-muestreo.html#caso-real-ingenier%C3%ADa-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería civil</strong>, el muestreo se aplica al seleccionar puntos de ensayo de suelos, probetas o segmentos de una vía.</p>
+<p>En <strong>ingeniería eléctrica</strong>, se utiliza para analizar equipos, circuitos o transformadores dentro de una red.</p>
+<p>En <strong>ingeniería industrial</strong>, el muestreo es indispensable en control de calidad, tiempos y movimientos, e inspección de lotes.</p>
+<p>En <strong>energías renovables</strong>, se emplea para seleccionar periodos de medición, equipos o ubicaciones de monitoreo de recursos energéticos.</p>
+<p>La representatividad de la muestra es una condición esencial para que los resultados del análisis estadístico tengan validez técnica.</p>
 
 </div>
 </div>
@@ -292,8 +382,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-al-análisis-descriptivo-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="medidas-de-dispersión-y-forma.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="medidas-de-asociación.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

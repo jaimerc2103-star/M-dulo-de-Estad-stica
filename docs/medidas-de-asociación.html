@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Presentación | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <title>7 Medidas de asociación | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="7 Medidas de asociación | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="7 Medidas de asociación | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="7 Medidas de asociación | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="introducción-al-análisis-descriptivo-de-datos.html"/>
+<link rel="prev" href="muestras-población-y-muestreo.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -265,25 +265,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="presentación" class="section level1 unnumbered hasAnchor">
-<h1>Presentación<a href="presentación.html#presentaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Este libro ha sido diseñado como apoyo para la asignatura de <strong>Estadística</strong>.</p>
-<p>En esta primera versión se desarrolla el <strong>Bloque 1: Estadística Descriptiva</strong>, que incluye la organización de datos, tablas de frecuencia, medidas descriptivas, muestreo y asociación entre variables.</p>
-<div id="objetivo-del-bloque" class="section level2 unnumbered hasAnchor">
-<h2>Objetivo del bloque<a href="presentación.html#objetivo-del-bloque" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Analizar datos estadísticos reales mediante herramientas de estadística descriptiva, incluyendo el análisis crítico e interpretación de resultados, con el propósito de sustentar decisiones informadas en contextos académicos y profesionales.</p>
+<div id="medidas-de-asociación" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Medidas de asociación<a href="medidas-de-asociación.html#medidas-de-asociaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-6" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Concepto teórico<a href="medidas-de-asociación.html#concepto-te%C3%B3rico-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las medidas de asociación permiten analizar la relación entre dos variables. En estadística descriptiva, las más utilizadas son:</p>
+<ul>
+<li><strong>Covarianza</strong>: mide cómo varían conjuntamente dos variables.</li>
+<li><strong>Correlación</strong>: cuantifica la intensidad y dirección de la relación lineal entre variables.</li>
+</ul>
+<p>La covarianza puede ser positiva, negativa o cercana a cero, pero su interpretación depende de las unidades de medición. Por ello, la medida más utilizada es el <strong>coeficiente de correlación de Pearson</strong>, cuyo valor se encuentra entre -1 y 1:</p>
+<ul>
+<li>cercano a <strong>1</strong>: asociación lineal positiva fuerte,</li>
+<li>cercano a <strong>-1</strong>: asociación lineal negativa fuerte,</li>
+<li>cercano a <strong>0</strong>: relación lineal débil o inexistente.</li>
+</ul>
+<p>Estas medidas son especialmente útiles para estudiar relaciones entre variables técnicas, operativas y de desempeño en distintas ramas de la ingeniería.</p>
 </div>
-<div id="estructura-del-bloque" class="section level2 unnumbered hasAnchor">
-<h2>Estructura del bloque<a href="presentación.html#estructura-del-bloque" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Este bloque se organiza en los siguientes capítulos:</p>
+<div id="ejemplo-aplicado-6" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Ejemplo aplicado<a href="medidas-de-asociación.html#ejemplo-aplicado-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se analiza la relación entre horas de funcionamiento y consumo de energía de un equipo:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="medidas-de-asociación.html#cb79-1" tabindex="-1"></a>horas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb79-2"><a href="medidas-de-asociación.html#cb79-2" tabindex="-1"></a>consumo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">24</span>, <span class="dv">26</span>, <span class="dv">29</span>, <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">38</span>, <span class="dv">41</span>)</span>
+<span id="cb79-3"><a href="medidas-de-asociación.html#cb79-3" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="medidas-de-asociación.html#cb79-4" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(horas, consumo)</span>
+<span id="cb79-5"><a href="medidas-de-asociación.html#cb79-5" tabindex="-1"></a>datos</span></code></pre></div>
+<pre><code>##    horas consumo
+## 1      2      15
+## 2      3      18
+## 3      4      20
+## 4      5      24
+## 5      6      26
+## 6      7      29
+## 7      8      33
+## 8      9      35
+## 9     10      38
+## 10    11      41</code></pre>
+</div>
+<div id="implementación-en-r-6" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Implementación en R<a href="medidas-de-asociación.html#implementaci%C3%B3n-en-r-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="covarianza" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Covarianza<a href="medidas-de-asociación.html#covarianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="medidas-de-asociación.html#cb81-1" tabindex="-1"></a><span class="fu">cov</span>(horas, consumo)</span></code></pre></div>
+<pre><code>## [1] 26.61111</code></pre>
+</div>
+<div id="correlación" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Correlación<a href="medidas-de-asociación.html#correlaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="medidas-de-asociación.html#cb83-1" tabindex="-1"></a><span class="fu">cor</span>(horas, consumo)</span></code></pre></div>
+<pre><code>## [1] 0.998834</code></pre>
+</div>
+<div id="diagrama-de-dispersión" class="section level3 hasAnchor" number="7.3.3">
+<h3><span class="header-section-number">7.3.3</span> Diagrama de dispersión<a href="medidas-de-asociación.html#diagrama-de-dispersi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="medidas-de-asociación.html#cb85-1" tabindex="-1"></a><span class="fu">plot</span>(horas, consumo,</span>
+<span id="cb85-2"><a href="medidas-de-asociación.html#cb85-2" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb85-3"><a href="medidas-de-asociación.html#cb85-3" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb85-4"><a href="medidas-de-asociación.html#cb85-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Horas de funcionamiento vs consumo&quot;</span>,</span>
+<span id="cb85-5"><a href="medidas-de-asociación.html#cb85-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Horas de funcionamiento&quot;</span>,</span>
+<span id="cb85-6"><a href="medidas-de-asociación.html#cb85-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Consumo de energía&quot;</span>)</span>
+<span id="cb85-7"><a href="medidas-de-asociación.html#cb85-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(consumo <span class="sc">~</span> horas), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-46-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="correlación-con-ggplot2" class="section level3 hasAnchor" number="7.3.4">
+<h3><span class="header-section-number">7.3.4</span> Correlación con <code>ggplot2</code><a href="medidas-de-asociación.html#correlaci%C3%B3n-con-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="medidas-de-asociación.html#cb86-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb86-2"><a href="medidas-de-asociación.html#cb86-2" tabindex="-1"></a></span>
+<span id="cb86-3"><a href="medidas-de-asociación.html#cb86-3" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> horas, <span class="at">y =</span> consumo)) <span class="sc">+</span></span>
+<span id="cb86-4"><a href="medidas-de-asociación.html#cb86-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb86-5"><a href="medidas-de-asociación.html#cb86-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb86-6"><a href="medidas-de-asociación.html#cb86-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relación entre horas de funcionamiento y consumo&quot;</span>,</span>
+<span id="cb86-7"><a href="medidas-de-asociación.html#cb86-7" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Horas&quot;</span>,</span>
+<span id="cb86-8"><a href="medidas-de-asociación.html#cb86-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Consumo&quot;</span>) <span class="sc">+</span></span>
+<span id="cb86-9"><a href="medidas-de-asociación.html#cb86-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-47-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="ejercicio-propuesto-6" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Ejercicio propuesto<a href="medidas-de-asociación.html#ejercicio-propuesto-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un sistema de bombeo se registran caudal (L/s) y consumo eléctrico (kW) en distintas condiciones de operación:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="medidas-de-asociación.html#cb87-1" tabindex="-1"></a>caudal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">26</span>)</span>
+<span id="cb87-2"><a href="medidas-de-asociación.html#cb87-2" tabindex="-1"></a>potencia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">5.0</span>, <span class="fl">5.2</span>, <span class="fl">5.8</span>, <span class="fl">6.0</span>, <span class="fl">6.5</span>, <span class="fl">6.8</span>, <span class="fl">7.2</span>, <span class="fl">7.4</span>, <span class="fl">7.9</span>)</span></code></pre></div>
+<p>Realice lo siguiente:</p>
 <ol style="list-style-type: decimal">
-<li>Introducción al análisis descriptivo de datos.</li>
-<li>Datos y tablas de frecuencia.</li>
-<li>Medidas de tendencia central y posición.</li>
-<li>Medidas de dispersión.</li>
-<li>Población, muestra y muestreo.</li>
-<li>Medidas de asociación.</li>
+<li>Calcule la covarianza.</li>
+<li>Calcule el coeficiente de correlación.</li>
+<li>Construya un diagrama de dispersión.</li>
+<li>Interprete si existe asociación lineal entre las variables.</li>
+<li>Explique el significado técnico del resultado.</li>
 </ol>
+</div>
+<div id="caso-real-ingeniería-6" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Caso real (ingeniería)<a href="medidas-de-asociación.html#caso-real-ingenier%C3%ADa-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería civil</strong>, la correlación puede usarse para estudiar la relación entre contenido de humedad y resistencia del suelo, o entre carga y deformación.</p>
+<p>En <strong>ingeniería eléctrica</strong>, permite analizar la asociación entre carga y consumo energético, o entre corriente y temperatura de operación.</p>
+<p>En <strong>ingeniería industrial</strong>, se utiliza para relacionar tiempo de producción con número de unidades fabricadas o nivel de desperdicio.</p>
+<p>En <strong>energías renovables</strong>, es útil para estudiar la relación entre irradiancia solar y producción fotovoltaica, o entre velocidad del viento y potencia generada.</p>
+<p>Estas medidas ayudan a identificar relaciones clave entre variables, sentando bases para análisis posteriores como la regresión lineal del siguiente bloque.</p>
 
 </div>
 </div>
@@ -292,8 +368,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-al-análisis-descriptivo-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="muestras-población-y-muestreo.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

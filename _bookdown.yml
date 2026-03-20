@@ -6,3 +6,8 @@ rmd_files:
   - index.Rmd
   - 01-bloque1-introduccion.Rmd
   - 02-datos-y-tablas.Rmd
+  - 03-bloque1-unidad3-representacion-grafica.Rmd
+  - 04-bloque1-unidad4-tendencia-central-posicion.Rmd
+  - 05-bloque1-unidad5-dispersion-forma.Rmd
+  - 06-bloque1-unidad6-muestras-poblacion-muestreo.Rmd
+  - 07-bloque1-unidad7-medidas-asociacion.Rmd

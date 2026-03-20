@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Presentación | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <title>3 Representación gráfica de datos | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="3 Representación gráfica de datos | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="3 Representación gráfica de datos | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Presentación | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="3 Representación gráfica de datos | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="introducción-al-análisis-descriptivo-de-datos.html"/>
+<link rel="prev" href="datos-y-tablas-de-frecuencia.html"/>
+<link rel="next" href="medidas-de-tendencia-central-y-de-posición.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -265,25 +265,108 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="presentación" class="section level1 unnumbered hasAnchor">
-<h1>Presentación<a href="presentación.html#presentaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Este libro ha sido diseñado como apoyo para la asignatura de <strong>Estadística</strong>.</p>
-<p>En esta primera versión se desarrolla el <strong>Bloque 1: Estadística Descriptiva</strong>, que incluye la organización de datos, tablas de frecuencia, medidas descriptivas, muestreo y asociación entre variables.</p>
-<div id="objetivo-del-bloque" class="section level2 unnumbered hasAnchor">
-<h2>Objetivo del bloque<a href="presentación.html#objetivo-del-bloque" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Analizar datos estadísticos reales mediante herramientas de estadística descriptiva, incluyendo el análisis crítico e interpretación de resultados, con el propósito de sustentar decisiones informadas en contextos académicos y profesionales.</p>
+<div id="representación-gráfica-de-datos" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Representación gráfica de datos<a href="representación-gráfica-de-datos.html#representaci%C3%B3n-gr%C3%A1fica-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-2" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Concepto teórico<a href="representación-gráfica-de-datos.html#concepto-te%C3%B3rico-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La representación gráfica de datos es una herramienta fundamental de la estadística descriptiva, ya que permite visualizar de manera rápida la distribución, concentración, dispersión y posibles patrones de un conjunto de observaciones. En ingeniería, los gráficos ayudan a transformar datos numéricos en información interpretable para la toma de decisiones técnicas.</p>
+<p>Entre los gráficos más utilizados se encuentran:</p>
+<ul>
+<li><strong>Diagrama de barras</strong>, adecuado para variables cualitativas o cuantitativas discretas.</li>
+<li><strong>Histograma</strong>, útil para variables cuantitativas continuas o datos agrupados.</li>
+<li><strong>Polígono de frecuencias</strong>, que resalta la forma general de la distribución.</li>
+<li><strong>Ojiva</strong>, empleada para analizar frecuencias acumuladas.</li>
+<li><strong>Diagrama circular</strong>, útil para mostrar proporciones en variables cualitativas.</li>
+<li><strong>Diagrama de caja y bigotes</strong>, que permite identificar mediana, cuartiles y posibles valores atípicos.</li>
+</ul>
+<p>La elección correcta del gráfico depende del tipo de variable, del tamaño de la muestra y del objetivo del análisis. En las distintas ingenierías, una mala elección del gráfico puede conducir a interpretaciones erróneas sobre eficiencia, estabilidad, calidad o comportamiento de un sistema.</p>
 </div>
-<div id="estructura-del-bloque" class="section level2 unnumbered hasAnchor">
-<h2>Estructura del bloque<a href="presentación.html#estructura-del-bloque" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Este bloque se organiza en los siguientes capítulos:</p>
+<div id="ejemplo-aplicado-2" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Ejemplo aplicado<a href="representación-gráfica-de-datos.html#ejemplo-aplicado-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un laboratorio de energías renovables se registra la producción diaria de energía solar (kWh) durante 24 días:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="representación-gráfica-de-datos.html#cb20-1" tabindex="-1"></a>energia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">21</span>, <span class="dv">23</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">20</span>, <span class="dv">19</span>, <span class="dv">18</span>,</span>
+<span id="cb20-2"><a href="representación-gráfica-de-datos.html#cb20-2" tabindex="-1"></a>             <span class="dv">17</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">26</span>, <span class="dv">27</span>, <span class="dv">25</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">20</span>, <span class="dv">19</span>)</span>
+<span id="cb20-3"><a href="representación-gráfica-de-datos.html#cb20-3" tabindex="-1"></a>energia</span></code></pre></div>
+<pre><code>##  [1] 18 20 19 22 24 21 23 25 26 20 19 18 17 21 22 23 24 26 27 25 22 21 20 19</code></pre>
+<p>Se desea representar gráficamente estos datos para analizar su comportamiento general.</p>
+</div>
+<div id="implementación-en-r-2" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Implementación en R<a href="representación-gráfica-de-datos.html#implementaci%C3%B3n-en-r-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="histograma" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Histograma<a href="representación-gráfica-de-datos.html#histograma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="representación-gráfica-de-datos.html#cb22-1" tabindex="-1"></a><span class="fu">hist</span>(energia,</span>
+<span id="cb22-2"><a href="representación-gráfica-de-datos.html#cb22-2" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
+<span id="cb22-3"><a href="representación-gráfica-de-datos.html#cb22-3" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Histograma de producción diaria de energía&quot;</span>,</span>
+<span id="cb22-4"><a href="representación-gráfica-de-datos.html#cb22-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Producción (kWh)&quot;</span>,</span>
+<span id="cb22-5"><a href="representación-gráfica-de-datos.html#cb22-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frecuencia&quot;</span>,</span>
+<span id="cb22-6"><a href="representación-gráfica-de-datos.html#cb22-6" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-14-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="polígono-de-frecuencias" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Polígono de frecuencias<a href="representación-gráfica-de-datos.html#pol%C3%ADgono-de-frecuencias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="representación-gráfica-de-datos.html#cb23-1" tabindex="-1"></a>frecuencias <span class="ot">&lt;-</span> <span class="fu">table</span>(energia)</span>
+<span id="cb23-2"><a href="representación-gráfica-de-datos.html#cb23-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(<span class="fu">names</span>(frecuencias)), <span class="fu">as.numeric</span>(frecuencias),</span>
+<span id="cb23-3"><a href="representación-gráfica-de-datos.html#cb23-3" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb23-4"><a href="representación-gráfica-de-datos.html#cb23-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Polígono de frecuencias&quot;</span>,</span>
+<span id="cb23-5"><a href="representación-gráfica-de-datos.html#cb23-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Producción (kWh)&quot;</span>,</span>
+<span id="cb23-6"><a href="representación-gráfica-de-datos.html#cb23-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frecuencia&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-15-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ojiva" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Ojiva<a href="representación-gráfica-de-datos.html#ojiva" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="representación-gráfica-de-datos.html#cb24-1" tabindex="-1"></a>frecuencia_acumulada <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(<span class="fu">as.numeric</span>(frecuencias))</span>
+<span id="cb24-2"><a href="representación-gráfica-de-datos.html#cb24-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(<span class="fu">names</span>(frecuencias)), frecuencia_acumulada,</span>
+<span id="cb24-3"><a href="representación-gráfica-de-datos.html#cb24-3" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;o&quot;</span>, <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb24-4"><a href="representación-gráfica-de-datos.html#cb24-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Ojiva de producción diaria&quot;</span>,</span>
+<span id="cb24-5"><a href="representación-gráfica-de-datos.html#cb24-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Producción (kWh)&quot;</span>,</span>
+<span id="cb24-6"><a href="representación-gráfica-de-datos.html#cb24-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frecuencia acumulada&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-16-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="diagrama-de-caja" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Diagrama de caja<a href="representación-gráfica-de-datos.html#diagrama-de-caja" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="representación-gráfica-de-datos.html#cb25-1" tabindex="-1"></a><span class="fu">boxplot</span>(energia,</span>
+<span id="cb25-2"><a href="representación-gráfica-de-datos.html#cb25-2" tabindex="-1"></a>        <span class="at">horizontal =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb25-3"><a href="representación-gráfica-de-datos.html#cb25-3" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;lightgreen&quot;</span>,</span>
+<span id="cb25-4"><a href="representación-gráfica-de-datos.html#cb25-4" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Diagrama de caja de la producción diaria&quot;</span>,</span>
+<span id="cb25-5"><a href="representación-gráfica-de-datos.html#cb25-5" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Producción (kWh)&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-17-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ejemplo-con-ggplot2" class="section level3 hasAnchor" number="3.3.5">
+<h3><span class="header-section-number">3.3.5</span> Ejemplo con <code>ggplot2</code><a href="representación-gráfica-de-datos.html#ejemplo-con-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="representación-gráfica-de-datos.html#cb26-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb26-2"><a href="representación-gráfica-de-datos.html#cb26-2" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="representación-gráfica-de-datos.html#cb26-3" tabindex="-1"></a>df_energia <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">energia =</span> energia)</span>
+<span id="cb26-4"><a href="representación-gráfica-de-datos.html#cb26-4" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="representación-gráfica-de-datos.html#cb26-5" tabindex="-1"></a><span class="fu">ggplot</span>(df_energia, <span class="fu">aes</span>(<span class="at">x =</span> energia)) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="representación-gráfica-de-datos.html#cb26-6" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>, <span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb26-7"><a href="representación-gráfica-de-datos.html#cb26-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Histograma con ggplot2&quot;</span>,</span>
+<span id="cb26-8"><a href="representación-gráfica-de-datos.html#cb26-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Producción (kWh)&quot;</span>,</span>
+<span id="cb26-9"><a href="representación-gráfica-de-datos.html#cb26-9" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Frecuencia&quot;</span>) <span class="sc">+</span></span>
+<span id="cb26-10"><a href="representación-gráfica-de-datos.html#cb26-10" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-18-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="ejercicio-propuesto-2" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Ejercicio propuesto<a href="representación-gráfica-de-datos.html#ejercicio-propuesto-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En una práctica de ingeniería industrial se registran los tiempos de operación (minutos) de una máquina:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="representación-gráfica-de-datos.html#cb27-1" tabindex="-1"></a>tiempos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">42</span>, <span class="dv">45</span>, <span class="dv">47</span>, <span class="dv">44</span>, <span class="dv">43</span>, <span class="dv">46</span>, <span class="dv">50</span>, <span class="dv">52</span>, <span class="dv">48</span>, <span class="dv">49</span>,</span>
+<span id="cb27-2"><a href="representación-gráfica-de-datos.html#cb27-2" tabindex="-1"></a>             <span class="dv">51</span>, <span class="dv">47</span>, <span class="dv">46</span>, <span class="dv">45</span>, <span class="dv">44</span>, <span class="dv">43</span>, <span class="dv">42</span>, <span class="dv">48</span>, <span class="dv">49</span>, <span class="dv">50</span>)</span></code></pre></div>
+<p>Realice lo siguiente:</p>
 <ol style="list-style-type: decimal">
-<li>Introducción al análisis descriptivo de datos.</li>
-<li>Datos y tablas de frecuencia.</li>
-<li>Medidas de tendencia central y posición.</li>
-<li>Medidas de dispersión.</li>
-<li>Población, muestra y muestreo.</li>
-<li>Medidas de asociación.</li>
+<li>Construya un histograma.</li>
+<li>Elabore un polígono de frecuencias.</li>
+<li>Genere la ojiva.</li>
+<li>Construya un diagrama de caja.</li>
+<li>Interprete cuál gráfico resulta más útil para estudiar dispersión y posibles valores atípicos.</li>
 </ol>
+</div>
+<div id="caso-real-ingeniería-2" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Caso real (ingeniería)<a href="representación-gráfica-de-datos.html#caso-real-ingenier%C3%ADa-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería civil</strong>, los histogramas se emplean para analizar la resistencia a compresión del hormigón o la distribución de tiempos de ejecución de partidas de obra.</p>
+<p>En <strong>ingeniería eléctrica</strong>, las ojivas ayudan a estudiar distribuciones acumuladas de voltaje, corriente o factor de potencia.</p>
+<p>En <strong>ingeniería industrial</strong>, los diagramas de caja permiten comparar tiempos de proceso entre turnos o líneas de producción, identificando variabilidad y datos atípicos.</p>
+<p>En <strong>energías renovables</strong>, los gráficos estadísticos facilitan el análisis de producción eólica o solar, detectando periodos de máxima generación y comportamiento irregular del sistema.</p>
+<p>La representación gráfica adecuada es, por tanto, una herramienta visual esencial para el diagnóstico técnico y la mejora continua.</p>
 
 </div>
 </div>
@@ -292,8 +375,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-al-análisis-descriptivo-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="datos-y-tablas-de-frecuencia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="medidas-de-tendencia-central-y-de-posición.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
