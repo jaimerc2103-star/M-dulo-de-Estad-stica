@@ -54,6 +54,10 @@ Entre los conceptos elementales destacan los siguientes:
 
 **Variable estadística.** Es la característica de interés que se observa o mide en cada elemento de la población o muestra. Los valores observados de la variable constituyen los datos.
 
+```{r, echo=FALSE, out.width="45%", fig.align="center"}
+knitr::include_graphics("fig1.png")
+```
+
 Las variables pueden clasificarse en:
 
 - **Cualitativas**, si expresan atributos o categorías.
