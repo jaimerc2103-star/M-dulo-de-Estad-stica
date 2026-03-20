@@ -9,11 +9,11 @@ output:
     css: style.css
 ---
 
-<div style="text-align:center;">
-<img src="cover.png" width="400"/>
-</div>
+# Portada {-}
 
-<br>
+```{r portada, echo=FALSE, out.width="45%", fig.align="center"}
+knitr::include_graphics("cover.png")
+```
 
 # Presentación {-}
 
