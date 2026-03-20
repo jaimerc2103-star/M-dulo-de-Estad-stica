@@ -1,6 +1,6 @@
 ---
 title: "Estadística Aplicada para Ingeniería"
-author: "Tu nombre"
+author: "Ing. Jaime Rojas Coronel, Mgtr."
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
