@@ -9,11 +9,13 @@ output:
     css: style.css
 ---
 
-```{r, echo=FALSE, out.width="60%", fig.align="center"}
-knitr::include_graphics("cover.png")
-```
+<div style="text-align:center;">
+<img src="cover.png" width="400"/>
+</div>
 
-# Presentación {-}
+<br>
+
+# Presentaciónes {-}
 
 Este libro ha sido diseñado como apoyo para la asignatura de **Estadística**.
 
