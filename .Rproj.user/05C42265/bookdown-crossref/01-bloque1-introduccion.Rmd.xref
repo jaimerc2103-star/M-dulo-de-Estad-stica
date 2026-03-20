@@ -1,4 +1,12 @@
 h1:introducción-al-análisis-descriptivo-de-datos Introducción al análisis descriptivo de datos
 h2:concepto-teórico Concepto teórico
 h2:ejemplo-aplicado Ejemplo aplicado
+h2:implementación-en-r Implementación en R
+h3:tamaño-de-la-muestra Tamaño de la muestra
+h3:resumen-de-la-variable-calificación Resumen de la variable calificación
+h3:frecuencia-de-la-variable-sexo Frecuencia de la variable sexo
+h3:promedio-de-horas-de-estudio Promedio de horas de estudio
+h3:clasificación-simple-de-variables Clasificación simple de variables
+h2:ejercicio-propuesto Ejercicio propuesto
+h2:caso-real-ingeniería Caso real (ingeniería)
 

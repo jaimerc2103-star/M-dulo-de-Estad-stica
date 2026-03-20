@@ -1,6 +1,14 @@
 introducción-al-análisis-descriptivo-de-datos
 concepto-teórico
 ejemplo-aplicado
+implementación-en-r
+tamaño-de-la-muestra
+resumen-de-la-variable-calificación
+frecuencia-de-la-variable-sexo
+promedio-de-horas-de-estudio
+clasificación-simple-de-variables
+ejercicio-propuesto
+caso-real-ingeniería
 datos-y-tablas-de-frecuencia
 concepto-teórico-1
 ejemplo-aplicado-1
