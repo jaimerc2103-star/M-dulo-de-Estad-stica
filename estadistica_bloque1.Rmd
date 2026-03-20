@@ -1,5 +1,5 @@
 ---
-title: "Estadística Aplicada para Ingeniería JOSÉ ROJAS V"
+title: "Estadística Aplicada para Ingeniería"
 author: "Ing. Jaime Rojas C, Mgtr."
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
