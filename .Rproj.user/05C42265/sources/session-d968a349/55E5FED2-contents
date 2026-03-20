@@ -22,11 +22,11 @@ Cuando los datos son numerosos, se agrupan en intervalos definidos por:
 
 El número de clases puede estimarse con la regla de Sturges:
 
-k = 1 + log2(n)
+$k = 1 + log2(n)$
 
 ## Como Agrupar los Datos 
 1. Calcular el Rango de la distribución 
-$R=x_max-x_min$
+$R=x_{max}-x_{min}$
 2. Obtener el número de clases $k$ (regla de Sturges)
 3. Amplitud de clase 
 $A=\frac{R}{k}$para clases de igual amplitud

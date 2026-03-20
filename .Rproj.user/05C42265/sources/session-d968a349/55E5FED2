@@ -3,7 +3,7 @@
     "path": "/cloud/project/02-datos-y-tablas.Rmd",
     "project_path": "02-datos-y-tablas.Rmd",
     "type": "r_markdown",
-    "hash": "2517784927",
+    "hash": "137122230",
     "contents": "",
     "dirty": false,
     "created": 1773976635562.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "34,0",
-        "scrollLine": "23"
+        "cursorPosition": "28,18",
+        "scrollLine": "22"
     },
     "folds": "",
-    "lastKnownWriteTime": 1774029672,
+    "lastKnownWriteTime": 1774030447,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1774029672883,
+    "last_content_update": 1774030447259,
     "read_only": false,
     "read_only_alternatives": []
 }
