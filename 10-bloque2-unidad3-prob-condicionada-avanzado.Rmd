@@ -1,0 +1,4 @@
+# Probabilidad condicionada
+
+## Concepto teórico
+Definición, independencia y simulación.

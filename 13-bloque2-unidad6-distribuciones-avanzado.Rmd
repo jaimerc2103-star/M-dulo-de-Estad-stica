@@ -1,0 +1,4 @@
+# Distribuciones
+
+## Concepto teórico
+Distribuciones binomial y normal con ejemplos.

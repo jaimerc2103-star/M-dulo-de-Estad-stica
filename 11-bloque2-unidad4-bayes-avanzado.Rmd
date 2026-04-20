@@ -1,0 +1,4 @@
+# Teorema de Bayes
+
+## Concepto teórico
+Actualización de probabilidades con evidencia.

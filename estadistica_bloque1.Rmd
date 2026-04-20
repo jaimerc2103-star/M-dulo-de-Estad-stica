@@ -1009,3 +1009,45 @@ Estas medidas permiten identificar relaciones importantes entre variables y cons
 
 <!--chapter:end:07-bloque1-unidad7-medidas-asociacion.Rmd-->
 
+# Fundamentos de probabilidad
+
+## Concepto teórico
+Contenido avanzado de probabilidad con formulación, ejemplos y simulación en R.
+
+<!--chapter:end:08-bloque2-unidad1-fundamentos-avanzado.Rmd-->
+
+# Técnicas de conteo
+
+## Concepto teórico
+Permutaciones, combinaciones y aplicaciones en ingeniería.
+
+<!--chapter:end:09-bloque2-unidad2-conteo-avanzado.Rmd-->
+
+# Probabilidad condicionada
+
+## Concepto teórico
+Definición, independencia y simulación.
+
+<!--chapter:end:10-bloque2-unidad3-prob-condicionada-avanzado.Rmd-->
+
+# Teorema de Bayes
+
+## Concepto teórico
+Actualización de probabilidades con evidencia.
+
+<!--chapter:end:11-bloque2-unidad4-bayes-avanzado.Rmd-->
+
+# Variables aleatorias
+
+## Concepto teórico
+Esperanza, varianza y simulación.
+
+<!--chapter:end:12-bloque2-unidad5-variable-aleatoria-avanzado.Rmd-->
+
+# Distribuciones
+
+## Concepto teórico
+Distribuciones binomial y normal con ejemplos.
+
+<!--chapter:end:13-bloque2-unidad6-distribuciones-avanzado.Rmd-->
+

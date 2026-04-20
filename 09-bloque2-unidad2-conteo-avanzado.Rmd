@@ -1,0 +1,4 @@
+# Técnicas de conteo
+
+## Concepto teórico
+Permutaciones, combinaciones y aplicaciones en ingeniería.

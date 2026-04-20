@@ -97,3 +97,15 @@ diagrama-de-dispersión
 correlación-con-ggplot2
 ejercicio-propuesto-6
 caso-real-ingeniería-6
+fundamentos-de-probabilidad
+concepto-teórico-7
+técnicas-de-conteo
+concepto-teórico-8
+probabilidad-condicionada
+concepto-teórico-9
+teorema-de-bayes
+concepto-teórico-10
+variables-aleatorias
+concepto-teórico-11
+distribuciones
+concepto-teórico-12

@@ -11,3 +11,10 @@ rmd_files:
   - 05-bloque1-unidad5-dispersion-forma.Rmd
   - 06-bloque1-unidad6-muestras-poblacion-muestreo.Rmd
   - 07-bloque1-unidad7-medidas-asociacion.Rmd
+  - 08-bloque2-unidad1-fundamentos-avanzado.Rmd
+  - 09-bloque2-unidad2-conteo-avanzado.Rmd
+  - 10-bloque2-unidad3-prob-condicionada-avanzado.Rmd
+  - 11-bloque2-unidad4-bayes-avanzado.Rmd
+  - 12-bloque2-unidad5-variable-aleatoria-avanzado.Rmd
+  - 13-bloque2-unidad6-distribuciones-avanzado.Rmd
+  

@@ -1,0 +1,4 @@
+# Variables aleatorias
+
+## Concepto teórico
+Esperanza, varianza y simulación.
