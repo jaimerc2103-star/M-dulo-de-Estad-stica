@@ -18,6 +18,10 @@ Si \(f_i\) representa la frecuencia de la clase \(i\), entonces cada barra resum
 
 ### Polígono de frecuencias
 
+Los polígonos de frecuencias son análogos a los gráficos de líneas y, al igual que los gráficos de líneas facilitan la interpretación visual de los datos continuos, también lo hacen los polígonos de frecuencias.
+
+Para construir un polígono de frecuencias, primero hay que examinar los datos y decidir el número de intervalos, o intervalos de clase, que se van a utilizar en los ejes x y y. Después de elegir los rangos apropiados, comience a trazar los puntos de datos. Después de trazar todos los puntos, dibuje segmentos de línea para conectarlos.
+
 Se construye uniendo con segmentos de recta las marcas de clase \((x_i)\) con sus frecuencias \((f_i)\). Es útil para visualizar la forma general de la distribución y comparar varios conjuntos de datos.
 
 ### Ojiva
@@ -32,7 +36,10 @@ Este gráfico es útil para responder preguntas del tipo: “¿cuántos datos so
 
 ### Diagrama de caja y bigotes
 
-Resume visualmente la distribución mediante el mínimo, primer cuartil \(Q_1\), mediana \(Q_2\), tercer cuartil \(Q_3\) y máximo. También permite identificar posibles valores atípicos.
+Los diagramas de caja (también llamados diagramas de caja y bigotes o gráficos de caja y bigotes) ofrecen una buena imagen gráfica de la concentración de los datos. También muestran lo lejos que están los valores extremos de la mayoría de los datos. Un diagrama de caja se construye a partir de cinco valores: el valor mínimo, el primer cuartil, la mediana, el tercer cuartil y el valor máximo. Utilizamos estos valores para comparar la proximidad de otros valores de datos.
+
+Para construir un diagrama de caja, utilice una línea numérica horizontal o vertical y una caja rectangular. Los valores de datos más pequeños y más grandes marcan los puntos finales del eje. El primer cuartil marca un extremo de la caja y el tercer cuartil marca el otro extremo de la caja. Aproximadamente el 50 % de los datos están dentro de la caja. Los "bigotes" se extienden desde los extremos de la caja hasta los valores de datos más pequeños y más grandes. La mediana o el segundo cuartil pueden estar entre el primer y el tercer cuartil, o puede ser uno, el otro, o ambos. El diagrama de caja ofrece una buena y rápida imagen de los datos.
+Resume visualmente la distribución mediante el mínimo, primer cuartil \(Q_1\), mediana \(Q_2\), tercer cuartil \(Q_3\) y máximo. También permite identificar posibles valores atípicos.Es posible que encuentre diagramas de caja y bigotes con puntos que marcan los valores atípicos. En esos casos, los bigotes no se extienden hasta los valores mínimos y máximos.
 
 En ingeniería, estas representaciones permiten detectar comportamientos anómalos, comparar desempeño entre sistemas y apoyar decisiones técnicas basadas en evidencia.
 
