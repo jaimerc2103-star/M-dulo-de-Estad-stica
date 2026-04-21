@@ -1,6 +1,0 @@
-bookdown::gitbook:
-  css: style.css
-  config:
-    toc:
-      before: |
-        <li><a href="./">Estadística Aplicada para Ingeniería</a></li>

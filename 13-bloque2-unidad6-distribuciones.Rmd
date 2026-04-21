@@ -1,0 +1,160 @@
+# Distribuciones de probabilidad
+
+## Concepto teórico
+
+Una distribución de probabilidad describe el comportamiento probabilístico de una variable aleatoria. En ingeniería, permite modelar fenómenos aleatorios y estimar la probabilidad de distintos resultados.
+
+## Distribuciones discretas
+
+### Distribución Bernoulli
+
+Describe experimentos con dos resultados posibles: éxito o fracaso.
+
+\[
+P(X=x)=p^x(1-p)^{1-x}, \qquad x\in\{0,1\}
+\]
+
+### Distribución Binomial
+
+Modela el número de éxitos en \(n\) ensayos independientes con probabilidad \(p\) de éxito.
+
+\[
+P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}
+\]
+
+Valor esperado y varianza:
+
+\[
+E(X)=np,\qquad Var(X)=np(1-p)
+\]
+
+## Distribuciones continuas
+
+### Distribución Normal
+
+Es una de las más importantes en estadística e ingeniería. Su función de densidad es:
+
+\[
+f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]
+
+donde:
+- \(\mu\): media
+- \(\sigma\): desviación estándar
+
+## Ejemplo aplicado
+
+### Distribución binomial
+
+Supóngase que la probabilidad de que un panel solar presente una microfalla es \(p=0.10\). Se inspeccionan \(n=8\) paneles y se desea conocer la probabilidad de encontrar exactamente 2 con microfalla.
+
+## Implementación en R
+
+```{r}
+dbinom(2, size = 8, prob = 0.10)
+```
+
+### Probabilidad acumulada binomial
+
+```{r}
+pbinom(2, size = 8, prob = 0.10)
+```
+
+### Esperanza y varianza binomial
+
+```{r}
+n <- 8
+p <- 0.10
+c(Media = n * p, Varianza = n * p * (1 - p))
+```
+
+## Gráfica binomial
+
+```{r}
+k <- 0:8
+prob_bin <- dbinom(k, size = 8, prob = 0.10)
+
+barplot(prob_bin,
+        names.arg = k,
+        col = "lightblue",
+        main = "Distribución binomial",
+        xlab = "Número de paneles con microfalla",
+        ylab = "Probabilidad")
+```
+
+## Ejemplo con distribución normal
+
+Se supone que el voltaje de operación de un sistema sigue una distribución normal con media 220 V y desviación estándar 3 V.
+
+### Probabilidad de que el voltaje sea menor que 218 V
+
+```{r}
+pnorm(218, mean = 220, sd = 3)
+```
+
+### Probabilidad de que el voltaje esté entre 218 V y 223 V
+
+```{r}
+pnorm(223, mean = 220, sd = 3) - pnorm(218, mean = 220, sd = 3)
+```
+
+## Gráfica normal
+
+```{r}
+x <- seq(210, 230, by = 0.1)
+y <- dnorm(x, mean = 220, sd = 3)
+
+plot(x, y, type = "l", lwd = 2, col = "blue",
+     main = "Distribución normal del voltaje",
+     xlab = "Voltaje (V)", ylab = "Densidad")
+abline(v = 220, col = "red", lty = 2)
+```
+
+## Simulación
+
+### Simulación binomial
+
+```{r}
+set.seed(111)
+sim_bin <- rbinom(1000, size = 8, prob = 0.10)
+mean(sim_bin)
+var(sim_bin)
+```
+
+### Simulación normal
+
+```{r}
+set.seed(222)
+sim_norm <- rnorm(1000, mean = 220, sd = 3)
+mean(sim_norm)
+sd(sim_norm)
+```
+
+```{r}
+hist(sim_norm, breaks = 20, col = "lightgray",
+     main = "Simulación normal del voltaje",
+     xlab = "Voltaje (V)")
+```
+
+## Ejercicios propuestos
+
+1. Modele un problema binomial asociado a su carrera.
+2. Calcule probabilidades puntuales y acumuladas.
+3. Modele una variable continua mediante una distribución normal.
+4. Calcule probabilidades con `pnorm()`.
+5. Simule ambas distribuciones en R.
+6. Compare propiedades teóricas y empíricas.
+
+## Caso real (ingeniería)
+
+En **ingeniería industrial**, la distribución binomial puede modelar defectos por lote y la normal, tiempos de producción o dimensiones de piezas.
+
+En **ingeniería civil**, la normal se utiliza para representar resistencia de materiales, cargas o errores de medición.
+
+En **ingeniería eléctrica**, la normal es útil en análisis de voltaje, corriente y errores instrumentales.
+
+En **energías renovables**, la binomial puede modelar eventos discretos de falla y la normal ciertas variaciones continuas alrededor de un valor medio operativo.
+
+## Conclusión
+
+Las distribuciones de probabilidad permiten modelar formalmente variables aleatorias y constituyen una base indispensable para la inferencia estadística, el control de calidad y la confiabilidad en ingeniería.

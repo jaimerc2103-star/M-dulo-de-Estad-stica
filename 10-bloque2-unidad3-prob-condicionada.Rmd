@@ -1,0 +1,127 @@
+# Probabilidad condicionada
+
+## Concepto teórico
+
+La probabilidad condicionada permite calcular la probabilidad de que ocurra un evento sabiendo que otro evento ya ocurrió. Es una herramienta esencial en análisis de confiabilidad, diagnóstico de fallas y toma de decisiones técnicas.
+
+Si \(A\) y \(B\) son eventos y \(P(B)>0\), entonces:
+
+\[
+P(A|B)=\frac{P(A\cap B)}{P(B)}
+\]
+
+Esta expresión se interpreta como “probabilidad de \(A\) dado que \(B\) ocurrió”.
+
+### Independencia
+
+Dos eventos \(A\) y \(B\) son independientes si la ocurrencia de uno no altera la probabilidad del otro:
+
+\[
+P(A|B)=P(A)
+\]
+
+Equivalentemente:
+
+\[
+P(A\cap B)=P(A)P(B)
+\]
+
+### Regla multiplicativa
+
+\[
+P(A\cap B)=P(A|B)P(B)
+\]
+
+Esta relación es muy útil para calcular probabilidades conjuntas en sistemas donde existe dependencia entre eventos.
+
+## Ejemplo aplicado
+
+En una planta industrial:
+
+- \(A\): el motor presenta sobrecalentamiento
+- \(B\): el motor presenta vibración anormal
+
+Supóngase:
+
+\[
+P(A)=0.30,\qquad P(B)=0.25,\qquad P(A\cap B)=0.10
+\]
+
+Entonces:
+
+\[
+P(A|B)=\frac{0.10}{0.25}=0.40
+\]
+
+Es decir, dado que hay vibración anormal, la probabilidad de sobrecalentamiento es 0.40.
+
+## Implementación en R
+
+```{r}
+P_A <- 0.30
+P_B <- 0.25
+P_A_inter_B <- 0.10
+
+P_A_dado_B <- P_A_inter_B / P_B
+P_A_dado_B
+```
+
+### Verificación de independencia
+
+```{r}
+P_A * P_B
+```
+
+```{r}
+P_A_inter_B
+```
+
+## Gráfica
+
+```{r}
+valores <- c(P_A, P_B, P_A_inter_B, P_A_dado_B)
+barplot(valores,
+        names.arg = c("P(A)", "P(B)", "P(A∩B)", "P(A|B)"),
+        col = c("skyblue", "gold", "tomato", "lightgreen"),
+        main = "Probabilidades simples y condicionada",
+        ylab = "Valor")
+```
+
+## Simulación
+
+```{r}
+set.seed(456)
+n <- 1000
+
+vibracion <- rbinom(n, 1, 0.25)
+sobrecal <- ifelse(vibracion == 1, rbinom(n, 1, 0.4), rbinom(n, 1, 0.2))
+
+P_emp_B <- mean(vibracion == 1)
+P_emp_A_inter_B <- mean(vibracion == 1 & sobrecal == 1)
+P_emp_A_dado_B <- P_emp_A_inter_B / P_emp_B
+
+c(P_emp_B = P_emp_B, P_emp_A_inter_B = P_emp_A_inter_B, P_emp_A_dado_B = P_emp_A_dado_B)
+```
+
+## Ejercicios propuestos
+
+1. En una red eléctrica, defina dos eventos relacionados con el funcionamiento del sistema.
+2. Asigne probabilidades simples y conjuntas coherentes.
+3. Calcule la probabilidad condicionada.
+4. Analice si los eventos son independientes.
+5. Simule 500 observaciones en R.
+6. Compare resultados teóricos y empíricos.
+
+## Caso real (ingeniería)
+
+En **ingeniería eléctrica**, la probabilidad condicionada se usa para analizar fallas encadenadas, como sobrecarga y disparo de protección.
+
+En **ingeniería civil**, puede aplicarse a la probabilidad de daño estructural condicionada a un sismo o a precipitación extrema.
+
+En **ingeniería industrial**, se emplea en control de calidad para estudiar defectos condicionados a cambios de lote o de turno.
+
+En **energías renovables**, permite estudiar la probabilidad de baja generación dado un estado meteorológico específico.
+
+## Conclusión
+
+La probabilidad condicionada permite introducir dependencia entre eventos y constituye una base fundamental para el teorema de Bayes, la confiabilidad y la inferencia probabilística.

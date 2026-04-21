@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>13 Distribuciones de probabilidad | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="13 Distribuciones de probabilidad | Estadística Aplicada para Ingeniería" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="13 Distribuciones de probabilidad | Estadística Aplicada para Ingeniería" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="13 Distribuciones de probabilidad | Estadística Aplicada para Ingeniería" />
+  
+  
+  
+
+<meta name="author" content="Ing. Jaime Rojas Coronel, Mgtr." />
+
+
+<meta name="date" content="2026-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="variables-aleatorias.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística Aplicada para Ingeniería</a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Portada</a></li>
+<li class="chapter" data-level="" data-path="presentación.html"><a href="presentación.html"><i class="fa fa-check"></i>Presentación</a>
+<ul>
+<li class="chapter" data-level="" data-path="presentación.html"><a href="presentación.html#objetivo-del-bloque"><i class="fa fa-check"></i>Objetivo del bloque</a></li>
+<li class="chapter" data-level="" data-path="presentación.html"><a href="presentación.html#estructura-del-bloque"><i class="fa fa-check"></i>Estructura del bloque</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html"><i class="fa fa-check"></i><b>1</b> Introducción al análisis descriptivo de datos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html#concepto-te%C3%B3rico"><i class="fa fa-check"></i><b>1.1</b> Concepto teórico</a></li>
+<li class="chapter" data-level="1.2" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html#ejemplo-aplicado"><i class="fa fa-check"></i><b>1.2</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="1.3" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html#implementaci%C3%B3n-en-r"><i class="fa fa-check"></i><b>1.3</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html#tama%C3%B1o-de-la-muestra"><i class="fa fa-check"></i><b>1.3.1</b> Tamaño de la muestra</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html#resumen-de-la-variable-calificaci%C3%B3n"><i class="fa fa-check"></i><b>1.3.2</b> Resumen de la variable calificación</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html#frecuencia-de-la-variable-sexo"><i class="fa fa-check"></i><b>1.3.3</b> Frecuencia de la variable sexo</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html#promedio-de-horas-de-estudio"><i class="fa fa-check"></i><b>1.3.4</b> Promedio de horas de estudio</a></li>
+<li class="chapter" data-level="1.3.5" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html#clasificaci%C3%B3n-simple-de-variables"><i class="fa fa-check"></i><b>1.3.5</b> Clasificación simple de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html#ejercicio-propuesto"><i class="fa fa-check"></i><b>1.4</b> Ejercicio propuesto</a></li>
+<li class="chapter" data-level="1.5" data-path="introducción-al-análisis-descriptivo-de-datos.html"><a href="introducción-al-análisis-descriptivo-de-datos.html#caso-real-ingenier%C3%ADa"><i class="fa fa-check"></i><b>1.5</b> Caso real (ingeniería)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html"><i class="fa fa-check"></i><b>2</b> Datos y tablas de frecuencia</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#concepto-te%C3%B3rico-1"><i class="fa fa-check"></i><b>2.1</b> Concepto teórico</a></li>
+<li class="chapter" data-level="2.2" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#como-agrupar-los-datos"><i class="fa fa-check"></i><b>2.2</b> Como Agrupar los Datos</a></li>
+<li class="chapter" data-level="2.3" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#ejemplo-aplicado-1"><i class="fa fa-check"></i><b>2.3</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="2.4" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#implementaci%C3%B3n-en-r-1"><i class="fa fa-check"></i><b>2.4</b> Implementación en R</a></li>
+<li class="chapter" data-level="2.5" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#ejercicio-propuesto-1"><i class="fa fa-check"></i><b>2.5</b> Ejercicio propuesto</a></li>
+<li class="chapter" data-level="2.6" data-path="datos-y-tablas-de-frecuencia.html"><a href="datos-y-tablas-de-frecuencia.html#caso-real-ingenier%C3%ADa-1"><i class="fa fa-check"></i><b>2.6</b> Caso real (ingeniería)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html"><i class="fa fa-check"></i><b>3</b> Representación gráfica de datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#concepto-te%C3%B3rico-2"><i class="fa fa-check"></i><b>3.1</b> Concepto teórico</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#diagrama-de-barras"><i class="fa fa-check"></i><b>3.1.1</b> Diagrama de barras</a></li>
+<li class="chapter" data-level="3.1.2" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#histograma"><i class="fa fa-check"></i><b>3.1.2</b> Histograma</a></li>
+<li class="chapter" data-level="3.1.3" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#pol%C3%ADgono-de-frecuencias"><i class="fa fa-check"></i><b>3.1.3</b> Polígono de frecuencias</a></li>
+<li class="chapter" data-level="3.1.4" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#ojiva"><i class="fa fa-check"></i><b>3.1.4</b> Ojiva</a></li>
+<li class="chapter" data-level="3.1.5" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#diagrama-de-caja-y-bigotes"><i class="fa fa-check"></i><b>3.1.5</b> Diagrama de caja y bigotes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#ejemplo-aplicado-2"><i class="fa fa-check"></i><b>3.2</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="3.3" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#implementaci%C3%B3n-en-r-2"><i class="fa fa-check"></i><b>3.3</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#histograma-1"><i class="fa fa-check"></i><b>3.3.1</b> Histograma</a></li>
+<li class="chapter" data-level="3.3.2" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#pol%C3%ADgono-de-frecuencias-1"><i class="fa fa-check"></i><b>3.3.2</b> Polígono de frecuencias</a></li>
+<li class="chapter" data-level="3.3.3" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#ojiva-1"><i class="fa fa-check"></i><b>3.3.3</b> Ojiva</a></li>
+<li class="chapter" data-level="3.3.4" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#diagrama-de-caja"><i class="fa fa-check"></i><b>3.3.4</b> Diagrama de caja</a></li>
+<li class="chapter" data-level="3.3.5" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#ejemplo-con-ggplot2"><i class="fa fa-check"></i><b>3.3.5</b> Ejemplo con <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#ejercicio-propuesto-2"><i class="fa fa-check"></i><b>3.4</b> Ejercicio propuesto</a></li>
+<li class="chapter" data-level="3.5" data-path="representación-gráfica-de-datos.html"><a href="representación-gráfica-de-datos.html#caso-real-ingenier%C3%ADa-2"><i class="fa fa-check"></i><b>3.5</b> Caso real (ingeniería)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html"><i class="fa fa-check"></i><b>4</b> Medidas de tendencia central y de posición</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#concepto-te%C3%B3rico-3"><i class="fa fa-check"></i><b>4.1</b> Concepto teórico</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#media-aritm%C3%A9tica"><i class="fa fa-check"></i><b>4.1.1</b> Media aritmética</a></li>
+<li class="chapter" data-level="4.1.2" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#mediana"><i class="fa fa-check"></i><b>4.1.2</b> Mediana</a></li>
+<li class="chapter" data-level="4.1.3" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#moda"><i class="fa fa-check"></i><b>4.1.3</b> Moda</a></li>
+<li class="chapter" data-level="4.1.4" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#media-geom%C3%A9trica"><i class="fa fa-check"></i><b>4.1.4</b> Media geométrica</a></li>
+<li class="chapter" data-level="4.1.5" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#medidas-de-posici%C3%B3n"><i class="fa fa-check"></i><b>4.1.5</b> Medidas de posición</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#ejemplo-aplicado-3"><i class="fa fa-check"></i><b>4.2</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="4.3" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#implementaci%C3%B3n-en-r-3"><i class="fa fa-check"></i><b>4.3</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#media-mediana-y-moda"><i class="fa fa-check"></i><b>4.3.1</b> Media, mediana y moda</a></li>
+<li class="chapter" data-level="4.3.2" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#media-geom%C3%A9trica-1"><i class="fa fa-check"></i><b>4.3.2</b> Media geométrica</a></li>
+<li class="chapter" data-level="4.3.3" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#cuartiles"><i class="fa fa-check"></i><b>4.3.3</b> Cuartiles</a></li>
+<li class="chapter" data-level="4.3.4" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#deciles"><i class="fa fa-check"></i><b>4.3.4</b> Deciles</a></li>
+<li class="chapter" data-level="4.3.5" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#percentiles-seleccionados"><i class="fa fa-check"></i><b>4.3.5</b> Percentiles seleccionados</a></li>
+<li class="chapter" data-level="4.3.6" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#gr%C3%A1fico-interpretativo"><i class="fa fa-check"></i><b>4.3.6</b> Gráfico interpretativo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#ejercicio-propuesto-3"><i class="fa fa-check"></i><b>4.4</b> Ejercicio propuesto</a></li>
+<li class="chapter" data-level="4.5" data-path="medidas-de-tendencia-central-y-de-posición.html"><a href="medidas-de-tendencia-central-y-de-posición.html#caso-real-ingenier%C3%ADa-3"><i class="fa fa-check"></i><b>4.5</b> Caso real (ingeniería)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html"><i class="fa fa-check"></i><b>5</b> Medidas de dispersión y forma</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#concepto-te%C3%B3rico-4"><i class="fa fa-check"></i><b>5.1</b> Concepto teórico</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#rango"><i class="fa fa-check"></i><b>5.1.1</b> Rango</a></li>
+<li class="chapter" data-level="5.1.2" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#varianza"><i class="fa fa-check"></i><b>5.1.2</b> Varianza</a></li>
+<li class="chapter" data-level="5.1.3" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#desviaci%C3%B3n-est%C3%A1ndar"><i class="fa fa-check"></i><b>5.1.3</b> Desviación estándar</a></li>
+<li class="chapter" data-level="5.1.4" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n"><i class="fa fa-check"></i><b>5.1.4</b> Coeficiente de variación</a></li>
+<li class="chapter" data-level="5.1.5" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa"><i class="fa fa-check"></i><b>5.1.5</b> Asimetría</a></li>
+<li class="chapter" data-level="5.1.6" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#curtosis"><i class="fa fa-check"></i><b>5.1.6</b> Curtosis</a></li>
+<li class="chapter" data-level="5.1.7" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#teorema-de-chebyshev"><i class="fa fa-check"></i><b>5.1.7</b> Teorema de Chebyshev</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#ejemplo-aplicado-4"><i class="fa fa-check"></i><b>5.2</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="5.3" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#implementaci%C3%B3n-en-r-4"><i class="fa fa-check"></i><b>5.3</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#rango-1"><i class="fa fa-check"></i><b>5.3.1</b> Rango</a></li>
+<li class="chapter" data-level="5.3.2" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#varianza-y-desviaci%C3%B3n-est%C3%A1ndar"><i class="fa fa-check"></i><b>5.3.2</b> Varianza y desviación estándar</a></li>
+<li class="chapter" data-level="5.3.3" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n-1"><i class="fa fa-check"></i><b>5.3.3</b> Coeficiente de variación</a></li>
+<li class="chapter" data-level="5.3.4" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa-y-curtosis"><i class="fa fa-check"></i><b>5.3.4</b> Asimetría y curtosis</a></li>
+<li class="chapter" data-level="5.3.5" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#aplicaci%C3%B3n-del-teorema-de-chebyshev-para-k-2"><i class="fa fa-check"></i><b>5.3.5</b> Aplicación del teorema de Chebyshev para <span class="math inline">\(k = 2\)</span></a></li>
+<li class="chapter" data-level="5.3.6" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#visualizaci%C3%B3n-de-la-dispersi%C3%B3n"><i class="fa fa-check"></i><b>5.3.6</b> Visualización de la dispersión</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#ejercicio-propuesto-4"><i class="fa fa-check"></i><b>5.4</b> Ejercicio propuesto</a></li>
+<li class="chapter" data-level="5.5" data-path="medidas-de-dispersión-y-forma.html"><a href="medidas-de-dispersión-y-forma.html#caso-real-ingenier%C3%ADa-4"><i class="fa fa-check"></i><b>5.5</b> Caso real (ingeniería)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html"><i class="fa fa-check"></i><b>6</b> Muestras, población y muestreo</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#concepto-te%C3%B3rico-5"><i class="fa fa-check"></i><b>6.1</b> Concepto teórico</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#muestreo-aleatorio-simple"><i class="fa fa-check"></i><b>6.1.1</b> Muestreo aleatorio simple</a></li>
+<li class="chapter" data-level="6.1.2" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#muestreo-sistem%C3%A1tico"><i class="fa fa-check"></i><b>6.1.2</b> Muestreo sistemático</a></li>
+<li class="chapter" data-level="6.1.3" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#muestreo-estratificado"><i class="fa fa-check"></i><b>6.1.3</b> Muestreo estratificado</a></li>
+<li class="chapter" data-level="6.1.4" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#muestreo-por-conglomerados"><i class="fa fa-check"></i><b>6.1.4</b> Muestreo por conglomerados</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#ejemplo-aplicado-5"><i class="fa fa-check"></i><b>6.2</b> Ejemplo aplicado</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#muestra-aleatoria-simple"><i class="fa fa-check"></i><b>6.2.1</b> Muestra aleatoria simple</a></li>
+<li class="chapter" data-level="6.2.2" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#muestra-sistem%C3%A1tica"><i class="fa fa-check"></i><b>6.2.2</b> Muestra sistemática</a></li>
+<li class="chapter" data-level="6.2.3" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#ejemplo-de-muestreo-estratificado"><i class="fa fa-check"></i><b>6.2.3</b> Ejemplo de muestreo estratificado</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#implementaci%C3%B3n-en-r-5"><i class="fa fa-check"></i><b>6.3</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#tama%C3%B1o-de-la-poblaci%C3%B3n"><i class="fa fa-check"></i><b>6.3.1</b> Tamaño de la población</a></li>
+<li class="chapter" data-level="6.3.2" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#generaci%C3%B3n-de-una-muestra-aleatoria"><i class="fa fa-check"></i><b>6.3.2</b> Generación de una muestra aleatoria</a></li>
+<li class="chapter" data-level="6.3.3" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#visualizaci%C3%B3n-simple-de-una-muestra"><i class="fa fa-check"></i><b>6.3.3</b> Visualización simple de una muestra</a></li>
+<li class="chapter" data-level="6.3.4" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#organizaci%C3%B3n-de-estratos-en-una-base-simple"><i class="fa fa-check"></i><b>6.3.4</b> Organización de estratos en una base simple</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#ejercicio-propuesto-5"><i class="fa fa-check"></i><b>6.4</b> Ejercicio propuesto</a></li>
+<li class="chapter" data-level="6.5" data-path="muestras-población-y-muestreo.html"><a href="muestras-población-y-muestreo.html#caso-real-ingenier%C3%ADa-5"><i class="fa fa-check"></i><b>6.5</b> Caso real (ingeniería)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html"><i class="fa fa-check"></i><b>7</b> Medidas de asociación</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#concepto-te%C3%B3rico-6"><i class="fa fa-check"></i><b>7.1</b> Concepto teórico</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#covarianza"><i class="fa fa-check"></i><b>7.1.1</b> Covarianza</a></li>
+<li class="chapter" data-level="7.1.2" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#correlaci%C3%B3n-de-pearson"><i class="fa fa-check"></i><b>7.1.2</b> Correlación de Pearson</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#ejemplo-aplicado-6"><i class="fa fa-check"></i><b>7.2</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="7.3" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#implementaci%C3%B3n-en-r-6"><i class="fa fa-check"></i><b>7.3</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#covarianza-1"><i class="fa fa-check"></i><b>7.3.1</b> Covarianza</a></li>
+<li class="chapter" data-level="7.3.2" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#correlaci%C3%B3n"><i class="fa fa-check"></i><b>7.3.2</b> Correlación</a></li>
+<li class="chapter" data-level="7.3.3" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#diagrama-de-dispersi%C3%B3n"><i class="fa fa-check"></i><b>7.3.3</b> Diagrama de dispersión</a></li>
+<li class="chapter" data-level="7.3.4" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#correlaci%C3%B3n-con-ggplot2"><i class="fa fa-check"></i><b>7.3.4</b> Correlación con <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#ejercicio-propuesto-6"><i class="fa fa-check"></i><b>7.4</b> Ejercicio propuesto</a></li>
+<li class="chapter" data-level="7.5" data-path="medidas-de-asociación.html"><a href="medidas-de-asociación.html#caso-real-ingenier%C3%ADa-6"><i class="fa fa-check"></i><b>7.5</b> Caso real (ingeniería)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html"><i class="fa fa-check"></i><b>8</b> Fundamentos de probabilidad</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#concepto-te%C3%B3rico-7"><i class="fa fa-check"></i><b>8.1</b> Concepto teórico</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#experimento-aleatorio"><i class="fa fa-check"></i><b>8.1.1</b> Experimento aleatorio</a></li>
+<li class="chapter" data-level="8.1.2" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#espacio-muestral"><i class="fa fa-check"></i><b>8.1.2</b> Espacio muestral</a></li>
+<li class="chapter" data-level="8.1.3" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#evento"><i class="fa fa-check"></i><b>8.1.3</b> Evento</a></li>
+<li class="chapter" data-level="8.1.4" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#definici%C3%B3n-cl%C3%A1sica-de-probabilidad"><i class="fa fa-check"></i><b>8.1.4</b> Definición clásica de probabilidad</a></li>
+<li class="chapter" data-level="8.1.5" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#enfoque-frecuentista"><i class="fa fa-check"></i><b>8.1.5</b> Enfoque frecuentista</a></li>
+<li class="chapter" data-level="8.1.6" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#axiomas-b%C3%A1sicos"><i class="fa fa-check"></i><b>8.1.6</b> Axiomas básicos</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#formulaci%C3%B3n-matem%C3%A1tica"><i class="fa fa-check"></i><b>8.2</b> Formulación matemática</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#uni%C3%B3n-de-eventos"><i class="fa fa-check"></i><b>8.2.1</b> Unión de eventos</a></li>
+<li class="chapter" data-level="8.2.2" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#complemento"><i class="fa fa-check"></i><b>8.2.2</b> Complemento</a></li>
+<li class="chapter" data-level="8.2.3" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#eventos-mutuamente-excluyentes"><i class="fa fa-check"></i><b>8.2.3</b> Eventos mutuamente excluyentes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#ejemplo-aplicado-7"><i class="fa fa-check"></i><b>8.3</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="8.4" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#implementaci%C3%B3n-en-r-7"><i class="fa fa-check"></i><b>8.4</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#simulaci%C3%B3n-simple"><i class="fa fa-check"></i><b>8.4.1</b> Simulación simple</a></li>
+<li class="chapter" data-level="8.4.2" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#frecuencias-absolutas-y-relativas"><i class="fa fa-check"></i><b>8.4.2</b> Frecuencias absolutas y relativas</a></li>
+<li class="chapter" data-level="8.4.3" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#probabilidad-del-complemento"><i class="fa fa-check"></i><b>8.4.3</b> Probabilidad del complemento</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#gr%C3%A1fica"><i class="fa fa-check"></i><b>8.5</b> Gráfica</a></li>
+<li class="chapter" data-level="8.6" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#simulaci%C3%B3n"><i class="fa fa-check"></i><b>8.6</b> Simulación</a></li>
+<li class="chapter" data-level="8.7" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#ejercicios-propuestos"><i class="fa fa-check"></i><b>8.7</b> Ejercicios propuestos</a></li>
+<li class="chapter" data-level="8.8" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#caso-real-ingenier%C3%ADa-7"><i class="fa fa-check"></i><b>8.8</b> Caso real (ingeniería)</a></li>
+<li class="chapter" data-level="8.9" data-path="fundamentos-de-probabilidad.html"><a href="fundamentos-de-probabilidad.html#conclusi%C3%B3n"><i class="fa fa-check"></i><b>8.9</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html"><i class="fa fa-check"></i><b>9</b> Técnicas de conteo</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#concepto-te%C3%B3rico-8"><i class="fa fa-check"></i><b>9.1</b> Concepto teórico</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#principio-multiplicativo"><i class="fa fa-check"></i><b>9.1.1</b> Principio multiplicativo</a></li>
+<li class="chapter" data-level="9.1.2" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#permutaciones"><i class="fa fa-check"></i><b>9.1.2</b> Permutaciones</a></li>
+<li class="chapter" data-level="9.1.3" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#combinaciones"><i class="fa fa-check"></i><b>9.1.3</b> Combinaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#ejemplo-aplicado-8"><i class="fa fa-check"></i><b>9.2</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="9.3" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#implementaci%C3%B3n-en-r-8"><i class="fa fa-check"></i><b>9.3</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#factorial"><i class="fa fa-check"></i><b>9.3.1</b> Factorial</a></li>
+<li class="chapter" data-level="9.3.2" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#permutaciones-1"><i class="fa fa-check"></i><b>9.3.2</b> Permutaciones</a></li>
+<li class="chapter" data-level="9.3.3" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#combinaciones-1"><i class="fa fa-check"></i><b>9.3.3</b> Combinaciones</a></li>
+<li class="chapter" data-level="9.3.4" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#listado-de-combinaciones"><i class="fa fa-check"></i><b>9.3.4</b> Listado de combinaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#gr%C3%A1fica-1"><i class="fa fa-check"></i><b>9.4</b> Gráfica</a></li>
+<li class="chapter" data-level="9.5" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#simulaci%C3%B3n-1"><i class="fa fa-check"></i><b>9.5</b> Simulación</a></li>
+<li class="chapter" data-level="9.6" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#ejercicios-propuestos-1"><i class="fa fa-check"></i><b>9.6</b> Ejercicios propuestos</a></li>
+<li class="chapter" data-level="9.7" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#caso-real-ingenier%C3%ADa-8"><i class="fa fa-check"></i><b>9.7</b> Caso real (ingeniería)</a></li>
+<li class="chapter" data-level="9.8" data-path="técnicas-de-conteo.html"><a href="técnicas-de-conteo.html#conclusi%C3%B3n-1"><i class="fa fa-check"></i><b>9.8</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html"><i class="fa fa-check"></i><b>10</b> Probabilidad condicionada</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#concepto-te%C3%B3rico-9"><i class="fa fa-check"></i><b>10.1</b> Concepto teórico</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#independencia"><i class="fa fa-check"></i><b>10.1.1</b> Independencia</a></li>
+<li class="chapter" data-level="10.1.2" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#regla-multiplicativa"><i class="fa fa-check"></i><b>10.1.2</b> Regla multiplicativa</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#ejemplo-aplicado-9"><i class="fa fa-check"></i><b>10.2</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="10.3" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#implementaci%C3%B3n-en-r-9"><i class="fa fa-check"></i><b>10.3</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#verificaci%C3%B3n-de-independencia"><i class="fa fa-check"></i><b>10.3.1</b> Verificación de independencia</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#gr%C3%A1fica-2"><i class="fa fa-check"></i><b>10.4</b> Gráfica</a></li>
+<li class="chapter" data-level="10.5" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#simulaci%C3%B3n-2"><i class="fa fa-check"></i><b>10.5</b> Simulación</a></li>
+<li class="chapter" data-level="10.6" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#ejercicios-propuestos-2"><i class="fa fa-check"></i><b>10.6</b> Ejercicios propuestos</a></li>
+<li class="chapter" data-level="10.7" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#caso-real-ingenier%C3%ADa-9"><i class="fa fa-check"></i><b>10.7</b> Caso real (ingeniería)</a></li>
+<li class="chapter" data-level="10.8" data-path="probabilidad-condicionada.html"><a href="probabilidad-condicionada.html#conclusi%C3%B3n-2"><i class="fa fa-check"></i><b>10.8</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html"><i class="fa fa-check"></i><b>11</b> Teorema de Bayes</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html#concepto-te%C3%B3rico-10"><i class="fa fa-check"></i><b>11.1</b> Concepto teórico</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html#interpretaci%C3%B3n"><i class="fa fa-check"></i><b>11.1.1</b> Interpretación</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html#formulaci%C3%B3n-matem%C3%A1tica-1"><i class="fa fa-check"></i><b>11.2</b> Formulación matemática</a></li>
+<li class="chapter" data-level="11.3" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html#ejemplo-aplicado-10"><i class="fa fa-check"></i><b>11.3</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="11.4" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html#implementaci%C3%B3n-en-r-10"><i class="fa fa-check"></i><b>11.4</b> Implementación en R</a></li>
+<li class="chapter" data-level="11.5" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html#gr%C3%A1fica-3"><i class="fa fa-check"></i><b>11.5</b> Gráfica</a></li>
+<li class="chapter" data-level="11.6" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html#simulaci%C3%B3n-3"><i class="fa fa-check"></i><b>11.6</b> Simulación</a></li>
+<li class="chapter" data-level="11.7" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html#ejercicios-propuestos-3"><i class="fa fa-check"></i><b>11.7</b> Ejercicios propuestos</a></li>
+<li class="chapter" data-level="11.8" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html#caso-real-ingenier%C3%ADa-10"><i class="fa fa-check"></i><b>11.8</b> Caso real (ingeniería)</a></li>
+<li class="chapter" data-level="11.9" data-path="teorema-de-bayes.html"><a href="teorema-de-bayes.html#conclusi%C3%B3n-3"><i class="fa fa-check"></i><b>11.9</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html"><i class="fa fa-check"></i><b>12</b> Variables aleatorias</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#concepto-te%C3%B3rico-11"><i class="fa fa-check"></i><b>12.1</b> Concepto teórico</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#tipos-de-variables-aleatorias"><i class="fa fa-check"></i><b>12.1.1</b> Tipos de variables aleatorias</a></li>
+<li class="chapter" data-level="12.1.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#funci%C3%B3n-de-probabilidad-para-variable-discreta"><i class="fa fa-check"></i><b>12.1.2</b> Función de probabilidad para variable discreta</a></li>
+<li class="chapter" data-level="12.1.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#esperanza-matem%C3%A1tica"><i class="fa fa-check"></i><b>12.1.3</b> Esperanza matemática</a></li>
+<li class="chapter" data-level="12.1.4" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#varianza-1"><i class="fa fa-check"></i><b>12.1.4</b> Varianza</a></li>
+<li class="chapter" data-level="12.1.5" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#desviaci%C3%B3n-est%C3%A1ndar-1"><i class="fa fa-check"></i><b>12.1.5</b> Desviación estándar</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#ejemplo-aplicado-11"><i class="fa fa-check"></i><b>12.2</b> Ejemplo aplicado</a></li>
+<li class="chapter" data-level="12.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#implementaci%C3%B3n-en-r-11"><i class="fa fa-check"></i><b>12.3</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#esperanza"><i class="fa fa-check"></i><b>12.3.1</b> Esperanza</a></li>
+<li class="chapter" data-level="12.3.2" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#segundo-momento"><i class="fa fa-check"></i><b>12.3.2</b> Segundo momento</a></li>
+<li class="chapter" data-level="12.3.3" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#varianza-y-desviaci%C3%B3n-est%C3%A1ndar-1"><i class="fa fa-check"></i><b>12.3.3</b> Varianza y desviación estándar</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#gr%C3%A1fica-4"><i class="fa fa-check"></i><b>12.4</b> Gráfica</a></li>
+<li class="chapter" data-level="12.5" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#simulaci%C3%B3n-4"><i class="fa fa-check"></i><b>12.5</b> Simulación</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#comparaci%C3%B3n-gr%C3%A1fica-entre-distribuci%C3%B3n-te%C3%B3rica-y-emp%C3%ADrica"><i class="fa fa-check"></i><b>12.5.1</b> Comparación gráfica entre distribución teórica y empírica</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#ejercicios-propuestos-4"><i class="fa fa-check"></i><b>12.6</b> Ejercicios propuestos</a></li>
+<li class="chapter" data-level="12.7" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#caso-real-ingenier%C3%ADa-11"><i class="fa fa-check"></i><b>12.7</b> Caso real (ingeniería)</a></li>
+<li class="chapter" data-level="12.8" data-path="variables-aleatorias.html"><a href="variables-aleatorias.html#conclusi%C3%B3n-4"><i class="fa fa-check"></i><b>12.8</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html"><i class="fa fa-check"></i><b>13</b> Distribuciones de probabilidad</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#concepto-te%C3%B3rico-12"><i class="fa fa-check"></i><b>13.1</b> Concepto teórico</a></li>
+<li class="chapter" data-level="13.2" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#distribuciones-discretas"><i class="fa fa-check"></i><b>13.2</b> Distribuciones discretas</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#distribuci%C3%B3n-bernoulli"><i class="fa fa-check"></i><b>13.2.1</b> Distribución Bernoulli</a></li>
+<li class="chapter" data-level="13.2.2" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#distribuci%C3%B3n-binomial"><i class="fa fa-check"></i><b>13.2.2</b> Distribución Binomial</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#distribuciones-continuas"><i class="fa fa-check"></i><b>13.3</b> Distribuciones continuas</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#distribuci%C3%B3n-normal"><i class="fa fa-check"></i><b>13.3.1</b> Distribución Normal</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#ejemplo-aplicado-12"><i class="fa fa-check"></i><b>13.4</b> Ejemplo aplicado</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#distribuci%C3%B3n-binomial-1"><i class="fa fa-check"></i><b>13.4.1</b> Distribución binomial</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#implementaci%C3%B3n-en-r-12"><i class="fa fa-check"></i><b>13.5</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#probabilidad-acumulada-binomial"><i class="fa fa-check"></i><b>13.5.1</b> Probabilidad acumulada binomial</a></li>
+<li class="chapter" data-level="13.5.2" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#esperanza-y-varianza-binomial"><i class="fa fa-check"></i><b>13.5.2</b> Esperanza y varianza binomial</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#gr%C3%A1fica-binomial"><i class="fa fa-check"></i><b>13.6</b> Gráfica binomial</a></li>
+<li class="chapter" data-level="13.7" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#ejemplo-con-distribuci%C3%B3n-normal"><i class="fa fa-check"></i><b>13.7</b> Ejemplo con distribución normal</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#probabilidad-de-que-el-voltaje-sea-menor-que-218-v"><i class="fa fa-check"></i><b>13.7.1</b> Probabilidad de que el voltaje sea menor que 218 V</a></li>
+<li class="chapter" data-level="13.7.2" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#probabilidad-de-que-el-voltaje-est%C3%A9-entre-218-v-y-223-v"><i class="fa fa-check"></i><b>13.7.2</b> Probabilidad de que el voltaje esté entre 218 V y 223 V</a></li>
+</ul></li>
+<li class="chapter" data-level="13.8" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#gr%C3%A1fica-normal"><i class="fa fa-check"></i><b>13.8</b> Gráfica normal</a></li>
+<li class="chapter" data-level="13.9" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#simulaci%C3%B3n-5"><i class="fa fa-check"></i><b>13.9</b> Simulación</a>
+<ul>
+<li class="chapter" data-level="13.9.1" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#simulaci%C3%B3n-binomial"><i class="fa fa-check"></i><b>13.9.1</b> Simulación binomial</a></li>
+<li class="chapter" data-level="13.9.2" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#simulaci%C3%B3n-normal"><i class="fa fa-check"></i><b>13.9.2</b> Simulación normal</a></li>
+</ul></li>
+<li class="chapter" data-level="13.10" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#ejercicios-propuestos-5"><i class="fa fa-check"></i><b>13.10</b> Ejercicios propuestos</a></li>
+<li class="chapter" data-level="13.11" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#caso-real-ingenier%C3%ADa-12"><i class="fa fa-check"></i><b>13.11</b> Caso real (ingeniería)</a></li>
+<li class="chapter" data-level="13.12" data-path="distribuciones-de-probabilidad.html"><a href="distribuciones-de-probabilidad.html#conclusi%C3%B3n-5"><i class="fa fa-check"></i><b>13.12</b> Conclusión</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Aplicada para Ingeniería</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="distribuciones-de-probabilidad" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">13</span> Distribuciones de probabilidad<a href="distribuciones-de-probabilidad.html#distribuciones-de-probabilidad" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-12" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Concepto teórico<a href="distribuciones-de-probabilidad.html#concepto-te%C3%B3rico-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una distribución de probabilidad describe el comportamiento probabilístico de una variable aleatoria. En ingeniería, permite modelar fenómenos aleatorios y estimar la probabilidad de distintos resultados.</p>
+</div>
+<div id="distribuciones-discretas" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Distribuciones discretas<a href="distribuciones-de-probabilidad.html#distribuciones-discretas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="distribución-bernoulli" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Distribución Bernoulli<a href="distribuciones-de-probabilidad.html#distribuci%C3%B3n-bernoulli" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Describe experimentos con dos resultados posibles: éxito o fracaso.</p>
+<p><span class="math display">\[
+P(X=x)=p^x(1-p)^{1-x}, \qquad x\in\{0,1\}
+\]</span></p>
+</div>
+<div id="distribución-binomial" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Distribución Binomial<a href="distribuciones-de-probabilidad.html#distribuci%C3%B3n-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Modela el número de éxitos en <span class="math inline">\(n\)</span> ensayos independientes con probabilidad <span class="math inline">\(p\)</span> de éxito.</p>
+<p><span class="math display">\[
+P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}
+\]</span></p>
+<p>Valor esperado y varianza:</p>
+<p><span class="math display">\[
+E(X)=np,\qquad Var(X)=np(1-p)
+\]</span></p>
+</div>
+</div>
+<div id="distribuciones-continuas" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Distribuciones continuas<a href="distribuciones-de-probabilidad.html#distribuciones-continuas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="distribución-normal" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Distribución Normal<a href="distribuciones-de-probabilidad.html#distribuci%C3%B3n-normal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es una de las más importantes en estadística e ingeniería. Su función de densidad es:</p>
+<p><span class="math display">\[
+f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]</span></p>
+<p>donde:
+- <span class="math inline">\(\mu\)</span>: media
+- <span class="math inline">\(\sigma\)</span>: desviación estándar</p>
+</div>
+</div>
+<div id="ejemplo-aplicado-12" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Ejemplo aplicado<a href="distribuciones-de-probabilidad.html#ejemplo-aplicado-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="distribución-binomial-1" class="section level3 hasAnchor" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> Distribución binomial<a href="distribuciones-de-probabilidad.html#distribuci%C3%B3n-binomial-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Supóngase que la probabilidad de que un panel solar presente una microfalla es <span class="math inline">\(p=0.10\)</span>. Se inspeccionan <span class="math inline">\(n=8\)</span> paneles y se desea conocer la probabilidad de encontrar exactamente 2 con microfalla.</p>
+</div>
+</div>
+<div id="implementación-en-r-12" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Implementación en R<a href="distribuciones-de-probabilidad.html#implementaci%C3%B3n-en-r-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="distribuciones-de-probabilidad.html#cb148-1" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">prob =</span> <span class="fl">0.10</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1488035</code></pre>
+<div id="probabilidad-acumulada-binomial" class="section level3 hasAnchor" number="13.5.1">
+<h3><span class="header-section-number">13.5.1</span> Probabilidad acumulada binomial<a href="distribuciones-de-probabilidad.html#probabilidad-acumulada-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="distribuciones-de-probabilidad.html#cb150-1" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">2</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">prob =</span> <span class="fl">0.10</span>)</span></code></pre></div>
+<pre><code>## [1] 0.9619082</code></pre>
+</div>
+<div id="esperanza-y-varianza-binomial" class="section level3 hasAnchor" number="13.5.2">
+<h3><span class="header-section-number">13.5.2</span> Esperanza y varianza binomial<a href="distribuciones-de-probabilidad.html#esperanza-y-varianza-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="distribuciones-de-probabilidad.html#cb152-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb152-2"><a href="distribuciones-de-probabilidad.html#cb152-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.10</span></span>
+<span id="cb152-3"><a href="distribuciones-de-probabilidad.html#cb152-3" tabindex="-1"></a><span class="fu">c</span>(<span class="at">Media =</span> n <span class="sc">*</span> p, <span class="at">Varianza =</span> n <span class="sc">*</span> p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p))</span></code></pre></div>
+<pre><code>##    Media Varianza 
+##     0.80     0.72</code></pre>
+</div>
+</div>
+<div id="gráfica-binomial" class="section level2 hasAnchor" number="13.6">
+<h2><span class="header-section-number">13.6</span> Gráfica binomial<a href="distribuciones-de-probabilidad.html#gr%C3%A1fica-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="distribuciones-de-probabilidad.html#cb154-1" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">8</span></span>
+<span id="cb154-2"><a href="distribuciones-de-probabilidad.html#cb154-2" tabindex="-1"></a>prob_bin <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(k, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">prob =</span> <span class="fl">0.10</span>)</span>
+<span id="cb154-3"><a href="distribuciones-de-probabilidad.html#cb154-3" tabindex="-1"></a></span>
+<span id="cb154-4"><a href="distribuciones-de-probabilidad.html#cb154-4" tabindex="-1"></a><span class="fu">barplot</span>(prob_bin,</span>
+<span id="cb154-5"><a href="distribuciones-de-probabilidad.html#cb154-5" tabindex="-1"></a>        <span class="at">names.arg =</span> k,</span>
+<span id="cb154-6"><a href="distribuciones-de-probabilidad.html#cb154-6" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
+<span id="cb154-7"><a href="distribuciones-de-probabilidad.html#cb154-7" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Distribución binomial&quot;</span>,</span>
+<span id="cb154-8"><a href="distribuciones-de-probabilidad.html#cb154-8" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Número de paneles con microfalla&quot;</span>,</span>
+<span id="cb154-9"><a href="distribuciones-de-probabilidad.html#cb154-9" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Probabilidad&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-85-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ejemplo-con-distribución-normal" class="section level2 hasAnchor" number="13.7">
+<h2><span class="header-section-number">13.7</span> Ejemplo con distribución normal<a href="distribuciones-de-probabilidad.html#ejemplo-con-distribuci%C3%B3n-normal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se supone que el voltaje de operación de un sistema sigue una distribución normal con media 220 V y desviación estándar 3 V.</p>
+<div id="probabilidad-de-que-el-voltaje-sea-menor-que-218-v" class="section level3 hasAnchor" number="13.7.1">
+<h3><span class="header-section-number">13.7.1</span> Probabilidad de que el voltaje sea menor que 218 V<a href="distribuciones-de-probabilidad.html#probabilidad-de-que-el-voltaje-sea-menor-que-218-v" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="distribuciones-de-probabilidad.html#cb155-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">218</span>, <span class="at">mean =</span> <span class="dv">220</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.2524925</code></pre>
+</div>
+<div id="probabilidad-de-que-el-voltaje-esté-entre-218-v-y-223-v" class="section level3 hasAnchor" number="13.7.2">
+<h3><span class="header-section-number">13.7.2</span> Probabilidad de que el voltaje esté entre 218 V y 223 V<a href="distribuciones-de-probabilidad.html#probabilidad-de-que-el-voltaje-est%C3%A9-entre-218-v-y-223-v" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="distribuciones-de-probabilidad.html#cb157-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">223</span>, <span class="at">mean =</span> <span class="dv">220</span>, <span class="at">sd =</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">218</span>, <span class="at">mean =</span> <span class="dv">220</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.5888522</code></pre>
+</div>
+</div>
+<div id="gráfica-normal" class="section level2 hasAnchor" number="13.8">
+<h2><span class="header-section-number">13.8</span> Gráfica normal<a href="distribuciones-de-probabilidad.html#gr%C3%A1fica-normal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="distribuciones-de-probabilidad.html#cb159-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">210</span>, <span class="dv">230</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb159-2"><a href="distribuciones-de-probabilidad.html#cb159-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">220</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
+<span id="cb159-3"><a href="distribuciones-de-probabilidad.html#cb159-3" tabindex="-1"></a></span>
+<span id="cb159-4"><a href="distribuciones-de-probabilidad.html#cb159-4" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb159-5"><a href="distribuciones-de-probabilidad.html#cb159-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribución normal del voltaje&quot;</span>,</span>
+<span id="cb159-6"><a href="distribuciones-de-probabilidad.html#cb159-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Voltaje (V)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Densidad&quot;</span>)</span>
+<span id="cb159-7"><a href="distribuciones-de-probabilidad.html#cb159-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">220</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-88-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="simulación-5" class="section level2 hasAnchor" number="13.9">
+<h2><span class="header-section-number">13.9</span> Simulación<a href="distribuciones-de-probabilidad.html#simulaci%C3%B3n-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="simulación-binomial" class="section level3 hasAnchor" number="13.9.1">
+<h3><span class="header-section-number">13.9.1</span> Simulación binomial<a href="distribuciones-de-probabilidad.html#simulaci%C3%B3n-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="distribuciones-de-probabilidad.html#cb160-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb160-2"><a href="distribuciones-de-probabilidad.html#cb160-2" tabindex="-1"></a>sim_bin <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1000</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">prob =</span> <span class="fl">0.10</span>)</span>
+<span id="cb160-3"><a href="distribuciones-de-probabilidad.html#cb160-3" tabindex="-1"></a><span class="fu">mean</span>(sim_bin)</span></code></pre></div>
+<pre><code>## [1] 0.797</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="distribuciones-de-probabilidad.html#cb162-1" tabindex="-1"></a><span class="fu">var</span>(sim_bin)</span></code></pre></div>
+<pre><code>## [1] 0.6704615</code></pre>
+</div>
+<div id="simulación-normal" class="section level3 hasAnchor" number="13.9.2">
+<h3><span class="header-section-number">13.9.2</span> Simulación normal<a href="distribuciones-de-probabilidad.html#simulaci%C3%B3n-normal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="distribuciones-de-probabilidad.html#cb164-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">222</span>)</span>
+<span id="cb164-2"><a href="distribuciones-de-probabilidad.html#cb164-2" tabindex="-1"></a>sim_norm <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">220</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
+<span id="cb164-3"><a href="distribuciones-de-probabilidad.html#cb164-3" tabindex="-1"></a><span class="fu">mean</span>(sim_norm)</span></code></pre></div>
+<pre><code>## [1] 219.9532</code></pre>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="distribuciones-de-probabilidad.html#cb166-1" tabindex="-1"></a><span class="fu">sd</span>(sim_norm)</span></code></pre></div>
+<pre><code>## [1] 2.97975</code></pre>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="distribuciones-de-probabilidad.html#cb168-1" tabindex="-1"></a><span class="fu">hist</span>(sim_norm, <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>,</span>
+<span id="cb168-2"><a href="distribuciones-de-probabilidad.html#cb168-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simulación normal del voltaje&quot;</span>,</span>
+<span id="cb168-3"><a href="distribuciones-de-probabilidad.html#cb168-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Voltaje (V)&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-91-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="ejercicios-propuestos-5" class="section level2 hasAnchor" number="13.10">
+<h2><span class="header-section-number">13.10</span> Ejercicios propuestos<a href="distribuciones-de-probabilidad.html#ejercicios-propuestos-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Modele un problema binomial asociado a su carrera.</li>
+<li>Calcule probabilidades puntuales y acumuladas.</li>
+<li>Modele una variable continua mediante una distribución normal.</li>
+<li>Calcule probabilidades con <code>pnorm()</code>.</li>
+<li>Simule ambas distribuciones en R.</li>
+<li>Compare propiedades teóricas y empíricas.</li>
+</ol>
+</div>
+<div id="caso-real-ingeniería-12" class="section level2 hasAnchor" number="13.11">
+<h2><span class="header-section-number">13.11</span> Caso real (ingeniería)<a href="distribuciones-de-probabilidad.html#caso-real-ingenier%C3%ADa-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería industrial</strong>, la distribución binomial puede modelar defectos por lote y la normal, tiempos de producción o dimensiones de piezas.</p>
+<p>En <strong>ingeniería civil</strong>, la normal se utiliza para representar resistencia de materiales, cargas o errores de medición.</p>
+<p>En <strong>ingeniería eléctrica</strong>, la normal es útil en análisis de voltaje, corriente y errores instrumentales.</p>
+<p>En <strong>energías renovables</strong>, la binomial puede modelar eventos discretos de falla y la normal ciertas variaciones continuas alrededor de un valor medio operativo.</p>
+</div>
+<div id="conclusión-5" class="section level2 hasAnchor" number="13.12">
+<h2><span class="header-section-number">13.12</span> Conclusión<a href="distribuciones-de-probabilidad.html#conclusi%C3%B3n-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las distribuciones de probabilidad permiten modelar formalmente variables aleatorias y constituyen una base indispensable para la inferencia estadística, el control de calidad y la confiabilidad en ingeniería.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="variables-aleatorias.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

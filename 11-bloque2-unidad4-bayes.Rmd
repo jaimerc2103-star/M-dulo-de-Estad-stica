@@ -1,0 +1,108 @@
+# Teorema de Bayes
+
+## Concepto teórico
+
+El teorema de Bayes permite actualizar la probabilidad de un evento a partir de nueva información. Es especialmente útil en problemas de diagnóstico, clasificación, mantenimiento predictivo y análisis de confiabilidad.
+
+Si \(A\) y \(B\) son eventos con \(P(B)>0\), entonces:
+
+\[
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+\]
+
+donde:
+- \(P(A)\): probabilidad previa
+- \(P(B|A)\): probabilidad de la evidencia si \(A\) ocurre
+- \(P(B)\): probabilidad total de la evidencia
+- \(P(A|B)\): probabilidad posterior
+
+### Interpretación
+
+Bayes permite pasar de una probabilidad **a priori** a una probabilidad **posterior** luego de observar evidencia.
+
+## Formulación matemática
+
+Si \(A_1, A_2, \dots, A_n\) forman una partición del espacio muestral, entonces:
+
+\[
+P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^{n}P(B|A_j)P(A_j)}
+\]
+
+## Ejemplo aplicado
+
+Supóngase que una falla crítica en un sistema puede deberse a dos fuentes:
+
+- \(A_1\): falla del sensor
+- \(A_2\): falla del actuador
+
+Con:
+- \(P(A_1)=0.35\)
+- \(P(A_2)=0.65\)
+- \(P(B|A_1)=0.80\)
+- \(P(B|A_2)=0.30\)
+
+donde \(B\) es la evidencia de alarma crítica.
+
+## Implementación en R
+
+```{r}
+P_A1 <- 0.35
+P_A2 <- 0.65
+P_B_dado_A1 <- 0.80
+P_B_dado_A2 <- 0.30
+
+P_B <- P_B_dado_A1 * P_A1 + P_B_dado_A2 * P_A2
+P_A1_dado_B <- (P_B_dado_A1 * P_A1) / P_B
+P_A2_dado_B <- (P_B_dado_A2 * P_A2) / P_B
+
+c(P_B = P_B, P_A1_dado_B = P_A1_dado_B, P_A2_dado_B = P_A2_dado_B)
+```
+
+## Gráfica
+
+```{r}
+posteriores <- c(P_A1_dado_B, P_A2_dado_B)
+barplot(posteriores,
+        names.arg = c("Sensor", "Actuador"),
+        col = c("tomato", "steelblue"),
+        main = "Probabilidades posteriores",
+        ylab = "Probabilidad")
+```
+
+## Simulación
+
+```{r}
+set.seed(789)
+n <- 1000
+
+causa <- sample(c("Sensor", "Actuador"), n, replace = TRUE, prob = c(0.35, 0.65))
+alarma <- ifelse(causa == "Sensor",
+                 rbinom(n, 1, 0.80),
+                 rbinom(n, 1, 0.30))
+
+prob_posterior_emp <- mean(causa[alarma == 1] == "Sensor")
+prob_posterior_emp
+```
+
+## Ejercicios propuestos
+
+1. Plantee un caso con dos posibles causas de una falla.
+2. Asigne probabilidades previas y condicionales coherentes.
+3. Aplique el teorema de Bayes.
+4. Interprete la probabilidad posterior.
+5. Simule el problema en R.
+6. Compare los resultados teóricos y empíricos.
+
+## Caso real (ingeniería)
+
+En **ingeniería eléctrica**, Bayes se usa para identificar la causa más probable de una alarma en sistemas de potencia.
+
+En **ingeniería civil**, puede aplicarse al diagnóstico de daño estructural a partir de síntomas observados.
+
+En **ingeniería industrial**, se utiliza en sistemas de inspección y clasificación de defectos.
+
+En **energías renovables**, ayuda a inferir la causa más probable de caída de rendimiento a partir de datos operativos y ambientales.
+
+## Conclusión
+
+El teorema de Bayes es una herramienta poderosa para actualizar decisiones con nueva evidencia. Su importancia en ingeniería radica en que conecta datos observados con diagnóstico técnico y toma de decisiones probabilísticas.

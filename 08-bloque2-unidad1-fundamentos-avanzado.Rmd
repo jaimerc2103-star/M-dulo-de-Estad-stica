@@ -1,4 +1,0 @@
-# Fundamentos de probabilidad
-
-## Concepto teórico
-Contenido avanzado de probabilidad con formulación, ejemplos y simulación en R.

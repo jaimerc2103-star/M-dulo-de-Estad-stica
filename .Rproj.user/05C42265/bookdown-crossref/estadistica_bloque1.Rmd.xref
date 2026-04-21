@@ -101,4 +101,106 @@ h3:diagrama-de-dispersión Diagrama de dispersión
 h3:correlación-con-ggplot2 Correlación con 
 h2:ejercicio-propuesto-6 Ejercicio propuesto
 h2:caso-real-ingeniería-6 Caso real (ingeniería)
+h1:fundamentos-de-probabilidad Fundamentos de probabilidad
+h2:concepto-teórico-7 Concepto teórico
+h3:experimento-aleatorio Experimento aleatorio
+h3:espacio-muestral Espacio muestral
+h3:evento Evento
+h3:definición-clásica-de-probabilidad Definición clásica de probabilidad
+h3:enfoque-frecuentista Enfoque frecuentista
+h3:axiomas-básicos Axiomas básicos
+h2:formulación-matemática Formulación matemática
+h3:unión-de-eventos Unión de eventos
+h3:complemento Complemento
+h3:eventos-mutuamente-excluyentes Eventos mutuamente excluyentes
+h2:ejemplo-aplicado-7 Ejemplo aplicado
+h2:implementación-en-r-7 Implementación en R
+h3:simulación-simple Simulación simple
+h3:frecuencias-absolutas-y-relativas Frecuencias absolutas y relativas
+h3:probabilidad-del-complemento Probabilidad del complemento
+h2:gráfica Gráfica
+h2:simulación Simulación
+h2:ejercicios-propuestos Ejercicios propuestos
+h2:caso-real-ingeniería-7 Caso real (ingeniería)
+h2:conclusión Conclusión
+h1:técnicas-de-conteo Técnicas de conteo
+h2:concepto-teórico-8 Concepto teórico
+h3:principio-multiplicativo Principio multiplicativo
+h3:permutaciones Permutaciones
+h3:combinaciones Combinaciones
+h2:ejemplo-aplicado-8 Ejemplo aplicado
+h2:implementación-en-r-8 Implementación en R
+h3:factorial Factorial
+h3:permutaciones-1 Permutaciones
+h3:combinaciones-1 Combinaciones
+h3:listado-de-combinaciones Listado de combinaciones
+h2:gráfica-1 Gráfica
+h2:simulación-1 Simulación
+h2:ejercicios-propuestos-1 Ejercicios propuestos
+h2:caso-real-ingeniería-8 Caso real (ingeniería)
+h2:conclusión-1 Conclusión
+h1:probabilidad-condicionada Probabilidad condicionada
+h2:concepto-teórico-9 Concepto teórico
+h3:independencia Independencia
+h3:regla-multiplicativa Regla multiplicativa
+h2:ejemplo-aplicado-9 Ejemplo aplicado
+h2:implementación-en-r-9 Implementación en R
+h3:verificación-de-independencia Verificación de independencia
+h2:gráfica-2 Gráfica
+h2:simulación-2 Simulación
+h2:ejercicios-propuestos-2 Ejercicios propuestos
+h2:caso-real-ingeniería-9 Caso real (ingeniería)
+h2:conclusión-2 Conclusión
+h1:teorema-de-bayes Teorema de Bayes
+h2:concepto-teórico-10 Concepto teórico
+h3:interpretación Interpretación
+h2:formulación-matemática-1 Formulación matemática
+h2:ejemplo-aplicado-10 Ejemplo aplicado
+h2:implementación-en-r-10 Implementación en R
+h2:gráfica-3 Gráfica
+h2:simulación-3 Simulación
+h2:ejercicios-propuestos-3 Ejercicios propuestos
+h2:caso-real-ingeniería-10 Caso real (ingeniería)
+h2:conclusión-3 Conclusión
+h1:variables-aleatorias Variables aleatorias
+h2:concepto-teórico-11 Concepto teórico
+h3:tipos-de-variables-aleatorias Tipos de variables aleatorias
+h3:función-de-probabilidad-para-variable-discreta Función de probabilidad para variable discreta
+h3:esperanza-matemática Esperanza matemática
+h3:varianza-1 Varianza
+h3:desviación-estándar-1 Desviación estándar
+h2:ejemplo-aplicado-11 Ejemplo aplicado
+h2:implementación-en-r-11 Implementación en R
+h3:esperanza Esperanza
+h3:segundo-momento Segundo momento
+h3:varianza-y-desviación-estándar-1 Varianza y desviación estándar
+h2:gráfica-4 Gráfica
+h2:simulación-4 Simulación
+h3:comparación-gráfica-entre-distribución-teórica-y-empírica Comparación gráfica entre distribución teórica y empírica
+h2:ejercicios-propuestos-4 Ejercicios propuestos
+h2:caso-real-ingeniería-11 Caso real (ingeniería)
+h2:conclusión-4 Conclusión
+h1:distribuciones-de-probabilidad Distribuciones de probabilidad
+h2:concepto-teórico-12 Concepto teórico
+h2:distribuciones-discretas Distribuciones discretas
+h3:distribución-bernoulli Distribución Bernoulli
+h3:distribución-binomial Distribución Binomial
+h2:distribuciones-continuas Distribuciones continuas
+h3:distribución-normal Distribución Normal
+h2:ejemplo-aplicado-12 Ejemplo aplicado
+h3:distribución-binomial-1 Distribución binomial
+h2:implementación-en-r-12 Implementación en R
+h3:probabilidad-acumulada-binomial Probabilidad acumulada binomial
+h3:esperanza-y-varianza-binomial Esperanza y varianza binomial
+h2:gráfica-binomial Gráfica binomial
+h2:ejemplo-con-distribución-normal Ejemplo con distribución normal
+h3:probabilidad-de-que-el-voltaje-sea-menor-que-218-v Probabilidad de que el voltaje sea menor que 218 V
+h3:probabilidad-de-que-el-voltaje-esté-entre-218-v-y-223-v Probabilidad de que el voltaje esté entre 218 V y 223 V
+h2:gráfica-normal Gráfica normal
+h2:simulación-5 Simulación
+h3:simulación-binomial Simulación binomial
+h3:simulación-normal Simulación normal
+h2:ejercicios-propuestos-5 Ejercicios propuestos
+h2:caso-real-ingeniería-12 Caso real (ingeniería)
+h2:conclusión-5 Conclusión
 

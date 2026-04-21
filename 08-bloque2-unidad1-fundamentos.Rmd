@@ -1,0 +1,177 @@
+# Fundamentos de probabilidad
+
+## Concepto teórico
+
+La probabilidad es una medida numérica que cuantifica la posibilidad de ocurrencia de un evento dentro de un experimento aleatorio. En ingeniería, esta herramienta es esencial para modelar incertidumbre en sistemas eléctricos, fallas mecánicas, variación de demanda, producción energética y comportamiento de procesos industriales.
+
+### Experimento aleatorio
+
+Un experimento aleatorio es un proceso cuyo resultado no puede predecirse con certeza antes de realizarse, aunque se conozcan todos los resultados posibles.
+
+### Espacio muestral
+
+El espacio muestral es el conjunto de todos los resultados posibles del experimento:
+
+\[
+S = \{\omega_1, \omega_2, \dots, \omega_n\}
+\]
+
+### Evento
+
+Un evento es cualquier subconjunto del espacio muestral:
+
+\[
+A \subseteq S
+\]
+
+### Definición clásica de probabilidad
+
+Cuando todos los resultados son igualmente probables:
+
+\[
+P(A)=\frac{n(A)}{n(S)}
+\]
+
+donde:
+- \(n(A)\): número de casos favorables
+- \(n(S)\): número de casos posibles
+
+### Enfoque frecuentista
+
+Si un experimento se repite muchas veces, la probabilidad puede aproximarse por la frecuencia relativa:
+
+\[
+P(A)\approx \frac{f_A}{n}
+\]
+
+donde \(f_A\) es el número de veces que ocurre el evento y \(n\) el total de repeticiones.
+
+### Axiomas básicos
+
+- \(0 \leq P(A) \leq 1\)
+- \(P(S)=1\)
+- \(P(\emptyset)=0\)
+- \(P(A^c)=1-P(A)\)
+
+## Formulación matemática
+
+### Unión de eventos
+
+\[
+P(A\cup B)=P(A)+P(B)-P(A\cap B)
+\]
+
+### Complemento
+
+\[
+P(A^c)=1-P(A)
+\]
+
+### Eventos mutuamente excluyentes
+
+Si \(A\cap B=\emptyset\), entonces:
+
+\[
+P(A\cup B)=P(A)+P(B)
+\]
+
+## Ejemplo aplicado
+
+Se analiza el estado diario de un sistema de distribución eléctrica. El sistema puede estar en uno de tres estados:
+
+- Normal
+- Falla leve
+- Falla crítica
+
+```{r}
+estados <- c("Normal", "Falla leve", "Falla crítica")
+estados
+```
+
+Supóngase inicialmente que los tres estados son equiprobables. Entonces, la probabilidad de falla leve es:
+
+\[
+P(\text{Falla leve})=\frac{1}{3}
+\]
+
+## Implementación en R
+
+### Simulación simple
+
+```{r}
+set.seed(123)
+sim <- sample(estados, size = 60, replace = TRUE)
+head(sim)
+```
+
+### Frecuencias absolutas y relativas
+
+```{r}
+tabla <- table(sim)
+tabla
+```
+
+```{r}
+prob_emp <- prop.table(tabla)
+prob_emp
+```
+
+### Probabilidad del complemento
+
+```{r}
+p_normal <- prob_emp["Normal"]
+1 - p_normal
+```
+
+## Gráfica
+
+```{r}
+barplot(prob_emp,
+        col = c("lightgreen", "gold", "tomato"),
+        main = "Probabilidad empírica de estados del sistema",
+        ylab = "Probabilidad")
+```
+
+## Simulación
+
+A medida que aumenta el número de simulaciones, la frecuencia relativa tiende a estabilizarse.
+
+```{r}
+set.seed(321)
+n <- 500
+sim2 <- sample(estados, size = n, replace = TRUE, prob = c(0.7, 0.2, 0.1))
+ind_falla <- ifelse(sim2 == "Falla crítica", 1, 0)
+freq_rel <- cumsum(ind_falla) / (1:n)
+
+plot(freq_rel, type = "l", col = "red", lwd = 2,
+     main = "Estabilización de la frecuencia relativa",
+     xlab = "Número de simulaciones",
+     ylab = "Frecuencia relativa de falla crítica")
+abline(h = 0.1, col = "blue", lty = 2, lwd = 2)
+legend("topright", legend = c("Frecuencia relativa", "Probabilidad teórica"),
+       col = c("red", "blue"), lty = c(1, 2), lwd = 2)
+```
+
+## Ejercicios propuestos
+
+1. Defina un experimento aleatorio asociado a una carrera de ingeniería de su interés.
+2. Escriba su espacio muestral.
+3. Defina tres eventos.
+4. Calcule probabilidades teóricas para un caso simple.
+5. Simule el experimento en R con 100 repeticiones.
+6. Compare las probabilidades teóricas y empíricas.
+7. Interprete el resultado desde la perspectiva de la incertidumbre del sistema.
+
+## Caso real (ingeniería)
+
+En **ingeniería eléctrica**, la probabilidad se emplea para estimar la ocurrencia de fallas en líneas, transformadores o tableros.
+
+En **ingeniería civil**, permite modelar la ocurrencia de eventos como sobrecargas, tránsito alto o niveles de precipitación.
+
+En **ingeniería industrial**, se usa para estudiar defectos de fabricación, retrasos de producción o interrupciones de proceso.
+
+En **energías renovables**, es clave para representar la variabilidad del viento, la radiación solar y el estado operativo de equipos.
+
+## Conclusión
+
+La probabilidad constituye la base del análisis bajo incertidumbre. Comprender sus conceptos elementales es fundamental para avanzar hacia probabilidad condicionada, distribuciones y modelos de decisión en ingeniería.

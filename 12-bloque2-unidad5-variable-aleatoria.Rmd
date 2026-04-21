@@ -1,0 +1,147 @@
+# Variables aleatorias
+
+## Concepto teórico
+
+Una variable aleatoria es una función que asigna valores numéricos a los resultados de un experimento aleatorio. Se representa usualmente por \(X\).
+
+### Tipos de variables aleatorias
+
+- **Discreta**: toma valores aislados o contables.
+- **Continua**: puede tomar cualquier valor en un intervalo.
+
+### Función de probabilidad para variable discreta
+
+Si \(X\) es discreta:
+
+\[
+P(X=x_i)=p_i
+\]
+
+con:
+
+\[
+\sum p_i = 1
+\]
+
+### Esperanza matemática
+
+La esperanza o valor esperado de una variable aleatoria discreta es:
+
+\[
+E(X)=\sum x_iP(X=x_i)
+\]
+
+### Varianza
+
+\[
+Var(X)=E(X^2)-[E(X)]^2
+\]
+
+### Desviación estándar
+
+\[
+\sigma = \sqrt{Var(X)}
+\]
+
+## Ejemplo aplicado
+
+Sea \(X\) el número de fallas detectadas en un día en un sistema pequeño. Supóngase:
+
+\[
+X=\{0,1,2,3\}
+\]
+
+con probabilidades:
+
+\[
+P(X)=\{0.30, 0.40, 0.20, 0.10\}
+\]
+
+## Implementación en R
+
+```{r}
+x <- c(0, 1, 2, 3)
+p <- c(0.30, 0.40, 0.20, 0.10)
+
+sum(p)
+```
+
+### Esperanza
+
+```{r}
+E_X <- sum(x * p)
+E_X
+```
+
+### Segundo momento
+
+```{r}
+E_X2 <- sum((x^2) * p)
+E_X2
+```
+
+### Varianza y desviación estándar
+
+```{r}
+Var_X <- E_X2 - E_X^2
+Var_X
+```
+
+```{r}
+sqrt(Var_X)
+```
+
+## Gráfica
+
+```{r}
+barplot(p, names.arg = x, col = "mediumpurple",
+        main = "Distribución de probabilidad de X",
+        xlab = "Número de fallas",
+        ylab = "Probabilidad")
+```
+
+## Simulación
+
+```{r}
+set.seed(654)
+sim_x <- sample(x, size = 1000, replace = TRUE, prob = p)
+
+mean(sim_x)
+var(sim_x)
+```
+
+### Comparación gráfica entre distribución teórica y empírica
+
+```{r}
+tabla_emp <- prop.table(table(sim_x))
+barplot(rbind(p, as.numeric(tabla_emp)),
+        beside = TRUE,
+        names.arg = x,
+        col = c("orange", "lightblue"),
+        main = "Distribución teórica vs empírica",
+        xlab = "X", ylab = "Probabilidad")
+legend("topright", legend = c("Teórica", "Empírica"),
+       fill = c("orange", "lightblue"))
+```
+
+## Ejercicios propuestos
+
+1. Defina una variable aleatoria discreta relacionada con su carrera.
+2. Construya una tabla de probabilidades válida.
+3. Calcule \(E(X)\), \(Var(X)\) y \(\sigma\).
+4. Realice una simulación de 1000 observaciones.
+5. Compare resultados teóricos y simulados.
+
+## Caso real (ingeniería)
+
+En **ingeniería industrial**, una variable aleatoria puede representar defectos por lote, retrasos por jornada o número de paradas de máquina.
+
+En **ingeniería civil**, puede representar el número de fisuras observadas, eventos de sobrecarga o conteos de tránsito.
+
+En **ingeniería eléctrica**, puede modelar número de interrupciones, fallas o alarmas por unidad de tiempo.
+
+En **energías renovables**, puede representar el número de días con baja generación o el número de eventos de desconexión de un sistema.
+
+## Conclusión
+
+Las variables aleatorias permiten pasar del conteo simple a la modelación probabilística cuantitativa. Constituyen la base conceptual para estudiar distribuciones discretas y continuas.

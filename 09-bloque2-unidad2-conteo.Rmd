@@ -1,0 +1,127 @@
+# Técnicas de conteo
+
+## Concepto teórico
+
+Las técnicas de conteo permiten determinar el número de resultados posibles de un experimento sin enumerarlos uno por uno. Son la base operativa del cálculo probabilístico en problemas finitos.
+
+### Principio multiplicativo
+
+Si un proceso ocurre en varias etapas y cada etapa tiene un número de opciones, entonces el número total de resultados se obtiene multiplicando las opciones de cada etapa.
+
+Si una primera etapa puede realizarse de \(n_1\) formas, una segunda de \(n_2\) formas y así sucesivamente, entonces:
+
+\[
+N = n_1 \cdot n_2 \cdot \dots \cdot n_k
+\]
+
+### Permutaciones
+
+Las permutaciones se emplean cuando **el orden importa**.
+
+\[
+P(n,r)=\frac{n!}{(n-r)!}
+\]
+
+donde:
+- \(n\): número total de elementos
+- \(r\): número de elementos seleccionados
+
+### Combinaciones
+
+Las combinaciones se emplean cuando **el orden no importa**.
+
+\[
+C(n,r)=\binom{n}{r}=\frac{n!}{r!(n-r)!}
+\]
+
+Estas técnicas son muy útiles para estudiar configuraciones de sistemas, rutas, selección de equipos, distribución de tareas y arreglos de componentes.
+
+## Ejemplo aplicado
+
+En un sistema fotovoltaico se desea seleccionar 2 paneles de un conjunto de 5 disponibles para pruebas de laboratorio.
+
+```{r}
+paneles <- c("P1", "P2", "P3", "P4", "P5")
+paneles
+```
+
+Si importa el orden de instalación, se trabaja con permutaciones. Si solo interesa qué paneles se eligen, se trabaja con combinaciones.
+
+## Implementación en R
+
+### Factorial
+
+```{r}
+factorial(5)
+```
+
+### Permutaciones
+
+```{r}
+perm_5_2 <- factorial(5) / factorial(5 - 2)
+perm_5_2
+```
+
+### Combinaciones
+
+```{r}
+comb_5_2 <- choose(5, 2)
+comb_5_2
+```
+
+### Listado de combinaciones
+
+```{r}
+combn(paneles, 2)
+```
+
+## Gráfica
+
+Se compara el crecimiento de \(n!\) para distintos valores de \(n\).
+
+```{r}
+n <- 1:7
+fact <- factorial(n)
+
+plot(n, fact, type = "b", pch = 19, col = "blue",
+     main = "Crecimiento factorial",
+     xlab = "n", ylab = "n!")
+```
+
+## Simulación
+
+Supóngase que en una línea industrial existen 4 operarios y se desea asignar 2 puestos específicos. Como el orden importa, el número de asignaciones posibles corresponde a una permutación.
+
+```{r}
+operarios <- c("A", "B", "C", "D")
+expand.grid(Puesto1 = operarios, Puesto2 = operarios)
+```
+
+```{r}
+asig <- expand.grid(Puesto1 = operarios, Puesto2 = operarios)
+asig <- asig[asig$Puesto1 != asig$Puesto2, ]
+head(asig)
+nrow(asig)
+```
+
+## Ejercicios propuestos
+
+1. En un laboratorio eléctrico hay 6 equipos disponibles. ¿De cuántas maneras se pueden elegir 3 equipos para inspección?
+2. ¿De cuántas maneras se pueden asignar 3 tareas distintas a 5 estudiantes si el orden importa?
+3. Modele ambos casos en R.
+4. Construya un ejemplo propio de permutaciones en su área de ingeniería.
+5. Construya un ejemplo propio de combinaciones en su área de ingeniería.
+
+## Caso real (ingeniería)
+
+En **ingeniería industrial**, las técnicas de conteo se usan para analizar asignación de tareas, secuencias de operación y combinaciones de recursos.
+
+En **ingeniería civil**, permiten estudiar configuraciones de rutas, ordenamientos de actividades o selección de muestras.
+
+En **ingeniería eléctrica**, se aplican en configuraciones de circuitos, selección de componentes y disposición de dispositivos.
+
+En **energías renovables**, son útiles al estudiar combinaciones de paneles, arreglos de baterías y escenarios de diseño.
+
+## Conclusión
+
+Las técnicas de conteo proporcionan el fundamento combinatorio necesario para calcular probabilidades en espacios muestrales finitos. Su dominio permite construir modelos probabilísticos más complejos con base matemática sólida.

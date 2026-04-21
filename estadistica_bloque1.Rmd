@@ -1012,42 +1012,864 @@ Estas medidas permiten identificar relaciones importantes entre variables y cons
 # Fundamentos de probabilidad
 
 ## Concepto teórico
-Contenido avanzado de probabilidad con formulación, ejemplos y simulación en R.
 
-<!--chapter:end:08-bloque2-unidad1-fundamentos-avanzado.Rmd-->
+La probabilidad es una medida numérica que cuantifica la posibilidad de ocurrencia de un evento dentro de un experimento aleatorio. En ingeniería, esta herramienta es esencial para modelar incertidumbre en sistemas eléctricos, fallas mecánicas, variación de demanda, producción energética y comportamiento de procesos industriales.
+
+### Experimento aleatorio
+
+Un experimento aleatorio es un proceso cuyo resultado no puede predecirse con certeza antes de realizarse, aunque se conozcan todos los resultados posibles.
+
+### Espacio muestral
+
+El espacio muestral es el conjunto de todos los resultados posibles del experimento:
+
+\[
+S = \{\omega_1, \omega_2, \dots, \omega_n\}
+\]
+
+### Evento
+
+Un evento es cualquier subconjunto del espacio muestral:
+
+\[
+A \subseteq S
+\]
+
+### Definición clásica de probabilidad
+
+Cuando todos los resultados son igualmente probables:
+
+\[
+P(A)=\frac{n(A)}{n(S)}
+\]
+
+donde:
+- \(n(A)\): número de casos favorables
+- \(n(S)\): número de casos posibles
+
+### Enfoque frecuentista
+
+Si un experimento se repite muchas veces, la probabilidad puede aproximarse por la frecuencia relativa:
+
+\[
+P(A)\approx \frac{f_A}{n}
+\]
+
+donde \(f_A\) es el número de veces que ocurre el evento y \(n\) el total de repeticiones.
+
+### Axiomas básicos
+
+- \(0 \leq P(A) \leq 1\)
+- \(P(S)=1\)
+- \(P(\emptyset)=0\)
+- \(P(A^c)=1-P(A)\)
+
+## Formulación matemática
+
+### Unión de eventos
+
+\[
+P(A\cup B)=P(A)+P(B)-P(A\cap B)
+\]
+
+### Complemento
+
+\[
+P(A^c)=1-P(A)
+\]
+
+### Eventos mutuamente excluyentes
+
+Si \(A\cap B=\emptyset\), entonces:
+
+\[
+P(A\cup B)=P(A)+P(B)
+\]
+
+## Ejemplo aplicado
+
+Se analiza el estado diario de un sistema de distribución eléctrica. El sistema puede estar en uno de tres estados:
+
+- Normal
+- Falla leve
+- Falla crítica
+
+```{r}
+estados <- c("Normal", "Falla leve", "Falla crítica")
+estados
+```
+
+Supóngase inicialmente que los tres estados son equiprobables. Entonces, la probabilidad de falla leve es:
+
+\[
+P(\text{Falla leve})=\frac{1}{3}
+\]
+
+## Implementación en R
+
+### Simulación simple
+
+```{r}
+set.seed(123)
+sim <- sample(estados, size = 60, replace = TRUE)
+head(sim)
+```
+
+### Frecuencias absolutas y relativas
+
+```{r}
+tabla <- table(sim)
+tabla
+```
+
+```{r}
+prob_emp <- prop.table(tabla)
+prob_emp
+```
+
+### Probabilidad del complemento
+
+```{r}
+p_normal <- prob_emp["Normal"]
+1 - p_normal
+```
+
+## Gráfica
+
+```{r}
+barplot(prob_emp,
+        col = c("lightgreen", "gold", "tomato"),
+        main = "Probabilidad empírica de estados del sistema",
+        ylab = "Probabilidad")
+```
+
+## Simulación
+
+A medida que aumenta el número de simulaciones, la frecuencia relativa tiende a estabilizarse.
+
+```{r}
+set.seed(321)
+n <- 500
+sim2 <- sample(estados, size = n, replace = TRUE, prob = c(0.7, 0.2, 0.1))
+ind_falla <- ifelse(sim2 == "Falla crítica", 1, 0)
+freq_rel <- cumsum(ind_falla) / (1:n)
+
+plot(freq_rel, type = "l", col = "red", lwd = 2,
+     main = "Estabilización de la frecuencia relativa",
+     xlab = "Número de simulaciones",
+     ylab = "Frecuencia relativa de falla crítica")
+abline(h = 0.1, col = "blue", lty = 2, lwd = 2)
+legend("topright", legend = c("Frecuencia relativa", "Probabilidad teórica"),
+       col = c("red", "blue"), lty = c(1, 2), lwd = 2)
+```
+
+## Ejercicios propuestos
+
+1. Defina un experimento aleatorio asociado a una carrera de ingeniería de su interés.
+2. Escriba su espacio muestral.
+3. Defina tres eventos.
+4. Calcule probabilidades teóricas para un caso simple.
+5. Simule el experimento en R con 100 repeticiones.
+6. Compare las probabilidades teóricas y empíricas.
+7. Interprete el resultado desde la perspectiva de la incertidumbre del sistema.
+
+## Caso real (ingeniería)
+
+En **ingeniería eléctrica**, la probabilidad se emplea para estimar la ocurrencia de fallas en líneas, transformadores o tableros.
+
+En **ingeniería civil**, permite modelar la ocurrencia de eventos como sobrecargas, tránsito alto o niveles de precipitación.
+
+En **ingeniería industrial**, se usa para estudiar defectos de fabricación, retrasos de producción o interrupciones de proceso.
+
+En **energías renovables**, es clave para representar la variabilidad del viento, la radiación solar y el estado operativo de equipos.
+
+## Conclusión
+
+La probabilidad constituye la base del análisis bajo incertidumbre. Comprender sus conceptos elementales es fundamental para avanzar hacia probabilidad condicionada, distribuciones y modelos de decisión en ingeniería.
+
+<!--chapter:end:08-bloque2-unidad1-fundamentos.Rmd-->
 
 # Técnicas de conteo
 
 ## Concepto teórico
-Permutaciones, combinaciones y aplicaciones en ingeniería.
 
-<!--chapter:end:09-bloque2-unidad2-conteo-avanzado.Rmd-->
+Las técnicas de conteo permiten determinar el número de resultados posibles de un experimento sin enumerarlos uno por uno. Son la base operativa del cálculo probabilístico en problemas finitos.
+
+### Principio multiplicativo
+
+Si un proceso ocurre en varias etapas y cada etapa tiene un número de opciones, entonces el número total de resultados se obtiene multiplicando las opciones de cada etapa.
+
+Si una primera etapa puede realizarse de \(n_1\) formas, una segunda de \(n_2\) formas y así sucesivamente, entonces:
+
+\[
+N = n_1 \cdot n_2 \cdot \dots \cdot n_k
+\]
+
+### Permutaciones
+
+Las permutaciones se emplean cuando **el orden importa**.
+
+\[
+P(n,r)=\frac{n!}{(n-r)!}
+\]
+
+donde:
+- \(n\): número total de elementos
+- \(r\): número de elementos seleccionados
+
+### Combinaciones
+
+Las combinaciones se emplean cuando **el orden no importa**.
+
+\[
+C(n,r)=\binom{n}{r}=\frac{n!}{r!(n-r)!}
+\]
+
+Estas técnicas son muy útiles para estudiar configuraciones de sistemas, rutas, selección de equipos, distribución de tareas y arreglos de componentes.
+
+## Ejemplo aplicado
+
+En un sistema fotovoltaico se desea seleccionar 2 paneles de un conjunto de 5 disponibles para pruebas de laboratorio.
+
+```{r}
+paneles <- c("P1", "P2", "P3", "P4", "P5")
+paneles
+```
+
+Si importa el orden de instalación, se trabaja con permutaciones. Si solo interesa qué paneles se eligen, se trabaja con combinaciones.
+
+## Implementación en R
+
+### Factorial
+
+```{r}
+factorial(5)
+```
+
+### Permutaciones
+
+```{r}
+perm_5_2 <- factorial(5) / factorial(5 - 2)
+perm_5_2
+```
+
+### Combinaciones
+
+```{r}
+comb_5_2 <- choose(5, 2)
+comb_5_2
+```
+
+### Listado de combinaciones
+
+```{r}
+combn(paneles, 2)
+```
+
+## Gráfica
+
+Se compara el crecimiento de \(n!\) para distintos valores de \(n\).
+
+```{r}
+n <- 1:7
+fact <- factorial(n)
+
+plot(n, fact, type = "b", pch = 19, col = "blue",
+     main = "Crecimiento factorial",
+     xlab = "n", ylab = "n!")
+```
+
+## Simulación
+
+Supóngase que en una línea industrial existen 4 operarios y se desea asignar 2 puestos específicos. Como el orden importa, el número de asignaciones posibles corresponde a una permutación.
+
+```{r}
+operarios <- c("A", "B", "C", "D")
+expand.grid(Puesto1 = operarios, Puesto2 = operarios)
+```
+
+```{r}
+asig <- expand.grid(Puesto1 = operarios, Puesto2 = operarios)
+asig <- asig[asig$Puesto1 != asig$Puesto2, ]
+head(asig)
+nrow(asig)
+```
+
+## Ejercicios propuestos
+
+1. En un laboratorio eléctrico hay 6 equipos disponibles. ¿De cuántas maneras se pueden elegir 3 equipos para inspección?
+2. ¿De cuántas maneras se pueden asignar 3 tareas distintas a 5 estudiantes si el orden importa?
+3. Modele ambos casos en R.
+4. Construya un ejemplo propio de permutaciones en su área de ingeniería.
+5. Construya un ejemplo propio de combinaciones en su área de ingeniería.
+
+## Caso real (ingeniería)
+
+En **ingeniería industrial**, las técnicas de conteo se usan para analizar asignación de tareas, secuencias de operación y combinaciones de recursos.
+
+En **ingeniería civil**, permiten estudiar configuraciones de rutas, ordenamientos de actividades o selección de muestras.
+
+En **ingeniería eléctrica**, se aplican en configuraciones de circuitos, selección de componentes y disposición de dispositivos.
+
+En **energías renovables**, son útiles al estudiar combinaciones de paneles, arreglos de baterías y escenarios de diseño.
+
+## Conclusión
+
+Las técnicas de conteo proporcionan el fundamento combinatorio necesario para calcular probabilidades en espacios muestrales finitos. Su dominio permite construir modelos probabilísticos más complejos con base matemática sólida.
+
+<!--chapter:end:09-bloque2-unidad2-conteo.Rmd-->
 
 # Probabilidad condicionada
 
 ## Concepto teórico
-Definición, independencia y simulación.
 
-<!--chapter:end:10-bloque2-unidad3-prob-condicionada-avanzado.Rmd-->
+La probabilidad condicionada permite calcular la probabilidad de que ocurra un evento sabiendo que otro evento ya ocurrió. Es una herramienta esencial en análisis de confiabilidad, diagnóstico de fallas y toma de decisiones técnicas.
+
+Si \(A\) y \(B\) son eventos y \(P(B)>0\), entonces:
+
+\[
+P(A|B)=\frac{P(A\cap B)}{P(B)}
+\]
+
+Esta expresión se interpreta como “probabilidad de \(A\) dado que \(B\) ocurrió”.
+
+### Independencia
+
+Dos eventos \(A\) y \(B\) son independientes si la ocurrencia de uno no altera la probabilidad del otro:
+
+\[
+P(A|B)=P(A)
+\]
+
+Equivalentemente:
+
+\[
+P(A\cap B)=P(A)P(B)
+\]
+
+### Regla multiplicativa
+
+\[
+P(A\cap B)=P(A|B)P(B)
+\]
+
+Esta relación es muy útil para calcular probabilidades conjuntas en sistemas donde existe dependencia entre eventos.
+
+## Ejemplo aplicado
+
+En una planta industrial:
+
+- \(A\): el motor presenta sobrecalentamiento
+- \(B\): el motor presenta vibración anormal
+
+Supóngase:
+
+\[
+P(A)=0.30,\qquad P(B)=0.25,\qquad P(A\cap B)=0.10
+\]
+
+Entonces:
+
+\[
+P(A|B)=\frac{0.10}{0.25}=0.40
+\]
+
+Es decir, dado que hay vibración anormal, la probabilidad de sobrecalentamiento es 0.40.
+
+## Implementación en R
+
+```{r}
+P_A <- 0.30
+P_B <- 0.25
+P_A_inter_B <- 0.10
+
+P_A_dado_B <- P_A_inter_B / P_B
+P_A_dado_B
+```
+
+### Verificación de independencia
+
+```{r}
+P_A * P_B
+```
+
+```{r}
+P_A_inter_B
+```
+
+## Gráfica
+
+```{r}
+valores <- c(P_A, P_B, P_A_inter_B, P_A_dado_B)
+barplot(valores,
+        names.arg = c("P(A)", "P(B)", "P(A∩B)", "P(A|B)"),
+        col = c("skyblue", "gold", "tomato", "lightgreen"),
+        main = "Probabilidades simples y condicionada",
+        ylab = "Valor")
+```
+
+## Simulación
+
+```{r}
+set.seed(456)
+n <- 1000
+
+vibracion <- rbinom(n, 1, 0.25)
+sobrecal <- ifelse(vibracion == 1, rbinom(n, 1, 0.4), rbinom(n, 1, 0.2))
+
+P_emp_B <- mean(vibracion == 1)
+P_emp_A_inter_B <- mean(vibracion == 1 & sobrecal == 1)
+P_emp_A_dado_B <- P_emp_A_inter_B / P_emp_B
+
+c(P_emp_B = P_emp_B, P_emp_A_inter_B = P_emp_A_inter_B, P_emp_A_dado_B = P_emp_A_dado_B)
+```
+
+## Ejercicios propuestos
+
+1. En una red eléctrica, defina dos eventos relacionados con el funcionamiento del sistema.
+2. Asigne probabilidades simples y conjuntas coherentes.
+3. Calcule la probabilidad condicionada.
+4. Analice si los eventos son independientes.
+5. Simule 500 observaciones en R.
+6. Compare resultados teóricos y empíricos.
+
+## Caso real (ingeniería)
+
+En **ingeniería eléctrica**, la probabilidad condicionada se usa para analizar fallas encadenadas, como sobrecarga y disparo de protección.
+
+En **ingeniería civil**, puede aplicarse a la probabilidad de daño estructural condicionada a un sismo o a precipitación extrema.
+
+En **ingeniería industrial**, se emplea en control de calidad para estudiar defectos condicionados a cambios de lote o de turno.
+
+En **energías renovables**, permite estudiar la probabilidad de baja generación dado un estado meteorológico específico.
+
+## Conclusión
+
+La probabilidad condicionada permite introducir dependencia entre eventos y constituye una base fundamental para el teorema de Bayes, la confiabilidad y la inferencia probabilística.
+
+<!--chapter:end:10-bloque2-unidad3-prob-condicionada.Rmd-->
 
 # Teorema de Bayes
 
 ## Concepto teórico
-Actualización de probabilidades con evidencia.
 
-<!--chapter:end:11-bloque2-unidad4-bayes-avanzado.Rmd-->
+El teorema de Bayes permite actualizar la probabilidad de un evento a partir de nueva información. Es especialmente útil en problemas de diagnóstico, clasificación, mantenimiento predictivo y análisis de confiabilidad.
+
+Si \(A\) y \(B\) son eventos con \(P(B)>0\), entonces:
+
+\[
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+\]
+
+donde:
+- \(P(A)\): probabilidad previa
+- \(P(B|A)\): probabilidad de la evidencia si \(A\) ocurre
+- \(P(B)\): probabilidad total de la evidencia
+- \(P(A|B)\): probabilidad posterior
+
+### Interpretación
+
+Bayes permite pasar de una probabilidad **a priori** a una probabilidad **posterior** luego de observar evidencia.
+
+## Formulación matemática
+
+Si \(A_1, A_2, \dots, A_n\) forman una partición del espacio muestral, entonces:
+
+\[
+P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^{n}P(B|A_j)P(A_j)}
+\]
+
+## Ejemplo aplicado
+
+Supóngase que una falla crítica en un sistema puede deberse a dos fuentes:
+
+- \(A_1\): falla del sensor
+- \(A_2\): falla del actuador
+
+Con:
+- \(P(A_1)=0.35\)
+- \(P(A_2)=0.65\)
+- \(P(B|A_1)=0.80\)
+- \(P(B|A_2)=0.30\)
+
+donde \(B\) es la evidencia de alarma crítica.
+
+## Implementación en R
+
+```{r}
+P_A1 <- 0.35
+P_A2 <- 0.65
+P_B_dado_A1 <- 0.80
+P_B_dado_A2 <- 0.30
+
+P_B <- P_B_dado_A1 * P_A1 + P_B_dado_A2 * P_A2
+P_A1_dado_B <- (P_B_dado_A1 * P_A1) / P_B
+P_A2_dado_B <- (P_B_dado_A2 * P_A2) / P_B
+
+c(P_B = P_B, P_A1_dado_B = P_A1_dado_B, P_A2_dado_B = P_A2_dado_B)
+```
+
+## Gráfica
+
+```{r}
+posteriores <- c(P_A1_dado_B, P_A2_dado_B)
+barplot(posteriores,
+        names.arg = c("Sensor", "Actuador"),
+        col = c("tomato", "steelblue"),
+        main = "Probabilidades posteriores",
+        ylab = "Probabilidad")
+```
+
+## Simulación
+
+```{r}
+set.seed(789)
+n <- 1000
+
+causa <- sample(c("Sensor", "Actuador"), n, replace = TRUE, prob = c(0.35, 0.65))
+alarma <- ifelse(causa == "Sensor",
+                 rbinom(n, 1, 0.80),
+                 rbinom(n, 1, 0.30))
+
+prob_posterior_emp <- mean(causa[alarma == 1] == "Sensor")
+prob_posterior_emp
+```
+
+## Ejercicios propuestos
+
+1. Plantee un caso con dos posibles causas de una falla.
+2. Asigne probabilidades previas y condicionales coherentes.
+3. Aplique el teorema de Bayes.
+4. Interprete la probabilidad posterior.
+5. Simule el problema en R.
+6. Compare los resultados teóricos y empíricos.
+
+## Caso real (ingeniería)
+
+En **ingeniería eléctrica**, Bayes se usa para identificar la causa más probable de una alarma en sistemas de potencia.
+
+En **ingeniería civil**, puede aplicarse al diagnóstico de daño estructural a partir de síntomas observados.
+
+En **ingeniería industrial**, se utiliza en sistemas de inspección y clasificación de defectos.
+
+En **energías renovables**, ayuda a inferir la causa más probable de caída de rendimiento a partir de datos operativos y ambientales.
+
+## Conclusión
+
+El teorema de Bayes es una herramienta poderosa para actualizar decisiones con nueva evidencia. Su importancia en ingeniería radica en que conecta datos observados con diagnóstico técnico y toma de decisiones probabilísticas.
+
+<!--chapter:end:11-bloque2-unidad4-bayes.Rmd-->
 
 # Variables aleatorias
 
 ## Concepto teórico
-Esperanza, varianza y simulación.
 
-<!--chapter:end:12-bloque2-unidad5-variable-aleatoria-avanzado.Rmd-->
+Una variable aleatoria es una función que asigna valores numéricos a los resultados de un experimento aleatorio. Se representa usualmente por \(X\).
 
-# Distribuciones
+### Tipos de variables aleatorias
+
+- **Discreta**: toma valores aislados o contables.
+- **Continua**: puede tomar cualquier valor en un intervalo.
+
+### Función de probabilidad para variable discreta
+
+Si \(X\) es discreta:
+
+\[
+P(X=x_i)=p_i
+\]
+
+con:
+
+\[
+\sum p_i = 1
+\]
+
+### Esperanza matemática
+
+La esperanza o valor esperado de una variable aleatoria discreta es:
+
+\[
+E(X)=\sum x_iP(X=x_i)
+\]
+
+### Varianza
+
+\[
+Var(X)=E(X^2)-[E(X)]^2
+\]
+
+### Desviación estándar
+
+\[
+\sigma = \sqrt{Var(X)}
+\]
+
+## Ejemplo aplicado
+
+Sea \(X\) el número de fallas detectadas en un día en un sistema pequeño. Supóngase:
+
+\[
+X=\{0,1,2,3\}
+\]
+
+con probabilidades:
+
+\[
+P(X)=\{0.30, 0.40, 0.20, 0.10\}
+\]
+
+## Implementación en R
+
+```{r}
+x <- c(0, 1, 2, 3)
+p <- c(0.30, 0.40, 0.20, 0.10)
+
+sum(p)
+```
+
+### Esperanza
+
+```{r}
+E_X <- sum(x * p)
+E_X
+```
+
+### Segundo momento
+
+```{r}
+E_X2 <- sum((x^2) * p)
+E_X2
+```
+
+### Varianza y desviación estándar
+
+```{r}
+Var_X <- E_X2 - E_X^2
+Var_X
+```
+
+```{r}
+sqrt(Var_X)
+```
+
+## Gráfica
+
+```{r}
+barplot(p, names.arg = x, col = "mediumpurple",
+        main = "Distribución de probabilidad de X",
+        xlab = "Número de fallas",
+        ylab = "Probabilidad")
+```
+
+## Simulación
+
+```{r}
+set.seed(654)
+sim_x <- sample(x, size = 1000, replace = TRUE, prob = p)
+
+mean(sim_x)
+var(sim_x)
+```
+
+### Comparación gráfica entre distribución teórica y empírica
+
+```{r}
+tabla_emp <- prop.table(table(sim_x))
+barplot(rbind(p, as.numeric(tabla_emp)),
+        beside = TRUE,
+        names.arg = x,
+        col = c("orange", "lightblue"),
+        main = "Distribución teórica vs empírica",
+        xlab = "X", ylab = "Probabilidad")
+legend("topright", legend = c("Teórica", "Empírica"),
+       fill = c("orange", "lightblue"))
+```
+
+## Ejercicios propuestos
+
+1. Defina una variable aleatoria discreta relacionada con su carrera.
+2. Construya una tabla de probabilidades válida.
+3. Calcule \(E(X)\), \(Var(X)\) y \(\sigma\).
+4. Realice una simulación de 1000 observaciones.
+5. Compare resultados teóricos y simulados.
+
+## Caso real (ingeniería)
+
+En **ingeniería industrial**, una variable aleatoria puede representar defectos por lote, retrasos por jornada o número de paradas de máquina.
+
+En **ingeniería civil**, puede representar el número de fisuras observadas, eventos de sobrecarga o conteos de tránsito.
+
+En **ingeniería eléctrica**, puede modelar número de interrupciones, fallas o alarmas por unidad de tiempo.
+
+En **energías renovables**, puede representar el número de días con baja generación o el número de eventos de desconexión de un sistema.
+
+## Conclusión
+
+Las variables aleatorias permiten pasar del conteo simple a la modelación probabilística cuantitativa. Constituyen la base conceptual para estudiar distribuciones discretas y continuas.
+
+<!--chapter:end:12-bloque2-unidad5-variable-aleatoria.Rmd-->
+
+# Distribuciones de probabilidad
 
 ## Concepto teórico
-Distribuciones binomial y normal con ejemplos.
 
-<!--chapter:end:13-bloque2-unidad6-distribuciones-avanzado.Rmd-->
+Una distribución de probabilidad describe el comportamiento probabilístico de una variable aleatoria. En ingeniería, permite modelar fenómenos aleatorios y estimar la probabilidad de distintos resultados.
+
+## Distribuciones discretas
+
+### Distribución Bernoulli
+
+Describe experimentos con dos resultados posibles: éxito o fracaso.
+
+\[
+P(X=x)=p^x(1-p)^{1-x}, \qquad x\in\{0,1\}
+\]
+
+### Distribución Binomial
+
+Modela el número de éxitos en \(n\) ensayos independientes con probabilidad \(p\) de éxito.
+
+\[
+P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}
+\]
+
+Valor esperado y varianza:
+
+\[
+E(X)=np,\qquad Var(X)=np(1-p)
+\]
+
+## Distribuciones continuas
+
+### Distribución Normal
+
+Es una de las más importantes en estadística e ingeniería. Su función de densidad es:
+
+\[
+f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]
+
+donde:
+- \(\mu\): media
+- \(\sigma\): desviación estándar
+
+## Ejemplo aplicado
+
+### Distribución binomial
+
+Supóngase que la probabilidad de que un panel solar presente una microfalla es \(p=0.10\). Se inspeccionan \(n=8\) paneles y se desea conocer la probabilidad de encontrar exactamente 2 con microfalla.
+
+## Implementación en R
+
+```{r}
+dbinom(2, size = 8, prob = 0.10)
+```
+
+### Probabilidad acumulada binomial
+
+```{r}
+pbinom(2, size = 8, prob = 0.10)
+```
+
+### Esperanza y varianza binomial
+
+```{r}
+n <- 8
+p <- 0.10
+c(Media = n * p, Varianza = n * p * (1 - p))
+```
+
+## Gráfica binomial
+
+```{r}
+k <- 0:8
+prob_bin <- dbinom(k, size = 8, prob = 0.10)
+
+barplot(prob_bin,
+        names.arg = k,
+        col = "lightblue",
+        main = "Distribución binomial",
+        xlab = "Número de paneles con microfalla",
+        ylab = "Probabilidad")
+```
+
+## Ejemplo con distribución normal
+
+Se supone que el voltaje de operación de un sistema sigue una distribución normal con media 220 V y desviación estándar 3 V.
+
+### Probabilidad de que el voltaje sea menor que 218 V
+
+```{r}
+pnorm(218, mean = 220, sd = 3)
+```
+
+### Probabilidad de que el voltaje esté entre 218 V y 223 V
+
+```{r}
+pnorm(223, mean = 220, sd = 3) - pnorm(218, mean = 220, sd = 3)
+```
+
+## Gráfica normal
+
+```{r}
+x <- seq(210, 230, by = 0.1)
+y <- dnorm(x, mean = 220, sd = 3)
+
+plot(x, y, type = "l", lwd = 2, col = "blue",
+     main = "Distribución normal del voltaje",
+     xlab = "Voltaje (V)", ylab = "Densidad")
+abline(v = 220, col = "red", lty = 2)
+```
+
+## Simulación
+
+### Simulación binomial
+
+```{r}
+set.seed(111)
+sim_bin <- rbinom(1000, size = 8, prob = 0.10)
+mean(sim_bin)
+var(sim_bin)
+```
+
+### Simulación normal
+
+```{r}
+set.seed(222)
+sim_norm <- rnorm(1000, mean = 220, sd = 3)
+mean(sim_norm)
+sd(sim_norm)
+```
+
+```{r}
+hist(sim_norm, breaks = 20, col = "lightgray",
+     main = "Simulación normal del voltaje",
+     xlab = "Voltaje (V)")
+```
+
+## Ejercicios propuestos
+
+1. Modele un problema binomial asociado a su carrera.
+2. Calcule probabilidades puntuales y acumuladas.
+3. Modele una variable continua mediante una distribución normal.
+4. Calcule probabilidades con `pnorm()`.
+5. Simule ambas distribuciones en R.
+6. Compare propiedades teóricas y empíricas.
+
+## Caso real (ingeniería)
+
+En **ingeniería industrial**, la distribución binomial puede modelar defectos por lote y la normal, tiempos de producción o dimensiones de piezas.
+
+En **ingeniería civil**, la normal se utiliza para representar resistencia de materiales, cargas o errores de medición.
+
+En **ingeniería eléctrica**, la normal es útil en análisis de voltaje, corriente y errores instrumentales.
+
+En **energías renovables**, la binomial puede modelar eventos discretos de falla y la normal ciertas variaciones continuas alrededor de un valor medio operativo.
+
+## Conclusión
+
+Las distribuciones de probabilidad permiten modelar formalmente variables aleatorias y constituyen una base indispensable para la inferencia estadística, el control de calidad y la confiabilidad en ingeniería.
+
+<!--chapter:end:13-bloque2-unidad6-distribuciones.Rmd-->
 
