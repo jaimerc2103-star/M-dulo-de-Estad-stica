@@ -1012,181 +1012,806 @@ Estas medidas permiten identificar relaciones importantes entre variables y cons
 
 # Fundamentos de probabilidad
 
+## Motivación ingenieril
+
+En la vida diaria y en la ingeniería existen muchas situaciones en las que no se puede saber con certeza qué ocurrirá, pero sí se puede estimar qué tan probable es que ocurra un resultado.
+
+Por ejemplo:
+
+- Antes de lanzar una moneda no sabemos si saldrá cara o sello.
+- Antes de lanzar un dado no sabemos qué número saldrá.
+- Antes de probar un lote de productos no sabemos cuántos estarán defectuosos.
+- Antes de medir la generación solar diaria no sabemos exactamente cuántos kWh se producirán.
+- Antes de operar una máquina no sabemos si funcionará normalmente o presentará una falla.
+
+La **probabilidad** permite estudiar este tipo de situaciones. No elimina la incertidumbre, pero ayuda a medirla y tomar mejores decisiones.
+
+En ingeniería, la probabilidad es importante porque muchos procesos dependen de condiciones variables: clima, materiales, operación humana, fallas de equipos, demanda energética, tránsito vehicular o variaciones de producción.
+
+---
+
+## Resultados de aprendizaje
+
+Al finalizar esta unidad, el estudiante será capaz de:
+
+1. Diferenciar un experimento determinístico de un experimento aleatorio.
+2. Identificar el espacio muestral de un experimento.
+3. Reconocer eventos simples y compuestos.
+4. Calcular probabilidades mediante el enfoque clásico.
+5. Interpretar probabilidades frecuenciales mediante simulación.
+6. Verificar cálculos manuales utilizando R.
+7. Relacionar la probabilidad con problemas cotidianos y de ingeniería.
+
+---
+
 ## Concepto teórico
 
-La probabilidad es una medida numérica que cuantifica la posibilidad de ocurrencia de un evento dentro de un experimento aleatorio. En ingeniería, esta herramienta es esencial para modelar incertidumbre en sistemas eléctricos, fallas mecánicas, variación de demanda, producción energética y comportamiento de procesos industriales.
+La **probabilidad** es una medida numérica que indica qué tan posible es que ocurra un evento.
 
-### Experimento aleatorio
-
-Un experimento aleatorio es un proceso cuyo resultado no puede predecirse con certeza antes de realizarse, aunque se conozcan todos los resultados posibles.
-
-### Espacio muestral
-
-El espacio muestral es el conjunto de todos los resultados posibles del experimento:
+Su valor siempre se encuentra entre 0 y 1:
 
 \[
-S = \{\omega_1, \omega_2, \dots, \omega_n\}
+0 \leq P(A) \leq 1
 \]
 
-### Evento
+Donde:
 
-Un evento es cualquier subconjunto del espacio muestral:
+- \(P(A)=0\): el evento es imposible.
+- \(P(A)=1\): el evento es seguro.
+- \(0<P(A)<1\): el evento puede ocurrir, pero no con certeza.
+
+También se puede expresar en porcentaje:
 
 \[
-A \subseteq S
+P(A)=0.25 = 25\%
 \]
 
-### Definición clásica de probabilidad
+---
 
-Cuando todos los resultados son igualmente probables:
+## Experimento aleatorio
+
+Un **experimento aleatorio** es un proceso cuyo resultado no se puede predecir con certeza antes de realizarlo.
+
+### Ejemplos cotidianos
+
+| Experimento | Resultado posible |
+|---|---|
+| Lanzar una moneda | Cara o sello |
+| Lanzar un dado | 1, 2, 3, 4, 5 o 6 |
+| Elegir una carta | Cualquier carta de la baraja |
+| Revisar un foco | Funciona o no funciona |
+| Observar el clima | Soleado, nublado o lluvioso |
+
+### Ejemplos en ingeniería
+
+| Carrera | Experimento aleatorio |
+|---|---|
+| Ingeniería Civil | Ensayar una probeta y observar si supera la resistencia mínima |
+| Ingeniería Eléctrica | Observar si el voltaje se mantiene dentro del rango permitido |
+| Ingeniería Industrial | Revisar si una pieza producida es defectuosa |
+| Energías Renovables | Observar si la generación diaria supera cierto valor |
+
+---
+
+## Espacio muestral
+
+El **espacio muestral** es el conjunto de todos los resultados posibles de un experimento aleatorio. Se representa con la letra \(S\).
+
+\[
+S = \{\text{todos los resultados posibles}\}
+\]
+
+### Ejemplo 1: lanzamiento de una moneda
+
+\[
+S = \{\text{Cara}, \text{Sello}\}
+\]
+
+Hay 2 resultados posibles.
+
+### Ejemplo 2: lanzamiento de un dado
+
+\[
+S = \{1,2,3,4,5,6\}
+\]
+
+Hay 6 resultados posibles.
+
+### Ejemplo 3: estado de una máquina
+
+\[
+S = \{\text{Normal}, \text{Falla leve}, \text{Falla crítica}\}
+\]
+
+Hay 3 estados posibles.
+
+---
+
+## Evento
+
+Un **evento** es un subconjunto del espacio muestral. Es decir, es uno o varios resultados que nos interesa estudiar.
+
+Se suele representar con letras mayúsculas como \(A\), \(B\), \(C\).
+
+### Ejemplo con un dado
+
+Espacio muestral:
+
+\[
+S = \{1,2,3,4,5,6\}
+\]
+
+Evento \(A\): obtener un número par.
+
+\[
+A = \{2,4,6\}
+\]
+
+Evento \(B\): obtener un número mayor que 4.
+
+\[
+B = \{5,6\}
+\]
+
+Evento \(C\): obtener el número 3.
+
+\[
+C = \{3\}
+\]
+
+---
+
+## Tipos de eventos
+
+### Evento simple
+
+Tiene un solo resultado.
+
+Ejemplo:
+
+\[
+A = \{3\}
+\]
+
+Obtener el número 3 al lanzar un dado.
+
+### Evento compuesto
+
+Tiene más de un resultado.
+
+Ejemplo:
+
+\[
+B = \{2,4,6\}
+\]
+
+Obtener un número par al lanzar un dado.
+
+### Evento seguro
+
+Es el evento que siempre ocurre.
+
+\[
+S = \{1,2,3,4,5,6\}
+\]
+
+Al lanzar un dado, obtener un número entre 1 y 6 es seguro.
+
+### Evento imposible
+
+Es un evento que no puede ocurrir.
+
+Ejemplo:
+
+Obtener un 8 al lanzar un dado común.
+
+\[
+A = \emptyset
+\]
+
+---
+
+## Formulación matemática
+
+Cuando todos los resultados son igualmente probables, se usa la definición clásica:
 
 \[
 P(A)=\frac{n(A)}{n(S)}
 \]
 
-donde:
+Donde:
+
+- \(P(A)\): probabilidad del evento \(A\)
 - \(n(A)\): número de casos favorables
-- \(n(S)\): número de casos posibles
+- \(n(S)\): número total de casos posibles
 
-### Enfoque frecuentista
+---
 
-Si un experimento se repite muchas veces, la probabilidad puede aproximarse por la frecuencia relativa:
+## Ejemplo resuelto 1: lanzamiento de un dado
 
-\[
-P(A)\approx \frac{f_A}{n}
-\]
+### Problema
 
-donde \(f_A\) es el número de veces que ocurre el evento y \(n\) el total de repeticiones.
+Se lanza un dado común de seis caras. Calcular la probabilidad de obtener un número par.
 
-### Axiomas básicos
-
-- \(0 \leq P(A) \leq 1\)
-- \(P(S)=1\)
-- \(P(\emptyset)=0\)
-- \(P(A^c)=1-P(A)\)
-
-## Formulación matemática
-
-### Unión de eventos
+### Paso 1: definir el espacio muestral
 
 \[
-P(A\cup B)=P(A)+P(B)-P(A\cap B)
+S = \{1,2,3,4,5,6\}
 \]
 
-### Complemento
+Por lo tanto:
+
+\[
+n(S)=6
+\]
+
+### Paso 2: definir el evento
+
+Evento \(A\): obtener un número par.
+
+\[
+A = \{2,4,6\}
+\]
+
+Por lo tanto:
+
+\[
+n(A)=3
+\]
+
+### Paso 3: aplicar la fórmula
+
+\[
+P(A)=\frac{n(A)}{n(S)}
+\]
+
+\[
+P(A)=\frac{3}{6}
+\]
+
+\[
+P(A)=0.5
+\]
+
+### Interpretación
+
+La probabilidad de obtener un número par al lanzar un dado es:
+
+\[
+0.5 = 50\%
+\]
+
+Esto significa que, en condiciones ideales, aproximadamente la mitad de los lanzamientos producirán un número par.
+
+---
+
+## Verificación en R
+
+```{r}
+dado <- 1:6
+evento_par <- dado[dado %% 2 == 0]
+
+prob_par <- length(evento_par) / length(dado)
+prob_par
+```
+
+---
+
+## Ejemplo resuelto 2: selección de una pieza defectuosa
+
+### Problema
+
+En una caja hay 10 piezas, de las cuales 2 son defectuosas. Si se selecciona una pieza al azar, ¿cuál es la probabilidad de que sea defectuosa?
+
+### Paso 1: identificar los casos posibles
+
+Hay 10 piezas en total:
+
+\[
+n(S)=10
+\]
+
+### Paso 2: identificar los casos favorables
+
+Hay 2 piezas defectuosas:
+
+\[
+n(A)=2
+\]
+
+### Paso 3: calcular la probabilidad
+
+\[
+P(A)=\frac{2}{10}
+\]
+
+\[
+P(A)=0.2
+\]
+
+\[
+P(A)=20\%
+\]
+
+### Interpretación
+
+La probabilidad de seleccionar una pieza defectuosa es del 20%.
+
+En ingeniería industrial, este tipo de cálculo permite estimar riesgos de calidad en una línea de producción.
+
+---
+
+## Verificación en R
+
+```{r}
+total_piezas <- 10
+defectuosas <- 2
+
+prob_defectuosa <- defectuosas / total_piezas
+prob_defectuosa
+```
+
+---
+
+## Ejemplo resuelto 3: estado de un sistema eléctrico
+
+### Problema
+
+Un sistema eléctrico puede encontrarse en tres estados:
+
+\[
+S = \{\text{Normal}, \text{Falla leve}, \text{Falla crítica}\}
+\]
+
+Si se considera que los tres estados son igualmente probables, calcular la probabilidad de que el sistema esté en falla.
+
+### Paso 1: espacio muestral
+
+\[
+S = \{\text{Normal}, \text{Falla leve}, \text{Falla crítica}\}
+\]
+
+\[
+n(S)=3
+\]
+
+### Paso 2: evento de interés
+
+Evento \(A\): el sistema está en falla.
+
+\[
+A = \{\text{Falla leve}, \text{Falla crítica}\}
+\]
+
+\[
+n(A)=2
+\]
+
+### Paso 3: cálculo
+
+\[
+P(A)=\frac{2}{3}
+\]
+
+\[
+P(A)=0.6667
+\]
+
+\[
+P(A)=66.67\%
+\]
+
+### Interpretación
+
+Bajo el supuesto de estados igualmente probables, existe una probabilidad de 66.67% de que el sistema esté en algún tipo de falla.
+
+En la práctica real, los estados no siempre son igualmente probables; por eso se utilizan datos históricos o simulaciones.
+
+---
+
+## Verificación en R
+
+```{r}
+estados <- c("Normal", "Falla leve", "Falla crítica")
+fallas <- c("Falla leve", "Falla crítica")
+
+prob_falla <- length(fallas) / length(estados)
+prob_falla
+```
+
+---
+
+## Enfoque frecuencial de la probabilidad
+
+La probabilidad también puede entenderse como la frecuencia relativa de ocurrencia de un evento cuando el experimento se repite muchas veces.
+
+\[
+P(A) \approx \frac{f_A}{n}
+\]
+
+Donde:
+
+- \(f_A\): número de veces que ocurrió el evento
+- \(n\): número total de repeticiones
+
+Mientras más veces se repite el experimento, la frecuencia relativa tiende a estabilizarse.
+
+---
+
+## Simulación 1: lanzamiento de una moneda
+
+Supongamos que lanzamos una moneda 20 veces.
+
+```{r}
+set.seed(123)
+
+moneda <- c("Cara", "Sello")
+lanzamientos <- sample(moneda, size = 20, replace = TRUE)
+
+lanzamientos
+```
+
+### Tabla de frecuencias
+
+```{r}
+tabla_moneda <- table(lanzamientos)
+tabla_moneda
+```
+
+### Frecuencias relativas
+
+```{r}
+prop.table(tabla_moneda)
+```
+
+---
+
+## Gráfica de resultados
+
+```{r}
+barplot(prop.table(tabla_moneda),
+        col = c("lightblue", "lightgreen"),
+        main = "Frecuencia relativa en 20 lanzamientos",
+        ylab = "Frecuencia relativa")
+```
+
+---
+
+## Simulación 2: muchos lanzamientos
+
+Ahora lanzamos la moneda 1000 veces y observamos cómo se aproxima a 0.5.
+
+```{r}
+set.seed(123)
+
+n <- 1000
+lanzamientos <- sample(moneda, size = n, replace = TRUE)
+cara <- ifelse(lanzamientos == "Cara", 1, 0)
+
+frecuencia_relativa <- cumsum(cara) / (1:n)
+
+plot(frecuencia_relativa,
+     type = "l",
+     col = "blue",
+     lwd = 2,
+     main = "Estabilización de la probabilidad de obtener cara",
+     xlab = "Número de lanzamientos",
+     ylab = "Frecuencia relativa")
+abline(h = 0.5, col = "red", lwd = 2, lty = 2)
+legend("topright",
+       legend = c("Frecuencia relativa", "Probabilidad teórica"),
+       col = c("blue", "red"),
+       lty = c(1,2),
+       lwd = 2)
+```
+
+### Interpretación
+
+Al inicio, la frecuencia relativa puede variar mucho. Sin embargo, a medida que aumentan los lanzamientos, la proporción de caras tiende a acercarse a 0.5.
+
+Este comportamiento es fundamental para comprender por qué la probabilidad se relaciona con la repetición de experimentos.
+
+---
+
+## Operaciones básicas con eventos
+
+### Complemento de un evento
+
+El complemento de un evento \(A\) es el evento que ocurre cuando \(A\) no ocurre.
 
 \[
 P(A^c)=1-P(A)
 \]
 
-### Eventos mutuamente excluyentes
+### Ejemplo
 
-Si \(A\cap B=\emptyset\), entonces:
-
-\[
-P(A\cup B)=P(A)+P(B)
-\]
-
-## Ejemplo aplicado
-
-Se analiza el estado diario de un sistema de distribución eléctrica. El sistema puede estar en uno de tres estados:
-
-- Normal
-- Falla leve
-- Falla crítica
-
-```{r}
-estados <- c("Normal", "Falla leve", "Falla crítica")
-estados
-```
-
-Supóngase inicialmente que los tres estados son equiprobables. Entonces, la probabilidad de falla leve es:
+Si la probabilidad de que una pieza sea defectuosa es:
 
 \[
-P(\text{Falla leve})=\frac{1}{3}
+P(A)=0.2
 \]
 
-## Implementación en R
+Entonces la probabilidad de que no sea defectuosa es:
 
-### Simulación simple
+\[
+P(A^c)=1-0.2
+\]
 
-```{r}
-set.seed(123)
-sim <- sample(estados, size = 60, replace = TRUE)
-head(sim)
-```
+\[
+P(A^c)=0.8
+\]
 
-### Frecuencias absolutas y relativas
-
-```{r}
-tabla <- table(sim)
-tabla
-```
+### Verificación en R
 
 ```{r}
-prob_emp <- prop.table(tabla)
-prob_emp
+p_defectuosa <- 0.2
+p_no_defectuosa <- 1 - p_defectuosa
+
+p_no_defectuosa
 ```
 
-### Probabilidad del complemento
+---
+
+## Unión de eventos
+
+La unión de dos eventos \(A\) y \(B\) representa que ocurra \(A\), o \(B\), o ambos.
+
+\[
+P(A \cup B)=P(A)+P(B)-P(A\cap B)
+\]
+
+### Ejemplo cotidiano
+
+En una clase:
+
+- 40% de estudiantes usa laptop.
+- 30% usa tablet.
+- 10% usa ambos dispositivos.
+
+¿Cuál es la probabilidad de que un estudiante use laptop o tablet?
+
+\[
+P(A \cup B)=0.40+0.30-0.10
+\]
+
+\[
+P(A \cup B)=0.60
+\]
+
+### Interpretación
+
+Existe un 60% de probabilidad de que un estudiante use laptop o tablet.
+
+### Verificación en R
 
 ```{r}
-p_normal <- prob_emp["Normal"]
-1 - p_normal
+p_laptop <- 0.40
+p_tablet <- 0.30
+p_ambos <- 0.10
+
+p_laptop_o_tablet <- p_laptop + p_tablet - p_ambos
+p_laptop_o_tablet
 ```
 
-## Gráfica
+---
+
+## Ejercicio guiado
+
+En una empresa industrial se revisan 50 motores:
+
+- 8 presentan falla eléctrica.
+- 5 presentan falla mecánica.
+- 2 presentan ambos tipos de falla.
+
+Calcular:
+
+1. La probabilidad de falla eléctrica.
+2. La probabilidad de falla mecánica.
+3. La probabilidad de que un motor tenga falla eléctrica o mecánica.
+4. La probabilidad de que no tenga ninguna de estas fallas.
+
+---
+
+## Solución del ejercicio guiado
+
+### Datos
+
+\[
+n(S)=50
+\]
+
+Falla eléctrica:
+
+\[
+n(E)=8
+\]
+
+Falla mecánica:
+
+\[
+n(M)=5
+\]
+
+Ambas fallas:
+
+\[
+n(E\cap M)=2
+\]
+
+### Probabilidad de falla eléctrica
+
+\[
+P(E)=\frac{8}{50}=0.16
+\]
+
+### Probabilidad de falla mecánica
+
+\[
+P(M)=\frac{5}{50}=0.10
+\]
+
+### Probabilidad de falla eléctrica o mecánica
+
+\[
+P(E\cup M)=P(E)+P(M)-P(E\cap M)
+\]
+
+\[
+P(E\cup M)=0.16+0.10-\frac{2}{50}
+\]
+
+\[
+P(E\cup M)=0.16+0.10-0.04
+\]
+
+\[
+P(E\cup M)=0.22
+\]
+
+### Probabilidad de no tener falla
+
+\[
+P((E\cup M)^c)=1-P(E\cup M)
+\]
+
+\[
+P((E\cup M)^c)=1-0.22
+\]
+
+\[
+P((E\cup M)^c)=0.78
+\]
+
+---
+
+## Verificación del ejercicio en R
 
 ```{r}
-barplot(prob_emp,
-        col = c("lightgreen", "gold", "tomato"),
-        main = "Probabilidad empírica de estados del sistema",
-        ylab = "Probabilidad")
+total <- 50
+electrica <- 8
+mecanica <- 5
+ambas <- 2
+
+p_electrica <- electrica / total
+p_mecanica <- mecanica / total
+p_ambas <- ambas / total
+
+p_union <- p_electrica + p_mecanica - p_ambas
+p_sin_falla <- 1 - p_union
+
+c(p_electrica = p_electrica,
+  p_mecanica = p_mecanica,
+  p_union = p_union,
+  p_sin_falla = p_sin_falla)
 ```
 
-## Simulación
+---
 
-A medida que aumenta el número de simulaciones, la frecuencia relativa tiende a estabilizarse.
+## Actividad práctica
 
-```{r}
-set.seed(321)
-n <- 500
-sim2 <- sample(estados, size = n, replace = TRUE, prob = c(0.7, 0.2, 0.1))
-ind_falla <- ifelse(sim2 == "Falla crítica", 1, 0)
-freq_rel <- cumsum(ind_falla) / (1:n)
+Seleccione uno de los siguientes contextos y construya un problema de probabilidad:
 
-plot(freq_rel, type = "l", col = "red", lwd = 2,
-     main = "Estabilización de la frecuencia relativa",
-     xlab = "Número de simulaciones",
-     ylab = "Frecuencia relativa de falla crítica")
-abline(h = 0.1, col = "blue", lty = 2, lwd = 2)
-legend("topright", legend = c("Frecuencia relativa", "Probabilidad teórica"),
-       col = c("red", "blue"), lty = c(1, 2), lwd = 2)
-```
+1. Resistencia de probetas de hormigón.
+2. Fallas en un circuito eléctrico.
+3. Productos defectuosos en una línea industrial.
+4. Días de baja generación solar.
+5. Congestión vehicular en una vía.
 
-## Ejercicios propuestos
+Para su problema:
 
-1. Defina un experimento aleatorio asociado a una carrera de ingeniería de su interés.
-2. Escriba su espacio muestral.
-3. Defina tres eventos.
-4. Calcule probabilidades teóricas para un caso simple.
-5. Simule el experimento en R con 100 repeticiones.
-6. Compare las probabilidades teóricas y empíricas.
-7. Interprete el resultado desde la perspectiva de la incertidumbre del sistema.
+- Defina el experimento aleatorio.
+- Determine el espacio muestral.
+- Defina al menos dos eventos.
+- Calcule probabilidades manualmente.
+- Verifique los resultados en R.
+- Interprete técnicamente.
 
-## Caso real (ingeniería)
+---
 
-En **ingeniería eléctrica**, la probabilidad se emplea para estimar la ocurrencia de fallas en líneas, transformadores o tableros.
+## Aplicaciones por carrera
 
-En **ingeniería civil**, permite modelar la ocurrencia de eventos como sobrecargas, tránsito alto o niveles de precipitación.
+### Ingeniería Civil
 
-En **ingeniería industrial**, se usa para estudiar defectos de fabricación, retrasos de producción o interrupciones de proceso.
+La probabilidad puede utilizarse para analizar la posibilidad de que una muestra de hormigón no alcance la resistencia mínima requerida.
 
-En **energías renovables**, es clave para representar la variabilidad del viento, la radiación solar y el estado operativo de equipos.
+Ejemplo:
 
-## Conclusión
+Si de 20 probetas, 3 no cumplen la resistencia mínima:
 
-La probabilidad constituye la base del análisis bajo incertidumbre. Comprender sus conceptos elementales es fundamental para avanzar hacia probabilidad condicionada, distribuciones y modelos de decisión en ingeniería.
+\[
+P(\text{No cumple})=\frac{3}{20}=0.15
+\]
+
+Esto indica que el 15% de las probetas evaluadas presenta incumplimiento.
+
+### Ingeniería Eléctrica
+
+Permite estimar la probabilidad de falla en componentes eléctricos, variaciones de voltaje o interrupciones del servicio.
+
+Ejemplo:
+
+Si en 100 mediciones, 12 presentan voltaje fuera de rango:
+
+\[
+P(\text{Fuera de rango})=\frac{12}{100}=0.12
+\]
+
+### Ingeniería Industrial
+
+Se usa en control de calidad, análisis de defectos y confiabilidad de procesos.
+
+Ejemplo:
+
+Si 25 de 500 piezas son defectuosas:
+
+\[
+P(\text{Defectuosa})=\frac{25}{500}=0.05
+\]
+
+### Energías Renovables
+
+Permite evaluar la probabilidad de baja generación solar o eólica.
+
+Ejemplo:
+
+Si en 30 días, 6 días presentan generación menor al valor esperado:
+
+\[
+P(\text{Baja generación})=\frac{6}{30}=0.20
+\]
+
+---
+
+## Preguntas de autoevaluación
+
+1. ¿Qué diferencia existe entre experimento aleatorio y experimento determinístico?
+2. ¿Qué es el espacio muestral?
+3. ¿Qué diferencia hay entre evento simple y evento compuesto?
+4. ¿Qué significa que \(P(A)=0\)?
+5. ¿Qué significa que \(P(A)=1\)?
+6. ¿Cómo se calcula la probabilidad clásica?
+7. ¿Qué representa el complemento de un evento?
+8. ¿Para qué sirve la unión de eventos?
+9. ¿Por qué la simulación ayuda a entender la probabilidad?
+10. Mencione una aplicación de probabilidad en su carrera.
+
+---
+
+## Resumen de la unidad
+
+La probabilidad permite medir la incertidumbre asociada a eventos aleatorios. Sus conceptos básicos incluyen experimento aleatorio, espacio muestral, evento, probabilidad clásica, probabilidad frecuencial, complemento y unión de eventos.
+
+En esta unidad se resolvieron ejemplos manuales y se verificaron los resultados con R. También se mostró cómo la simulación permite observar el comportamiento de la frecuencia relativa cuando un experimento se repite muchas veces.
+
+La probabilidad es una herramienta fundamental para la ingeniería porque permite analizar riesgos, fallas, variabilidad y toma de decisiones bajo incertidumbre.
+
+---
+
+## Bibliografía sugerida
+
+- Devore, J. L. (2008). *Probabilidad y estadística para ingeniería y ciencias*. Cengage Learning.
+- Montgomery, D. C., & Runger, G. C. (2016). *Probabilidad y estadística aplicada a la ingeniería*. Limusa.
+- OpenStax. (2023). *Introducción a la estadística*. Rice University.
 
 <!--chapter:end:08-bloque2-unidad1-fundamentos.Rmd-->
 
