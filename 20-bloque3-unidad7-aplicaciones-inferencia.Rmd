@@ -1,0 +1,162 @@
+# Aplicaciones de inferencia estadística en ingeniería
+
+## Concepto teórico
+
+La inferencia estadística permite aplicar estimación, intervalos de confianza y pruebas de hipótesis a problemas reales de ingeniería. Su valor principal está en convertir datos muestrales en decisiones técnicas justificadas.
+
+Esta unidad integra los conceptos del bloque:
+
+- estimación puntual,
+- intervalos de confianza,
+- pruebas de hipótesis,
+- p-valor,
+- comparación de medias.
+
+## Caso integrador 1: control de calidad industrial
+
+Una línea de producción fabrica piezas cuyo peso objetivo es 15.5 kg. Se toma una muestra:
+
+```{r}
+peso <- c(15.2, 15.5, 15.1, 15.6, 15.3, 15.4,
+          15.2, 15.7, 15.3, 15.5, 15.4, 15.6)
+peso
+```
+
+### Estimación puntual
+
+```{r}
+mean(peso)
+sd(peso)
+```
+
+### Intervalo de confianza
+
+```{r}
+t.test(peso, conf.level = 0.95)$conf.int
+```
+
+### Prueba de hipótesis
+
+\[
+H_0: \mu = 15.5
+\]
+
+\[
+H_1: \mu \neq 15.5
+\]
+
+```{r}
+t.test(peso, mu = 15.5)
+```
+
+## Gráfica
+
+```{r}
+hist(peso,
+     col = "lightblue",
+     border = "white",
+     main = "Distribución del peso de piezas",
+     xlab = "Peso (kg)")
+abline(v = mean(peso), col = "red", lwd = 2)
+abline(v = 15.5, col = "blue", lwd = 2, lty = 2)
+legend("topright",
+       legend = c("Media muestral", "Valor objetivo"),
+       col = c("red", "blue"),
+       lwd = 2,
+       lty = c(1,2))
+```
+
+## Caso integrador 2: comparación de sistemas energéticos
+
+Se compara la generación diaria de dos sistemas renovables:
+
+```{r}
+sistema_A <- c(510, 515, 520, 518, 522, 519, 521, 517, 523, 520)
+sistema_B <- c(505, 508, 512, 510, 511, 509, 513, 507, 514, 510)
+
+t.test(sistema_A, sistema_B)
+```
+
+## Gráfica comparativa
+
+```{r}
+datos <- data.frame(
+  generacion = c(sistema_A, sistema_B),
+  sistema = rep(c("Sistema A", "Sistema B"), each = 10)
+)
+
+boxplot(generacion ~ sistema,
+        data = datos,
+        col = c("lightgreen", "lightyellow"),
+        main = "Comparación de sistemas energéticos",
+        ylab = "Generación diaria (kWh)")
+```
+
+## Simulación
+
+Se simula el comportamiento de una línea de producción bajo condiciones normales y alteradas.
+
+```{r}
+set.seed(321)
+
+normal <- rnorm(100, mean = 15.5, sd = 0.2)
+alterado <- rnorm(100, mean = 15.2, sd = 0.2)
+
+mean(normal)
+mean(alterado)
+```
+
+```{r}
+boxplot(normal, alterado,
+        names = c("Normal", "Alterado"),
+        col = c("lightblue", "tomato"),
+        main = "Comparación de escenarios simulados",
+        ylab = "Peso (kg)")
+```
+
+```{r}
+t.test(normal, alterado)
+```
+
+## Ejercicio propuesto
+
+Seleccione un problema de su carrera:
+
+- resistencia de materiales,
+- voltaje de una red,
+- producción industrial,
+- generación solar,
+- consumo energético,
+- tiempos de operación.
+
+Realice:
+
+1. Plantee una pregunta técnica.
+2. Proponga una muestra de datos.
+3. Calcule una estimación puntual.
+4. Construya un intervalo de confianza.
+5. Plantee una prueba de hipótesis.
+6. Interprete el p-valor.
+7. Redacte una conclusión técnica.
+
+## Caso real por carrera
+
+### Ingeniería civil
+
+Validación de resistencia media de hormigón frente a una especificación normativa.
+
+### Ingeniería eléctrica
+
+Evaluación de estabilidad de voltaje respecto a un valor nominal.
+
+### Ingeniería industrial
+
+Control de peso, dimensión o tiempo de proceso en una línea de producción.
+
+### Energías renovables
+
+Comparación de generación entre dos sistemas fotovoltaicos o eólicos.
+
+## Conclusión
+
+La inferencia estadística aplicada permite fundamentar decisiones técnicas mediante datos. En ingeniería, su correcta aplicación mejora la confiabilidad de diagnósticos, validaciones, comparaciones y procesos de control.

@@ -1,0 +1,156 @@
+# Pruebas de hipótesis
+
+## Concepto teórico
+
+Una prueba de hipótesis es un procedimiento estadístico que permite evaluar una afirmación sobre un parámetro poblacional utilizando evidencia muestral. En ingeniería, se usa para verificar si un proceso cumple una especificación, si un material alcanza una resistencia mínima o si un sistema opera dentro de valores esperados.
+
+### Hipótesis nula
+
+La hipótesis nula se representa como:
+
+\[
+H_0
+\]
+
+Generalmente expresa una condición de igualdad, referencia o ausencia de cambio.
+
+### Hipótesis alternativa
+
+La hipótesis alternativa se representa como:
+
+\[
+H_1
+\]
+
+Expresa la afirmación que se desea evaluar frente a la hipótesis nula.
+
+### Nivel de significancia
+
+El nivel de significancia se denota por \(\alpha\). Representa la probabilidad máxima aceptada de rechazar \(H_0\) cuando en realidad es verdadera.
+
+Valores frecuentes:
+
+- \(\alpha = 0.10\)
+- \(\alpha = 0.05\)
+- \(\alpha = 0.01\)
+
+## Formulación matemática
+
+### Prueba para una media con desviación poblacional desconocida
+
+\[
+t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+\]
+
+donde:
+
+- \(\bar{x}\): media muestral
+- \(\mu_0\): valor hipotético de la media
+- \(s\): desviación estándar muestral
+- \(n\): tamaño de la muestra
+
+## Ejemplo aplicado
+
+Una empresa de producción indica que el tiempo promedio de ensamblaje de una pieza es de 50 minutos. Se registra una muestra de tiempos:
+
+```{r}
+tiempos <- c(48, 51, 49, 52, 50, 47, 49, 51, 50, 48, 52, 49)
+tiempos
+```
+
+Se desea evaluar si el tiempo promedio difiere de 50 minutos.
+
+\[
+H_0: \mu = 50
+\]
+
+\[
+H_1: \mu \neq 50
+\]
+
+## Implementación en R
+
+### Estadísticos básicos
+
+```{r}
+mean(tiempos)
+sd(tiempos)
+length(tiempos)
+```
+
+### Prueba t para una muestra
+
+```{r}
+t.test(tiempos, mu = 50, alternative = "two.sided")
+```
+
+## Gráfica
+
+```{r}
+hist(tiempos,
+     col = "lightblue",
+     border = "white",
+     main = "Distribución de tiempos de ensamblaje",
+     xlab = "Tiempo (min)")
+abline(v = mean(tiempos), col = "red", lwd = 2)
+abline(v = 50, col = "blue", lwd = 2, lty = 2)
+legend("topright",
+       legend = c("Media muestral", "Valor hipotético"),
+       col = c("red", "blue"),
+       lwd = 2,
+       lty = c(1,2))
+```
+
+## Simulación
+
+Simulamos muestras bajo la hipótesis nula \(\mu = 50\) para observar la variabilidad del estadístico.
+
+```{r}
+set.seed(123)
+
+B <- 500
+n <- 12
+t_est <- numeric(B)
+
+for(i in 1:B){
+  muestra <- rnorm(n, mean = 50, sd = 2)
+  t_est[i] <- (mean(muestra) - 50) / (sd(muestra) / sqrt(n))
+}
+
+hist(t_est,
+     col = "lightgray",
+     border = "white",
+     main = "Distribución simulada del estadístico t",
+     xlab = "t")
+```
+
+## Ejercicio propuesto
+
+Una especificación técnica indica que el voltaje promedio debe ser 220 V. Se toma la muestra:
+
+```{r eval=FALSE}
+voltaje <- c(219, 221, 220, 222, 218, 223,
+             221, 220, 219, 222, 221, 220)
+```
+
+Realice:
+
+1. Plantee \(H_0\) y \(H_1\).
+2. Ejecute la prueba t en R.
+3. Interprete el p-valor.
+4. Concluya con \(\alpha = 0.05\).
+5. Explique la implicación técnica del resultado.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, las pruebas de hipótesis permiten verificar si la resistencia media de un material cumple una norma.
+
+En **ingeniería eléctrica**, se usan para comprobar si el voltaje medio difiere de un valor nominal.
+
+En **ingeniería industrial**, permiten validar si el tiempo promedio de proceso cumple especificaciones.
+
+En **energías renovables**, ayudan a evaluar si la generación media observada difiere de la esperada.
+
+## Conclusión
+
+Las pruebas de hipótesis permiten tomar decisiones estadísticas con base en evidencia muestral. Son fundamentales para validar especificaciones, comparar resultados y sustentar decisiones técnicas.

@@ -1,0 +1,131 @@
+# Comparación de medias
+
+## Concepto teórico
+
+La comparación de medias permite evaluar si dos grupos o sistemas presentan diferencias estadísticamente significativas. En ingeniería, esto es útil para comparar métodos constructivos, tecnologías, líneas de producción, configuraciones eléctricas o sistemas energéticos.
+
+Existen diferentes escenarios:
+
+- Comparación de una media contra un valor de referencia.
+- Comparación de dos medias independientes.
+- Comparación de medias pareadas.
+
+## Formulación matemática
+
+### Prueba t para dos muestras independientes
+
+Cuando se comparan dos grupos independientes:
+
+\[
+t = \frac{\bar{x}_1-\bar{x}_2}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}
+\]
+
+donde:
+
+- \(\bar{x}_1, \bar{x}_2\): medias muestrales
+- \(s_1^2, s_2^2\): varianzas muestrales
+- \(n_1, n_2\): tamaños muestrales
+
+## Ejemplo aplicado
+
+Se desea comparar la generación diaria de dos sistemas fotovoltaicos:
+
+```{r}
+sistema_A <- c(510, 515, 520, 518, 522, 519, 521, 517, 523, 520)
+sistema_B <- c(505, 508, 512, 510, 511, 509, 513, 507, 514, 510)
+
+datos <- data.frame(
+  generacion = c(sistema_A, sistema_B),
+  sistema = rep(c("Sistema A", "Sistema B"), each = 10)
+)
+
+datos
+```
+
+## Implementación en R
+
+### Estadísticos descriptivos
+
+```{r}
+tapply(datos$generacion, datos$sistema, mean)
+```
+
+```{r}
+tapply(datos$generacion, datos$sistema, sd)
+```
+
+### Prueba t para dos muestras independientes
+
+```{r}
+t.test(sistema_A, sistema_B, alternative = "two.sided")
+```
+
+## Gráfica
+
+```{r}
+boxplot(generacion ~ sistema,
+        data = datos,
+        col = c("lightblue", "lightgreen"),
+        main = "Comparación de generación entre sistemas",
+        xlab = "Sistema",
+        ylab = "Generación diaria (kWh)")
+```
+
+## Simulación
+
+Simulación de dos sistemas con medias distintas para observar el comportamiento de los p-valores.
+
+```{r}
+set.seed(123)
+
+B <- 500
+pvalores <- numeric(B)
+
+for(i in 1:B){
+  A <- rnorm(10, mean = 520, sd = 5)
+  B_sys <- rnorm(10, mean = 510, sd = 5)
+  pvalores[i] <- t.test(A, B_sys)$p.value
+}
+
+mean(pvalores < 0.05)
+```
+
+```{r}
+hist(pvalores,
+     col = "lightgray",
+     border = "white",
+     main = "p-valores en comparación de medias",
+     xlab = "p-valor")
+abline(v = 0.05, col = "red", lwd = 2)
+```
+
+## Ejercicio propuesto
+
+Se comparan dos mezclas de hormigón mediante sus resistencias a compresión:
+
+```{r eval=FALSE}
+mezcla_A <- c(25.1, 25.5, 25.3, 25.8, 26.0, 25.7, 25.6, 25.4)
+mezcla_B <- c(24.2, 24.6, 24.5, 24.8, 24.9, 24.7, 24.4, 24.6)
+```
+
+Realice:
+
+1. Calcule medias y desviaciones estándar.
+2. Construya diagramas de caja.
+3. Ejecute una prueba t.
+4. Interprete el p-valor.
+5. Concluya si existe diferencia significativa.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, se comparan resistencias entre mezclas o métodos constructivos.
+
+En **ingeniería eléctrica**, se comparan niveles de pérdidas entre dos configuraciones de red.
+
+En **ingeniería industrial**, se comparan tiempos de producción entre dos líneas.
+
+En **energías renovables**, se compara la generación entre dos tecnologías o configuraciones.
+
+## Conclusión
+
+La comparación de medias es una herramienta estadística clave para evaluar diferencias entre sistemas, procesos o tratamientos. Su aplicación permite sustentar decisiones técnicas basadas en evidencia cuantitativa.

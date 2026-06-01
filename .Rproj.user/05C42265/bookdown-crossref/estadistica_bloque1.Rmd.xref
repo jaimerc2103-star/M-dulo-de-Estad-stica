@@ -203,4 +203,39 @@ h3:simulación-normal Simulación normal
 h2:ejercicios-propuestos-5 Ejercicios propuestos
 h2:caso-real-ingeniería-12 Caso real (ingeniería)
 h2:conclusión-5 Conclusión
+h1:introducción-a-la-inferencia-estadística Introducción a la inferencia estadística
+h2:concepto-teórico-13 Concepto teórico
+h3:población-y-muestra Población y muestra
+h3:parámetro-y-estadístico Parámetro y estadístico
+h3:error-de-muestreo Error de muestreo
+h3:objetivos-de-la-inferencia-estadística Objetivos de la inferencia estadística
+h3:importancia-en-ingeniería Importancia en ingeniería
+h2:formulación-matemática-2 Formulación matemática
+h3:media-muestral Media muestral
+h3:varianza-muestral Varianza muestral
+h3:proporción-muestral Proporción muestral
+h2:ejemplo-aplicado-13 Ejemplo aplicado
+h2:implementación-en-r-13 Implementación en R
+h3:tamaño-de-la-muestra-1 Tamaño de la muestra
+h3:media-muestral-1 Media muestral
+h3:varianza-muestral-1 Varianza muestral
+h3:desviación-estándar-muestral Desviación estándar muestral
+h3:resumen-general Resumen general
+h2:gráfica-5 Gráfica
+h2:simulación-6 Simulación
+h3:visualización-de-las-medias-muestrales Visualización de las medias muestrales
+h2:ejercicio-propuesto-7 Ejercicio propuesto
+h2:caso-real-ingeniería-13 Caso real (ingeniería)
+h2:conclusión-6 Conclusión
+h1:estimación-puntual Estimación puntual
+h2:concepto-teórico-14 Concepto teórico
+h2:media-muestral-2 Media muestral
+h2:ejemplo-aplicado-14 Ejemplo aplicado
+h2:implementación-en-r-14 Implementación en R
+h2:gráfica-6 Gráfica
+h2:error-estándar Error estándar
+h2:simulación-7 Simulación
+h2:ejercicio-propuesto-8 Ejercicio propuesto
+h2:caso-real-ingeniería-14 Caso real (ingeniería)
+h2:conclusión-7 Conclusión
 

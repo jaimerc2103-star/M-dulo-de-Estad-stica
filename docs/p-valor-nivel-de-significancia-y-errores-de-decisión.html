@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Teorema de Bayes | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="11 Teorema de Bayes | Estadística Aplicada para Ingeniería" />
+  <title>18 p-valor, nivel de significancia y errores de decisión | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="18 p-valor, nivel de significancia y errores de decisión | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 Teorema de Bayes | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="18 p-valor, nivel de significancia y errores de decisión | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Teorema de Bayes | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="18 p-valor, nivel de significancia y errores de decisión | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="probabilidad-condicionada.html"/>
-<link rel="next" href="variables-aleatorias.html"/>
+<link rel="prev" href="pruebas-de-hipótesis.html"/>
+<link rel="next" href="comparación-de-medias.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -615,106 +615,162 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="teorema-de-bayes" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">11</span> Teorema de Bayes<a href="teorema-de-bayes.html#teorema-de-bayes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="concepto-teórico-10" class="section level2 hasAnchor" number="11.1">
-<h2><span class="header-section-number">11.1</span> Concepto teórico<a href="teorema-de-bayes.html#concepto-te%C3%B3rico-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El teorema de Bayes permite actualizar la probabilidad de un evento a partir de nueva información. Es especialmente útil en problemas de diagnóstico, clasificación, mantenimiento predictivo y análisis de confiabilidad.</p>
-<p>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son eventos con <span class="math inline">\(P(B)&gt;0\)</span>, entonces:</p>
+<div id="p-valor-nivel-de-significancia-y-errores-de-decisión" class="section level1 hasAnchor" number="18">
+<h1><span class="header-section-number">18</span> p-valor, nivel de significancia y errores de decisión<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#p-valor-nivel-de-significancia-y-errores-de-decisi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-17" class="section level2 hasAnchor" number="18.1">
+<h2><span class="header-section-number">18.1</span> Concepto teórico<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#concepto-te%C3%B3rico-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El p-valor es una medida que indica qué tan compatible es la evidencia muestral con la hipótesis nula. Mientras menor sea el p-valor, mayor será la evidencia contra <span class="math inline">\(H_0\)</span>.</p>
+<div id="interpretación-del-p-valor" class="section level3 hasAnchor" number="18.1.1">
+<h3><span class="header-section-number">18.1.1</span> Interpretación del p-valor<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#interpretaci%C3%B3n-del-p-valor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Si:</p>
 <p><span class="math display">\[
-P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+p\text{-valor} \leq \alpha
 \]</span></p>
-<p>donde:
-- <span class="math inline">\(P(A)\)</span>: probabilidad previa
-- <span class="math inline">\(P(B|A)\)</span>: probabilidad de la evidencia si <span class="math inline">\(A\)</span> ocurre
-- <span class="math inline">\(P(B)\)</span>: probabilidad total de la evidencia
-- <span class="math inline">\(P(A|B)\)</span>: probabilidad posterior</p>
-<div id="interpretación" class="section level3 hasAnchor" number="11.1.1">
-<h3><span class="header-section-number">11.1.1</span> Interpretación<a href="teorema-de-bayes.html#interpretaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Bayes permite pasar de una probabilidad <strong>a priori</strong> a una probabilidad <strong>posterior</strong> luego de observar evidencia.</p>
-</div>
-</div>
-<div id="formulación-matemática-1" class="section level2 hasAnchor" number="11.2">
-<h2><span class="header-section-number">11.2</span> Formulación matemática<a href="teorema-de-bayes.html#formulaci%C3%B3n-matem%C3%A1tica-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Si <span class="math inline">\(A_1, A_2, \dots, A_n\)</span> forman una partición del espacio muestral, entonces:</p>
+<p>se rechaza <span class="math inline">\(H_0\)</span>.</p>
+<p>Si:</p>
 <p><span class="math display">\[
-P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^{n}P(B|A_j)P(A_j)}
+p\text{-valor} &gt; \alpha
+\]</span></p>
+<p>no se rechaza <span class="math inline">\(H_0\)</span>.</p>
+<p>Es importante señalar que no rechazar <span class="math inline">\(H_0\)</span> no significa demostrar que <span class="math inline">\(H_0\)</span> sea verdadera, sino que la evidencia muestral no es suficiente para rechazarla.</p>
+</div>
+</div>
+<div id="errores-de-decisión" class="section level2 hasAnchor" number="18.2">
+<h2><span class="header-section-number">18.2</span> Errores de decisión<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#errores-de-decisi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="error-tipo-i" class="section level3 hasAnchor" number="18.2.1">
+<h3><span class="header-section-number">18.2.1</span> Error tipo I<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#error-tipo-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ocurre cuando se rechaza <span class="math inline">\(H_0\)</span> siendo verdadera.</p>
+<p><span class="math display">\[
+P(\text{Error tipo I}) = \alpha
 \]</span></p>
 </div>
-<div id="ejemplo-aplicado-10" class="section level2 hasAnchor" number="11.3">
-<h2><span class="header-section-number">11.3</span> Ejemplo aplicado<a href="teorema-de-bayes.html#ejemplo-aplicado-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Supóngase que una falla crítica en un sistema puede deberse a dos fuentes:</p>
-<ul>
-<li><span class="math inline">\(A_1\)</span>: falla del sensor</li>
-<li><span class="math inline">\(A_2\)</span>: falla del actuador</li>
-</ul>
-<p>Con:
-- <span class="math inline">\(P(A_1)=0.35\)</span>
-- <span class="math inline">\(P(A_2)=0.65\)</span>
-- <span class="math inline">\(P(B|A_1)=0.80\)</span>
-- <span class="math inline">\(P(B|A_2)=0.30\)</span></p>
-<p>donde <span class="math inline">\(B\)</span> es la evidencia de alarma crítica.</p>
+<div id="error-tipo-ii" class="section level3 hasAnchor" number="18.2.2">
+<h3><span class="header-section-number">18.2.2</span> Error tipo II<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#error-tipo-ii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ocurre cuando no se rechaza <span class="math inline">\(H_0\)</span> siendo falsa.</p>
+<p><span class="math display">\[
+P(\text{Error tipo II}) = \beta
+\]</span></p>
 </div>
-<div id="implementación-en-r-10" class="section level2 hasAnchor" number="11.4">
-<h2><span class="header-section-number">11.4</span> Implementación en R<a href="teorema-de-bayes.html#implementaci%C3%B3n-en-r-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="teorema-de-bayes.html#cb127-1" tabindex="-1"></a>P_A1 <span class="ot">&lt;-</span> <span class="fl">0.35</span></span>
-<span id="cb127-2"><a href="teorema-de-bayes.html#cb127-2" tabindex="-1"></a>P_A2 <span class="ot">&lt;-</span> <span class="fl">0.65</span></span>
-<span id="cb127-3"><a href="teorema-de-bayes.html#cb127-3" tabindex="-1"></a>P_B_dado_A1 <span class="ot">&lt;-</span> <span class="fl">0.80</span></span>
-<span id="cb127-4"><a href="teorema-de-bayes.html#cb127-4" tabindex="-1"></a>P_B_dado_A2 <span class="ot">&lt;-</span> <span class="fl">0.30</span></span>
-<span id="cb127-5"><a href="teorema-de-bayes.html#cb127-5" tabindex="-1"></a></span>
-<span id="cb127-6"><a href="teorema-de-bayes.html#cb127-6" tabindex="-1"></a>P_B <span class="ot">&lt;-</span> P_B_dado_A1 <span class="sc">*</span> P_A1 <span class="sc">+</span> P_B_dado_A2 <span class="sc">*</span> P_A2</span>
-<span id="cb127-7"><a href="teorema-de-bayes.html#cb127-7" tabindex="-1"></a>P_A1_dado_B <span class="ot">&lt;-</span> (P_B_dado_A1 <span class="sc">*</span> P_A1) <span class="sc">/</span> P_B</span>
-<span id="cb127-8"><a href="teorema-de-bayes.html#cb127-8" tabindex="-1"></a>P_A2_dado_B <span class="ot">&lt;-</span> (P_B_dado_A2 <span class="sc">*</span> P_A2) <span class="sc">/</span> P_B</span>
-<span id="cb127-9"><a href="teorema-de-bayes.html#cb127-9" tabindex="-1"></a></span>
-<span id="cb127-10"><a href="teorema-de-bayes.html#cb127-10" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_B =</span> P_B, <span class="at">P_A1_dado_B =</span> P_A1_dado_B, <span class="at">P_A2_dado_B =</span> P_A2_dado_B)</span></code></pre></div>
-<pre><code>##         P_B P_A1_dado_B P_A2_dado_B 
-##   0.4750000   0.5894737   0.4105263</code></pre>
+<div id="potencia-de-una-prueba" class="section level3 hasAnchor" number="18.2.3">
+<h3><span class="header-section-number">18.2.3</span> Potencia de una prueba<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#potencia-de-una-prueba" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La potencia es la probabilidad de rechazar <span class="math inline">\(H_0\)</span> cuando realmente es falsa:</p>
+<p><span class="math display">\[
+\text{Potencia}=1-\beta
+\]</span></p>
 </div>
-<div id="gráfica-3" class="section level2 hasAnchor" number="11.5">
-<h2><span class="header-section-number">11.5</span> Gráfica<a href="teorema-de-bayes.html#gr%C3%A1fica-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="teorema-de-bayes.html#cb129-1" tabindex="-1"></a>posteriores <span class="ot">&lt;-</span> <span class="fu">c</span>(P_A1_dado_B, P_A2_dado_B)</span>
-<span id="cb129-2"><a href="teorema-de-bayes.html#cb129-2" tabindex="-1"></a><span class="fu">barplot</span>(posteriores,</span>
-<span id="cb129-3"><a href="teorema-de-bayes.html#cb129-3" tabindex="-1"></a>        <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">&quot;Sensor&quot;</span>, <span class="st">&quot;Actuador&quot;</span>),</span>
-<span id="cb129-4"><a href="teorema-de-bayes.html#cb129-4" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;steelblue&quot;</span>),</span>
-<span id="cb129-5"><a href="teorema-de-bayes.html#cb129-5" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Probabilidades posteriores&quot;</span>,</span>
-<span id="cb129-6"><a href="teorema-de-bayes.html#cb129-6" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Probabilidad&quot;</span>)</span></code></pre></div>
-<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-72-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="simulación-3" class="section level2 hasAnchor" number="11.6">
-<h2><span class="header-section-number">11.6</span> Simulación<a href="teorema-de-bayes.html#simulaci%C3%B3n-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="teorema-de-bayes.html#cb130-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">789</span>)</span>
-<span id="cb130-2"><a href="teorema-de-bayes.html#cb130-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb130-3"><a href="teorema-de-bayes.html#cb130-3" tabindex="-1"></a></span>
-<span id="cb130-4"><a href="teorema-de-bayes.html#cb130-4" tabindex="-1"></a>causa <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Sensor&quot;</span>, <span class="st">&quot;Actuador&quot;</span>), n, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.35</span>, <span class="fl">0.65</span>))</span>
-<span id="cb130-5"><a href="teorema-de-bayes.html#cb130-5" tabindex="-1"></a>alarma <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(causa <span class="sc">==</span> <span class="st">&quot;Sensor&quot;</span>,</span>
-<span id="cb130-6"><a href="teorema-de-bayes.html#cb130-6" tabindex="-1"></a>                 <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fl">0.80</span>),</span>
-<span id="cb130-7"><a href="teorema-de-bayes.html#cb130-7" tabindex="-1"></a>                 <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fl">0.30</span>))</span>
-<span id="cb130-8"><a href="teorema-de-bayes.html#cb130-8" tabindex="-1"></a></span>
-<span id="cb130-9"><a href="teorema-de-bayes.html#cb130-9" tabindex="-1"></a>prob_posterior_emp <span class="ot">&lt;-</span> <span class="fu">mean</span>(causa[alarma <span class="sc">==</span> <span class="dv">1</span>] <span class="sc">==</span> <span class="st">&quot;Sensor&quot;</span>)</span>
-<span id="cb130-10"><a href="teorema-de-bayes.html#cb130-10" tabindex="-1"></a>prob_posterior_emp</span></code></pre></div>
-<pre><code>## [1] 0.6230937</code></pre>
+<div id="ejemplo-aplicado-17" class="section level2 hasAnchor" number="18.3">
+<h2><span class="header-section-number">18.3</span> Ejemplo aplicado<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#ejemplo-aplicado-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se evalúa si la media de temperatura de operación de un equipo es igual a 70 °C.</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb224-1" tabindex="-1"></a>temperatura <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">71</span>, <span class="dv">72</span>, <span class="dv">69</span>, <span class="dv">70</span>, <span class="dv">73</span>, <span class="dv">72</span>, <span class="dv">71</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="dv">72</span>, <span class="dv">71</span>, <span class="dv">73</span>)</span>
+<span id="cb224-2"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb224-2" tabindex="-1"></a>temperatura</span></code></pre></div>
+<pre><code>##  [1] 71 72 69 70 73 72 71 70 74 72 71 73</code></pre>
+<p>Hipótesis:</p>
+<p><span class="math display">\[
+H_0: \mu = 70
+\]</span></p>
+<p><span class="math display">\[
+H_1: \mu \neq 70
+\]</span></p>
 </div>
-<div id="ejercicios-propuestos-3" class="section level2 hasAnchor" number="11.7">
-<h2><span class="header-section-number">11.7</span> Ejercicios propuestos<a href="teorema-de-bayes.html#ejercicios-propuestos-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="implementación-en-r-17" class="section level2 hasAnchor" number="18.4">
+<h2><span class="header-section-number">18.4</span> Implementación en R<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#implementaci%C3%B3n-en-r-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb226-1" tabindex="-1"></a>prueba <span class="ot">&lt;-</span> <span class="fu">t.test</span>(temperatura, <span class="at">mu =</span> <span class="dv">70</span>)</span>
+<span id="cb226-2"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb226-2" tabindex="-1"></a>prueba</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  temperatura
+## t = 3.5935, df = 11, p-value = 0.004218
+## alternative hypothesis: true mean is not equal to 70
+## 95 percent confidence interval:
+##  70.58126 72.41874
+## sample estimates:
+## mean of x 
+##      71.5</code></pre>
+<div id="extraer-p-valor" class="section level3 hasAnchor" number="18.4.1">
+<h3><span class="header-section-number">18.4.1</span> Extraer p-valor<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#extraer-p-valor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb228-1" tabindex="-1"></a>prueba<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.004217883</code></pre>
+</div>
+<div id="decisión-con-alpha-0.05" class="section level3 hasAnchor" number="18.4.2">
+<h3><span class="header-section-number">18.4.2</span> Decisión con <span class="math inline">\(\alpha = 0.05\)</span><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#decisi%C3%B3n-con-alpha-0.05" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb230-1" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb230-2"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb230-2" tabindex="-1"></a></span>
+<span id="cb230-3"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb230-3" tabindex="-1"></a><span class="cf">if</span>(prueba<span class="sc">$</span>p.value <span class="sc">&lt;=</span> alpha){</span>
+<span id="cb230-4"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb230-4" tabindex="-1"></a>  <span class="st">&quot;Se rechaza H0&quot;</span></span>
+<span id="cb230-5"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb230-5" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb230-6"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb230-6" tabindex="-1"></a>  <span class="st">&quot;No se rechaza H0&quot;</span></span>
+<span id="cb230-7"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb230-7" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Se rechaza H0&quot;</code></pre>
+</div>
+</div>
+<div id="gráfica-9" class="section level2 hasAnchor" number="18.5">
+<h2><span class="header-section-number">18.5</span> Gráfica<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#gr%C3%A1fica-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-1" tabindex="-1"></a><span class="fu">hist</span>(temperatura,</span>
+<span id="cb232-2"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-2" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb232-3"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-3" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb232-4"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Temperatura de operación&quot;</span>,</span>
+<span id="cb232-5"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Temperatura (°C)&quot;</span>)</span>
+<span id="cb232-6"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(temperatura), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb232-7"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">70</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb232-8"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-8" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
+<span id="cb232-9"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-9" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Media muestral&quot;</span>, <span class="st">&quot;Valor hipotético&quot;</span>),</span>
+<span id="cb232-10"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-10" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>),</span>
+<span id="cb232-11"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-11" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb232-12"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb232-12" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-127-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="simulación-10" class="section level2 hasAnchor" number="18.6">
+<h2><span class="header-section-number">18.6</span> Simulación<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#simulaci%C3%B3n-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Simulamos p-valores bajo <span class="math inline">\(H_0\)</span>, es decir, cuando la media verdadera es 70.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb233-2"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-2" tabindex="-1"></a></span>
+<span id="cb233-3"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-3" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb233-4"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-4" tabindex="-1"></a>pvalores <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb233-5"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-5" tabindex="-1"></a></span>
+<span id="cb233-6"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-6" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb233-7"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-7" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">12</span>, <span class="at">mean =</span> <span class="dv">70</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb233-8"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-8" tabindex="-1"></a>  pvalores[i] <span class="ot">&lt;-</span> <span class="fu">t.test</span>(muestra, <span class="at">mu =</span> <span class="dv">70</span>)<span class="sc">$</span>p.value</span>
+<span id="cb233-9"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-9" tabindex="-1"></a>}</span>
+<span id="cb233-10"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-10" tabindex="-1"></a></span>
+<span id="cb233-11"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-11" tabindex="-1"></a><span class="fu">hist</span>(pvalores,</span>
+<span id="cb233-12"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-12" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
+<span id="cb233-13"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-13" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb233-14"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-14" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribución de p-valores bajo H0&quot;</span>,</span>
+<span id="cb233-15"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-15" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;p-valor&quot;</span>)</span>
+<span id="cb233-16"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb233-16" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.05</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-128-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<div id="proporción-de-rechazos-con-alpha-0.05" class="section level3 hasAnchor" number="18.6.1">
+<h3><span class="header-section-number">18.6.1</span> Proporción de rechazos con <span class="math inline">\(\alpha = 0.05\)</span><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#proporci%C3%B3n-de-rechazos-con-alpha-0.05" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb234-1" tabindex="-1"></a><span class="fu">mean</span>(pvalores <span class="sc">&lt;=</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<pre><code>## [1] 0.044</code></pre>
+<p>Esta proporción aproxima la tasa de error tipo I.</p>
+</div>
+</div>
+<div id="ejercicio-propuesto-11" class="section level2 hasAnchor" number="18.7">
+<h2><span class="header-section-number">18.7</span> Ejercicio propuesto<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#ejercicio-propuesto-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un laboratorio se evalúa si el tiempo promedio de carga de una batería es de 120 minutos:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#cb236-1" tabindex="-1"></a>tiempo_carga <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">118</span>, <span class="dv">121</span>, <span class="dv">119</span>, <span class="dv">122</span>, <span class="dv">120</span>, <span class="dv">123</span>, <span class="dv">119</span>, <span class="dv">121</span>, <span class="dv">122</span>, <span class="dv">120</span>)</span></code></pre></div>
+<p>Realice:</p>
 <ol style="list-style-type: decimal">
-<li>Plantee un caso con dos posibles causas de una falla.</li>
-<li>Asigne probabilidades previas y condicionales coherentes.</li>
-<li>Aplique el teorema de Bayes.</li>
-<li>Interprete la probabilidad posterior.</li>
-<li>Simule el problema en R.</li>
-<li>Compare los resultados teóricos y empíricos.</li>
+<li>Plantee <span class="math inline">\(H_0\)</span> y <span class="math inline">\(H_1\)</span>.</li>
+<li>Ejecute una prueba t.</li>
+<li>Obtenga el p-valor.</li>
+<li>Tome una decisión con <span class="math inline">\(\alpha = 0.05\)</span>.</li>
+<li>Explique qué significaría cometer error tipo I en este caso.</li>
 </ol>
 </div>
-<div id="caso-real-ingeniería-10" class="section level2 hasAnchor" number="11.8">
-<h2><span class="header-section-number">11.8</span> Caso real (ingeniería)<a href="teorema-de-bayes.html#caso-real-ingenier%C3%ADa-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En <strong>ingeniería eléctrica</strong>, Bayes se usa para identificar la causa más probable de una alarma en sistemas de potencia.</p>
-<p>En <strong>ingeniería civil</strong>, puede aplicarse al diagnóstico de daño estructural a partir de síntomas observados.</p>
-<p>En <strong>ingeniería industrial</strong>, se utiliza en sistemas de inspección y clasificación de defectos.</p>
-<p>En <strong>energías renovables</strong>, ayuda a inferir la causa más probable de caída de rendimiento a partir de datos operativos y ambientales.</p>
+<div id="caso-real-ingeniería-17" class="section level2 hasAnchor" number="18.8">
+<h2><span class="header-section-number">18.8</span> Caso real (ingeniería)<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#caso-real-ingenier%C3%ADa-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería civil</strong>, cometer un error tipo I podría implicar rechazar un lote de material que sí cumple especificaciones.</p>
+<p>En <strong>ingeniería eléctrica</strong>, podría significar declarar inestable un sistema que realmente opera correctamente.</p>
+<p>En <strong>ingeniería industrial</strong>, podría llevar a modificar un proceso que no requería ajuste.</p>
+<p>En <strong>energías renovables</strong>, podría interpretarse erróneamente que un sistema produce menos de lo esperado cuando la evidencia no es suficiente.</p>
 </div>
-<div id="conclusión-3" class="section level2 hasAnchor" number="11.9">
-<h2><span class="header-section-number">11.9</span> Conclusión<a href="teorema-de-bayes.html#conclusi%C3%B3n-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El teorema de Bayes es una herramienta poderosa para actualizar decisiones con nueva evidencia. Su importancia en ingeniería radica en que conecta datos observados con diagnóstico técnico y toma de decisiones probabilísticas.</p>
+<div id="conclusión-10" class="section level2 hasAnchor" number="18.9">
+<h2><span class="header-section-number">18.9</span> Conclusión<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html#conclusi%C3%B3n-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El p-valor y los errores de decisión son conceptos centrales en la interpretación de pruebas de hipótesis. Una conclusión estadística debe acompañarse siempre de una interpretación técnica cuidadosa.</p>
 
 </div>
 </div>
@@ -723,8 +779,8 @@ P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^{n}P(B|A_j)P(A_j)}
           </div>
         </div>
       </div>
-<a href="probabilidad-condicionada.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="variables-aleatorias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="pruebas-de-hipótesis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="comparación-de-medias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

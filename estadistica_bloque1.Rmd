@@ -45,6 +45,7 @@ Este bloque se organiza en los siguientes capítulos:
 5. Población, muestra y muestreo.
 6. Medidas de asociación.
 
+
 <!--chapter:end:index.Rmd-->
 
 ---
@@ -2180,4 +2181,830 @@ En ingeniería eléctrica y energías renovables, la estimación puntual permite
 La estimación puntual constituye la base inicial de la inferencia estadística y permite aproximar parámetros poblacionales mediante información muestral.
 
 <!--chapter:end:15-bloque3-unidad2-estimacion.Rmd-->
+
+# Intervalos de confianza
+
+## Concepto teórico
+
+Un intervalo de confianza es un rango de valores construido a partir de una muestra, dentro del cual se espera que se encuentre un parámetro poblacional con un determinado nivel de confianza. A diferencia de la estimación puntual, que entrega un único valor, el intervalo de confianza incorpora la incertidumbre asociada al muestreo.
+
+En ingeniería, los intervalos de confianza permiten expresar resultados con un margen de error, lo cual es fundamental para evaluar resistencia de materiales, voltajes, productividad, generación energética, tiempos de operación y otros fenómenos técnicos.
+
+### Nivel de confianza
+
+El nivel de confianza se representa generalmente como:
+
+\[
+1-\alpha
+\]
+
+Por ejemplo:
+
+- 90%
+- 95%
+- 99%
+
+Un intervalo de confianza del 95% indica que, si se repitiera el proceso de muestreo muchas veces, aproximadamente el 95% de los intervalos construidos contendrían el verdadero parámetro poblacional.
+
+## Formulación matemática
+
+### Intervalo de confianza para la media con desviación poblacional conocida
+
+\[
+IC = \bar{x} \pm z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
+\]
+
+donde:
+
+- \(\bar{x}\): media muestral
+- \(z_{\alpha/2}\): valor crítico de la distribución normal estándar
+- \(\sigma\): desviación estándar poblacional
+- \(n\): tamaño de la muestra
+
+### Intervalo de confianza para la media con desviación poblacional desconocida
+
+Cuando \(\sigma\) no se conoce, se usa la distribución t de Student:
+
+\[
+IC = \bar{x} \pm t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}
+\]
+
+donde:
+
+- \(s\): desviación estándar muestral
+- \(t_{\alpha/2, n-1}\): valor crítico t con \(n-1\) grados de libertad
+
+## Ejemplo aplicado
+
+En un laboratorio de ingeniería civil se mide la resistencia a compresión de 12 probetas de hormigón:
+
+```{r}
+resistencia <- c(24.8, 25.1, 24.5, 25.7, 26.0, 24.9,
+                 25.3, 25.8, 24.7, 25.0, 25.4, 25.2)
+resistencia
+```
+
+Se desea construir un intervalo de confianza del 95% para la resistencia media poblacional.
+
+## Implementación en R
+
+### Estadísticos básicos
+
+```{r}
+n <- length(resistencia)
+media <- mean(resistencia)
+s <- sd(resistencia)
+
+c(n = n, media = media, desviacion = s)
+```
+
+### Intervalo de confianza con t de Student
+
+```{r}
+nivel_confianza <- 0.95
+alpha <- 1 - nivel_confianza
+
+t_critico <- qt(1 - alpha/2, df = n - 1)
+error_estandar <- s / sqrt(n)
+margen_error <- t_critico * error_estandar
+
+limite_inferior <- media - margen_error
+limite_superior <- media + margen_error
+
+c(LI = limite_inferior, LS = limite_superior)
+```
+
+### Usando `t.test()`
+
+```{r}
+t.test(resistencia, conf.level = 0.95)
+```
+
+## Gráfica
+
+```{r}
+plot(1, media,
+     ylim = c(limite_inferior - 0.2, limite_superior + 0.2),
+     pch = 19,
+     col = "blue",
+     xaxt = "n",
+     xlab = "",
+     ylab = "Resistencia (MPa)",
+     main = "Intervalo de confianza para la media")
+arrows(1, limite_inferior, 1, limite_superior,
+       angle = 90, code = 3, length = 0.1, col = "red", lwd = 2)
+abline(h = media, col = "blue", lty = 2)
+axis(1, at = 1, labels = "Media muestral")
+```
+
+## Simulación
+
+Simulamos varios intervalos de confianza para observar que no todos contienen necesariamente el valor poblacional.
+
+```{r}
+set.seed(123)
+
+mu <- 25
+sigma <- 1
+n <- 10
+B <- 100
+
+contiene_mu <- logical(B)
+li <- numeric(B)
+ls <- numeric(B)
+
+for(i in 1:B){
+  muestra <- rnorm(n, mean = mu, sd = sigma)
+  test <- t.test(muestra, conf.level = 0.95)
+  li[i] <- test$conf.int[1]
+  ls[i] <- test$conf.int[2]
+  contiene_mu[i] <- li[i] <= mu & ls[i] >= mu
+}
+
+mean(contiene_mu)
+```
+
+### Visualización de intervalos simulados
+
+```{r}
+plot(1:B, rep(mu, B),
+     type = "n",
+     ylim = range(c(li, ls)),
+     xlab = "Simulación",
+     ylab = "Intervalo de confianza",
+     main = "Intervalos de confianza simulados")
+
+for(i in 1:B){
+  color <- ifelse(contiene_mu[i], "gray40", "red")
+  segments(i, li[i], i, ls[i], col = color)
+}
+abline(h = mu, col = "blue", lwd = 2)
+```
+
+## Ejercicio propuesto
+
+En un sistema eléctrico se registran los siguientes valores de voltaje:
+
+```{r eval=FALSE}
+voltaje <- c(219, 221, 220, 222, 218, 223,
+             221, 220, 219, 222, 221, 220)
+```
+
+Realice:
+
+1. Calcule la media y desviación estándar.
+2. Construya un intervalo de confianza del 95%.
+3. Interprete el resultado.
+4. Repita el cálculo con 99% de confianza.
+5. Explique cómo cambia el ancho del intervalo.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, los intervalos de confianza permiten estimar resistencia promedio de materiales con incertidumbre cuantificada.
+
+En **ingeniería eléctrica**, se emplean para estimar niveles medios de voltaje o corriente.
+
+En **ingeniería industrial**, permiten evaluar tiempos promedio de producción o productividad media.
+
+En **energías renovables**, ayudan a estimar generación promedio o irradiancia media con un margen de error.
+
+## Conclusión
+
+Los intervalos de confianza permiten pasar de una estimación puntual a una estimación con incertidumbre explícita. Son herramientas esenciales para comunicar resultados técnicos con rigor estadístico.
+
+<!--chapter:end:16-bloque3-unidad3-intervalos-confianza.Rmd-->
+
+# Pruebas de hipótesis
+
+## Concepto teórico
+
+Una prueba de hipótesis es un procedimiento estadístico que permite evaluar una afirmación sobre un parámetro poblacional utilizando evidencia muestral. En ingeniería, se usa para verificar si un proceso cumple una especificación, si un material alcanza una resistencia mínima o si un sistema opera dentro de valores esperados.
+
+### Hipótesis nula
+
+La hipótesis nula se representa como:
+
+\[
+H_0
+\]
+
+Generalmente expresa una condición de igualdad, referencia o ausencia de cambio.
+
+### Hipótesis alternativa
+
+La hipótesis alternativa se representa como:
+
+\[
+H_1
+\]
+
+Expresa la afirmación que se desea evaluar frente a la hipótesis nula.
+
+### Nivel de significancia
+
+El nivel de significancia se denota por \(\alpha\). Representa la probabilidad máxima aceptada de rechazar \(H_0\) cuando en realidad es verdadera.
+
+Valores frecuentes:
+
+- \(\alpha = 0.10\)
+- \(\alpha = 0.05\)
+- \(\alpha = 0.01\)
+
+## Formulación matemática
+
+### Prueba para una media con desviación poblacional desconocida
+
+\[
+t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+\]
+
+donde:
+
+- \(\bar{x}\): media muestral
+- \(\mu_0\): valor hipotético de la media
+- \(s\): desviación estándar muestral
+- \(n\): tamaño de la muestra
+
+## Ejemplo aplicado
+
+Una empresa de producción indica que el tiempo promedio de ensamblaje de una pieza es de 50 minutos. Se registra una muestra de tiempos:
+
+```{r}
+tiempos <- c(48, 51, 49, 52, 50, 47, 49, 51, 50, 48, 52, 49)
+tiempos
+```
+
+Se desea evaluar si el tiempo promedio difiere de 50 minutos.
+
+\[
+H_0: \mu = 50
+\]
+
+\[
+H_1: \mu \neq 50
+\]
+
+## Implementación en R
+
+### Estadísticos básicos
+
+```{r}
+mean(tiempos)
+sd(tiempos)
+length(tiempos)
+```
+
+### Prueba t para una muestra
+
+```{r}
+t.test(tiempos, mu = 50, alternative = "two.sided")
+```
+
+## Gráfica
+
+```{r}
+hist(tiempos,
+     col = "lightblue",
+     border = "white",
+     main = "Distribución de tiempos de ensamblaje",
+     xlab = "Tiempo (min)")
+abline(v = mean(tiempos), col = "red", lwd = 2)
+abline(v = 50, col = "blue", lwd = 2, lty = 2)
+legend("topright",
+       legend = c("Media muestral", "Valor hipotético"),
+       col = c("red", "blue"),
+       lwd = 2,
+       lty = c(1,2))
+```
+
+## Simulación
+
+Simulamos muestras bajo la hipótesis nula \(\mu = 50\) para observar la variabilidad del estadístico.
+
+```{r}
+set.seed(123)
+
+B <- 500
+n <- 12
+t_est <- numeric(B)
+
+for(i in 1:B){
+  muestra <- rnorm(n, mean = 50, sd = 2)
+  t_est[i] <- (mean(muestra) - 50) / (sd(muestra) / sqrt(n))
+}
+
+hist(t_est,
+     col = "lightgray",
+     border = "white",
+     main = "Distribución simulada del estadístico t",
+     xlab = "t")
+```
+
+## Ejercicio propuesto
+
+Una especificación técnica indica que el voltaje promedio debe ser 220 V. Se toma la muestra:
+
+```{r eval=FALSE}
+voltaje <- c(219, 221, 220, 222, 218, 223,
+             221, 220, 219, 222, 221, 220)
+```
+
+Realice:
+
+1. Plantee \(H_0\) y \(H_1\).
+2. Ejecute la prueba t en R.
+3. Interprete el p-valor.
+4. Concluya con \(\alpha = 0.05\).
+5. Explique la implicación técnica del resultado.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, las pruebas de hipótesis permiten verificar si la resistencia media de un material cumple una norma.
+
+En **ingeniería eléctrica**, se usan para comprobar si el voltaje medio difiere de un valor nominal.
+
+En **ingeniería industrial**, permiten validar si el tiempo promedio de proceso cumple especificaciones.
+
+En **energías renovables**, ayudan a evaluar si la generación media observada difiere de la esperada.
+
+## Conclusión
+
+Las pruebas de hipótesis permiten tomar decisiones estadísticas con base en evidencia muestral. Son fundamentales para validar especificaciones, comparar resultados y sustentar decisiones técnicas.
+
+<!--chapter:end:17-bloque3-unidad4-pruebas-hipotesis.Rmd-->
+
+# p-valor, nivel de significancia y errores de decisión
+
+## Concepto teórico
+
+El p-valor es una medida que indica qué tan compatible es la evidencia muestral con la hipótesis nula. Mientras menor sea el p-valor, mayor será la evidencia contra \(H_0\).
+
+### Interpretación del p-valor
+
+Si:
+
+\[
+p\text{-valor} \leq \alpha
+\]
+
+se rechaza \(H_0\).
+
+Si:
+
+\[
+p\text{-valor} > \alpha
+\]
+
+no se rechaza \(H_0\).
+
+Es importante señalar que no rechazar \(H_0\) no significa demostrar que \(H_0\) sea verdadera, sino que la evidencia muestral no es suficiente para rechazarla.
+
+## Errores de decisión
+
+### Error tipo I
+
+Ocurre cuando se rechaza \(H_0\) siendo verdadera.
+
+\[
+P(\text{Error tipo I}) = \alpha
+\]
+
+### Error tipo II
+
+Ocurre cuando no se rechaza \(H_0\) siendo falsa.
+
+\[
+P(\text{Error tipo II}) = \beta
+\]
+
+### Potencia de una prueba
+
+La potencia es la probabilidad de rechazar \(H_0\) cuando realmente es falsa:
+
+\[
+\text{Potencia}=1-\beta
+\]
+
+## Ejemplo aplicado
+
+Se evalúa si la media de temperatura de operación de un equipo es igual a 70 °C.
+
+```{r}
+temperatura <- c(71, 72, 69, 70, 73, 72, 71, 70, 74, 72, 71, 73)
+temperatura
+```
+
+Hipótesis:
+
+\[
+H_0: \mu = 70
+\]
+
+\[
+H_1: \mu \neq 70
+\]
+
+## Implementación en R
+
+```{r}
+prueba <- t.test(temperatura, mu = 70)
+prueba
+```
+
+### Extraer p-valor
+
+```{r}
+prueba$p.value
+```
+
+### Decisión con \(\alpha = 0.05\)
+
+```{r}
+alpha <- 0.05
+
+if(prueba$p.value <= alpha){
+  "Se rechaza H0"
+} else {
+  "No se rechaza H0"
+}
+```
+
+## Gráfica
+
+```{r}
+hist(temperatura,
+     col = "lightyellow",
+     border = "white",
+     main = "Temperatura de operación",
+     xlab = "Temperatura (°C)")
+abline(v = mean(temperatura), col = "red", lwd = 2)
+abline(v = 70, col = "blue", lwd = 2, lty = 2)
+legend("topright",
+       legend = c("Media muestral", "Valor hipotético"),
+       col = c("red", "blue"),
+       lwd = 2,
+       lty = c(1,2))
+```
+
+## Simulación
+
+Simulamos p-valores bajo \(H_0\), es decir, cuando la media verdadera es 70.
+
+```{r}
+set.seed(123)
+
+B <- 1000
+pvalores <- numeric(B)
+
+for(i in 1:B){
+  muestra <- rnorm(12, mean = 70, sd = 2)
+  pvalores[i] <- t.test(muestra, mu = 70)$p.value
+}
+
+hist(pvalores,
+     col = "lightblue",
+     border = "white",
+     main = "Distribución de p-valores bajo H0",
+     xlab = "p-valor")
+abline(v = 0.05, col = "red", lwd = 2)
+```
+
+### Proporción de rechazos con \(\alpha = 0.05\)
+
+```{r}
+mean(pvalores <= 0.05)
+```
+
+Esta proporción aproxima la tasa de error tipo I.
+
+## Ejercicio propuesto
+
+En un laboratorio se evalúa si el tiempo promedio de carga de una batería es de 120 minutos:
+
+```{r eval=FALSE}
+tiempo_carga <- c(118, 121, 119, 122, 120, 123, 119, 121, 122, 120)
+```
+
+Realice:
+
+1. Plantee \(H_0\) y \(H_1\).
+2. Ejecute una prueba t.
+3. Obtenga el p-valor.
+4. Tome una decisión con \(\alpha = 0.05\).
+5. Explique qué significaría cometer error tipo I en este caso.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, cometer un error tipo I podría implicar rechazar un lote de material que sí cumple especificaciones.
+
+En **ingeniería eléctrica**, podría significar declarar inestable un sistema que realmente opera correctamente.
+
+En **ingeniería industrial**, podría llevar a modificar un proceso que no requería ajuste.
+
+En **energías renovables**, podría interpretarse erróneamente que un sistema produce menos de lo esperado cuando la evidencia no es suficiente.
+
+## Conclusión
+
+El p-valor y los errores de decisión son conceptos centrales en la interpretación de pruebas de hipótesis. Una conclusión estadística debe acompañarse siempre de una interpretación técnica cuidadosa.
+
+<!--chapter:end:18-bloque3-unidad5-pvalor-errores.Rmd-->
+
+# Comparación de medias
+
+## Concepto teórico
+
+La comparación de medias permite evaluar si dos grupos o sistemas presentan diferencias estadísticamente significativas. En ingeniería, esto es útil para comparar métodos constructivos, tecnologías, líneas de producción, configuraciones eléctricas o sistemas energéticos.
+
+Existen diferentes escenarios:
+
+- Comparación de una media contra un valor de referencia.
+- Comparación de dos medias independientes.
+- Comparación de medias pareadas.
+
+## Formulación matemática
+
+### Prueba t para dos muestras independientes
+
+Cuando se comparan dos grupos independientes:
+
+\[
+t = \frac{\bar{x}_1-\bar{x}_2}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}
+\]
+
+donde:
+
+- \(\bar{x}_1, \bar{x}_2\): medias muestrales
+- \(s_1^2, s_2^2\): varianzas muestrales
+- \(n_1, n_2\): tamaños muestrales
+
+## Ejemplo aplicado
+
+Se desea comparar la generación diaria de dos sistemas fotovoltaicos:
+
+```{r}
+sistema_A <- c(510, 515, 520, 518, 522, 519, 521, 517, 523, 520)
+sistema_B <- c(505, 508, 512, 510, 511, 509, 513, 507, 514, 510)
+
+datos <- data.frame(
+  generacion = c(sistema_A, sistema_B),
+  sistema = rep(c("Sistema A", "Sistema B"), each = 10)
+)
+
+datos
+```
+
+## Implementación en R
+
+### Estadísticos descriptivos
+
+```{r}
+tapply(datos$generacion, datos$sistema, mean)
+```
+
+```{r}
+tapply(datos$generacion, datos$sistema, sd)
+```
+
+### Prueba t para dos muestras independientes
+
+```{r}
+t.test(sistema_A, sistema_B, alternative = "two.sided")
+```
+
+## Gráfica
+
+```{r}
+boxplot(generacion ~ sistema,
+        data = datos,
+        col = c("lightblue", "lightgreen"),
+        main = "Comparación de generación entre sistemas",
+        xlab = "Sistema",
+        ylab = "Generación diaria (kWh)")
+```
+
+## Simulación
+
+Simulación de dos sistemas con medias distintas para observar el comportamiento de los p-valores.
+
+```{r}
+set.seed(123)
+
+B <- 500
+pvalores <- numeric(B)
+
+for(i in 1:B){
+  A <- rnorm(10, mean = 520, sd = 5)
+  B_sys <- rnorm(10, mean = 510, sd = 5)
+  pvalores[i] <- t.test(A, B_sys)$p.value
+}
+
+mean(pvalores < 0.05)
+```
+
+```{r}
+hist(pvalores,
+     col = "lightgray",
+     border = "white",
+     main = "p-valores en comparación de medias",
+     xlab = "p-valor")
+abline(v = 0.05, col = "red", lwd = 2)
+```
+
+## Ejercicio propuesto
+
+Se comparan dos mezclas de hormigón mediante sus resistencias a compresión:
+
+```{r eval=FALSE}
+mezcla_A <- c(25.1, 25.5, 25.3, 25.8, 26.0, 25.7, 25.6, 25.4)
+mezcla_B <- c(24.2, 24.6, 24.5, 24.8, 24.9, 24.7, 24.4, 24.6)
+```
+
+Realice:
+
+1. Calcule medias y desviaciones estándar.
+2. Construya diagramas de caja.
+3. Ejecute una prueba t.
+4. Interprete el p-valor.
+5. Concluya si existe diferencia significativa.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, se comparan resistencias entre mezclas o métodos constructivos.
+
+En **ingeniería eléctrica**, se comparan niveles de pérdidas entre dos configuraciones de red.
+
+En **ingeniería industrial**, se comparan tiempos de producción entre dos líneas.
+
+En **energías renovables**, se compara la generación entre dos tecnologías o configuraciones.
+
+## Conclusión
+
+La comparación de medias es una herramienta estadística clave para evaluar diferencias entre sistemas, procesos o tratamientos. Su aplicación permite sustentar decisiones técnicas basadas en evidencia cuantitativa.
+
+<!--chapter:end:19-bloque3-unidad6-comparacion-medias.Rmd-->
+
+# Aplicaciones de inferencia estadística en ingeniería
+
+## Concepto teórico
+
+La inferencia estadística permite aplicar estimación, intervalos de confianza y pruebas de hipótesis a problemas reales de ingeniería. Su valor principal está en convertir datos muestrales en decisiones técnicas justificadas.
+
+Esta unidad integra los conceptos del bloque:
+
+- estimación puntual,
+- intervalos de confianza,
+- pruebas de hipótesis,
+- p-valor,
+- comparación de medias.
+
+## Caso integrador 1: control de calidad industrial
+
+Una línea de producción fabrica piezas cuyo peso objetivo es 15.5 kg. Se toma una muestra:
+
+```{r}
+peso <- c(15.2, 15.5, 15.1, 15.6, 15.3, 15.4,
+          15.2, 15.7, 15.3, 15.5, 15.4, 15.6)
+peso
+```
+
+### Estimación puntual
+
+```{r}
+mean(peso)
+sd(peso)
+```
+
+### Intervalo de confianza
+
+```{r}
+t.test(peso, conf.level = 0.95)$conf.int
+```
+
+### Prueba de hipótesis
+
+\[
+H_0: \mu = 15.5
+\]
+
+\[
+H_1: \mu \neq 15.5
+\]
+
+```{r}
+t.test(peso, mu = 15.5)
+```
+
+## Gráfica
+
+```{r}
+hist(peso,
+     col = "lightblue",
+     border = "white",
+     main = "Distribución del peso de piezas",
+     xlab = "Peso (kg)")
+abline(v = mean(peso), col = "red", lwd = 2)
+abline(v = 15.5, col = "blue", lwd = 2, lty = 2)
+legend("topright",
+       legend = c("Media muestral", "Valor objetivo"),
+       col = c("red", "blue"),
+       lwd = 2,
+       lty = c(1,2))
+```
+
+## Caso integrador 2: comparación de sistemas energéticos
+
+Se compara la generación diaria de dos sistemas renovables:
+
+```{r}
+sistema_A <- c(510, 515, 520, 518, 522, 519, 521, 517, 523, 520)
+sistema_B <- c(505, 508, 512, 510, 511, 509, 513, 507, 514, 510)
+
+t.test(sistema_A, sistema_B)
+```
+
+## Gráfica comparativa
+
+```{r}
+datos <- data.frame(
+  generacion = c(sistema_A, sistema_B),
+  sistema = rep(c("Sistema A", "Sistema B"), each = 10)
+)
+
+boxplot(generacion ~ sistema,
+        data = datos,
+        col = c("lightgreen", "lightyellow"),
+        main = "Comparación de sistemas energéticos",
+        ylab = "Generación diaria (kWh)")
+```
+
+## Simulación
+
+Se simula el comportamiento de una línea de producción bajo condiciones normales y alteradas.
+
+```{r}
+set.seed(321)
+
+normal <- rnorm(100, mean = 15.5, sd = 0.2)
+alterado <- rnorm(100, mean = 15.2, sd = 0.2)
+
+mean(normal)
+mean(alterado)
+```
+
+```{r}
+boxplot(normal, alterado,
+        names = c("Normal", "Alterado"),
+        col = c("lightblue", "tomato"),
+        main = "Comparación de escenarios simulados",
+        ylab = "Peso (kg)")
+```
+
+```{r}
+t.test(normal, alterado)
+```
+
+## Ejercicio propuesto
+
+Seleccione un problema de su carrera:
+
+- resistencia de materiales,
+- voltaje de una red,
+- producción industrial,
+- generación solar,
+- consumo energético,
+- tiempos de operación.
+
+Realice:
+
+1. Plantee una pregunta técnica.
+2. Proponga una muestra de datos.
+3. Calcule una estimación puntual.
+4. Construya un intervalo de confianza.
+5. Plantee una prueba de hipótesis.
+6. Interprete el p-valor.
+7. Redacte una conclusión técnica.
+
+## Caso real por carrera
+
+### Ingeniería civil
+
+Validación de resistencia media de hormigón frente a una especificación normativa.
+
+### Ingeniería eléctrica
+
+Evaluación de estabilidad de voltaje respecto a un valor nominal.
+
+### Ingeniería industrial
+
+Control de peso, dimensión o tiempo de proceso en una línea de producción.
+
+### Energías renovables
+
+Comparación de generación entre dos sistemas fotovoltaicos o eólicos.
+
+## Conclusión
+
+La inferencia estadística aplicada permite fundamentar decisiones técnicas mediante datos. En ingeniería, su correcta aplicación mejora la confiabilidad de diagnósticos, validaciones, comparaciones y procesos de control.
+
+<!--chapter:end:20-bloque3-unidad7-aplicaciones-inferencia.Rmd-->
 

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Teorema de Bayes | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="11 Teorema de Bayes | Estadística Aplicada para Ingeniería" />
+  <title>16 Intervalos de confianza | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="16 Intervalos de confianza | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 Teorema de Bayes | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="16 Intervalos de confianza | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Teorema de Bayes | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="16 Intervalos de confianza | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="probabilidad-condicionada.html"/>
-<link rel="next" href="variables-aleatorias.html"/>
+<link rel="prev" href="estimación-puntual.html"/>
+<link rel="next" href="pruebas-de-hipótesis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -615,106 +615,189 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="teorema-de-bayes" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">11</span> Teorema de Bayes<a href="teorema-de-bayes.html#teorema-de-bayes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="concepto-teórico-10" class="section level2 hasAnchor" number="11.1">
-<h2><span class="header-section-number">11.1</span> Concepto teórico<a href="teorema-de-bayes.html#concepto-te%C3%B3rico-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El teorema de Bayes permite actualizar la probabilidad de un evento a partir de nueva información. Es especialmente útil en problemas de diagnóstico, clasificación, mantenimiento predictivo y análisis de confiabilidad.</p>
-<p>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son eventos con <span class="math inline">\(P(B)&gt;0\)</span>, entonces:</p>
+<div id="intervalos-de-confianza" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">16</span> Intervalos de confianza<a href="intervalos-de-confianza.html#intervalos-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-15" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Concepto teórico<a href="intervalos-de-confianza.html#concepto-te%C3%B3rico-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un intervalo de confianza es un rango de valores construido a partir de una muestra, dentro del cual se espera que se encuentre un parámetro poblacional con un determinado nivel de confianza. A diferencia de la estimación puntual, que entrega un único valor, el intervalo de confianza incorpora la incertidumbre asociada al muestreo.</p>
+<p>En ingeniería, los intervalos de confianza permiten expresar resultados con un margen de error, lo cual es fundamental para evaluar resistencia de materiales, voltajes, productividad, generación energética, tiempos de operación y otros fenómenos técnicos.</p>
+<div id="nivel-de-confianza" class="section level3 hasAnchor" number="16.1.1">
+<h3><span class="header-section-number">16.1.1</span> Nivel de confianza<a href="intervalos-de-confianza.html#nivel-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El nivel de confianza se representa generalmente como:</p>
 <p><span class="math display">\[
-P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+1-\alpha
 \]</span></p>
-<p>donde:
-- <span class="math inline">\(P(A)\)</span>: probabilidad previa
-- <span class="math inline">\(P(B|A)\)</span>: probabilidad de la evidencia si <span class="math inline">\(A\)</span> ocurre
-- <span class="math inline">\(P(B)\)</span>: probabilidad total de la evidencia
-- <span class="math inline">\(P(A|B)\)</span>: probabilidad posterior</p>
-<div id="interpretación" class="section level3 hasAnchor" number="11.1.1">
-<h3><span class="header-section-number">11.1.1</span> Interpretación<a href="teorema-de-bayes.html#interpretaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Bayes permite pasar de una probabilidad <strong>a priori</strong> a una probabilidad <strong>posterior</strong> luego de observar evidencia.</p>
-</div>
-</div>
-<div id="formulación-matemática-1" class="section level2 hasAnchor" number="11.2">
-<h2><span class="header-section-number">11.2</span> Formulación matemática<a href="teorema-de-bayes.html#formulaci%C3%B3n-matem%C3%A1tica-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Si <span class="math inline">\(A_1, A_2, \dots, A_n\)</span> forman una partición del espacio muestral, entonces:</p>
-<p><span class="math display">\[
-P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^{n}P(B|A_j)P(A_j)}
-\]</span></p>
-</div>
-<div id="ejemplo-aplicado-10" class="section level2 hasAnchor" number="11.3">
-<h2><span class="header-section-number">11.3</span> Ejemplo aplicado<a href="teorema-de-bayes.html#ejemplo-aplicado-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Supóngase que una falla crítica en un sistema puede deberse a dos fuentes:</p>
+<p>Por ejemplo:</p>
 <ul>
-<li><span class="math inline">\(A_1\)</span>: falla del sensor</li>
-<li><span class="math inline">\(A_2\)</span>: falla del actuador</li>
+<li>90%</li>
+<li>95%</li>
+<li>99%</li>
 </ul>
-<p>Con:
-- <span class="math inline">\(P(A_1)=0.35\)</span>
-- <span class="math inline">\(P(A_2)=0.65\)</span>
-- <span class="math inline">\(P(B|A_1)=0.80\)</span>
-- <span class="math inline">\(P(B|A_2)=0.30\)</span></p>
-<p>donde <span class="math inline">\(B\)</span> es la evidencia de alarma crítica.</p>
+<p>Un intervalo de confianza del 95% indica que, si se repitiera el proceso de muestreo muchas veces, aproximadamente el 95% de los intervalos construidos contendrían el verdadero parámetro poblacional.</p>
 </div>
-<div id="implementación-en-r-10" class="section level2 hasAnchor" number="11.4">
-<h2><span class="header-section-number">11.4</span> Implementación en R<a href="teorema-de-bayes.html#implementaci%C3%B3n-en-r-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="teorema-de-bayes.html#cb127-1" tabindex="-1"></a>P_A1 <span class="ot">&lt;-</span> <span class="fl">0.35</span></span>
-<span id="cb127-2"><a href="teorema-de-bayes.html#cb127-2" tabindex="-1"></a>P_A2 <span class="ot">&lt;-</span> <span class="fl">0.65</span></span>
-<span id="cb127-3"><a href="teorema-de-bayes.html#cb127-3" tabindex="-1"></a>P_B_dado_A1 <span class="ot">&lt;-</span> <span class="fl">0.80</span></span>
-<span id="cb127-4"><a href="teorema-de-bayes.html#cb127-4" tabindex="-1"></a>P_B_dado_A2 <span class="ot">&lt;-</span> <span class="fl">0.30</span></span>
-<span id="cb127-5"><a href="teorema-de-bayes.html#cb127-5" tabindex="-1"></a></span>
-<span id="cb127-6"><a href="teorema-de-bayes.html#cb127-6" tabindex="-1"></a>P_B <span class="ot">&lt;-</span> P_B_dado_A1 <span class="sc">*</span> P_A1 <span class="sc">+</span> P_B_dado_A2 <span class="sc">*</span> P_A2</span>
-<span id="cb127-7"><a href="teorema-de-bayes.html#cb127-7" tabindex="-1"></a>P_A1_dado_B <span class="ot">&lt;-</span> (P_B_dado_A1 <span class="sc">*</span> P_A1) <span class="sc">/</span> P_B</span>
-<span id="cb127-8"><a href="teorema-de-bayes.html#cb127-8" tabindex="-1"></a>P_A2_dado_B <span class="ot">&lt;-</span> (P_B_dado_A2 <span class="sc">*</span> P_A2) <span class="sc">/</span> P_B</span>
-<span id="cb127-9"><a href="teorema-de-bayes.html#cb127-9" tabindex="-1"></a></span>
-<span id="cb127-10"><a href="teorema-de-bayes.html#cb127-10" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_B =</span> P_B, <span class="at">P_A1_dado_B =</span> P_A1_dado_B, <span class="at">P_A2_dado_B =</span> P_A2_dado_B)</span></code></pre></div>
-<pre><code>##         P_B P_A1_dado_B P_A2_dado_B 
-##   0.4750000   0.5894737   0.4105263</code></pre>
 </div>
-<div id="gráfica-3" class="section level2 hasAnchor" number="11.5">
-<h2><span class="header-section-number">11.5</span> Gráfica<a href="teorema-de-bayes.html#gr%C3%A1fica-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="teorema-de-bayes.html#cb129-1" tabindex="-1"></a>posteriores <span class="ot">&lt;-</span> <span class="fu">c</span>(P_A1_dado_B, P_A2_dado_B)</span>
-<span id="cb129-2"><a href="teorema-de-bayes.html#cb129-2" tabindex="-1"></a><span class="fu">barplot</span>(posteriores,</span>
-<span id="cb129-3"><a href="teorema-de-bayes.html#cb129-3" tabindex="-1"></a>        <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">&quot;Sensor&quot;</span>, <span class="st">&quot;Actuador&quot;</span>),</span>
-<span id="cb129-4"><a href="teorema-de-bayes.html#cb129-4" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;steelblue&quot;</span>),</span>
-<span id="cb129-5"><a href="teorema-de-bayes.html#cb129-5" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Probabilidades posteriores&quot;</span>,</span>
-<span id="cb129-6"><a href="teorema-de-bayes.html#cb129-6" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Probabilidad&quot;</span>)</span></code></pre></div>
-<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-72-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<div id="formulación-matemática-3" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Formulación matemática<a href="intervalos-de-confianza.html#formulaci%C3%B3n-matem%C3%A1tica-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="intervalo-de-confianza-para-la-media-con-desviación-poblacional-conocida" class="section level3 hasAnchor" number="16.2.1">
+<h3><span class="header-section-number">16.2.1</span> Intervalo de confianza para la media con desviación poblacional conocida<a href="intervalos-de-confianza.html#intervalo-de-confianza-para-la-media-con-desviaci%C3%B3n-poblacional-conocida" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+IC = \bar{x} \pm z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\bar{x}\)</span>: media muestral</li>
+<li><span class="math inline">\(z_{\alpha/2}\)</span>: valor crítico de la distribución normal estándar</li>
+<li><span class="math inline">\(\sigma\)</span>: desviación estándar poblacional</li>
+<li><span class="math inline">\(n\)</span>: tamaño de la muestra</li>
+</ul>
 </div>
-<div id="simulación-3" class="section level2 hasAnchor" number="11.6">
-<h2><span class="header-section-number">11.6</span> Simulación<a href="teorema-de-bayes.html#simulaci%C3%B3n-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="teorema-de-bayes.html#cb130-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">789</span>)</span>
-<span id="cb130-2"><a href="teorema-de-bayes.html#cb130-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb130-3"><a href="teorema-de-bayes.html#cb130-3" tabindex="-1"></a></span>
-<span id="cb130-4"><a href="teorema-de-bayes.html#cb130-4" tabindex="-1"></a>causa <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Sensor&quot;</span>, <span class="st">&quot;Actuador&quot;</span>), n, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.35</span>, <span class="fl">0.65</span>))</span>
-<span id="cb130-5"><a href="teorema-de-bayes.html#cb130-5" tabindex="-1"></a>alarma <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(causa <span class="sc">==</span> <span class="st">&quot;Sensor&quot;</span>,</span>
-<span id="cb130-6"><a href="teorema-de-bayes.html#cb130-6" tabindex="-1"></a>                 <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fl">0.80</span>),</span>
-<span id="cb130-7"><a href="teorema-de-bayes.html#cb130-7" tabindex="-1"></a>                 <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fl">0.30</span>))</span>
-<span id="cb130-8"><a href="teorema-de-bayes.html#cb130-8" tabindex="-1"></a></span>
-<span id="cb130-9"><a href="teorema-de-bayes.html#cb130-9" tabindex="-1"></a>prob_posterior_emp <span class="ot">&lt;-</span> <span class="fu">mean</span>(causa[alarma <span class="sc">==</span> <span class="dv">1</span>] <span class="sc">==</span> <span class="st">&quot;Sensor&quot;</span>)</span>
-<span id="cb130-10"><a href="teorema-de-bayes.html#cb130-10" tabindex="-1"></a>prob_posterior_emp</span></code></pre></div>
-<pre><code>## [1] 0.6230937</code></pre>
+<div id="intervalo-de-confianza-para-la-media-con-desviación-poblacional-desconocida" class="section level3 hasAnchor" number="16.2.2">
+<h3><span class="header-section-number">16.2.2</span> Intervalo de confianza para la media con desviación poblacional desconocida<a href="intervalos-de-confianza.html#intervalo-de-confianza-para-la-media-con-desviaci%C3%B3n-poblacional-desconocida" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cuando <span class="math inline">\(\sigma\)</span> no se conoce, se usa la distribución t de Student:</p>
+<p><span class="math display">\[
+IC = \bar{x} \pm t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(s\)</span>: desviación estándar muestral</li>
+<li><span class="math inline">\(t_{\alpha/2, n-1}\)</span>: valor crítico t con <span class="math inline">\(n-1\)</span> grados de libertad</li>
+</ul>
 </div>
-<div id="ejercicios-propuestos-3" class="section level2 hasAnchor" number="11.7">
-<h2><span class="header-section-number">11.7</span> Ejercicios propuestos<a href="teorema-de-bayes.html#ejercicios-propuestos-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="ejemplo-aplicado-15" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> Ejemplo aplicado<a href="intervalos-de-confianza.html#ejemplo-aplicado-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un laboratorio de ingeniería civil se mide la resistencia a compresión de 12 probetas de hormigón:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="intervalos-de-confianza.html#cb198-1" tabindex="-1"></a>resistencia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">24.8</span>, <span class="fl">25.1</span>, <span class="fl">24.5</span>, <span class="fl">25.7</span>, <span class="fl">26.0</span>, <span class="fl">24.9</span>,</span>
+<span id="cb198-2"><a href="intervalos-de-confianza.html#cb198-2" tabindex="-1"></a>                 <span class="fl">25.3</span>, <span class="fl">25.8</span>, <span class="fl">24.7</span>, <span class="fl">25.0</span>, <span class="fl">25.4</span>, <span class="fl">25.2</span>)</span>
+<span id="cb198-3"><a href="intervalos-de-confianza.html#cb198-3" tabindex="-1"></a>resistencia</span></code></pre></div>
+<pre><code>##  [1] 24.8 25.1 24.5 25.7 26.0 24.9 25.3 25.8 24.7 25.0 25.4 25.2</code></pre>
+<p>Se desea construir un intervalo de confianza del 95% para la resistencia media poblacional.</p>
+</div>
+<div id="implementación-en-r-15" class="section level2 hasAnchor" number="16.4">
+<h2><span class="header-section-number">16.4</span> Implementación en R<a href="intervalos-de-confianza.html#implementaci%C3%B3n-en-r-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estadísticos-básicos" class="section level3 hasAnchor" number="16.4.1">
+<h3><span class="header-section-number">16.4.1</span> Estadísticos básicos<a href="intervalos-de-confianza.html#estad%C3%ADsticos-b%C3%A1sicos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="intervalos-de-confianza.html#cb200-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(resistencia)</span>
+<span id="cb200-2"><a href="intervalos-de-confianza.html#cb200-2" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(resistencia)</span>
+<span id="cb200-3"><a href="intervalos-de-confianza.html#cb200-3" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(resistencia)</span>
+<span id="cb200-4"><a href="intervalos-de-confianza.html#cb200-4" tabindex="-1"></a></span>
+<span id="cb200-5"><a href="intervalos-de-confianza.html#cb200-5" tabindex="-1"></a><span class="fu">c</span>(<span class="at">n =</span> n, <span class="at">media =</span> media, <span class="at">desviacion =</span> s)</span></code></pre></div>
+<pre><code>##          n      media desviacion 
+## 12.0000000 25.2000000  0.4612237</code></pre>
+</div>
+<div id="intervalo-de-confianza-con-t-de-student" class="section level3 hasAnchor" number="16.4.2">
+<h3><span class="header-section-number">16.4.2</span> Intervalo de confianza con t de Student<a href="intervalos-de-confianza.html#intervalo-de-confianza-con-t-de-student" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="intervalos-de-confianza.html#cb202-1" tabindex="-1"></a>nivel_confianza <span class="ot">&lt;-</span> <span class="fl">0.95</span></span>
+<span id="cb202-2"><a href="intervalos-de-confianza.html#cb202-2" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> nivel_confianza</span>
+<span id="cb202-3"><a href="intervalos-de-confianza.html#cb202-3" tabindex="-1"></a></span>
+<span id="cb202-4"><a href="intervalos-de-confianza.html#cb202-4" tabindex="-1"></a>t_critico <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb202-5"><a href="intervalos-de-confianza.html#cb202-5" tabindex="-1"></a>error_estandar <span class="ot">&lt;-</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb202-6"><a href="intervalos-de-confianza.html#cb202-6" tabindex="-1"></a>margen_error <span class="ot">&lt;-</span> t_critico <span class="sc">*</span> error_estandar</span>
+<span id="cb202-7"><a href="intervalos-de-confianza.html#cb202-7" tabindex="-1"></a></span>
+<span id="cb202-8"><a href="intervalos-de-confianza.html#cb202-8" tabindex="-1"></a>limite_inferior <span class="ot">&lt;-</span> media <span class="sc">-</span> margen_error</span>
+<span id="cb202-9"><a href="intervalos-de-confianza.html#cb202-9" tabindex="-1"></a>limite_superior <span class="ot">&lt;-</span> media <span class="sc">+</span> margen_error</span>
+<span id="cb202-10"><a href="intervalos-de-confianza.html#cb202-10" tabindex="-1"></a></span>
+<span id="cb202-11"><a href="intervalos-de-confianza.html#cb202-11" tabindex="-1"></a><span class="fu">c</span>(<span class="at">LI =</span> limite_inferior, <span class="at">LS =</span> limite_superior)</span></code></pre></div>
+<pre><code>##       LI       LS 
+## 24.90695 25.49305</code></pre>
+</div>
+<div id="usando-t.test" class="section level3 hasAnchor" number="16.4.3">
+<h3><span class="header-section-number">16.4.3</span> Usando <code>t.test()</code><a href="intervalos-de-confianza.html#usando-t.test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="intervalos-de-confianza.html#cb204-1" tabindex="-1"></a><span class="fu">t.test</span>(resistencia, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  resistencia
+## t = 189.27, df = 11, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  24.90695 25.49305
+## sample estimates:
+## mean of x 
+##      25.2</code></pre>
+</div>
+</div>
+<div id="gráfica-7" class="section level2 hasAnchor" number="16.5">
+<h2><span class="header-section-number">16.5</span> Gráfica<a href="intervalos-de-confianza.html#gr%C3%A1fica-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="intervalos-de-confianza.html#cb206-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, media,</span>
+<span id="cb206-2"><a href="intervalos-de-confianza.html#cb206-2" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(limite_inferior <span class="sc">-</span> <span class="fl">0.2</span>, limite_superior <span class="sc">+</span> <span class="fl">0.2</span>),</span>
+<span id="cb206-3"><a href="intervalos-de-confianza.html#cb206-3" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb206-4"><a href="intervalos-de-confianza.html#cb206-4" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb206-5"><a href="intervalos-de-confianza.html#cb206-5" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb206-6"><a href="intervalos-de-confianza.html#cb206-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb206-7"><a href="intervalos-de-confianza.html#cb206-7" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Resistencia (MPa)&quot;</span>,</span>
+<span id="cb206-8"><a href="intervalos-de-confianza.html#cb206-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Intervalo de confianza para la media&quot;</span>)</span>
+<span id="cb206-9"><a href="intervalos-de-confianza.html#cb206-9" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">1</span>, limite_inferior, <span class="dv">1</span>, limite_superior,</span>
+<span id="cb206-10"><a href="intervalos-de-confianza.html#cb206-10" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">length =</span> <span class="fl">0.1</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb206-11"><a href="intervalos-de-confianza.html#cb206-11" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> media, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb206-12"><a href="intervalos-de-confianza.html#cb206-12" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span>, <span class="at">labels =</span> <span class="st">&quot;Media muestral&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-113-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="simulación-8" class="section level2 hasAnchor" number="16.6">
+<h2><span class="header-section-number">16.6</span> Simulación<a href="intervalos-de-confianza.html#simulaci%C3%B3n-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Simulamos varios intervalos de confianza para observar que no todos contienen necesariamente el valor poblacional.</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="intervalos-de-confianza.html#cb207-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb207-2"><a href="intervalos-de-confianza.html#cb207-2" tabindex="-1"></a></span>
+<span id="cb207-3"><a href="intervalos-de-confianza.html#cb207-3" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb207-4"><a href="intervalos-de-confianza.html#cb207-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb207-5"><a href="intervalos-de-confianza.html#cb207-5" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb207-6"><a href="intervalos-de-confianza.html#cb207-6" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb207-7"><a href="intervalos-de-confianza.html#cb207-7" tabindex="-1"></a></span>
+<span id="cb207-8"><a href="intervalos-de-confianza.html#cb207-8" tabindex="-1"></a>contiene_mu <span class="ot">&lt;-</span> <span class="fu">logical</span>(B)</span>
+<span id="cb207-9"><a href="intervalos-de-confianza.html#cb207-9" tabindex="-1"></a>li <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb207-10"><a href="intervalos-de-confianza.html#cb207-10" tabindex="-1"></a>ls <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb207-11"><a href="intervalos-de-confianza.html#cb207-11" tabindex="-1"></a></span>
+<span id="cb207-12"><a href="intervalos-de-confianza.html#cb207-12" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb207-13"><a href="intervalos-de-confianza.html#cb207-13" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb207-14"><a href="intervalos-de-confianza.html#cb207-14" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(muestra, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb207-15"><a href="intervalos-de-confianza.html#cb207-15" tabindex="-1"></a>  li[i] <span class="ot">&lt;-</span> test<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span>
+<span id="cb207-16"><a href="intervalos-de-confianza.html#cb207-16" tabindex="-1"></a>  ls[i] <span class="ot">&lt;-</span> test<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span>
+<span id="cb207-17"><a href="intervalos-de-confianza.html#cb207-17" tabindex="-1"></a>  contiene_mu[i] <span class="ot">&lt;-</span> li[i] <span class="sc">&lt;=</span> mu <span class="sc">&amp;</span> ls[i] <span class="sc">&gt;=</span> mu</span>
+<span id="cb207-18"><a href="intervalos-de-confianza.html#cb207-18" tabindex="-1"></a>}</span>
+<span id="cb207-19"><a href="intervalos-de-confianza.html#cb207-19" tabindex="-1"></a></span>
+<span id="cb207-20"><a href="intervalos-de-confianza.html#cb207-20" tabindex="-1"></a><span class="fu">mean</span>(contiene_mu)</span></code></pre></div>
+<pre><code>## [1] 0.98</code></pre>
+<div id="visualización-de-intervalos-simulados" class="section level3 hasAnchor" number="16.6.1">
+<h3><span class="header-section-number">16.6.1</span> Visualización de intervalos simulados<a href="intervalos-de-confianza.html#visualizaci%C3%B3n-de-intervalos-simulados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="intervalos-de-confianza.html#cb209-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>B, <span class="fu">rep</span>(mu, B),</span>
+<span id="cb209-2"><a href="intervalos-de-confianza.html#cb209-2" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb209-3"><a href="intervalos-de-confianza.html#cb209-3" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">c</span>(li, ls)),</span>
+<span id="cb209-4"><a href="intervalos-de-confianza.html#cb209-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Simulación&quot;</span>,</span>
+<span id="cb209-5"><a href="intervalos-de-confianza.html#cb209-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Intervalo de confianza&quot;</span>,</span>
+<span id="cb209-6"><a href="intervalos-de-confianza.html#cb209-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Intervalos de confianza simulados&quot;</span>)</span>
+<span id="cb209-7"><a href="intervalos-de-confianza.html#cb209-7" tabindex="-1"></a></span>
+<span id="cb209-8"><a href="intervalos-de-confianza.html#cb209-8" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb209-9"><a href="intervalos-de-confianza.html#cb209-9" tabindex="-1"></a>  color <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(contiene_mu[i], <span class="st">&quot;gray40&quot;</span>, <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb209-10"><a href="intervalos-de-confianza.html#cb209-10" tabindex="-1"></a>  <span class="fu">segments</span>(i, li[i], i, ls[i], <span class="at">col =</span> color)</span>
+<span id="cb209-11"><a href="intervalos-de-confianza.html#cb209-11" tabindex="-1"></a>}</span>
+<span id="cb209-12"><a href="intervalos-de-confianza.html#cb209-12" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> mu, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-115-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="ejercicio-propuesto-9" class="section level2 hasAnchor" number="16.7">
+<h2><span class="header-section-number">16.7</span> Ejercicio propuesto<a href="intervalos-de-confianza.html#ejercicio-propuesto-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un sistema eléctrico se registran los siguientes valores de voltaje:</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="intervalos-de-confianza.html#cb210-1" tabindex="-1"></a>voltaje <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">219</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">222</span>, <span class="dv">218</span>, <span class="dv">223</span>,</span>
+<span id="cb210-2"><a href="intervalos-de-confianza.html#cb210-2" tabindex="-1"></a>             <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">219</span>, <span class="dv">222</span>, <span class="dv">221</span>, <span class="dv">220</span>)</span></code></pre></div>
+<p>Realice:</p>
 <ol style="list-style-type: decimal">
-<li>Plantee un caso con dos posibles causas de una falla.</li>
-<li>Asigne probabilidades previas y condicionales coherentes.</li>
-<li>Aplique el teorema de Bayes.</li>
-<li>Interprete la probabilidad posterior.</li>
-<li>Simule el problema en R.</li>
-<li>Compare los resultados teóricos y empíricos.</li>
+<li>Calcule la media y desviación estándar.</li>
+<li>Construya un intervalo de confianza del 95%.</li>
+<li>Interprete el resultado.</li>
+<li>Repita el cálculo con 99% de confianza.</li>
+<li>Explique cómo cambia el ancho del intervalo.</li>
 </ol>
 </div>
-<div id="caso-real-ingeniería-10" class="section level2 hasAnchor" number="11.8">
-<h2><span class="header-section-number">11.8</span> Caso real (ingeniería)<a href="teorema-de-bayes.html#caso-real-ingenier%C3%ADa-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En <strong>ingeniería eléctrica</strong>, Bayes se usa para identificar la causa más probable de una alarma en sistemas de potencia.</p>
-<p>En <strong>ingeniería civil</strong>, puede aplicarse al diagnóstico de daño estructural a partir de síntomas observados.</p>
-<p>En <strong>ingeniería industrial</strong>, se utiliza en sistemas de inspección y clasificación de defectos.</p>
-<p>En <strong>energías renovables</strong>, ayuda a inferir la causa más probable de caída de rendimiento a partir de datos operativos y ambientales.</p>
+<div id="caso-real-ingeniería-15" class="section level2 hasAnchor" number="16.8">
+<h2><span class="header-section-number">16.8</span> Caso real (ingeniería)<a href="intervalos-de-confianza.html#caso-real-ingenier%C3%ADa-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería civil</strong>, los intervalos de confianza permiten estimar resistencia promedio de materiales con incertidumbre cuantificada.</p>
+<p>En <strong>ingeniería eléctrica</strong>, se emplean para estimar niveles medios de voltaje o corriente.</p>
+<p>En <strong>ingeniería industrial</strong>, permiten evaluar tiempos promedio de producción o productividad media.</p>
+<p>En <strong>energías renovables</strong>, ayudan a estimar generación promedio o irradiancia media con un margen de error.</p>
 </div>
-<div id="conclusión-3" class="section level2 hasAnchor" number="11.9">
-<h2><span class="header-section-number">11.9</span> Conclusión<a href="teorema-de-bayes.html#conclusi%C3%B3n-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El teorema de Bayes es una herramienta poderosa para actualizar decisiones con nueva evidencia. Su importancia en ingeniería radica en que conecta datos observados con diagnóstico técnico y toma de decisiones probabilísticas.</p>
+<div id="conclusión-8" class="section level2 hasAnchor" number="16.9">
+<h2><span class="header-section-number">16.9</span> Conclusión<a href="intervalos-de-confianza.html#conclusi%C3%B3n-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los intervalos de confianza permiten pasar de una estimación puntual a una estimación con incertidumbre explícita. Son herramientas esenciales para comunicar resultados técnicos con rigor estadístico.</p>
 
 </div>
 </div>
@@ -723,8 +806,8 @@ P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^{n}P(B|A_j)P(A_j)}
           </div>
         </div>
       </div>
-<a href="probabilidad-condicionada.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="variables-aleatorias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estimación-puntual.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pruebas-de-hipótesis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

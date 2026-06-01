@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Teorema de Bayes | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="11 Teorema de Bayes | Estadística Aplicada para Ingeniería" />
+  <title>17 Pruebas de hipótesis | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="17 Pruebas de hipótesis | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 Teorema de Bayes | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="17 Pruebas de hipótesis | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Teorema de Bayes | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="17 Pruebas de hipótesis | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="probabilidad-condicionada.html"/>
-<link rel="next" href="variables-aleatorias.html"/>
+<link rel="prev" href="intervalos-de-confianza.html"/>
+<link rel="next" href="p-valor-nivel-de-significancia-y-errores-de-decisión.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -615,106 +615,156 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="teorema-de-bayes" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">11</span> Teorema de Bayes<a href="teorema-de-bayes.html#teorema-de-bayes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="concepto-teórico-10" class="section level2 hasAnchor" number="11.1">
-<h2><span class="header-section-number">11.1</span> Concepto teórico<a href="teorema-de-bayes.html#concepto-te%C3%B3rico-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El teorema de Bayes permite actualizar la probabilidad de un evento a partir de nueva información. Es especialmente útil en problemas de diagnóstico, clasificación, mantenimiento predictivo y análisis de confiabilidad.</p>
-<p>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son eventos con <span class="math inline">\(P(B)&gt;0\)</span>, entonces:</p>
+<div id="pruebas-de-hipótesis" class="section level1 hasAnchor" number="17">
+<h1><span class="header-section-number">17</span> Pruebas de hipótesis<a href="pruebas-de-hipótesis.html#pruebas-de-hip%C3%B3tesis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-16" class="section level2 hasAnchor" number="17.1">
+<h2><span class="header-section-number">17.1</span> Concepto teórico<a href="pruebas-de-hipótesis.html#concepto-te%C3%B3rico-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una prueba de hipótesis es un procedimiento estadístico que permite evaluar una afirmación sobre un parámetro poblacional utilizando evidencia muestral. En ingeniería, se usa para verificar si un proceso cumple una especificación, si un material alcanza una resistencia mínima o si un sistema opera dentro de valores esperados.</p>
+<div id="hipótesis-nula" class="section level3 hasAnchor" number="17.1.1">
+<h3><span class="header-section-number">17.1.1</span> Hipótesis nula<a href="pruebas-de-hipótesis.html#hip%C3%B3tesis-nula" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La hipótesis nula se representa como:</p>
 <p><span class="math display">\[
-P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+H_0
 \]</span></p>
-<p>donde:
-- <span class="math inline">\(P(A)\)</span>: probabilidad previa
-- <span class="math inline">\(P(B|A)\)</span>: probabilidad de la evidencia si <span class="math inline">\(A\)</span> ocurre
-- <span class="math inline">\(P(B)\)</span>: probabilidad total de la evidencia
-- <span class="math inline">\(P(A|B)\)</span>: probabilidad posterior</p>
-<div id="interpretación" class="section level3 hasAnchor" number="11.1.1">
-<h3><span class="header-section-number">11.1.1</span> Interpretación<a href="teorema-de-bayes.html#interpretaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Bayes permite pasar de una probabilidad <strong>a priori</strong> a una probabilidad <strong>posterior</strong> luego de observar evidencia.</p>
+<p>Generalmente expresa una condición de igualdad, referencia o ausencia de cambio.</p>
 </div>
-</div>
-<div id="formulación-matemática-1" class="section level2 hasAnchor" number="11.2">
-<h2><span class="header-section-number">11.2</span> Formulación matemática<a href="teorema-de-bayes.html#formulaci%C3%B3n-matem%C3%A1tica-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Si <span class="math inline">\(A_1, A_2, \dots, A_n\)</span> forman una partición del espacio muestral, entonces:</p>
+<div id="hipótesis-alternativa" class="section level3 hasAnchor" number="17.1.2">
+<h3><span class="header-section-number">17.1.2</span> Hipótesis alternativa<a href="pruebas-de-hipótesis.html#hip%C3%B3tesis-alternativa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La hipótesis alternativa se representa como:</p>
 <p><span class="math display">\[
-P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^{n}P(B|A_j)P(A_j)}
+H_1
 \]</span></p>
+<p>Expresa la afirmación que se desea evaluar frente a la hipótesis nula.</p>
 </div>
-<div id="ejemplo-aplicado-10" class="section level2 hasAnchor" number="11.3">
-<h2><span class="header-section-number">11.3</span> Ejemplo aplicado<a href="teorema-de-bayes.html#ejemplo-aplicado-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Supóngase que una falla crítica en un sistema puede deberse a dos fuentes:</p>
+<div id="nivel-de-significancia" class="section level3 hasAnchor" number="17.1.3">
+<h3><span class="header-section-number">17.1.3</span> Nivel de significancia<a href="pruebas-de-hipótesis.html#nivel-de-significancia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El nivel de significancia se denota por <span class="math inline">\(\alpha\)</span>. Representa la probabilidad máxima aceptada de rechazar <span class="math inline">\(H_0\)</span> cuando en realidad es verdadera.</p>
+<p>Valores frecuentes:</p>
 <ul>
-<li><span class="math inline">\(A_1\)</span>: falla del sensor</li>
-<li><span class="math inline">\(A_2\)</span>: falla del actuador</li>
+<li><span class="math inline">\(\alpha = 0.10\)</span></li>
+<li><span class="math inline">\(\alpha = 0.05\)</span></li>
+<li><span class="math inline">\(\alpha = 0.01\)</span></li>
 </ul>
-<p>Con:
-- <span class="math inline">\(P(A_1)=0.35\)</span>
-- <span class="math inline">\(P(A_2)=0.65\)</span>
-- <span class="math inline">\(P(B|A_1)=0.80\)</span>
-- <span class="math inline">\(P(B|A_2)=0.30\)</span></p>
-<p>donde <span class="math inline">\(B\)</span> es la evidencia de alarma crítica.</p>
 </div>
-<div id="implementación-en-r-10" class="section level2 hasAnchor" number="11.4">
-<h2><span class="header-section-number">11.4</span> Implementación en R<a href="teorema-de-bayes.html#implementaci%C3%B3n-en-r-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="teorema-de-bayes.html#cb127-1" tabindex="-1"></a>P_A1 <span class="ot">&lt;-</span> <span class="fl">0.35</span></span>
-<span id="cb127-2"><a href="teorema-de-bayes.html#cb127-2" tabindex="-1"></a>P_A2 <span class="ot">&lt;-</span> <span class="fl">0.65</span></span>
-<span id="cb127-3"><a href="teorema-de-bayes.html#cb127-3" tabindex="-1"></a>P_B_dado_A1 <span class="ot">&lt;-</span> <span class="fl">0.80</span></span>
-<span id="cb127-4"><a href="teorema-de-bayes.html#cb127-4" tabindex="-1"></a>P_B_dado_A2 <span class="ot">&lt;-</span> <span class="fl">0.30</span></span>
-<span id="cb127-5"><a href="teorema-de-bayes.html#cb127-5" tabindex="-1"></a></span>
-<span id="cb127-6"><a href="teorema-de-bayes.html#cb127-6" tabindex="-1"></a>P_B <span class="ot">&lt;-</span> P_B_dado_A1 <span class="sc">*</span> P_A1 <span class="sc">+</span> P_B_dado_A2 <span class="sc">*</span> P_A2</span>
-<span id="cb127-7"><a href="teorema-de-bayes.html#cb127-7" tabindex="-1"></a>P_A1_dado_B <span class="ot">&lt;-</span> (P_B_dado_A1 <span class="sc">*</span> P_A1) <span class="sc">/</span> P_B</span>
-<span id="cb127-8"><a href="teorema-de-bayes.html#cb127-8" tabindex="-1"></a>P_A2_dado_B <span class="ot">&lt;-</span> (P_B_dado_A2 <span class="sc">*</span> P_A2) <span class="sc">/</span> P_B</span>
-<span id="cb127-9"><a href="teorema-de-bayes.html#cb127-9" tabindex="-1"></a></span>
-<span id="cb127-10"><a href="teorema-de-bayes.html#cb127-10" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_B =</span> P_B, <span class="at">P_A1_dado_B =</span> P_A1_dado_B, <span class="at">P_A2_dado_B =</span> P_A2_dado_B)</span></code></pre></div>
-<pre><code>##         P_B P_A1_dado_B P_A2_dado_B 
-##   0.4750000   0.5894737   0.4105263</code></pre>
 </div>
-<div id="gráfica-3" class="section level2 hasAnchor" number="11.5">
-<h2><span class="header-section-number">11.5</span> Gráfica<a href="teorema-de-bayes.html#gr%C3%A1fica-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="teorema-de-bayes.html#cb129-1" tabindex="-1"></a>posteriores <span class="ot">&lt;-</span> <span class="fu">c</span>(P_A1_dado_B, P_A2_dado_B)</span>
-<span id="cb129-2"><a href="teorema-de-bayes.html#cb129-2" tabindex="-1"></a><span class="fu">barplot</span>(posteriores,</span>
-<span id="cb129-3"><a href="teorema-de-bayes.html#cb129-3" tabindex="-1"></a>        <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">&quot;Sensor&quot;</span>, <span class="st">&quot;Actuador&quot;</span>),</span>
-<span id="cb129-4"><a href="teorema-de-bayes.html#cb129-4" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;steelblue&quot;</span>),</span>
-<span id="cb129-5"><a href="teorema-de-bayes.html#cb129-5" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Probabilidades posteriores&quot;</span>,</span>
-<span id="cb129-6"><a href="teorema-de-bayes.html#cb129-6" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Probabilidad&quot;</span>)</span></code></pre></div>
-<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-72-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<div id="formulación-matemática-4" class="section level2 hasAnchor" number="17.2">
+<h2><span class="header-section-number">17.2</span> Formulación matemática<a href="pruebas-de-hipótesis.html#formulaci%C3%B3n-matem%C3%A1tica-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="prueba-para-una-media-con-desviación-poblacional-desconocida" class="section level3 hasAnchor" number="17.2.1">
+<h3><span class="header-section-number">17.2.1</span> Prueba para una media con desviación poblacional desconocida<a href="pruebas-de-hipótesis.html#prueba-para-una-media-con-desviaci%C3%B3n-poblacional-desconocida" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\bar{x}\)</span>: media muestral</li>
+<li><span class="math inline">\(\mu_0\)</span>: valor hipotético de la media</li>
+<li><span class="math inline">\(s\)</span>: desviación estándar muestral</li>
+<li><span class="math inline">\(n\)</span>: tamaño de la muestra</li>
+</ul>
 </div>
-<div id="simulación-3" class="section level2 hasAnchor" number="11.6">
-<h2><span class="header-section-number">11.6</span> Simulación<a href="teorema-de-bayes.html#simulaci%C3%B3n-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="teorema-de-bayes.html#cb130-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">789</span>)</span>
-<span id="cb130-2"><a href="teorema-de-bayes.html#cb130-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb130-3"><a href="teorema-de-bayes.html#cb130-3" tabindex="-1"></a></span>
-<span id="cb130-4"><a href="teorema-de-bayes.html#cb130-4" tabindex="-1"></a>causa <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Sensor&quot;</span>, <span class="st">&quot;Actuador&quot;</span>), n, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.35</span>, <span class="fl">0.65</span>))</span>
-<span id="cb130-5"><a href="teorema-de-bayes.html#cb130-5" tabindex="-1"></a>alarma <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(causa <span class="sc">==</span> <span class="st">&quot;Sensor&quot;</span>,</span>
-<span id="cb130-6"><a href="teorema-de-bayes.html#cb130-6" tabindex="-1"></a>                 <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fl">0.80</span>),</span>
-<span id="cb130-7"><a href="teorema-de-bayes.html#cb130-7" tabindex="-1"></a>                 <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fl">0.30</span>))</span>
-<span id="cb130-8"><a href="teorema-de-bayes.html#cb130-8" tabindex="-1"></a></span>
-<span id="cb130-9"><a href="teorema-de-bayes.html#cb130-9" tabindex="-1"></a>prob_posterior_emp <span class="ot">&lt;-</span> <span class="fu">mean</span>(causa[alarma <span class="sc">==</span> <span class="dv">1</span>] <span class="sc">==</span> <span class="st">&quot;Sensor&quot;</span>)</span>
-<span id="cb130-10"><a href="teorema-de-bayes.html#cb130-10" tabindex="-1"></a>prob_posterior_emp</span></code></pre></div>
-<pre><code>## [1] 0.6230937</code></pre>
 </div>
-<div id="ejercicios-propuestos-3" class="section level2 hasAnchor" number="11.7">
-<h2><span class="header-section-number">11.7</span> Ejercicios propuestos<a href="teorema-de-bayes.html#ejercicios-propuestos-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ejemplo-aplicado-16" class="section level2 hasAnchor" number="17.3">
+<h2><span class="header-section-number">17.3</span> Ejemplo aplicado<a href="pruebas-de-hipótesis.html#ejemplo-aplicado-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una empresa de producción indica que el tiempo promedio de ensamblaje de una pieza es de 50 minutos. Se registra una muestra de tiempos:</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="pruebas-de-hipótesis.html#cb211-1" tabindex="-1"></a>tiempos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">51</span>, <span class="dv">49</span>, <span class="dv">52</span>, <span class="dv">50</span>, <span class="dv">47</span>, <span class="dv">49</span>, <span class="dv">51</span>, <span class="dv">50</span>, <span class="dv">48</span>, <span class="dv">52</span>, <span class="dv">49</span>)</span>
+<span id="cb211-2"><a href="pruebas-de-hipótesis.html#cb211-2" tabindex="-1"></a>tiempos</span></code></pre></div>
+<pre><code>##  [1] 48 51 49 52 50 47 49 51 50 48 52 49</code></pre>
+<p>Se desea evaluar si el tiempo promedio difiere de 50 minutos.</p>
+<p><span class="math display">\[
+H_0: \mu = 50
+\]</span></p>
+<p><span class="math display">\[
+H_1: \mu \neq 50
+\]</span></p>
+</div>
+<div id="implementación-en-r-16" class="section level2 hasAnchor" number="17.4">
+<h2><span class="header-section-number">17.4</span> Implementación en R<a href="pruebas-de-hipótesis.html#implementaci%C3%B3n-en-r-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estadísticos-básicos-1" class="section level3 hasAnchor" number="17.4.1">
+<h3><span class="header-section-number">17.4.1</span> Estadísticos básicos<a href="pruebas-de-hipótesis.html#estad%C3%ADsticos-b%C3%A1sicos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="pruebas-de-hipótesis.html#cb213-1" tabindex="-1"></a><span class="fu">mean</span>(tiempos)</span></code></pre></div>
+<pre><code>## [1] 49.66667</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="pruebas-de-hipótesis.html#cb215-1" tabindex="-1"></a><span class="fu">sd</span>(tiempos)</span></code></pre></div>
+<pre><code>## [1] 1.61433</code></pre>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="pruebas-de-hipótesis.html#cb217-1" tabindex="-1"></a><span class="fu">length</span>(tiempos)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+</div>
+<div id="prueba-t-para-una-muestra" class="section level3 hasAnchor" number="17.4.2">
+<h3><span class="header-section-number">17.4.2</span> Prueba t para una muestra<a href="pruebas-de-hipótesis.html#prueba-t-para-una-muestra" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="pruebas-de-hipótesis.html#cb219-1" tabindex="-1"></a><span class="fu">t.test</span>(tiempos, <span class="at">mu =</span> <span class="dv">50</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  tiempos
+## t = -0.71528, df = 11, p-value = 0.4893
+## alternative hypothesis: true mean is not equal to 50
+## 95 percent confidence interval:
+##  48.64097 50.69236
+## sample estimates:
+## mean of x 
+##  49.66667</code></pre>
+</div>
+</div>
+<div id="gráfica-8" class="section level2 hasAnchor" number="17.5">
+<h2><span class="header-section-number">17.5</span> Gráfica<a href="pruebas-de-hipótesis.html#gr%C3%A1fica-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="pruebas-de-hipótesis.html#cb221-1" tabindex="-1"></a><span class="fu">hist</span>(tiempos,</span>
+<span id="cb221-2"><a href="pruebas-de-hipótesis.html#cb221-2" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
+<span id="cb221-3"><a href="pruebas-de-hipótesis.html#cb221-3" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb221-4"><a href="pruebas-de-hipótesis.html#cb221-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribución de tiempos de ensamblaje&quot;</span>,</span>
+<span id="cb221-5"><a href="pruebas-de-hipótesis.html#cb221-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Tiempo (min)&quot;</span>)</span>
+<span id="cb221-6"><a href="pruebas-de-hipótesis.html#cb221-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(tiempos), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb221-7"><a href="pruebas-de-hipótesis.html#cb221-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">50</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb221-8"><a href="pruebas-de-hipótesis.html#cb221-8" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
+<span id="cb221-9"><a href="pruebas-de-hipótesis.html#cb221-9" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Media muestral&quot;</span>, <span class="st">&quot;Valor hipotético&quot;</span>),</span>
+<span id="cb221-10"><a href="pruebas-de-hipótesis.html#cb221-10" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>),</span>
+<span id="cb221-11"><a href="pruebas-de-hipótesis.html#cb221-11" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb221-12"><a href="pruebas-de-hipótesis.html#cb221-12" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-120-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="simulación-9" class="section level2 hasAnchor" number="17.6">
+<h2><span class="header-section-number">17.6</span> Simulación<a href="pruebas-de-hipótesis.html#simulaci%C3%B3n-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Simulamos muestras bajo la hipótesis nula <span class="math inline">\(\mu = 50\)</span> para observar la variabilidad del estadístico.</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="pruebas-de-hipótesis.html#cb222-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb222-2"><a href="pruebas-de-hipótesis.html#cb222-2" tabindex="-1"></a></span>
+<span id="cb222-3"><a href="pruebas-de-hipótesis.html#cb222-3" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb222-4"><a href="pruebas-de-hipótesis.html#cb222-4" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb222-5"><a href="pruebas-de-hipótesis.html#cb222-5" tabindex="-1"></a>t_est <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb222-6"><a href="pruebas-de-hipótesis.html#cb222-6" tabindex="-1"></a></span>
+<span id="cb222-7"><a href="pruebas-de-hipótesis.html#cb222-7" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb222-8"><a href="pruebas-de-hipótesis.html#cb222-8" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb222-9"><a href="pruebas-de-hipótesis.html#cb222-9" tabindex="-1"></a>  t_est[i] <span class="ot">&lt;-</span> (<span class="fu">mean</span>(muestra) <span class="sc">-</span> <span class="dv">50</span>) <span class="sc">/</span> (<span class="fu">sd</span>(muestra) <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb222-10"><a href="pruebas-de-hipótesis.html#cb222-10" tabindex="-1"></a>}</span>
+<span id="cb222-11"><a href="pruebas-de-hipótesis.html#cb222-11" tabindex="-1"></a></span>
+<span id="cb222-12"><a href="pruebas-de-hipótesis.html#cb222-12" tabindex="-1"></a><span class="fu">hist</span>(t_est,</span>
+<span id="cb222-13"><a href="pruebas-de-hipótesis.html#cb222-13" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>,</span>
+<span id="cb222-14"><a href="pruebas-de-hipótesis.html#cb222-14" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb222-15"><a href="pruebas-de-hipótesis.html#cb222-15" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribución simulada del estadístico t&quot;</span>,</span>
+<span id="cb222-16"><a href="pruebas-de-hipótesis.html#cb222-16" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;t&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-121-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ejercicio-propuesto-10" class="section level2 hasAnchor" number="17.7">
+<h2><span class="header-section-number">17.7</span> Ejercicio propuesto<a href="pruebas-de-hipótesis.html#ejercicio-propuesto-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una especificación técnica indica que el voltaje promedio debe ser 220 V. Se toma la muestra:</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="pruebas-de-hipótesis.html#cb223-1" tabindex="-1"></a>voltaje <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">219</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">222</span>, <span class="dv">218</span>, <span class="dv">223</span>,</span>
+<span id="cb223-2"><a href="pruebas-de-hipótesis.html#cb223-2" tabindex="-1"></a>             <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">219</span>, <span class="dv">222</span>, <span class="dv">221</span>, <span class="dv">220</span>)</span></code></pre></div>
+<p>Realice:</p>
 <ol style="list-style-type: decimal">
-<li>Plantee un caso con dos posibles causas de una falla.</li>
-<li>Asigne probabilidades previas y condicionales coherentes.</li>
-<li>Aplique el teorema de Bayes.</li>
-<li>Interprete la probabilidad posterior.</li>
-<li>Simule el problema en R.</li>
-<li>Compare los resultados teóricos y empíricos.</li>
+<li>Plantee <span class="math inline">\(H_0\)</span> y <span class="math inline">\(H_1\)</span>.</li>
+<li>Ejecute la prueba t en R.</li>
+<li>Interprete el p-valor.</li>
+<li>Concluya con <span class="math inline">\(\alpha = 0.05\)</span>.</li>
+<li>Explique la implicación técnica del resultado.</li>
 </ol>
 </div>
-<div id="caso-real-ingeniería-10" class="section level2 hasAnchor" number="11.8">
-<h2><span class="header-section-number">11.8</span> Caso real (ingeniería)<a href="teorema-de-bayes.html#caso-real-ingenier%C3%ADa-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En <strong>ingeniería eléctrica</strong>, Bayes se usa para identificar la causa más probable de una alarma en sistemas de potencia.</p>
-<p>En <strong>ingeniería civil</strong>, puede aplicarse al diagnóstico de daño estructural a partir de síntomas observados.</p>
-<p>En <strong>ingeniería industrial</strong>, se utiliza en sistemas de inspección y clasificación de defectos.</p>
-<p>En <strong>energías renovables</strong>, ayuda a inferir la causa más probable de caída de rendimiento a partir de datos operativos y ambientales.</p>
+<div id="caso-real-ingeniería-16" class="section level2 hasAnchor" number="17.8">
+<h2><span class="header-section-number">17.8</span> Caso real (ingeniería)<a href="pruebas-de-hipótesis.html#caso-real-ingenier%C3%ADa-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería civil</strong>, las pruebas de hipótesis permiten verificar si la resistencia media de un material cumple una norma.</p>
+<p>En <strong>ingeniería eléctrica</strong>, se usan para comprobar si el voltaje medio difiere de un valor nominal.</p>
+<p>En <strong>ingeniería industrial</strong>, permiten validar si el tiempo promedio de proceso cumple especificaciones.</p>
+<p>En <strong>energías renovables</strong>, ayudan a evaluar si la generación media observada difiere de la esperada.</p>
 </div>
-<div id="conclusión-3" class="section level2 hasAnchor" number="11.9">
-<h2><span class="header-section-number">11.9</span> Conclusión<a href="teorema-de-bayes.html#conclusi%C3%B3n-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El teorema de Bayes es una herramienta poderosa para actualizar decisiones con nueva evidencia. Su importancia en ingeniería radica en que conecta datos observados con diagnóstico técnico y toma de decisiones probabilísticas.</p>
+<div id="conclusión-9" class="section level2 hasAnchor" number="17.9">
+<h2><span class="header-section-number">17.9</span> Conclusión<a href="pruebas-de-hipótesis.html#conclusi%C3%B3n-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las pruebas de hipótesis permiten tomar decisiones estadísticas con base en evidencia muestral. Son fundamentales para validar especificaciones, comparar resultados y sustentar decisiones técnicas.</p>
 
 </div>
 </div>
@@ -723,8 +773,8 @@ P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^{n}P(B|A_j)P(A_j)}
           </div>
         </div>
       </div>
-<a href="probabilidad-condicionada.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="variables-aleatorias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="intervalos-de-confianza.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

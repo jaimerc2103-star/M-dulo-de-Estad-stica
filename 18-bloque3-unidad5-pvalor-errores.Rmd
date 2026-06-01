@@ -1,0 +1,173 @@
+# p-valor, nivel de significancia y errores de decisión
+
+## Concepto teórico
+
+El p-valor es una medida que indica qué tan compatible es la evidencia muestral con la hipótesis nula. Mientras menor sea el p-valor, mayor será la evidencia contra \(H_0\).
+
+### Interpretación del p-valor
+
+Si:
+
+\[
+p\text{-valor} \leq \alpha
+\]
+
+se rechaza \(H_0\).
+
+Si:
+
+\[
+p\text{-valor} > \alpha
+\]
+
+no se rechaza \(H_0\).
+
+Es importante señalar que no rechazar \(H_0\) no significa demostrar que \(H_0\) sea verdadera, sino que la evidencia muestral no es suficiente para rechazarla.
+
+## Errores de decisión
+
+### Error tipo I
+
+Ocurre cuando se rechaza \(H_0\) siendo verdadera.
+
+\[
+P(\text{Error tipo I}) = \alpha
+\]
+
+### Error tipo II
+
+Ocurre cuando no se rechaza \(H_0\) siendo falsa.
+
+\[
+P(\text{Error tipo II}) = \beta
+\]
+
+### Potencia de una prueba
+
+La potencia es la probabilidad de rechazar \(H_0\) cuando realmente es falsa:
+
+\[
+\text{Potencia}=1-\beta
+\]
+
+## Ejemplo aplicado
+
+Se evalúa si la media de temperatura de operación de un equipo es igual a 70 °C.
+
+```{r}
+temperatura <- c(71, 72, 69, 70, 73, 72, 71, 70, 74, 72, 71, 73)
+temperatura
+```
+
+Hipótesis:
+
+\[
+H_0: \mu = 70
+\]
+
+\[
+H_1: \mu \neq 70
+\]
+
+## Implementación en R
+
+```{r}
+prueba <- t.test(temperatura, mu = 70)
+prueba
+```
+
+### Extraer p-valor
+
+```{r}
+prueba$p.value
+```
+
+### Decisión con \(\alpha = 0.05\)
+
+```{r}
+alpha <- 0.05
+
+if(prueba$p.value <= alpha){
+  "Se rechaza H0"
+} else {
+  "No se rechaza H0"
+}
+```
+
+## Gráfica
+
+```{r}
+hist(temperatura,
+     col = "lightyellow",
+     border = "white",
+     main = "Temperatura de operación",
+     xlab = "Temperatura (°C)")
+abline(v = mean(temperatura), col = "red", lwd = 2)
+abline(v = 70, col = "blue", lwd = 2, lty = 2)
+legend("topright",
+       legend = c("Media muestral", "Valor hipotético"),
+       col = c("red", "blue"),
+       lwd = 2,
+       lty = c(1,2))
+```
+
+## Simulación
+
+Simulamos p-valores bajo \(H_0\), es decir, cuando la media verdadera es 70.
+
+```{r}
+set.seed(123)
+
+B <- 1000
+pvalores <- numeric(B)
+
+for(i in 1:B){
+  muestra <- rnorm(12, mean = 70, sd = 2)
+  pvalores[i] <- t.test(muestra, mu = 70)$p.value
+}
+
+hist(pvalores,
+     col = "lightblue",
+     border = "white",
+     main = "Distribución de p-valores bajo H0",
+     xlab = "p-valor")
+abline(v = 0.05, col = "red", lwd = 2)
+```
+
+### Proporción de rechazos con \(\alpha = 0.05\)
+
+```{r}
+mean(pvalores <= 0.05)
+```
+
+Esta proporción aproxima la tasa de error tipo I.
+
+## Ejercicio propuesto
+
+En un laboratorio se evalúa si el tiempo promedio de carga de una batería es de 120 minutos:
+
+```{r eval=FALSE}
+tiempo_carga <- c(118, 121, 119, 122, 120, 123, 119, 121, 122, 120)
+```
+
+Realice:
+
+1. Plantee \(H_0\) y \(H_1\).
+2. Ejecute una prueba t.
+3. Obtenga el p-valor.
+4. Tome una decisión con \(\alpha = 0.05\).
+5. Explique qué significaría cometer error tipo I en este caso.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, cometer un error tipo I podría implicar rechazar un lote de material que sí cumple especificaciones.
+
+En **ingeniería eléctrica**, podría significar declarar inestable un sistema que realmente opera correctamente.
+
+En **ingeniería industrial**, podría llevar a modificar un proceso que no requería ajuste.
+
+En **energías renovables**, podría interpretarse erróneamente que un sistema produce menos de lo esperado cuando la evidencia no es suficiente.
+
+## Conclusión
+
+El p-valor y los errores de decisión son conceptos centrales en la interpretación de pruebas de hipótesis. Una conclusión estadística debe acompañarse siempre de una interpretación técnica cuidadosa.

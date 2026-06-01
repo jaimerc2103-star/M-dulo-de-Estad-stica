@@ -44,3 +44,4 @@ Este bloque se organiza en los siguientes capítulos:
 4. Medidas de dispersión.
 5. Población, muestra y muestreo.
 6. Medidas de asociación.
+
