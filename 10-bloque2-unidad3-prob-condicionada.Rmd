@@ -1,127 +1,722 @@
-# Probabilidad condicionada
+# Probabilidad condicional
+
+## Motivación ingenieril
+
+En la vida cotidiana no siempre interesa conocer una probabilidad de forma aislada. Muchas veces queremos saber qué tan probable es que ocurra un evento **cuando ya conocemos cierta información previa**.
+
+Por ejemplo:
+
+- ¿Cuál es la probabilidad de que llueva si el cielo está nublado?
+- ¿Cuál es la probabilidad de que un estudiante apruebe si asistió a todas las clases?
+- ¿Cuál es la probabilidad de que una pieza sea defectuosa si fue fabricada por una máquina específica?
+- ¿Cuál es la probabilidad de que un transformador falle si ya presenta sobrecalentamiento?
+- ¿Cuál es la probabilidad de baja generación solar si el día está nublado?
+
+Este tipo de preguntas no se resuelve con probabilidad simple, sino con **probabilidad condicional**.
+
+En ingeniería, la probabilidad condicional es fundamental porque permite estudiar relaciones entre eventos, analizar riesgos y tomar decisiones técnicas con información parcial.
+
+---
+
+## Resultados de aprendizaje
+
+Al finalizar esta unidad, el estudiante será capaz de:
+
+1. Comprender el concepto de probabilidad condicional.
+2. Diferenciar probabilidad simple y probabilidad condicional.
+3. Calcular probabilidades condicionales mediante fórmulas.
+4. Resolver problemas usando tablas de contingencia.
+5. Analizar independencia entre eventos.
+6. Verificar resultados manuales mediante R.
+7. Aplicar probabilidad condicional a problemas de ingeniería civil, eléctrica, industrial y energías renovables.
+
+---
 
 ## Concepto teórico
 
-La probabilidad condicionada permite calcular la probabilidad de que ocurra un evento sabiendo que otro evento ya ocurrió. Es una herramienta esencial en análisis de confiabilidad, diagnóstico de fallas y toma de decisiones técnicas.
+La **probabilidad condicional** mide la probabilidad de que ocurra un evento \(A\), sabiendo que ya ocurrió otro evento \(B\).
 
-Si \(A\) y \(B\) son eventos y \(P(B)>0\), entonces:
+Se escribe como:
+
+\[
+P(A|B)
+\]
+
+y se lee:
+
+> Probabilidad de \(A\) dado que ocurrió \(B\).
+
+Esto significa que el espacio de análisis ya no es todo el espacio muestral \(S\), sino únicamente la parte donde ocurre \(B\).
+
+---
+
+## Fórmula de la probabilidad condicional
+
+La probabilidad condicional se define como:
 
 \[
 P(A|B)=\frac{P(A\cap B)}{P(B)}
 \]
 
-Esta expresión se interpreta como “probabilidad de \(A\) dado que \(B\) ocurrió”.
-
-### Independencia
-
-Dos eventos \(A\) y \(B\) son independientes si la ocurrencia de uno no altera la probabilidad del otro:
+siempre que:
 
 \[
-P(A|B)=P(A)
+P(B)>0
 \]
 
-Equivalentemente:
+Donde:
+
+- \(P(A|B)\): probabilidad de que ocurra \(A\) dado que ocurrió \(B\).
+- \(P(A\cap B)\): probabilidad de que ocurran \(A\) y \(B\) simultáneamente.
+- \(P(B)\): probabilidad del evento que ya se sabe que ocurrió.
+
+---
+
+## Interpretación intuitiva
+
+Suponga que en una clase hay 40 estudiantes. Si se elige un estudiante al azar, el espacio muestral son los 40 estudiantes.
+
+Pero si se dice: “el estudiante elegido usa laptop”, entonces el espacio de análisis se reduce solo al grupo de estudiantes que usan laptop.
+
+Por eso, en una probabilidad condicional el denominador cambia: ya no es el total general, sino el total del evento condicionado.
+
+---
+
+## Ejemplo cotidiano resuelto 1: estudiantes y dispositivos
+
+En una clase de 40 estudiantes:
+
+- 20 usan laptop.
+- 10 usan tablet.
+- 8 usan laptop y tablet.
+
+Si se elige un estudiante que usa laptop, ¿cuál es la probabilidad de que también use tablet?
+
+---
+
+## Solución manual
+
+### Paso 1: definir eventos
+
+Evento \(A\): el estudiante usa tablet.
+
+Evento \(B\): el estudiante usa laptop.
+
+Se desea calcular:
 
 \[
-P(A\cap B)=P(A)P(B)
+P(A|B)
 \]
 
-### Regla multiplicativa
+---
+
+### Paso 2: identificar los datos
+
+Estudiantes que usan laptop:
 
 \[
-P(A\cap B)=P(A|B)P(B)
+n(B)=20
 \]
 
-Esta relación es muy útil para calcular probabilidades conjuntas en sistemas donde existe dependencia entre eventos.
-
-## Ejemplo aplicado
-
-En una planta industrial:
-
-- \(A\): el motor presenta sobrecalentamiento
-- \(B\): el motor presenta vibración anormal
-
-Supóngase:
+Estudiantes que usan laptop y tablet:
 
 \[
-P(A)=0.30,\qquad P(B)=0.25,\qquad P(A\cap B)=0.10
+n(A\cap B)=8
+\]
+
+---
+
+### Paso 3: aplicar la fórmula
+
+\[
+P(A|B)=\frac{n(A\cap B)}{n(B)}
+\]
+
+\[
+P(A|B)=\frac{8}{20}
+\]
+
+\[
+P(A|B)=0.40
+\]
+
+---
+
+### Interpretación
+
+Si se sabe que un estudiante usa laptop, la probabilidad de que también use tablet es:
+
+\[
+0.40 = 40\%
+\]
+
+---
+
+## Verificación en R
+
+```{r}
+laptop <- 20
+laptop_y_tablet <- 8
+
+p_tablet_dado_laptop <- laptop_y_tablet / laptop
+p_tablet_dado_laptop
+```
+
+---
+
+## Ejemplo cotidiano resuelto 2: clima y lluvia
+
+En 30 días observados:
+
+- 12 días estuvieron nublados.
+- 8 días llovió.
+- 6 días fueron nublados y lluviosos.
+
+Si un día está nublado, ¿cuál es la probabilidad de que llueva?
+
+---
+
+## Solución manual
+
+Evento \(A\): llueve.
+
+Evento \(B\): día nublado.
+
+Se desea:
+
+\[
+P(A|B)
+\]
+
+Datos:
+
+\[
+n(B)=12
+\]
+
+\[
+n(A\cap B)=6
 \]
 
 Entonces:
 
 \[
-P(A|B)=\frac{0.10}{0.25}=0.40
+P(A|B)=\frac{6}{12}
 \]
 
-Es decir, dado que hay vibración anormal, la probabilidad de sobrecalentamiento es 0.40.
+\[
+P(A|B)=0.50
+\]
 
-## Implementación en R
+Interpretación: si el día está nublado, la probabilidad de que llueva es 50%.
 
-```{r}
-P_A <- 0.30
-P_B <- 0.25
-P_A_inter_B <- 0.10
+---
 
-P_A_dado_B <- P_A_inter_B / P_B
-P_A_dado_B
-```
-
-### Verificación de independencia
+## Verificación en R
 
 ```{r}
-P_A * P_B
+dias_nublados <- 12
+dias_nublados_y_lluvia <- 6
+
+p_lluvia_dado_nublado <- dias_nublados_y_lluvia / dias_nublados
+p_lluvia_dado_nublado
 ```
 
+---
+
+## Tablas de contingencia
+
+Una tabla de contingencia permite organizar la frecuencia conjunta de dos variables categóricas.
+
+Este tipo de tabla es muy útil para calcular probabilidades condicionales.
+
+---
+
+## Ejemplo aplicado a ingeniería industrial
+
+En una línea de producción se inspeccionan 100 piezas provenientes de dos máquinas.
+
+| Máquina | Defectuosa | Buena | Total |
+|---|---:|---:|---:|
+| Máquina A | 10 | 40 | 50 |
+| Máquina B | 5 | 45 | 50 |
+| Total | 15 | 85 | 100 |
+
+Se desea calcular:
+
+1. La probabilidad de que una pieza sea defectuosa dado que fue fabricada por la máquina A.
+2. La probabilidad de que una pieza sea defectuosa dado que fue fabricada por la máquina B.
+
+---
+
+## Solución manual
+
+### Probabilidad de defecto dado Máquina A
+
+Evento \(D\): pieza defectuosa.
+
+Evento \(A\): pieza fabricada por Máquina A.
+
+\[
+P(D|A)=\frac{n(D\cap A)}{n(A)}
+\]
+
+De la tabla:
+
+\[
+n(D\cap A)=10
+\]
+
+\[
+n(A)=50
+\]
+
+\[
+P(D|A)=\frac{10}{50}
+\]
+
+\[
+P(D|A)=0.20
+\]
+
+---
+
+### Probabilidad de defecto dado Máquina B
+
+Evento \(B\): pieza fabricada por Máquina B.
+
+\[
+P(D|B)=\frac{n(D\cap B)}{n(B)}
+\]
+
+\[
+P(D|B)=\frac{5}{50}
+\]
+
+\[
+P(D|B)=0.10
+\]
+
+---
+
+### Interpretación
+
+La Máquina A tiene una probabilidad de defecto del 20%, mientras que la Máquina B tiene una probabilidad del 10%. Por tanto, la Máquina A presenta mayor proporción de piezas defectuosas.
+
+---
+
+## Verificación en R
+
 ```{r}
-P_A_inter_B
+tabla_piezas <- matrix(c(10, 40,
+                         5, 45),
+                       nrow = 2,
+                       byrow = TRUE)
+
+rownames(tabla_piezas) <- c("Maquina A", "Maquina B")
+colnames(tabla_piezas) <- c("Defectuosa", "Buena")
+
+tabla_piezas
 ```
+
+---
+
+## Proporciones por fila
+
+```{r}
+prop.table(tabla_piezas, margin = 1)
+```
+
+La opción `margin = 1` calcula proporciones dentro de cada fila. En este caso, permite observar la proporción de piezas defectuosas y buenas dentro de cada máquina.
+
+---
 
 ## Gráfica
 
 ```{r}
-valores <- c(P_A, P_B, P_A_inter_B, P_A_dado_B)
-barplot(valores,
-        names.arg = c("P(A)", "P(B)", "P(A∩B)", "P(A|B)"),
-        col = c("skyblue", "gold", "tomato", "lightgreen"),
-        main = "Probabilidades simples y condicionada",
-        ylab = "Valor")
+barplot(t(prop.table(tabla_piezas, margin = 1)),
+        beside = TRUE,
+        col = c("tomato", "lightgreen"),
+        main = "Calidad de piezas por máquina",
+        ylab = "Proporción")
+legend("topright",
+       legend = c("Defectuosa", "Buena"),
+       fill = c("tomato", "lightgreen"))
 ```
 
-## Simulación
+---
+
+## Regla multiplicativa
+
+A partir de la fórmula de probabilidad condicional:
+
+\[
+P(A|B)=\frac{P(A\cap B)}{P(B)}
+\]
+
+podemos despejar:
+
+\[
+P(A\cap B)=P(A|B)P(B)
+\]
+
+Esta expresión se conoce como **regla multiplicativa**.
+
+---
+
+## Ejemplo resuelto 3: falla mecánica y sobrecalentamiento
+
+Suponga que:
+
+- La probabilidad de que un motor presente sobrecalentamiento es \(P(S)=0.30\).
+- La probabilidad de que presente falla mecánica dado que tiene sobrecalentamiento es \(P(F|S)=0.40\).
+
+¿Cuál es la probabilidad de que el motor tenga sobrecalentamiento y falla mecánica?
+
+---
+
+## Solución manual
+
+Se aplica la regla multiplicativa:
+
+\[
+P(F\cap S)=P(F|S)P(S)
+\]
+
+\[
+P(F\cap S)=0.40(0.30)
+\]
+
+\[
+P(F\cap S)=0.12
+\]
+
+Interpretación: existe una probabilidad del 12% de que el motor presente simultáneamente sobrecalentamiento y falla mecánica.
+
+---
+
+## Verificación en R
 
 ```{r}
-set.seed(456)
-n <- 1000
+p_sobrecalentamiento <- 0.30
+p_falla_dado_sobrecalentamiento <- 0.40
 
-vibracion <- rbinom(n, 1, 0.25)
-sobrecal <- ifelse(vibracion == 1, rbinom(n, 1, 0.4), rbinom(n, 1, 0.2))
-
-P_emp_B <- mean(vibracion == 1)
-P_emp_A_inter_B <- mean(vibracion == 1 & sobrecal == 1)
-P_emp_A_dado_B <- P_emp_A_inter_B / P_emp_B
-
-c(P_emp_B = P_emp_B, P_emp_A_inter_B = P_emp_A_inter_B, P_emp_A_dado_B = P_emp_A_dado_B)
+p_ambos <- p_falla_dado_sobrecalentamiento * p_sobrecalentamiento
+p_ambos
 ```
 
-## Ejercicios propuestos
+---
 
-1. En una red eléctrica, defina dos eventos relacionados con el funcionamiento del sistema.
-2. Asigne probabilidades simples y conjuntas coherentes.
-3. Calcule la probabilidad condicionada.
-4. Analice si los eventos son independientes.
-5. Simule 500 observaciones en R.
-6. Compare resultados teóricos y empíricos.
+## Independencia de eventos
 
-## Caso real (ingeniería)
+Dos eventos son independientes si la ocurrencia de uno no modifica la probabilidad del otro.
 
-En **ingeniería eléctrica**, la probabilidad condicionada se usa para analizar fallas encadenadas, como sobrecarga y disparo de protección.
+Matemáticamente:
 
-En **ingeniería civil**, puede aplicarse a la probabilidad de daño estructural condicionada a un sismo o a precipitación extrema.
+\[
+P(A|B)=P(A)
+\]
 
-En **ingeniería industrial**, se emplea en control de calidad para estudiar defectos condicionados a cambios de lote o de turno.
+También puede verificarse con:
 
-En **energías renovables**, permite estudiar la probabilidad de baja generación dado un estado meteorológico específico.
+\[
+P(A\cap B)=P(A)P(B)
+\]
 
-## Conclusión
+---
 
-La probabilidad condicionada permite introducir dependencia entre eventos y constituye una base fundamental para el teorema de Bayes, la confiabilidad y la inferencia probabilística.
+## Ejemplo cotidiano de independencia
+
+Se lanza una moneda y un dado.
+
+Evento \(A\): obtener cara.
+
+Evento \(B\): obtener número par en el dado.
+
+El resultado de la moneda no afecta el resultado del dado. Por tanto, los eventos son independientes.
+
+\[
+P(A)=\frac{1}{2}
+\]
+
+\[
+P(B)=\frac{3}{6}=\frac{1}{2}
+\]
+
+\[
+P(A\cap B)=P(A)P(B)
+\]
+
+\[
+P(A\cap B)=\frac{1}{2}\cdot\frac{1}{2}
+\]
+
+\[
+P(A\cap B)=\frac{1}{4}=0.25
+\]
+
+---
+
+## Verificación en R
+
+```{r}
+p_cara <- 1/2
+p_par <- 3/6
+
+p_cara_y_par <- p_cara * p_par
+p_cara_y_par
+```
+
+---
+
+## Simulación de independencia
+
+Simulamos 1000 lanzamientos de moneda y dado.
+
+```{r}
+set.seed(123)
+
+n <- 1000
+
+moneda <- sample(c("Cara", "Sello"), size = n, replace = TRUE)
+dado <- sample(1:6, size = n, replace = TRUE)
+
+evento_cara <- moneda == "Cara"
+evento_par <- dado %% 2 == 0
+
+p_cara_sim <- mean(evento_cara)
+p_par_sim <- mean(evento_par)
+p_cara_y_par_sim <- mean(evento_cara & evento_par)
+
+c(P_cara = p_cara_sim,
+  P_par = p_par_sim,
+  P_cara_y_par = p_cara_y_par_sim,
+  Producto = p_cara_sim * p_par_sim)
+```
+
+Si el valor de \(P(A\cap B)\) se aproxima a \(P(A)P(B)\), los eventos se comportan aproximadamente como independientes.
+
+---
+
+## Ejemplo aplicado a ingeniería eléctrica
+
+Se revisan 80 transformadores:
+
+| Tipo | Sobrecalentado | Normal | Total |
+|---|---:|---:|---:|
+| Antiguo | 12 | 28 | 40 |
+| Nuevo | 4 | 36 | 40 |
+| Total | 16 | 64 | 80 |
+
+Calcular:
+
+1. La probabilidad de sobrecalentamiento dado que el transformador es antiguo.
+2. La probabilidad de sobrecalentamiento dado que el transformador es nuevo.
+3. Interpretar cuál grupo presenta mayor riesgo.
+
+---
+
+## Solución manual
+
+### Transformador antiguo
+
+\[
+P(S|A)=\frac{12}{40}
+\]
+
+\[
+P(S|A)=0.30
+\]
+
+### Transformador nuevo
+
+\[
+P(S|N)=\frac{4}{40}
+\]
+
+\[
+P(S|N)=0.10
+\]
+
+### Interpretación
+
+Los transformadores antiguos tienen una probabilidad de sobrecalentamiento del 30%, mientras que los nuevos tienen una probabilidad del 10%. Por tanto, los transformadores antiguos muestran mayor riesgo.
+
+---
+
+## Verificación en R
+
+```{r}
+tabla_transformadores <- matrix(c(12, 28,
+                                  4, 36),
+                                nrow = 2,
+                                byrow = TRUE)
+
+rownames(tabla_transformadores) <- c("Antiguo", "Nuevo")
+colnames(tabla_transformadores) <- c("Sobrecalentado", "Normal")
+
+tabla_transformadores
+```
+
+```{r}
+prop.table(tabla_transformadores, margin = 1)
+```
+
+---
+
+## Gráfica
+
+```{r}
+barplot(t(prop.table(tabla_transformadores, margin = 1)),
+        beside = TRUE,
+        col = c("orange", "lightblue"),
+        main = "Sobrecalentamiento por tipo de transformador",
+        ylab = "Proporción")
+legend("topright",
+       legend = c("Sobrecalentado", "Normal"),
+       fill = c("orange", "lightblue"))
+```
+
+---
+
+## Ejercicio guiado
+
+En un sistema de generación solar se observan 60 días:
+
+| Clima | Baja generación | Generación normal | Total |
+|---|---:|---:|---:|
+| Nublado | 18 | 12 | 30 |
+| Soleado | 6 | 24 | 30 |
+| Total | 24 | 36 | 60 |
+
+Calcular:
+
+1. La probabilidad de baja generación dado que el día es nublado.
+2. La probabilidad de baja generación dado que el día es soleado.
+3. Comparar los resultados.
+4. Verificar en R.
+
+---
+
+## Solución del ejercicio guiado
+
+### Día nublado
+
+\[
+P(B|N)=\frac{18}{30}
+\]
+
+\[
+P(B|N)=0.60
+\]
+
+### Día soleado
+
+\[
+P(B|S)=\frac{6}{30}
+\]
+
+\[
+P(B|S)=0.20
+\]
+
+### Interpretación
+
+Si el día está nublado, la probabilidad de baja generación es 60%. Si el día está soleado, la probabilidad baja a 20%. Por tanto, el clima afecta la generación energética.
+
+---
+
+## Verificación en R
+
+```{r}
+tabla_solar <- matrix(c(18, 12,
+                        6, 24),
+                      nrow = 2,
+                      byrow = TRUE)
+
+rownames(tabla_solar) <- c("Nublado", "Soleado")
+colnames(tabla_solar) <- c("Baja generacion", "Generacion normal")
+
+tabla_solar
+```
+
+```{r}
+prop.table(tabla_solar, margin = 1)
+```
+
+---
+
+## Actividad práctica
+
+Construya una tabla de contingencia en uno de los siguientes contextos:
+
+1. Piezas defectuosas por máquina.
+2. Fallas eléctricas por tipo de transformador.
+3. Baja resistencia por tipo de mezcla de hormigón.
+4. Baja generación solar según clima.
+5. Congestión vehicular según hora del día.
+
+Debe realizar:
+
+- Tabla de contingencia.
+- Cálculo manual de al menos dos probabilidades condicionales.
+- Verificación en R.
+- Gráfico de proporciones.
+- Interpretación técnica.
+
+---
+
+## Aplicaciones por carrera
+
+### Ingeniería Civil
+
+Permite calcular la probabilidad de que una muestra no cumpla resistencia mínima dado que pertenece a cierto proveedor, mezcla o lote.
+
+### Ingeniería Eléctrica
+
+Permite analizar la probabilidad de falla dado el tipo de equipo, antigüedad, sobrecarga o temperatura.
+
+### Ingeniería Industrial
+
+Permite estudiar defectos condicionados a máquinas, turnos, proveedores o lotes.
+
+### Energías Renovables
+
+Permite evaluar baja generación condicionada a clima, temporada, tipo de panel o estado del inversor.
+
+---
+
+## Preguntas de autoevaluación
+
+1. ¿Qué significa \(P(A|B)\)?
+2. ¿Cuál es la fórmula de probabilidad condicional?
+3. ¿Por qué se requiere que \(P(B)>0\)?
+4. ¿Qué representa \(P(A\cap B)\)?
+5. ¿Cómo se calcula una probabilidad condicional desde una tabla?
+6. ¿Qué significa independencia entre eventos?
+7. ¿Cómo se verifica independencia?
+8. ¿Qué función de R permite calcular proporciones por fila?
+9. Dé un ejemplo cotidiano de probabilidad condicional.
+10. Dé un ejemplo de probabilidad condicional en ingeniería.
+
+---
+
+## Resumen de la unidad
+
+La probabilidad condicional permite calcular probabilidades cuando se conoce información previa. Su fórmula principal es:
+
+\[
+P(A|B)=\frac{P(A\cap B)}{P(B)}
+\]
+
+Esta herramienta permite estudiar dependencia entre eventos, analizar tablas de contingencia y evaluar riesgos en sistemas reales. Además, permite verificar si dos eventos son independientes.
+
+En ingeniería, la probabilidad condicional es clave para control de calidad, análisis de fallas, diagnóstico de sistemas y evaluación de condiciones operativas.
+
+---
+
+## Bibliografía sugerida
+
+- Devore, J. L. (2008). *Probabilidad y estadística para ingeniería y ciencias*. Cengage Learning.
+- Montgomery, D. C., & Runger, G. C. (2016). *Probabilidad y estadística aplicada a la ingeniería*. Limusa.
+- OpenStax. (2023). *Introducción a la estadística*. Rice University.
