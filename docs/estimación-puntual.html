@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <title>15 Estimación puntual | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="15 Estimación puntual | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="15 Estimación puntual | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="15 Estimación puntual | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="medidas-de-tendencia-central-y-de-posición.html"/>
-<link rel="next" href="muestras-población-y-muestreo.html"/>
+<link rel="prev" href="introducción-a-la-inferencia-estadística.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -495,138 +495,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="medidas-de-dispersión-y-forma" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> Medidas de dispersión y forma<a href="medidas-de-dispersión-y-forma.html#medidas-de-dispersi%C3%B3n-y-forma" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="concepto-teórico-4" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Concepto teórico<a href="medidas-de-dispersión-y-forma.html#concepto-te%C3%B3rico-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Las medidas de dispersión indican cuánto se alejan los datos respecto a un valor central. Mientras las medidas de tendencia central responden dónde se concentran los datos, las de dispersión indican qué tan homogéneo o variable es el conjunto.</p>
-<div id="rango" class="section level3 hasAnchor" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Rango<a href="medidas-de-dispersión-y-forma.html#rango" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Es la diferencia entre el valor máximo y el mínimo:</p>
+<div id="estimación-puntual" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">15</span> Estimación puntual<a href="estimación-puntual.html#estimaci%C3%B3n-puntual" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-14" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Concepto teórico<a href="estimación-puntual.html#concepto-te%C3%B3rico-14" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La estimación puntual es una técnica de inferencia estadística que consiste en utilizar un estadístico muestral para aproximar el valor desconocido de un parámetro poblacional.</p>
+</div>
+<div id="media-muestral-2" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Media muestral<a href="estimación-puntual.html#media-muestral-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><span class="math display">\[
-R = x_{\max} - x_{\min}
+\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
 \]</span></p>
 </div>
-<div id="varianza" class="section level3 hasAnchor" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Varianza<a href="medidas-de-dispersión-y-forma.html#varianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La varianza muestral se define como:</p>
+<div id="ejemplo-aplicado-14" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Ejemplo aplicado<a href="estimación-puntual.html#ejemplo-aplicado-14" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="estimación-puntual.html#cb186-1" tabindex="-1"></a>energia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">510</span>, <span class="dv">525</span>, <span class="dv">518</span>, <span class="dv">530</span>, <span class="dv">522</span>, <span class="dv">515</span>,</span>
+<span id="cb186-2"><a href="estimación-puntual.html#cb186-2" tabindex="-1"></a>             <span class="dv">519</span>, <span class="dv">527</span>, <span class="dv">521</span>, <span class="dv">524</span>, <span class="dv">528</span>, <span class="dv">520</span>)</span>
+<span id="cb186-3"><a href="estimación-puntual.html#cb186-3" tabindex="-1"></a>energia</span></code></pre></div>
+<pre><code>##  [1] 510 525 518 530 522 515 519 527 521 524 528 520</code></pre>
+</div>
+<div id="implementación-en-r-14" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> Implementación en R<a href="estimación-puntual.html#implementaci%C3%B3n-en-r-14" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="estimación-puntual.html#cb188-1" tabindex="-1"></a><span class="fu">mean</span>(energia)</span></code></pre></div>
+<pre><code>## [1] 521.5833</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="estimación-puntual.html#cb190-1" tabindex="-1"></a><span class="fu">var</span>(energia)</span></code></pre></div>
+<pre><code>## [1] 32.62879</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="estimación-puntual.html#cb192-1" tabindex="-1"></a><span class="fu">sd</span>(energia)</span></code></pre></div>
+<pre><code>## [1] 5.712161</code></pre>
+</div>
+<div id="gráfica-6" class="section level2 hasAnchor" number="15.5">
+<h2><span class="header-section-number">15.5</span> Gráfica<a href="estimación-puntual.html#gr%C3%A1fica-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="estimación-puntual.html#cb194-1" tabindex="-1"></a><span class="fu">plot</span>(energia,</span>
+<span id="cb194-2"><a href="estimación-puntual.html#cb194-2" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;b&#39;</span>,</span>
+<span id="cb194-3"><a href="estimación-puntual.html#cb194-3" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb194-4"><a href="estimación-puntual.html#cb194-4" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>,</span>
+<span id="cb194-5"><a href="estimación-puntual.html#cb194-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&#39;Generación diaria de energía&#39;</span>,</span>
+<span id="cb194-6"><a href="estimación-puntual.html#cb194-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Día&#39;</span>,</span>
+<span id="cb194-7"><a href="estimación-puntual.html#cb194-7" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Energía (kWh)&#39;</span>)</span>
+<span id="cb194-8"><a href="estimación-puntual.html#cb194-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">mean</span>(energia), <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-106-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="error-estándar" class="section level2 hasAnchor" number="15.6">
+<h2><span class="header-section-number">15.6</span> Error estándar<a href="estimación-puntual.html#error-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><span class="math display">\[
-s^2 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}
+SE = \frac{s}{\sqrt{n}}
 \]</span></p>
-<p>Mide la dispersión cuadrática de los datos respecto a la media.</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="estimación-puntual.html#cb195-1" tabindex="-1"></a><span class="fu">sd</span>(energia)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(energia))</span></code></pre></div>
+<pre><code>## [1] 1.648959</code></pre>
 </div>
-<div id="desviación-estándar" class="section level3 hasAnchor" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Desviación estándar<a href="medidas-de-dispersión-y-forma.html#desviaci%C3%B3n-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Es la raíz cuadrada de la varianza:</p>
-<p><span class="math display">\[
-s = \sqrt{s^2}
-\]</span></p>
-<p>Tiene la ventaja de expresarse en las mismas unidades que los datos originales.</p>
+<div id="simulación-7" class="section level2 hasAnchor" number="15.7">
+<h2><span class="header-section-number">15.7</span> Simulación<a href="estimación-puntual.html#simulaci%C3%B3n-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="estimación-puntual.html#cb197-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb197-2"><a href="estimación-puntual.html#cb197-2" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">200</span>)</span>
+<span id="cb197-3"><a href="estimación-puntual.html#cb197-3" tabindex="-1"></a></span>
+<span id="cb197-4"><a href="estimación-puntual.html#cb197-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>){</span>
+<span id="cb197-5"><a href="estimación-puntual.html#cb197-5" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">15</span>, <span class="at">mean =</span> <span class="dv">520</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb197-6"><a href="estimación-puntual.html#cb197-6" tabindex="-1"></a>  medias[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(muestra)</span>
+<span id="cb197-7"><a href="estimación-puntual.html#cb197-7" tabindex="-1"></a>}</span>
+<span id="cb197-8"><a href="estimación-puntual.html#cb197-8" tabindex="-1"></a></span>
+<span id="cb197-9"><a href="estimación-puntual.html#cb197-9" tabindex="-1"></a><span class="fu">hist</span>(medias,</span>
+<span id="cb197-10"><a href="estimación-puntual.html#cb197-10" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&#39;lightgreen&#39;</span>,</span>
+<span id="cb197-11"><a href="estimación-puntual.html#cb197-11" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&#39;Distribución de medias muestrales&#39;</span>,</span>
+<span id="cb197-12"><a href="estimación-puntual.html#cb197-12" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;Media muestral&#39;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-108-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="coeficiente-de-variación" class="section level3 hasAnchor" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> Coeficiente de variación<a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Permite comparar dispersión relativa entre conjuntos de datos con distintas escalas:</p>
-<p><span class="math display">\[
-CV = \frac{s}{\bar{x}} \times 100
-\]</span></p>
-</div>
-<div id="asimetría" class="section level3 hasAnchor" number="5.1.5">
-<h3><span class="header-section-number">5.1.5</span> Asimetría<a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Indica si la distribución es simétrica o si presenta sesgo hacia la izquierda o hacia la derecha.</p>
-</div>
-<div id="curtosis" class="section level3 hasAnchor" number="5.1.6">
-<h3><span class="header-section-number">5.1.6</span> Curtosis<a href="medidas-de-dispersión-y-forma.html#curtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Mide el grado de concentración de los datos alrededor de la media y el peso de las colas de la distribución.</p>
-</div>
-<div id="teorema-de-chebyshev" class="section level3 hasAnchor" number="5.1.7">
-<h3><span class="header-section-number">5.1.7</span> Teorema de Chebyshev<a href="medidas-de-dispersión-y-forma.html#teorema-de-chebyshev" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Para cualquier conjunto de datos y para <span class="math inline">\(k &gt; 1\)</span>, al menos:</p>
-<p><span class="math display">\[
-1 - \frac{1}{k^2}
-\]</span></p>
-<p>de las observaciones se encuentra dentro del intervalo:</p>
-<p><span class="math display">\[
-\bar{x} \pm ks
-\]</span></p>
-<p>Este teorema es útil cuando no se conoce la forma exacta de la distribución.</p>
-</div>
-</div>
-<div id="ejemplo-aplicado-4" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Ejemplo aplicado<a href="medidas-de-dispersión-y-forma.html#ejemplo-aplicado-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Se registran voltajes de operación (V) en un sistema eléctrico:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="medidas-de-dispersión-y-forma.html#cb48-1" tabindex="-1"></a>voltaje <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">218</span>, <span class="dv">220</span>, <span class="dv">221</span>, <span class="dv">219</span>, <span class="dv">222</span>, <span class="dv">223</span>, <span class="dv">217</span>, <span class="dv">218</span>, <span class="dv">220</span>, <span class="dv">221</span>,</span>
-<span id="cb48-2"><a href="medidas-de-dispersión-y-forma.html#cb48-2" tabindex="-1"></a>             <span class="dv">224</span>, <span class="dv">219</span>, <span class="dv">220</span>, <span class="dv">222</span>, <span class="dv">223</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">219</span>, <span class="dv">218</span>, <span class="dv">222</span>)</span>
-<span id="cb48-3"><a href="medidas-de-dispersión-y-forma.html#cb48-3" tabindex="-1"></a>voltaje</span></code></pre></div>
-<pre><code>##  [1] 218 220 221 219 222 223 217 218 220 221 224 219 220 222 223 221 220 219 218 222</code></pre>
-</div>
-<div id="implementación-en-r-4" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Implementación en R<a href="medidas-de-dispersión-y-forma.html#implementaci%C3%B3n-en-r-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="rango-1" class="section level3 hasAnchor" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Rango<a href="medidas-de-dispersión-y-forma.html#rango-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="medidas-de-dispersión-y-forma.html#cb50-1" tabindex="-1"></a><span class="fu">max</span>(voltaje) <span class="sc">-</span> <span class="fu">min</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 7</code></pre>
-</div>
-<div id="varianza-y-desviación-estándar" class="section level3 hasAnchor" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Varianza y desviación estándar<a href="medidas-de-dispersión-y-forma.html#varianza-y-desviaci%C3%B3n-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="medidas-de-dispersión-y-forma.html#cb52-1" tabindex="-1"></a><span class="fu">var</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 3.713158</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="medidas-de-dispersión-y-forma.html#cb54-1" tabindex="-1"></a><span class="fu">sd</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 1.926956</code></pre>
-</div>
-<div id="coeficiente-de-variación-1" class="section level3 hasAnchor" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> Coeficiente de variación<a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="medidas-de-dispersión-y-forma.html#cb56-1" tabindex="-1"></a>(<span class="fu">sd</span>(voltaje) <span class="sc">/</span> <span class="fu">mean</span>(voltaje)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
-<pre><code>## [1] 0.8744977</code></pre>
-</div>
-<div id="asimetría-y-curtosis" class="section level3 hasAnchor" number="5.3.4">
-<h3><span class="header-section-number">5.3.4</span> Asimetría y curtosis<a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa-y-curtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="medidas-de-dispersión-y-forma.html#cb58-1" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb58-2"><a href="medidas-de-dispersión-y-forma.html#cb58-2" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="medidas-de-dispersión-y-forma.html#cb58-3" tabindex="-1"></a><span class="fu">skewness</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 0.1212412</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="medidas-de-dispersión-y-forma.html#cb60-1" tabindex="-1"></a><span class="fu">kurtosis</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 2.11502</code></pre>
-</div>
-<div id="aplicación-del-teorema-de-chebyshev-para-k-2" class="section level3 hasAnchor" number="5.3.5">
-<h3><span class="header-section-number">5.3.5</span> Aplicación del teorema de Chebyshev para <span class="math inline">\(k = 2\)</span><a href="medidas-de-dispersión-y-forma.html#aplicaci%C3%B3n-del-teorema-de-chebyshev-para-k-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="medidas-de-dispersión-y-forma.html#cb62-1" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(voltaje)</span>
-<span id="cb62-2"><a href="medidas-de-dispersión-y-forma.html#cb62-2" tabindex="-1"></a>desv <span class="ot">&lt;-</span> <span class="fu">sd</span>(voltaje)</span>
-<span id="cb62-3"><a href="medidas-de-dispersión-y-forma.html#cb62-3" tabindex="-1"></a></span>
-<span id="cb62-4"><a href="medidas-de-dispersión-y-forma.html#cb62-4" tabindex="-1"></a>lim_inf <span class="ot">&lt;-</span> media <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> desv</span>
-<span id="cb62-5"><a href="medidas-de-dispersión-y-forma.html#cb62-5" tabindex="-1"></a>lim_sup <span class="ot">&lt;-</span> media <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> desv</span>
-<span id="cb62-6"><a href="medidas-de-dispersión-y-forma.html#cb62-6" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="medidas-de-dispersión-y-forma.html#cb62-7" tabindex="-1"></a><span class="fu">sum</span>(voltaje <span class="sc">&gt;=</span> lim_inf <span class="sc">&amp;</span> voltaje <span class="sc">&lt;=</span> lim_sup) <span class="sc">/</span> <span class="fu">length</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 1</code></pre>
-</div>
-<div id="visualización-de-la-dispersión" class="section level3 hasAnchor" number="5.3.6">
-<h3><span class="header-section-number">5.3.6</span> Visualización de la dispersión<a href="medidas-de-dispersión-y-forma.html#visualizaci%C3%B3n-de-la-dispersi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="medidas-de-dispersión-y-forma.html#cb64-1" tabindex="-1"></a><span class="fu">hist</span>(voltaje, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Distribución del voltaje&quot;</span>,</span>
-<span id="cb64-2"><a href="medidas-de-dispersión-y-forma.html#cb64-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Voltaje (V)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frecuencia&quot;</span>)</span>
-<span id="cb64-3"><a href="medidas-de-dispersión-y-forma.html#cb64-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(voltaje), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-35-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="ejercicio-propuesto-4" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Ejercicio propuesto<a href="medidas-de-dispersión-y-forma.html#ejercicio-propuesto-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En una práctica de ingeniería civil se registran resistencias a compresión (MPa) de probetas de hormigón:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="medidas-de-dispersión-y-forma.html#cb65-1" tabindex="-1"></a>resistencia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">24.8</span>, <span class="fl">25.1</span>, <span class="fl">24.5</span>, <span class="fl">25.7</span>, <span class="fl">26.0</span>, <span class="fl">24.9</span>, <span class="fl">25.3</span>, <span class="fl">25.8</span>,</span>
-<span id="cb65-2"><a href="medidas-de-dispersión-y-forma.html#cb65-2" tabindex="-1"></a>                 <span class="fl">24.7</span>, <span class="fl">25.0</span>, <span class="fl">25.4</span>, <span class="fl">25.9</span>, <span class="fl">24.6</span>, <span class="fl">25.2</span>, <span class="fl">25.6</span>)</span></code></pre></div>
-<p>Realice lo siguiente:</p>
+<div id="ejercicio-propuesto-8" class="section level2 hasAnchor" number="15.8">
+<h2><span class="header-section-number">15.8</span> Ejercicio propuesto<a href="estimación-puntual.html#ejercicio-propuesto-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Calcule rango, varianza y desviación estándar.</li>
-<li>Obtenga el coeficiente de variación.</li>
-<li>Calcule asimetría y curtosis.</li>
-<li>Aplique el teorema de Chebyshev para <span class="math inline">\(k = 2\)</span>.</li>
-<li>Interprete la estabilidad del conjunto de datos.</li>
+<li>Calcule la media muestral.</li>
+<li>Determine el error estándar.</li>
+<li>Interprete los resultados.</li>
 </ol>
 </div>
-<div id="caso-real-ingeniería-4" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> Caso real (ingeniería)<a href="medidas-de-dispersión-y-forma.html#caso-real-ingenier%C3%ADa-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En <strong>ingeniería eléctrica</strong>, una baja dispersión en el voltaje indica estabilidad del sistema y menor probabilidad de fallos.</p>
-<p>En <strong>ingeniería industrial</strong>, la desviación estándar permite evaluar la consistencia de tiempos de producción, masas, dimensiones o consumos.</p>
-<p>En <strong>ingeniería civil</strong>, el coeficiente de variación se usa para juzgar la uniformidad de resultados en ensayos de materiales.</p>
-<p>En <strong>energías renovables</strong>, la variabilidad de la generación solar o eólica puede analizarse mediante rango, desviación estándar y asimetría, identificando condiciones de operación estables o inestables.</p>
-<p>Estas medidas permiten pasar de una descripción básica a una evaluación rigurosa de la confiabilidad de los datos.</p>
+<div id="caso-real-ingeniería-14" class="section level2 hasAnchor" number="15.9">
+<h2><span class="header-section-number">15.9</span> Caso real (ingeniería)<a href="estimación-puntual.html#caso-real-ingenier%C3%ADa-14" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En ingeniería eléctrica y energías renovables, la estimación puntual permite aproximar generación energética, voltaje promedio y comportamiento operativo de sistemas.</p>
+</div>
+<div id="conclusión-7" class="section level2 hasAnchor" number="15.10">
+<h2><span class="header-section-number">15.10</span> Conclusión<a href="estimación-puntual.html#conclusi%C3%B3n-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La estimación puntual constituye la base inicial de la inferencia estadística y permite aproximar parámetros poblacionales mediante información muestral.</p>
 
 </div>
 </div>
@@ -635,8 +582,8 @@ CV = \frac{s}{\bar{x}} \times 100
           </div>
         </div>
       </div>
-<a href="medidas-de-tendencia-central-y-de-posición.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="muestras-población-y-muestreo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introducción-a-la-inferencia-estadística.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

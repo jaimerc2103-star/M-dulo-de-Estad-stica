@@ -1873,3 +1873,311 @@ Las distribuciones de probabilidad permiten modelar formalmente variables aleato
 
 <!--chapter:end:13-bloque2-unidad6-distribuciones.Rmd-->
 
+# Introducción a la inferencia estadística
+
+## Concepto teórico
+
+La inferencia estadística es la rama de la estadística que permite extraer conclusiones sobre una población a partir de la información contenida en una muestra. Mientras la estadística descriptiva resume y organiza datos observados, la inferencia busca generalizar resultados, estimar parámetros desconocidos y tomar decisiones bajo incertidumbre.
+
+En ingeniería, este enfoque es fundamental porque en la mayoría de situaciones reales no es viable medir toda la población. Por ejemplo, no siempre es posible ensayar todas las piezas de una producción, medir todas las tensiones de una red eléctrica o registrar toda la producción energética futura de un sistema renovable. Por ello, se selecciona una muestra y, a partir de ella, se infiere información sobre el comportamiento del conjunto total.
+
+### Población y muestra
+
+- **Población:** conjunto total de elementos de interés.
+- **Muestra:** subconjunto representativo extraído de la población.
+
+### Parámetro y estadístico
+
+- **Parámetro:** valor numérico que describe una característica de la población.
+- **Estadístico:** valor numérico calculado a partir de una muestra.
+
+Ejemplos:
+
+- Media poblacional: \(\mu\)
+- Varianza poblacional: \(\sigma^2\)
+- Proporción poblacional: \(p\)
+
+Y sus equivalentes muestrales:
+
+- Media muestral: \(\bar{x}\)
+- Varianza muestral: \(s^2\)
+- Proporción muestral: \(\hat{p}\)
+
+### Error de muestreo
+
+El error de muestreo es la diferencia entre un estadístico muestral y el parámetro poblacional correspondiente:
+
+\[
+\text{Error de muestreo} = \bar{x} - \mu
+\]
+
+Este error aparece porque la muestra no contiene toda la información de la población. En inferencia, uno de los objetivos es cuantificar ese error y trabajar con él de forma rigurosa.
+
+### Objetivos de la inferencia estadística
+
+La inferencia estadística se desarrolla principalmente en dos líneas:
+
+1. **Estimación**, que busca aproximar el valor de un parámetro.
+2. **Pruebas de hipótesis**, que buscan decidir si una afirmación sobre la población es compatible con la evidencia muestral.
+
+### Importancia en ingeniería
+
+En las distintas ingenierías, la inferencia estadística permite:
+
+- estimar propiedades de materiales,
+- validar procesos de manufactura,
+- evaluar desempeño energético,
+- verificar estabilidad de sistemas eléctricos,
+- comparar métodos constructivos o productivos,
+- tomar decisiones con base en evidencia cuantitativa.
+
+Por ello, la inferencia representa el paso natural después de la estadística descriptiva y la probabilidad.
+
+## Formulación matemática
+
+### Media muestral
+
+\[
+\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
+\]
+
+### Varianza muestral
+
+\[
+s^2 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}
+\]
+
+### Proporción muestral
+
+\[
+\hat{p} = \frac{x}{n}
+\]
+
+donde:
+- \(x\): número de éxitos observados,
+- \(n\): tamaño de la muestra.
+
+Estas expresiones sirven como punto de partida para la estimación e inferencia.
+
+## Ejemplo aplicado
+
+En un laboratorio de ingeniería civil se desea analizar la resistencia a compresión del hormigón. La población corresponde a todas las probetas producidas en una planta durante una semana, pero solo se ensayan 10 probetas seleccionadas aleatoriamente.
+
+```{r}
+resistencia <- c(24.8, 25.1, 24.5, 25.7, 26.0, 24.9, 25.3, 25.8, 24.7, 25.0)
+resistencia
+```
+
+En este caso:
+
+- la **población** son todas las probetas producidas,
+- la **muestra** son las 10 probetas ensayadas,
+- la **media muestral** servirá como estimación de la media poblacional de resistencia.
+
+## Implementación en R
+
+### Tamaño de la muestra
+
+```{r}
+length(resistencia)
+```
+
+### Media muestral
+
+```{r}
+mean(resistencia)
+```
+
+### Varianza muestral
+
+```{r}
+var(resistencia)
+```
+
+### Desviación estándar muestral
+
+```{r}
+sd(resistencia)
+```
+
+### Resumen general
+
+```{r}
+summary(resistencia)
+```
+
+## Gráfica
+
+```{r}
+hist(resistencia,
+     col = "lightblue",
+     main = "Histograma de resistencias muestrales",
+     xlab = "Resistencia (MPa)",
+     ylab = "Frecuencia",
+     border = "white")
+abline(v = mean(resistencia), col = "red", lwd = 2)
+```
+
+La línea roja representa la media muestral, que funciona como estimación inicial del parámetro poblacional.
+
+## Simulación
+
+Para comprender la variabilidad muestral, simulamos varias muestras de una población normal hipotética con media 25 MPa y desviación estándar 1 MPa.
+
+```{r}
+set.seed(123)
+
+medias <- numeric(100)
+
+for(i in 1:100){
+  muestra <- rnorm(10, mean = 25, sd = 1)
+  medias[i] <- mean(muestra)
+}
+
+head(medias)
+```
+
+### Visualización de las medias muestrales
+
+```{r}
+hist(medias,
+     col = "lightgreen",
+     main = "Distribución de medias muestrales",
+     xlab = "Media muestral",
+     ylab = "Frecuencia",
+     border = "white")
+abline(v = mean(medias), col = "blue", lwd = 2)
+abline(v = 25, col = "red", lwd = 2, lty = 2)
+legend("topright",
+       legend = c("Media de las medias", "Media poblacional"),
+       col = c("blue", "red"),
+       lwd = 2,
+       lty = c(1,2))
+```
+
+Esta simulación muestra que, aunque cada muestra produce una media diferente, en conjunto las medias tienden a concentrarse alrededor del valor poblacional.
+
+## Ejercicio propuesto
+
+En una planta de ingeniería industrial se registra el peso (kg) de 12 piezas seleccionadas de una línea de producción:
+
+```{r eval=FALSE}
+peso <- c(15.2, 15.5, 15.1, 15.6, 15.3, 15.4, 15.2, 15.7, 15.3, 15.5, 15.4, 15.6)
+```
+
+Realice lo siguiente:
+
+1. Identifique la población y la muestra.
+2. Calcule la media muestral.
+3. Calcule la varianza y la desviación estándar.
+4. Interprete el significado del estadístico obtenido.
+5. Explique por qué no se puede asegurar que la media muestral sea exactamente igual a la media poblacional.
+
+## Caso real (ingeniería)
+
+En **ingeniería civil**, la inferencia estadística se aplica al estimar resistencia promedio del hormigón, capacidad de soporte del suelo o deformaciones en elementos estructurales.
+
+En **ingeniería eléctrica**, se utiliza para estimar niveles medios de voltaje, corriente o carga en una red.
+
+En **ingeniería industrial**, es fundamental para control de calidad, productividad y validación de procesos.
+
+En **energías renovables**, permite estimar generación promedio, comportamiento de radiación solar o velocidad del viento a partir de muestras registradas.
+
+En todos estos contextos, la inferencia estadística permite pasar de los datos observados a decisiones con alcance poblacional.
+
+## Conclusión
+
+La inferencia estadística constituye el puente entre la muestra y la población. Su estudio permite comprender cómo usar datos muestrales para estimar parámetros, cuantificar incertidumbre y tomar decisiones fundamentadas en ingeniería. Esta unidad introduce los conceptos base que serán desarrollados en las siguientes: estimación puntual, intervalos de confianza y pruebas de hipótesis.
+
+<!--chapter:end:14-bloque3-unidad1-inferencia.Rmd-->
+
+# Estimación puntual
+
+## Concepto teórico
+
+La estimación puntual es una técnica de inferencia estadística que consiste en utilizar un estadístico muestral para aproximar el valor desconocido de un parámetro poblacional.
+
+## Media muestral
+
+\[
+\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
+\]
+
+## Ejemplo aplicado
+
+```{r}
+energia <- c(510, 525, 518, 530, 522, 515,
+             519, 527, 521, 524, 528, 520)
+energia
+```
+
+## Implementación en R
+
+```{r}
+mean(energia)
+```
+
+```{r}
+var(energia)
+```
+
+```{r}
+sd(energia)
+```
+
+## Gráfica
+
+```{r}
+plot(energia,
+     type = 'b',
+     pch = 19,
+     col = 'blue',
+     main = 'Generación diaria de energía',
+     xlab = 'Día',
+     ylab = 'Energía (kWh)')
+abline(h = mean(energia), col = 'red', lwd = 2)
+```
+
+## Error estándar
+
+\[
+SE = \frac{s}{\sqrt{n}}
+\]
+
+```{r}
+sd(energia)/sqrt(length(energia))
+```
+
+## Simulación
+
+```{r}
+set.seed(123)
+medias <- numeric(200)
+
+for(i in 1:200){
+  muestra <- rnorm(15, mean = 520, sd = 10)
+  medias[i] <- mean(muestra)
+}
+
+hist(medias,
+     col = 'lightgreen',
+     main = 'Distribución de medias muestrales',
+     xlab = 'Media muestral')
+```
+
+## Ejercicio propuesto
+
+1. Calcule la media muestral.
+2. Determine el error estándar.
+3. Interprete los resultados.
+
+## Caso real (ingeniería)
+
+En ingeniería eléctrica y energías renovables, la estimación puntual permite aproximar generación energética, voltaje promedio y comportamiento operativo de sistemas.
+
+## Conclusión
+
+La estimación puntual constituye la base inicial de la inferencia estadística y permite aproximar parámetros poblacionales mediante información muestral.
+
+<!--chapter:end:15-bloque3-unidad2-estimacion.Rmd-->
+

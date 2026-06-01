@@ -1,0 +1,87 @@
+# Estimación puntual
+
+## Concepto teórico
+
+La estimación puntual es una técnica de inferencia estadística que consiste en utilizar un estadístico muestral para aproximar el valor desconocido de un parámetro poblacional.
+
+## Media muestral
+
+\[
+\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
+\]
+
+## Ejemplo aplicado
+
+```{r}
+energia <- c(510, 525, 518, 530, 522, 515,
+             519, 527, 521, 524, 528, 520)
+energia
+```
+
+## Implementación en R
+
+```{r}
+mean(energia)
+```
+
+```{r}
+var(energia)
+```
+
+```{r}
+sd(energia)
+```
+
+## Gráfica
+
+```{r}
+plot(energia,
+     type = 'b',
+     pch = 19,
+     col = 'blue',
+     main = 'Generación diaria de energía',
+     xlab = 'Día',
+     ylab = 'Energía (kWh)')
+abline(h = mean(energia), col = 'red', lwd = 2)
+```
+
+## Error estándar
+
+\[
+SE = \frac{s}{\sqrt{n}}
+\]
+
+```{r}
+sd(energia)/sqrt(length(energia))
+```
+
+## Simulación
+
+```{r}
+set.seed(123)
+medias <- numeric(200)
+
+for(i in 1:200){
+  muestra <- rnorm(15, mean = 520, sd = 10)
+  medias[i] <- mean(muestra)
+}
+
+hist(medias,
+     col = 'lightgreen',
+     main = 'Distribución de medias muestrales',
+     xlab = 'Media muestral')
+```
+
+## Ejercicio propuesto
+
+1. Calcule la media muestral.
+2. Determine el error estándar.
+3. Interprete los resultados.
+
+## Caso real (ingeniería)
+
+En ingeniería eléctrica y energías renovables, la estimación puntual permite aproximar generación energética, voltaje promedio y comportamiento operativo de sistemas.
+
+## Conclusión
+
+La estimación puntual constituye la base inicial de la inferencia estadística y permite aproximar parámetros poblacionales mediante información muestral.

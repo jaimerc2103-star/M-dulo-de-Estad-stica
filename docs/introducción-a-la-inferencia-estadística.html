@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <title>14 Introducción a la inferencia estadística | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="14 Introducción a la inferencia estadística | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="14 Introducción a la inferencia estadística | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="14 Introducción a la inferencia estadística | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="medidas-de-tendencia-central-y-de-posición.html"/>
-<link rel="next" href="muestras-población-y-muestreo.html"/>
+<link rel="prev" href="distribuciones-de-probabilidad.html"/>
+<link rel="next" href="estimación-puntual.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -495,138 +495,204 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="medidas-de-dispersión-y-forma" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> Medidas de dispersión y forma<a href="medidas-de-dispersión-y-forma.html#medidas-de-dispersi%C3%B3n-y-forma" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="concepto-teórico-4" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Concepto teórico<a href="medidas-de-dispersión-y-forma.html#concepto-te%C3%B3rico-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Las medidas de dispersión indican cuánto se alejan los datos respecto a un valor central. Mientras las medidas de tendencia central responden dónde se concentran los datos, las de dispersión indican qué tan homogéneo o variable es el conjunto.</p>
-<div id="rango" class="section level3 hasAnchor" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Rango<a href="medidas-de-dispersión-y-forma.html#rango" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Es la diferencia entre el valor máximo y el mínimo:</p>
+<div id="introducción-a-la-inferencia-estadística" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">14</span> Introducción a la inferencia estadística<a href="introducción-a-la-inferencia-estadística.html#introducci%C3%B3n-a-la-inferencia-estad%C3%ADstica" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-13" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Concepto teórico<a href="introducción-a-la-inferencia-estadística.html#concepto-te%C3%B3rico-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La inferencia estadística es la rama de la estadística que permite extraer conclusiones sobre una población a partir de la información contenida en una muestra. Mientras la estadística descriptiva resume y organiza datos observados, la inferencia busca generalizar resultados, estimar parámetros desconocidos y tomar decisiones bajo incertidumbre.</p>
+<p>En ingeniería, este enfoque es fundamental porque en la mayoría de situaciones reales no es viable medir toda la población. Por ejemplo, no siempre es posible ensayar todas las piezas de una producción, medir todas las tensiones de una red eléctrica o registrar toda la producción energética futura de un sistema renovable. Por ello, se selecciona una muestra y, a partir de ella, se infiere información sobre el comportamiento del conjunto total.</p>
+<div id="población-y-muestra" class="section level3 hasAnchor" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> Población y muestra<a href="introducción-a-la-inferencia-estadística.html#poblaci%C3%B3n-y-muestra" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Población:</strong> conjunto total de elementos de interés.</li>
+<li><strong>Muestra:</strong> subconjunto representativo extraído de la población.</li>
+</ul>
+</div>
+<div id="parámetro-y-estadístico" class="section level3 hasAnchor" number="14.1.2">
+<h3><span class="header-section-number">14.1.2</span> Parámetro y estadístico<a href="introducción-a-la-inferencia-estadística.html#par%C3%A1metro-y-estad%C3%ADstico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Parámetro:</strong> valor numérico que describe una característica de la población.</li>
+<li><strong>Estadístico:</strong> valor numérico calculado a partir de una muestra.</li>
+</ul>
+<p>Ejemplos:</p>
+<ul>
+<li>Media poblacional: <span class="math inline">\(\mu\)</span></li>
+<li>Varianza poblacional: <span class="math inline">\(\sigma^2\)</span></li>
+<li>Proporción poblacional: <span class="math inline">\(p\)</span></li>
+</ul>
+<p>Y sus equivalentes muestrales:</p>
+<ul>
+<li>Media muestral: <span class="math inline">\(\bar{x}\)</span></li>
+<li>Varianza muestral: <span class="math inline">\(s^2\)</span></li>
+<li>Proporción muestral: <span class="math inline">\(\hat{p}\)</span></li>
+</ul>
+</div>
+<div id="error-de-muestreo" class="section level3 hasAnchor" number="14.1.3">
+<h3><span class="header-section-number">14.1.3</span> Error de muestreo<a href="introducción-a-la-inferencia-estadística.html#error-de-muestreo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El error de muestreo es la diferencia entre un estadístico muestral y el parámetro poblacional correspondiente:</p>
 <p><span class="math display">\[
-R = x_{\max} - x_{\min}
+\text{Error de muestreo} = \bar{x} - \mu
 \]</span></p>
+<p>Este error aparece porque la muestra no contiene toda la información de la población. En inferencia, uno de los objetivos es cuantificar ese error y trabajar con él de forma rigurosa.</p>
 </div>
-<div id="varianza" class="section level3 hasAnchor" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Varianza<a href="medidas-de-dispersión-y-forma.html#varianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La varianza muestral se define como:</p>
-<p><span class="math display">\[
-s^2 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}
-\]</span></p>
-<p>Mide la dispersión cuadrática de los datos respecto a la media.</p>
-</div>
-<div id="desviación-estándar" class="section level3 hasAnchor" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Desviación estándar<a href="medidas-de-dispersión-y-forma.html#desviaci%C3%B3n-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Es la raíz cuadrada de la varianza:</p>
-<p><span class="math display">\[
-s = \sqrt{s^2}
-\]</span></p>
-<p>Tiene la ventaja de expresarse en las mismas unidades que los datos originales.</p>
-</div>
-<div id="coeficiente-de-variación" class="section level3 hasAnchor" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> Coeficiente de variación<a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Permite comparar dispersión relativa entre conjuntos de datos con distintas escalas:</p>
-<p><span class="math display">\[
-CV = \frac{s}{\bar{x}} \times 100
-\]</span></p>
-</div>
-<div id="asimetría" class="section level3 hasAnchor" number="5.1.5">
-<h3><span class="header-section-number">5.1.5</span> Asimetría<a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Indica si la distribución es simétrica o si presenta sesgo hacia la izquierda o hacia la derecha.</p>
-</div>
-<div id="curtosis" class="section level3 hasAnchor" number="5.1.6">
-<h3><span class="header-section-number">5.1.6</span> Curtosis<a href="medidas-de-dispersión-y-forma.html#curtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Mide el grado de concentración de los datos alrededor de la media y el peso de las colas de la distribución.</p>
-</div>
-<div id="teorema-de-chebyshev" class="section level3 hasAnchor" number="5.1.7">
-<h3><span class="header-section-number">5.1.7</span> Teorema de Chebyshev<a href="medidas-de-dispersión-y-forma.html#teorema-de-chebyshev" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Para cualquier conjunto de datos y para <span class="math inline">\(k &gt; 1\)</span>, al menos:</p>
-<p><span class="math display">\[
-1 - \frac{1}{k^2}
-\]</span></p>
-<p>de las observaciones se encuentra dentro del intervalo:</p>
-<p><span class="math display">\[
-\bar{x} \pm ks
-\]</span></p>
-<p>Este teorema es útil cuando no se conoce la forma exacta de la distribución.</p>
-</div>
-</div>
-<div id="ejemplo-aplicado-4" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Ejemplo aplicado<a href="medidas-de-dispersión-y-forma.html#ejemplo-aplicado-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Se registran voltajes de operación (V) en un sistema eléctrico:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="medidas-de-dispersión-y-forma.html#cb48-1" tabindex="-1"></a>voltaje <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">218</span>, <span class="dv">220</span>, <span class="dv">221</span>, <span class="dv">219</span>, <span class="dv">222</span>, <span class="dv">223</span>, <span class="dv">217</span>, <span class="dv">218</span>, <span class="dv">220</span>, <span class="dv">221</span>,</span>
-<span id="cb48-2"><a href="medidas-de-dispersión-y-forma.html#cb48-2" tabindex="-1"></a>             <span class="dv">224</span>, <span class="dv">219</span>, <span class="dv">220</span>, <span class="dv">222</span>, <span class="dv">223</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">219</span>, <span class="dv">218</span>, <span class="dv">222</span>)</span>
-<span id="cb48-3"><a href="medidas-de-dispersión-y-forma.html#cb48-3" tabindex="-1"></a>voltaje</span></code></pre></div>
-<pre><code>##  [1] 218 220 221 219 222 223 217 218 220 221 224 219 220 222 223 221 220 219 218 222</code></pre>
-</div>
-<div id="implementación-en-r-4" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Implementación en R<a href="medidas-de-dispersión-y-forma.html#implementaci%C3%B3n-en-r-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="rango-1" class="section level3 hasAnchor" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Rango<a href="medidas-de-dispersión-y-forma.html#rango-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="medidas-de-dispersión-y-forma.html#cb50-1" tabindex="-1"></a><span class="fu">max</span>(voltaje) <span class="sc">-</span> <span class="fu">min</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 7</code></pre>
-</div>
-<div id="varianza-y-desviación-estándar" class="section level3 hasAnchor" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Varianza y desviación estándar<a href="medidas-de-dispersión-y-forma.html#varianza-y-desviaci%C3%B3n-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="medidas-de-dispersión-y-forma.html#cb52-1" tabindex="-1"></a><span class="fu">var</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 3.713158</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="medidas-de-dispersión-y-forma.html#cb54-1" tabindex="-1"></a><span class="fu">sd</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 1.926956</code></pre>
-</div>
-<div id="coeficiente-de-variación-1" class="section level3 hasAnchor" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> Coeficiente de variación<a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="medidas-de-dispersión-y-forma.html#cb56-1" tabindex="-1"></a>(<span class="fu">sd</span>(voltaje) <span class="sc">/</span> <span class="fu">mean</span>(voltaje)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
-<pre><code>## [1] 0.8744977</code></pre>
-</div>
-<div id="asimetría-y-curtosis" class="section level3 hasAnchor" number="5.3.4">
-<h3><span class="header-section-number">5.3.4</span> Asimetría y curtosis<a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa-y-curtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="medidas-de-dispersión-y-forma.html#cb58-1" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb58-2"><a href="medidas-de-dispersión-y-forma.html#cb58-2" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="medidas-de-dispersión-y-forma.html#cb58-3" tabindex="-1"></a><span class="fu">skewness</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 0.1212412</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="medidas-de-dispersión-y-forma.html#cb60-1" tabindex="-1"></a><span class="fu">kurtosis</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 2.11502</code></pre>
-</div>
-<div id="aplicación-del-teorema-de-chebyshev-para-k-2" class="section level3 hasAnchor" number="5.3.5">
-<h3><span class="header-section-number">5.3.5</span> Aplicación del teorema de Chebyshev para <span class="math inline">\(k = 2\)</span><a href="medidas-de-dispersión-y-forma.html#aplicaci%C3%B3n-del-teorema-de-chebyshev-para-k-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="medidas-de-dispersión-y-forma.html#cb62-1" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(voltaje)</span>
-<span id="cb62-2"><a href="medidas-de-dispersión-y-forma.html#cb62-2" tabindex="-1"></a>desv <span class="ot">&lt;-</span> <span class="fu">sd</span>(voltaje)</span>
-<span id="cb62-3"><a href="medidas-de-dispersión-y-forma.html#cb62-3" tabindex="-1"></a></span>
-<span id="cb62-4"><a href="medidas-de-dispersión-y-forma.html#cb62-4" tabindex="-1"></a>lim_inf <span class="ot">&lt;-</span> media <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> desv</span>
-<span id="cb62-5"><a href="medidas-de-dispersión-y-forma.html#cb62-5" tabindex="-1"></a>lim_sup <span class="ot">&lt;-</span> media <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> desv</span>
-<span id="cb62-6"><a href="medidas-de-dispersión-y-forma.html#cb62-6" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="medidas-de-dispersión-y-forma.html#cb62-7" tabindex="-1"></a><span class="fu">sum</span>(voltaje <span class="sc">&gt;=</span> lim_inf <span class="sc">&amp;</span> voltaje <span class="sc">&lt;=</span> lim_sup) <span class="sc">/</span> <span class="fu">length</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 1</code></pre>
-</div>
-<div id="visualización-de-la-dispersión" class="section level3 hasAnchor" number="5.3.6">
-<h3><span class="header-section-number">5.3.6</span> Visualización de la dispersión<a href="medidas-de-dispersión-y-forma.html#visualizaci%C3%B3n-de-la-dispersi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="medidas-de-dispersión-y-forma.html#cb64-1" tabindex="-1"></a><span class="fu">hist</span>(voltaje, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Distribución del voltaje&quot;</span>,</span>
-<span id="cb64-2"><a href="medidas-de-dispersión-y-forma.html#cb64-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Voltaje (V)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frecuencia&quot;</span>)</span>
-<span id="cb64-3"><a href="medidas-de-dispersión-y-forma.html#cb64-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(voltaje), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-35-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="ejercicio-propuesto-4" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Ejercicio propuesto<a href="medidas-de-dispersión-y-forma.html#ejercicio-propuesto-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En una práctica de ingeniería civil se registran resistencias a compresión (MPa) de probetas de hormigón:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="medidas-de-dispersión-y-forma.html#cb65-1" tabindex="-1"></a>resistencia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">24.8</span>, <span class="fl">25.1</span>, <span class="fl">24.5</span>, <span class="fl">25.7</span>, <span class="fl">26.0</span>, <span class="fl">24.9</span>, <span class="fl">25.3</span>, <span class="fl">25.8</span>,</span>
-<span id="cb65-2"><a href="medidas-de-dispersión-y-forma.html#cb65-2" tabindex="-1"></a>                 <span class="fl">24.7</span>, <span class="fl">25.0</span>, <span class="fl">25.4</span>, <span class="fl">25.9</span>, <span class="fl">24.6</span>, <span class="fl">25.2</span>, <span class="fl">25.6</span>)</span></code></pre></div>
-<p>Realice lo siguiente:</p>
+<div id="objetivos-de-la-inferencia-estadística" class="section level3 hasAnchor" number="14.1.4">
+<h3><span class="header-section-number">14.1.4</span> Objetivos de la inferencia estadística<a href="introducción-a-la-inferencia-estadística.html#objetivos-de-la-inferencia-estad%C3%ADstica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La inferencia estadística se desarrolla principalmente en dos líneas:</p>
 <ol style="list-style-type: decimal">
-<li>Calcule rango, varianza y desviación estándar.</li>
-<li>Obtenga el coeficiente de variación.</li>
-<li>Calcule asimetría y curtosis.</li>
-<li>Aplique el teorema de Chebyshev para <span class="math inline">\(k = 2\)</span>.</li>
-<li>Interprete la estabilidad del conjunto de datos.</li>
+<li><strong>Estimación</strong>, que busca aproximar el valor de un parámetro.</li>
+<li><strong>Pruebas de hipótesis</strong>, que buscan decidir si una afirmación sobre la población es compatible con la evidencia muestral.</li>
 </ol>
 </div>
-<div id="caso-real-ingeniería-4" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> Caso real (ingeniería)<a href="medidas-de-dispersión-y-forma.html#caso-real-ingenier%C3%ADa-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En <strong>ingeniería eléctrica</strong>, una baja dispersión en el voltaje indica estabilidad del sistema y menor probabilidad de fallos.</p>
-<p>En <strong>ingeniería industrial</strong>, la desviación estándar permite evaluar la consistencia de tiempos de producción, masas, dimensiones o consumos.</p>
-<p>En <strong>ingeniería civil</strong>, el coeficiente de variación se usa para juzgar la uniformidad de resultados en ensayos de materiales.</p>
-<p>En <strong>energías renovables</strong>, la variabilidad de la generación solar o eólica puede analizarse mediante rango, desviación estándar y asimetría, identificando condiciones de operación estables o inestables.</p>
-<p>Estas medidas permiten pasar de una descripción básica a una evaluación rigurosa de la confiabilidad de los datos.</p>
+<div id="importancia-en-ingeniería" class="section level3 hasAnchor" number="14.1.5">
+<h3><span class="header-section-number">14.1.5</span> Importancia en ingeniería<a href="introducción-a-la-inferencia-estadística.html#importancia-en-ingenier%C3%ADa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En las distintas ingenierías, la inferencia estadística permite:</p>
+<ul>
+<li>estimar propiedades de materiales,</li>
+<li>validar procesos de manufactura,</li>
+<li>evaluar desempeño energético,</li>
+<li>verificar estabilidad de sistemas eléctricos,</li>
+<li>comparar métodos constructivos o productivos,</li>
+<li>tomar decisiones con base en evidencia cuantitativa.</li>
+</ul>
+<p>Por ello, la inferencia representa el paso natural después de la estadística descriptiva y la probabilidad.</p>
+</div>
+</div>
+<div id="formulación-matemática-2" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> Formulación matemática<a href="introducción-a-la-inferencia-estadística.html#formulaci%C3%B3n-matem%C3%A1tica-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="media-muestral" class="section level3 hasAnchor" number="14.2.1">
+<h3><span class="header-section-number">14.2.1</span> Media muestral<a href="introducción-a-la-inferencia-estadística.html#media-muestral" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
+\]</span></p>
+</div>
+<div id="varianza-muestral" class="section level3 hasAnchor" number="14.2.2">
+<h3><span class="header-section-number">14.2.2</span> Varianza muestral<a href="introducción-a-la-inferencia-estadística.html#varianza-muestral" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+s^2 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}
+\]</span></p>
+</div>
+<div id="proporción-muestral" class="section level3 hasAnchor" number="14.2.3">
+<h3><span class="header-section-number">14.2.3</span> Proporción muestral<a href="introducción-a-la-inferencia-estadística.html#proporci%C3%B3n-muestral" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+\hat{p} = \frac{x}{n}
+\]</span></p>
+<p>donde:
+- <span class="math inline">\(x\)</span>: número de éxitos observados,
+- <span class="math inline">\(n\)</span>: tamaño de la muestra.</p>
+<p>Estas expresiones sirven como punto de partida para la estimación e inferencia.</p>
+</div>
+</div>
+<div id="ejemplo-aplicado-13" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Ejemplo aplicado<a href="introducción-a-la-inferencia-estadística.html#ejemplo-aplicado-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un laboratorio de ingeniería civil se desea analizar la resistencia a compresión del hormigón. La población corresponde a todas las probetas producidas en una planta durante una semana, pero solo se ensayan 10 probetas seleccionadas aleatoriamente.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="introducción-a-la-inferencia-estadística.html#cb169-1" tabindex="-1"></a>resistencia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">24.8</span>, <span class="fl">25.1</span>, <span class="fl">24.5</span>, <span class="fl">25.7</span>, <span class="fl">26.0</span>, <span class="fl">24.9</span>, <span class="fl">25.3</span>, <span class="fl">25.8</span>, <span class="fl">24.7</span>, <span class="fl">25.0</span>)</span>
+<span id="cb169-2"><a href="introducción-a-la-inferencia-estadística.html#cb169-2" tabindex="-1"></a>resistencia</span></code></pre></div>
+<pre><code>##  [1] 24.8 25.1 24.5 25.7 26.0 24.9 25.3 25.8 24.7 25.0</code></pre>
+<p>En este caso:</p>
+<ul>
+<li>la <strong>población</strong> son todas las probetas producidas,</li>
+<li>la <strong>muestra</strong> son las 10 probetas ensayadas,</li>
+<li>la <strong>media muestral</strong> servirá como estimación de la media poblacional de resistencia.</li>
+</ul>
+</div>
+<div id="implementación-en-r-13" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> Implementación en R<a href="introducción-a-la-inferencia-estadística.html#implementaci%C3%B3n-en-r-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tamaño-de-la-muestra-1" class="section level3 hasAnchor" number="14.4.1">
+<h3><span class="header-section-number">14.4.1</span> Tamaño de la muestra<a href="introducción-a-la-inferencia-estadística.html#tama%C3%B1o-de-la-muestra-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="introducción-a-la-inferencia-estadística.html#cb171-1" tabindex="-1"></a><span class="fu">length</span>(resistencia)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+</div>
+<div id="media-muestral-1" class="section level3 hasAnchor" number="14.4.2">
+<h3><span class="header-section-number">14.4.2</span> Media muestral<a href="introducción-a-la-inferencia-estadística.html#media-muestral-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="introducción-a-la-inferencia-estadística.html#cb173-1" tabindex="-1"></a><span class="fu">mean</span>(resistencia)</span></code></pre></div>
+<pre><code>## [1] 25.18</code></pre>
+</div>
+<div id="varianza-muestral-1" class="section level3 hasAnchor" number="14.4.3">
+<h3><span class="header-section-number">14.4.3</span> Varianza muestral<a href="introducción-a-la-inferencia-estadística.html#varianza-muestral-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="introducción-a-la-inferencia-estadística.html#cb175-1" tabindex="-1"></a><span class="fu">var</span>(resistencia)</span></code></pre></div>
+<pre><code>## [1] 0.2551111</code></pre>
+</div>
+<div id="desviación-estándar-muestral" class="section level3 hasAnchor" number="14.4.4">
+<h3><span class="header-section-number">14.4.4</span> Desviación estándar muestral<a href="introducción-a-la-inferencia-estadística.html#desviaci%C3%B3n-est%C3%A1ndar-muestral" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="introducción-a-la-inferencia-estadística.html#cb177-1" tabindex="-1"></a><span class="fu">sd</span>(resistencia)</span></code></pre></div>
+<pre><code>## [1] 0.5050853</code></pre>
+</div>
+<div id="resumen-general" class="section level3 hasAnchor" number="14.4.5">
+<h3><span class="header-section-number">14.4.5</span> Resumen general<a href="introducción-a-la-inferencia-estadística.html#resumen-general" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="introducción-a-la-inferencia-estadística.html#cb179-1" tabindex="-1"></a><span class="fu">summary</span>(resistencia)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   24.50   24.82   25.05   25.18   25.60   26.00</code></pre>
+</div>
+</div>
+<div id="gráfica-5" class="section level2 hasAnchor" number="14.5">
+<h2><span class="header-section-number">14.5</span> Gráfica<a href="introducción-a-la-inferencia-estadística.html#gr%C3%A1fica-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="introducción-a-la-inferencia-estadística.html#cb181-1" tabindex="-1"></a><span class="fu">hist</span>(resistencia,</span>
+<span id="cb181-2"><a href="introducción-a-la-inferencia-estadística.html#cb181-2" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
+<span id="cb181-3"><a href="introducción-a-la-inferencia-estadística.html#cb181-3" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Histograma de resistencias muestrales&quot;</span>,</span>
+<span id="cb181-4"><a href="introducción-a-la-inferencia-estadística.html#cb181-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Resistencia (MPa)&quot;</span>,</span>
+<span id="cb181-5"><a href="introducción-a-la-inferencia-estadística.html#cb181-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frecuencia&quot;</span>,</span>
+<span id="cb181-6"><a href="introducción-a-la-inferencia-estadística.html#cb181-6" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span>
+<span id="cb181-7"><a href="introducción-a-la-inferencia-estadística.html#cb181-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(resistencia), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-98-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<p>La línea roja representa la media muestral, que funciona como estimación inicial del parámetro poblacional.</p>
+</div>
+<div id="simulación-6" class="section level2 hasAnchor" number="14.6">
+<h2><span class="header-section-number">14.6</span> Simulación<a href="introducción-a-la-inferencia-estadística.html#simulaci%C3%B3n-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para comprender la variabilidad muestral, simulamos varias muestras de una población normal hipotética con media 25 MPa y desviación estándar 1 MPa.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="introducción-a-la-inferencia-estadística.html#cb182-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb182-2"><a href="introducción-a-la-inferencia-estadística.html#cb182-2" tabindex="-1"></a></span>
+<span id="cb182-3"><a href="introducción-a-la-inferencia-estadística.html#cb182-3" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">100</span>)</span>
+<span id="cb182-4"><a href="introducción-a-la-inferencia-estadística.html#cb182-4" tabindex="-1"></a></span>
+<span id="cb182-5"><a href="introducción-a-la-inferencia-estadística.html#cb182-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb182-6"><a href="introducción-a-la-inferencia-estadística.html#cb182-6" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">25</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb182-7"><a href="introducción-a-la-inferencia-estadística.html#cb182-7" tabindex="-1"></a>  medias[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(muestra)</span>
+<span id="cb182-8"><a href="introducción-a-la-inferencia-estadística.html#cb182-8" tabindex="-1"></a>}</span>
+<span id="cb182-9"><a href="introducción-a-la-inferencia-estadística.html#cb182-9" tabindex="-1"></a></span>
+<span id="cb182-10"><a href="introducción-a-la-inferencia-estadística.html#cb182-10" tabindex="-1"></a><span class="fu">head</span>(medias)</span></code></pre></div>
+<pre><code>## [1] 25.07463 25.20862 24.57544 25.32204 24.99128 25.22169</code></pre>
+<div id="visualización-de-las-medias-muestrales" class="section level3 hasAnchor" number="14.6.1">
+<h3><span class="header-section-number">14.6.1</span> Visualización de las medias muestrales<a href="introducción-a-la-inferencia-estadística.html#visualizaci%C3%B3n-de-las-medias-muestrales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="introducción-a-la-inferencia-estadística.html#cb184-1" tabindex="-1"></a><span class="fu">hist</span>(medias,</span>
+<span id="cb184-2"><a href="introducción-a-la-inferencia-estadística.html#cb184-2" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightgreen&quot;</span>,</span>
+<span id="cb184-3"><a href="introducción-a-la-inferencia-estadística.html#cb184-3" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribución de medias muestrales&quot;</span>,</span>
+<span id="cb184-4"><a href="introducción-a-la-inferencia-estadística.html#cb184-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Media muestral&quot;</span>,</span>
+<span id="cb184-5"><a href="introducción-a-la-inferencia-estadística.html#cb184-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frecuencia&quot;</span>,</span>
+<span id="cb184-6"><a href="introducción-a-la-inferencia-estadística.html#cb184-6" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span>
+<span id="cb184-7"><a href="introducción-a-la-inferencia-estadística.html#cb184-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(medias), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb184-8"><a href="introducción-a-la-inferencia-estadística.html#cb184-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">25</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb184-9"><a href="introducción-a-la-inferencia-estadística.html#cb184-9" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
+<span id="cb184-10"><a href="introducción-a-la-inferencia-estadística.html#cb184-10" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Media de las medias&quot;</span>, <span class="st">&quot;Media poblacional&quot;</span>),</span>
+<span id="cb184-11"><a href="introducción-a-la-inferencia-estadística.html#cb184-11" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb184-12"><a href="introducción-a-la-inferencia-estadística.html#cb184-12" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb184-13"><a href="introducción-a-la-inferencia-estadística.html#cb184-13" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-100-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<p>Esta simulación muestra que, aunque cada muestra produce una media diferente, en conjunto las medias tienden a concentrarse alrededor del valor poblacional.</p>
+</div>
+</div>
+<div id="ejercicio-propuesto-7" class="section level2 hasAnchor" number="14.7">
+<h2><span class="header-section-number">14.7</span> Ejercicio propuesto<a href="introducción-a-la-inferencia-estadística.html#ejercicio-propuesto-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En una planta de ingeniería industrial se registra el peso (kg) de 12 piezas seleccionadas de una línea de producción:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="introducción-a-la-inferencia-estadística.html#cb185-1" tabindex="-1"></a>peso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">15.2</span>, <span class="fl">15.5</span>, <span class="fl">15.1</span>, <span class="fl">15.6</span>, <span class="fl">15.3</span>, <span class="fl">15.4</span>, <span class="fl">15.2</span>, <span class="fl">15.7</span>, <span class="fl">15.3</span>, <span class="fl">15.5</span>, <span class="fl">15.4</span>, <span class="fl">15.6</span>)</span></code></pre></div>
+<p>Realice lo siguiente:</p>
+<ol style="list-style-type: decimal">
+<li>Identifique la población y la muestra.</li>
+<li>Calcule la media muestral.</li>
+<li>Calcule la varianza y la desviación estándar.</li>
+<li>Interprete el significado del estadístico obtenido.</li>
+<li>Explique por qué no se puede asegurar que la media muestral sea exactamente igual a la media poblacional.</li>
+</ol>
+</div>
+<div id="caso-real-ingeniería-13" class="section level2 hasAnchor" number="14.8">
+<h2><span class="header-section-number">14.8</span> Caso real (ingeniería)<a href="introducción-a-la-inferencia-estadística.html#caso-real-ingenier%C3%ADa-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería civil</strong>, la inferencia estadística se aplica al estimar resistencia promedio del hormigón, capacidad de soporte del suelo o deformaciones en elementos estructurales.</p>
+<p>En <strong>ingeniería eléctrica</strong>, se utiliza para estimar niveles medios de voltaje, corriente o carga en una red.</p>
+<p>En <strong>ingeniería industrial</strong>, es fundamental para control de calidad, productividad y validación de procesos.</p>
+<p>En <strong>energías renovables</strong>, permite estimar generación promedio, comportamiento de radiación solar o velocidad del viento a partir de muestras registradas.</p>
+<p>En todos estos contextos, la inferencia estadística permite pasar de los datos observados a decisiones con alcance poblacional.</p>
+</div>
+<div id="conclusión-6" class="section level2 hasAnchor" number="14.9">
+<h2><span class="header-section-number">14.9</span> Conclusión<a href="introducción-a-la-inferencia-estadística.html#conclusi%C3%B3n-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La inferencia estadística constituye el puente entre la muestra y la población. Su estudio permite comprender cómo usar datos muestrales para estimar parámetros, cuantificar incertidumbre y tomar decisiones fundamentadas en ingeniería. Esta unidad introduce los conceptos base que serán desarrollados en las siguientes: estimación puntual, intervalos de confianza y pruebas de hipótesis.</p>
 
 </div>
 </div>
@@ -635,8 +701,8 @@ CV = \frac{s}{\bar{x}} \times 100
           </div>
         </div>
       </div>
-<a href="medidas-de-tendencia-central-y-de-posición.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="muestras-población-y-muestreo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="distribuciones-de-probabilidad.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estimación-puntual.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
