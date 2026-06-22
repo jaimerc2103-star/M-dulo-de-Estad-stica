@@ -490,7 +490,7 @@ dbinom(1, size = 8, prob = 0.05)
 
 ---
 
-# Distribución de Poisson
+## Distribución de Poisson
 
 ## Concepto
 
@@ -654,7 +654,7 @@ hist(sim_pois,
 
 ---
 
-# Distribución uniforme continua
+## Distribución uniforme continua
 
 ## Concepto
 
@@ -755,7 +755,7 @@ plot(x, y,
 
 ---
 
-# Distribución exponencial
+## Distribución exponencial
 
 ## Concepto
 
@@ -863,7 +863,7 @@ plot(x, y,
 
 ---
 
-# Distribución normal
+## Distribución normal
 
 ## Concepto
 

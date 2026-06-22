@@ -402,7 +402,7 @@ h2:concepto-teórico-11 Concepto teórico
 h2:clasificación-general Clasificación general
 h2:distribuciones-discretas Distribuciones discretas
 h2:distribuciones-continuas Distribuciones continuas
-h1:distribución-bernoulli Distribución Bernoulli
+h2:distribución-bernoulli Distribución Bernoulli
 h2:concepto-8 Concepto
 h2:formulación-matemática-2 Formulación matemática
 h2:ejemplo-resuelto-1-pieza-defectuosa Ejemplo resuelto 1: pieza defectuosa
@@ -414,7 +414,7 @@ h3:varianza-1 Varianza
 h2:verificación-en-r-31 Verificación en R
 h2:simulación-bernoulli Simulación Bernoulli
 h2:gráfica-bernoulli Gráfica Bernoulli
-h1:distribución-binomial Distribución binomial
+h2:distribución-binomial Distribución binomial
 h2:concepto-9 Concepto
 h2:formulación-matemática-3 Formulación matemática
 h2:ejemplo-resuelto-2-inspección-de-piezas Ejemplo resuelto 2: inspección de piezas
