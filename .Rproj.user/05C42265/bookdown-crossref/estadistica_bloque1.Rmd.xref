@@ -431,7 +431,7 @@ h2:simulación-binomial Simulación binomial
 h2:ejemplo-aplicado-a-energías-renovables Ejemplo aplicado a energías renovables
 h2:solución-manual-12 Solución manual
 h2:verificación-en-r-33 Verificación en R
-h1:distribución-de-poisson Distribución de Poisson
+h2:distribución-de-poisson Distribución de Poisson
 h2:concepto-10 Concepto
 h2:formulación-matemática-4 Formulación matemática
 h2:ejemplo-resuelto-3-fallas-eléctricas Ejemplo resuelto 3: fallas eléctricas
@@ -444,21 +444,21 @@ h2:verificación-en-r-34 Verificación en R
 h2:probabilidad-acumulada-de-poisson Probabilidad acumulada de Poisson
 h2:gráfica-de-poisson Gráfica de Poisson
 h2:simulación-de-poisson Simulación de Poisson
-h1:distribución-uniforme-continua Distribución uniforme continua
+h2:distribución-uniforme-continua Distribución uniforme continua
 h2:concepto-11 Concepto
 h2:formulación-matemática-5 Formulación matemática
 h2:ejemplo-resuelto-4-tiempo-de-llegada Ejemplo resuelto 4: tiempo de llegada
 h2:solución-manual-14 Solución manual
 h2:verificación-en-r-35 Verificación en R
 h2:gráfica-uniforme Gráfica uniforme
-h1:distribución-exponencial Distribución exponencial
+h2:distribución-exponencial Distribución exponencial
 h2:concepto-12 Concepto
 h2:formulación-matemática-6 Formulación matemática
 h2:ejemplo-resuelto-5-tiempo-hasta-falla Ejemplo resuelto 5: tiempo hasta falla
 h2:solución-manual-15 Solución manual
 h2:verificación-en-r-36 Verificación en R
 h2:gráfica-exponencial Gráfica exponencial
-h1:distribución-normal Distribución normal
+h2:distribución-normal Distribución normal
 h2:concepto-13 Concepto
 h2:formulación-matemática-7 Formulación matemática
 h2:estandarización Estandarización

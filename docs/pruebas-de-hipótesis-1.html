@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="Page not found | Estadística Aplicada para Ingeniería" />
+  <title>17 Pruebas de hipótesis | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="17 Pruebas de hipótesis | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="17 Pruebas de hipótesis | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="17 Pruebas de hipótesis | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="intervalos-de-confianza.html"/>
+<link rel="next" href="p-valor-nivel-de-significancia-y-errores-de-decisión.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -991,19 +991,166 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="pruebas-de-hipótesis-1" class="section level1 hasAnchor" number="17">
+<h1><span class="header-section-number">17</span> Pruebas de hipótesis<a href="pruebas-de-hipótesis-1.html#pruebas-de-hip%C3%B3tesis-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-15" class="section level2 hasAnchor" number="17.1">
+<h2><span class="header-section-number">17.1</span> Concepto teórico<a href="pruebas-de-hipótesis-1.html#concepto-te%C3%B3rico-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una prueba de hipótesis es un procedimiento estadístico que permite evaluar una afirmación sobre un parámetro poblacional utilizando evidencia muestral. En ingeniería, se usa para verificar si un proceso cumple una especificación, si un material alcanza una resistencia mínima o si un sistema opera dentro de valores esperados.</p>
+<div id="hipótesis-nula" class="section level3 hasAnchor" number="17.1.1">
+<h3><span class="header-section-number">17.1.1</span> Hipótesis nula<a href="pruebas-de-hipótesis-1.html#hip%C3%B3tesis-nula" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La hipótesis nula se representa como:</p>
+<p><span class="math display">\[
+H_0
+\]</span></p>
+<p>Generalmente expresa una condición de igualdad, referencia o ausencia de cambio.</p>
+</div>
+<div id="hipótesis-alternativa" class="section level3 hasAnchor" number="17.1.2">
+<h3><span class="header-section-number">17.1.2</span> Hipótesis alternativa<a href="pruebas-de-hipótesis-1.html#hip%C3%B3tesis-alternativa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La hipótesis alternativa se representa como:</p>
+<p><span class="math display">\[
+H_1
+\]</span></p>
+<p>Expresa la afirmación que se desea evaluar frente a la hipótesis nula.</p>
+</div>
+<div id="nivel-de-significancia" class="section level3 hasAnchor" number="17.1.3">
+<h3><span class="header-section-number">17.1.3</span> Nivel de significancia<a href="pruebas-de-hipótesis-1.html#nivel-de-significancia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El nivel de significancia se denota por <span class="math inline">\(\alpha\)</span>. Representa la probabilidad máxima aceptada de rechazar <span class="math inline">\(H_0\)</span> cuando en realidad es verdadera.</p>
+<p>Valores frecuentes:</p>
+<ul>
+<li><span class="math inline">\(\alpha = 0.10\)</span></li>
+<li><span class="math inline">\(\alpha = 0.05\)</span></li>
+<li><span class="math inline">\(\alpha = 0.01\)</span></li>
+</ul>
+</div>
+</div>
+<div id="formulación-matemática-9" class="section level2 hasAnchor" number="17.2">
+<h2><span class="header-section-number">17.2</span> Formulación matemática<a href="pruebas-de-hipótesis-1.html#formulaci%C3%B3n-matem%C3%A1tica-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="prueba-para-una-media-con-desviación-poblacional-desconocida" class="section level3 hasAnchor" number="17.2.1">
+<h3><span class="header-section-number">17.2.1</span> Prueba para una media con desviación poblacional desconocida<a href="pruebas-de-hipótesis-1.html#prueba-para-una-media-con-desviaci%C3%B3n-poblacional-desconocida" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\bar{x}\)</span>: media muestral</li>
+<li><span class="math inline">\(\mu_0\)</span>: valor hipotético de la media</li>
+<li><span class="math inline">\(s\)</span>: desviación estándar muestral</li>
+<li><span class="math inline">\(n\)</span>: tamaño de la muestra</li>
+</ul>
+</div>
+</div>
+<div id="ejemplo-aplicado-10" class="section level2 hasAnchor" number="17.3">
+<h2><span class="header-section-number">17.3</span> Ejemplo aplicado<a href="pruebas-de-hipótesis-1.html#ejemplo-aplicado-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una empresa de producción indica que el tiempo promedio de ensamblaje de una pieza es de 50 minutos. Se registra una muestra de tiempos:</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="pruebas-de-hipótesis-1.html#cb308-1" tabindex="-1"></a>tiempos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">51</span>, <span class="dv">49</span>, <span class="dv">52</span>, <span class="dv">50</span>, <span class="dv">47</span>, <span class="dv">49</span>, <span class="dv">51</span>, <span class="dv">50</span>, <span class="dv">48</span>, <span class="dv">52</span>, <span class="dv">49</span>)</span>
+<span id="cb308-2"><a href="pruebas-de-hipótesis-1.html#cb308-2" tabindex="-1"></a>tiempos</span></code></pre></div>
+<pre><code>##  [1] 48 51 49 52 50 47 49 51 50 48 52 49</code></pre>
+<p>Se desea evaluar si el tiempo promedio difiere de 50 minutos.</p>
+<p><span class="math display">\[
+H_0: \mu = 50
+\]</span></p>
+<p><span class="math display">\[
+H_1: \mu \neq 50
+\]</span></p>
+</div>
+<div id="implementación-en-r-10" class="section level2 hasAnchor" number="17.4">
+<h2><span class="header-section-number">17.4</span> Implementación en R<a href="pruebas-de-hipótesis-1.html#implementaci%C3%B3n-en-r-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estadísticos-básicos-1" class="section level3 hasAnchor" number="17.4.1">
+<h3><span class="header-section-number">17.4.1</span> Estadísticos básicos<a href="pruebas-de-hipótesis-1.html#estad%C3%ADsticos-b%C3%A1sicos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="pruebas-de-hipótesis-1.html#cb310-1" tabindex="-1"></a><span class="fu">mean</span>(tiempos)</span></code></pre></div>
+<pre><code>## [1] 49.66667</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="pruebas-de-hipótesis-1.html#cb312-1" tabindex="-1"></a><span class="fu">sd</span>(tiempos)</span></code></pre></div>
+<pre><code>## [1] 1.61433</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="pruebas-de-hipótesis-1.html#cb314-1" tabindex="-1"></a><span class="fu">length</span>(tiempos)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+</div>
+<div id="prueba-t-para-una-muestra" class="section level3 hasAnchor" number="17.4.2">
+<h3><span class="header-section-number">17.4.2</span> Prueba t para una muestra<a href="pruebas-de-hipótesis-1.html#prueba-t-para-una-muestra" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="pruebas-de-hipótesis-1.html#cb316-1" tabindex="-1"></a><span class="fu">t.test</span>(tiempos, <span class="at">mu =</span> <span class="dv">50</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  tiempos
+## t = -0.71528, df = 11, p-value = 0.4893
+## alternative hypothesis: true mean is not equal to 50
+## 95 percent confidence interval:
+##  48.64097 50.69236
+## sample estimates:
+## mean of x 
+##  49.66667</code></pre>
+</div>
+</div>
+<div id="gráfica-5" class="section level2 hasAnchor" number="17.5">
+<h2><span class="header-section-number">17.5</span> Gráfica<a href="pruebas-de-hipótesis-1.html#gr%C3%A1fica-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="pruebas-de-hipótesis-1.html#cb318-1" tabindex="-1"></a><span class="fu">hist</span>(tiempos,</span>
+<span id="cb318-2"><a href="pruebas-de-hipótesis-1.html#cb318-2" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
+<span id="cb318-3"><a href="pruebas-de-hipótesis-1.html#cb318-3" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb318-4"><a href="pruebas-de-hipótesis-1.html#cb318-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribución de tiempos de ensamblaje&quot;</span>,</span>
+<span id="cb318-5"><a href="pruebas-de-hipótesis-1.html#cb318-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Tiempo (min)&quot;</span>)</span>
+<span id="cb318-6"><a href="pruebas-de-hipótesis-1.html#cb318-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(tiempos), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb318-7"><a href="pruebas-de-hipótesis-1.html#cb318-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">50</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb318-8"><a href="pruebas-de-hipótesis-1.html#cb318-8" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
+<span id="cb318-9"><a href="pruebas-de-hipótesis-1.html#cb318-9" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Media muestral&quot;</span>, <span class="st">&quot;Valor hipotético&quot;</span>),</span>
+<span id="cb318-10"><a href="pruebas-de-hipótesis-1.html#cb318-10" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>),</span>
+<span id="cb318-11"><a href="pruebas-de-hipótesis-1.html#cb318-11" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb318-12"><a href="pruebas-de-hipótesis-1.html#cb318-12" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-163-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="simulación-3" class="section level2 hasAnchor" number="17.6">
+<h2><span class="header-section-number">17.6</span> Simulación<a href="pruebas-de-hipótesis-1.html#simulaci%C3%B3n-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Simulamos muestras bajo la hipótesis nula <span class="math inline">\(\mu = 50\)</span> para observar la variabilidad del estadístico.</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="pruebas-de-hipótesis-1.html#cb319-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb319-2"><a href="pruebas-de-hipótesis-1.html#cb319-2" tabindex="-1"></a></span>
+<span id="cb319-3"><a href="pruebas-de-hipótesis-1.html#cb319-3" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb319-4"><a href="pruebas-de-hipótesis-1.html#cb319-4" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb319-5"><a href="pruebas-de-hipótesis-1.html#cb319-5" tabindex="-1"></a>t_est <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb319-6"><a href="pruebas-de-hipótesis-1.html#cb319-6" tabindex="-1"></a></span>
+<span id="cb319-7"><a href="pruebas-de-hipótesis-1.html#cb319-7" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb319-8"><a href="pruebas-de-hipótesis-1.html#cb319-8" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb319-9"><a href="pruebas-de-hipótesis-1.html#cb319-9" tabindex="-1"></a>  t_est[i] <span class="ot">&lt;-</span> (<span class="fu">mean</span>(muestra) <span class="sc">-</span> <span class="dv">50</span>) <span class="sc">/</span> (<span class="fu">sd</span>(muestra) <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb319-10"><a href="pruebas-de-hipótesis-1.html#cb319-10" tabindex="-1"></a>}</span>
+<span id="cb319-11"><a href="pruebas-de-hipótesis-1.html#cb319-11" tabindex="-1"></a></span>
+<span id="cb319-12"><a href="pruebas-de-hipótesis-1.html#cb319-12" tabindex="-1"></a><span class="fu">hist</span>(t_est,</span>
+<span id="cb319-13"><a href="pruebas-de-hipótesis-1.html#cb319-13" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>,</span>
+<span id="cb319-14"><a href="pruebas-de-hipótesis-1.html#cb319-14" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb319-15"><a href="pruebas-de-hipótesis-1.html#cb319-15" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribución simulada del estadístico t&quot;</span>,</span>
+<span id="cb319-16"><a href="pruebas-de-hipótesis-1.html#cb319-16" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;t&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-164-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ejercicio-propuesto-9" class="section level2 hasAnchor" number="17.7">
+<h2><span class="header-section-number">17.7</span> Ejercicio propuesto<a href="pruebas-de-hipótesis-1.html#ejercicio-propuesto-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una especificación técnica indica que el voltaje promedio debe ser 220 V. Se toma la muestra:</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="pruebas-de-hipótesis-1.html#cb320-1" tabindex="-1"></a>voltaje <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">219</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">222</span>, <span class="dv">218</span>, <span class="dv">223</span>,</span>
+<span id="cb320-2"><a href="pruebas-de-hipótesis-1.html#cb320-2" tabindex="-1"></a>             <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">219</span>, <span class="dv">222</span>, <span class="dv">221</span>, <span class="dv">220</span>)</span></code></pre></div>
+<p>Realice:</p>
+<ol style="list-style-type: decimal">
+<li>Plantee <span class="math inline">\(H_0\)</span> y <span class="math inline">\(H_1\)</span>.</li>
+<li>Ejecute la prueba t en R.</li>
+<li>Interprete el p-valor.</li>
+<li>Concluya con <span class="math inline">\(\alpha = 0.05\)</span>.</li>
+<li>Explique la implicación técnica del resultado.</li>
+</ol>
+</div>
+<div id="caso-real-ingeniería-10" class="section level2 hasAnchor" number="17.8">
+<h2><span class="header-section-number">17.8</span> Caso real (ingeniería)<a href="pruebas-de-hipótesis-1.html#caso-real-ingenier%C3%ADa-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería civil</strong>, las pruebas de hipótesis permiten verificar si la resistencia media de un material cumple una norma.</p>
+<p>En <strong>ingeniería eléctrica</strong>, se usan para comprobar si el voltaje medio difiere de un valor nominal.</p>
+<p>En <strong>ingeniería industrial</strong>, permiten validar si el tiempo promedio de proceso cumple especificaciones.</p>
+<p>En <strong>energías renovables</strong>, ayudan a evaluar si la generación media observada difiere de la esperada.</p>
+</div>
+<div id="conclusión-3" class="section level2 hasAnchor" number="17.9">
+<h2><span class="header-section-number">17.9</span> Conclusión<a href="pruebas-de-hipótesis-1.html#conclusi%C3%B3n-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las pruebas de hipótesis permiten tomar decisiones estadísticas con base en evidencia muestral. Son fundamentales para validar especificaciones, comparar resultados y sustentar decisiones técnicas.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="intervalos-de-confianza.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

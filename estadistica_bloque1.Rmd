@@ -5642,154 +5642,409 @@ En ingeniería, estas distribuciones son fundamentales para analizar defectos, f
 
 # Introducción a la inferencia estadística
 
+## Motivación ingenieril
+
+En estadística descriptiva se organizan y resumen datos. En probabilidad se estudia la incertidumbre. Sin embargo, en la práctica profesional de la ingeniería normalmente se necesita ir más allá: tomar decisiones sobre una población completa usando solo una muestra.
+
+Por ejemplo:
+
+- En ingeniería civil no se ensayan todas las probetas de hormigón de una obra, sino una muestra.
+- En ingeniería eléctrica no se mide permanentemente el voltaje en todos los puntos de una red, sino en puntos seleccionados.
+- En ingeniería industrial no se revisa cada producto fabricado, sino muestras de lotes.
+- En energías renovables no se conoce con exactitud toda la generación futura, sino que se estima a partir de datos registrados.
+
+La **inferencia estadística** permite usar datos muestrales para estimar, comparar y tomar decisiones sobre una población.
+
+---
+
+## Resultados de aprendizaje
+
+Al finalizar esta unidad, el estudiante será capaz de:
+
+1. Diferenciar población y muestra.
+2. Diferenciar parámetro y estadístico.
+3. Comprender el concepto de inferencia estadística.
+4. Identificar el error de muestreo.
+5. Calcular estadísticos muestrales básicos.
+6. Interpretar resultados muestrales como aproximaciones de parámetros poblacionales.
+7. Verificar cálculos manuales mediante R.
+8. Comprender mediante simulación la variabilidad entre muestras.
+9. Relacionar la inferencia estadística con problemas reales de ingeniería.
+
+---
+
 ## Concepto teórico
 
-La inferencia estadística es la rama de la estadística que permite extraer conclusiones sobre una población a partir de la información contenida en una muestra. Mientras la estadística descriptiva resume y organiza datos observados, la inferencia busca generalizar resultados, estimar parámetros desconocidos y tomar decisiones bajo incertidumbre.
+La **inferencia estadística** es la rama de la estadística que permite obtener conclusiones sobre una población a partir de una muestra.
 
-En ingeniería, este enfoque es fundamental porque en la mayoría de situaciones reales no es viable medir toda la población. Por ejemplo, no siempre es posible ensayar todas las piezas de una producción, medir todas las tensiones de una red eléctrica o registrar toda la producción energética futura de un sistema renovable. Por ello, se selecciona una muestra y, a partir de ella, se infiere información sobre el comportamiento del conjunto total.
+La idea fundamental es:
 
-### Población y muestra
+\[
+\text{Muestra} \longrightarrow \text{Conclusión sobre la población}
+\]
 
-- **Población:** conjunto total de elementos de interés.
-- **Muestra:** subconjunto representativo extraído de la población.
+Esto es necesario porque en muchos contextos reales estudiar toda la población puede ser:
 
-### Parámetro y estadístico
+- muy costoso,
+- muy lento,
+- destructivo,
+- técnicamente imposible,
+- innecesario si se tiene una buena muestra.
 
-- **Parámetro:** valor numérico que describe una característica de la población.
-- **Estadístico:** valor numérico calculado a partir de una muestra.
+---
+
+## Ejemplo cotidiano introductorio
+
+Suponga que una persona desea saber si una sopa tiene suficiente sal. No necesita beber toda la olla. Basta con probar una cucharada.
+
+En este ejemplo:
+
+- La olla completa representa la **población**.
+- La cucharada representa la **muestra**.
+- La opinión sobre el sabor de toda la sopa es una **inferencia**.
+
+Este ejemplo sencillo muestra la lógica de la inferencia estadística: estudiar una parte para concluir sobre el todo.
+
+---
+
+## Población
+
+La **población** es el conjunto total de elementos, mediciones u observaciones sobre los cuales se desea obtener información.
 
 Ejemplos:
 
-- Media poblacional: \(\mu\)
-- Varianza poblacional: \(\sigma^2\)
-- Proporción poblacional: \(p\)
+| Contexto | Población |
+|---|---|
+| Hormigón | Todas las probetas producidas en una obra |
+| Red eléctrica | Todas las mediciones posibles de voltaje |
+| Producción industrial | Todas las piezas fabricadas en un lote |
+| Energía solar | Todos los días de generación de un año |
 
-Y sus equivalentes muestrales:
+---
 
-- Media muestral: \(\bar{x}\)
-- Varianza muestral: \(s^2\)
-- Proporción muestral: \(\hat{p}\)
+## Muestra
 
-### Error de muestreo
+La **muestra** es un subconjunto de la población.
 
-El error de muestreo es la diferencia entre un estadístico muestral y el parámetro poblacional correspondiente:
+Debe ser seleccionada de forma adecuada para representar razonablemente a la población.
 
-\[
-\text{Error de muestreo} = \bar{x} - \mu
-\]
+Ejemplos:
 
-Este error aparece porque la muestra no contiene toda la información de la población. En inferencia, uno de los objetivos es cuantificar ese error y trabajar con él de forma rigurosa.
+| Contexto | Muestra |
+|---|---|
+| Hormigón | 10 probetas ensayadas |
+| Red eléctrica | 20 mediciones de voltaje |
+| Producción industrial | 50 piezas inspeccionadas |
+| Energía solar | 30 días de generación registrados |
 
-### Objetivos de la inferencia estadística
+---
 
-La inferencia estadística se desarrolla principalmente en dos líneas:
+## Parámetro
 
-1. **Estimación**, que busca aproximar el valor de un parámetro.
-2. **Pruebas de hipótesis**, que buscan decidir si una afirmación sobre la población es compatible con la evidencia muestral.
+Un **parámetro** es una medida numérica que describe una característica de la población.
 
-### Importancia en ingeniería
+Los parámetros más comunes son:
 
-En las distintas ingenierías, la inferencia estadística permite:
+| Parámetro | Símbolo | Significado |
+|---|---|---|
+| Media poblacional | \(\mu\) | Promedio real de la población |
+| Varianza poblacional | \(\sigma^2\) | Variabilidad real de la población |
+| Desviación estándar poblacional | \(\sigma\) | Dispersión real de la población |
+| Proporción poblacional | \(p\) | Proporción real de la población |
 
-- estimar propiedades de materiales,
-- validar procesos de manufactura,
-- evaluar desempeño energético,
-- verificar estabilidad de sistemas eléctricos,
-- comparar métodos constructivos o productivos,
-- tomar decisiones con base en evidencia cuantitativa.
+Generalmente los parámetros son desconocidos.
 
-Por ello, la inferencia representa el paso natural después de la estadística descriptiva y la probabilidad.
+---
 
-## Formulación matemática
+## Estadístico
+
+Un **estadístico** es una medida numérica calculada a partir de una muestra.
+
+Los estadísticos más comunes son:
+
+| Estadístico | Símbolo | Estima a |
+|---|---|---|
+| Media muestral | \(\bar{x}\) | \(\mu\) |
+| Varianza muestral | \(s^2\) | \(\sigma^2\) |
+| Desviación estándar muestral | \(s\) | \(\sigma\) |
+| Proporción muestral | \(\hat{p}\) | \(p\) |
+
+---
+
+## Diferencia entre parámetro y estadístico
+
+Un parámetro describe a la población completa. Un estadístico describe a la muestra.
+
+Por ejemplo:
+
+- Si se conoce la resistencia promedio de todas las probetas producidas, se tiene \(\mu\).
+- Si se calcula la resistencia promedio de 10 probetas ensayadas, se tiene \(\bar{x}\).
+
+La inferencia estadística utiliza estadísticos para estimar parámetros.
+
+---
+
+## Formulación matemática básica
 
 ### Media muestral
 
 \[
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i
 \]
+
+Donde:
+
+- \(x_i\): cada observación de la muestra.
+- \(n\): tamaño de la muestra.
+- \(\bar{x}\): media muestral.
+
+---
 
 ### Varianza muestral
 
 \[
-s^2 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}
+s^2=\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}
 \]
+
+La división para \(n-1\) se utiliza porque la varianza muestral busca estimar la varianza poblacional.
+
+---
+
+### Desviación estándar muestral
+
+\[
+s=\sqrt{s^2}
+\]
+
+---
 
 ### Proporción muestral
 
 \[
-\hat{p} = \frac{x}{n}
+\hat{p}=\frac{x}{n}
 \]
 
-donde:
-- \(x\): número de éxitos observados,
+Donde:
+
+- \(x\): número de casos favorables.
 - \(n\): tamaño de la muestra.
 
-Estas expresiones sirven como punto de partida para la estimación e inferencia.
+---
 
-## Ejemplo aplicado
+## Error de muestreo
 
-En un laboratorio de ingeniería civil se desea analizar la resistencia a compresión del hormigón. La población corresponde a todas las probetas producidas en una planta durante una semana, pero solo se ensayan 10 probetas seleccionadas aleatoriamente.
+El **error de muestreo** es la diferencia entre un estadístico muestral y el parámetro poblacional correspondiente.
+
+Para la media:
+
+\[
+\text{Error de muestreo}=\bar{x}-\mu
+\]
+
+Este error existe porque una muestra no contiene toda la información de la población.
+
+---
+
+## Ejemplo resuelto 1: resistencia de hormigón
+
+En una obra se desea estimar la resistencia promedio del hormigón. Se ensayan 5 probetas y se obtienen los siguientes resultados en MPa:
+
+| Probeta | Resistencia |
+|---:|---:|
+| 1 | 24 |
+| 2 | 26 |
+| 3 | 25 |
+| 4 | 27 |
+| 5 | 28 |
+
+Calcular la media muestral.
+
+---
+
+## Solución manual
+
+### Paso 1: escribir los datos
+
+\[
+x_1=24,\quad x_2=26,\quad x_3=25,\quad x_4=27,\quad x_5=28
+\]
+
+\[
+n=5
+\]
+
+### Paso 2: aplicar la fórmula
+
+\[
+\bar{x}=\frac{24+26+25+27+28}{5}
+\]
+
+### Paso 3: sumar
+
+\[
+24+26+25+27+28=130
+\]
+
+### Paso 4: dividir
+
+\[
+\bar{x}=\frac{130}{5}
+\]
+
+\[
+\bar{x}=26
+\]
+
+### Interpretación
+
+La media muestral de resistencia es:
+
+\[
+26\text{ MPa}
+\]
+
+Este valor es una estimación de la resistencia promedio poblacional del hormigón producido.
+
+---
+
+## Verificación en R
 
 ```{r}
-resistencia <- c(24.8, 25.1, 24.5, 25.7, 26.0, 24.9, 25.3, 25.8, 24.7, 25.0)
-resistencia
-```
+resistencia <- c(24, 26, 25, 27, 28)
 
-En este caso:
-
-- la **población** son todas las probetas producidas,
-- la **muestra** son las 10 probetas ensayadas,
-- la **media muestral** servirá como estimación de la media poblacional de resistencia.
-
-## Implementación en R
-
-### Tamaño de la muestra
-
-```{r}
-length(resistencia)
-```
-
-### Media muestral
-
-```{r}
 mean(resistencia)
 ```
 
-### Varianza muestral
+---
+
+## Cálculo manual de la varianza muestral
+
+Usando los mismos datos:
+
+\[
+24,\ 26,\ 25,\ 27,\ 28
+\]
+
+La media es:
+
+\[
+\bar{x}=26
+\]
+
+Calculamos las desviaciones:
+
+| \(x_i\) | \(x_i-\bar{x}\) | \((x_i-\bar{x})^2\) |
+|---:|---:|---:|
+| 24 | -2 | 4 |
+| 26 | 0 | 0 |
+| 25 | -1 | 1 |
+| 27 | 1 | 1 |
+| 28 | 2 | 4 |
+
+Sumamos los cuadrados:
+
+\[
+4+0+1+1+4=10
+\]
+
+Aplicamos la fórmula:
+
+\[
+s^2=\frac{10}{5-1}
+\]
+
+\[
+s^2=\frac{10}{4}
+\]
+
+\[
+s^2=2.5
+\]
+
+La desviación estándar es:
+
+\[
+s=\sqrt{2.5}=1.581
+\]
+
+---
+
+## Verificación en R
 
 ```{r}
 var(resistencia)
-```
-
-### Desviación estándar muestral
-
-```{r}
 sd(resistencia)
 ```
 
-### Resumen general
+---
+
+## Ejemplo resuelto 2: proporción de piezas defectuosas
+
+En una línea industrial se inspeccionan 40 piezas y se encuentran 6 defectuosas. Calcular la proporción muestral de piezas defectuosas.
+
+---
+
+## Solución manual
+
+\[
+x=6
+\]
+
+\[
+n=40
+\]
+
+\[
+\hat{p}=\frac{x}{n}
+\]
+
+\[
+\hat{p}=\frac{6}{40}
+\]
+
+\[
+\hat{p}=0.15
+\]
+
+### Interpretación
+
+La proporción muestral de piezas defectuosas es:
+
+\[
+0.15 = 15\%
+\]
+
+Esto significa que, en la muestra, el 15% de las piezas inspeccionadas fueron defectuosas.
+
+---
+
+## Verificación en R
 
 ```{r}
-summary(resistencia)
+defectuosas <- 6
+total <- 40
+
+p_muestral <- defectuosas / total
+p_muestral
 ```
 
-## Gráfica
+---
 
-```{r}
-hist(resistencia,
-     col = "lightblue",
-     main = "Histograma de resistencias muestrales",
-     xlab = "Resistencia (MPa)",
-     ylab = "Frecuencia",
-     border = "white")
-abline(v = mean(resistencia), col = "red", lwd = 2)
-```
+## Inferencia y variabilidad muestral
 
-La línea roja representa la media muestral, que funciona como estimación inicial del parámetro poblacional.
+Una idea clave de la inferencia es que diferentes muestras pueden producir diferentes estadísticos.
 
-## Simulación
+Por ejemplo, si se toman varias muestras de 5 probetas de una misma población, las medias muestrales probablemente no serán exactamente iguales.
 
-Para comprender la variabilidad muestral, simulamos varias muestras de una población normal hipotética con media 25 MPa y desviación estándar 1 MPa.
+Esto no significa que el método esté mal. Significa que existe variabilidad natural entre muestras.
+
+---
+
+## Simulación 1: muchas muestras de resistencia
+
+Supongamos que la resistencia real de una población de probetas sigue aproximadamente una distribución normal con media 26 MPa y desviación estándar 2 MPa.
+
+Simularemos 100 muestras de tamaño 5 y calcularemos la media de cada muestra.
 
 ```{r}
 set.seed(123)
@@ -5797,64 +6052,284 @@ set.seed(123)
 medias <- numeric(100)
 
 for(i in 1:100){
-  muestra <- rnorm(10, mean = 25, sd = 1)
+  muestra <- rnorm(5, mean = 26, sd = 2)
   medias[i] <- mean(muestra)
 }
 
 head(medias)
 ```
 
-### Visualización de las medias muestrales
+---
+
+## Gráfica de medias muestrales
 
 ```{r}
 hist(medias,
-     col = "lightgreen",
+     col = "lightblue",
+     border = "white",
      main = "Distribución de medias muestrales",
-     xlab = "Media muestral",
-     ylab = "Frecuencia",
-     border = "white")
-abline(v = mean(medias), col = "blue", lwd = 2)
-abline(v = 25, col = "red", lwd = 2, lty = 2)
+     xlab = "Media muestral")
+
+abline(v = mean(medias), col = "red", lwd = 2)
+abline(v = 26, col = "blue", lwd = 2, lty = 2)
+
 legend("topright",
-       legend = c("Media de las medias", "Media poblacional"),
-       col = c("blue", "red"),
+       legend = c("Media de medias", "Media poblacional"),
+       col = c("red", "blue"),
        lwd = 2,
        lty = c(1,2))
 ```
 
-Esta simulación muestra que, aunque cada muestra produce una media diferente, en conjunto las medias tienden a concentrarse alrededor del valor poblacional.
+---
 
-## Ejercicio propuesto
+## Interpretación de la simulación
 
-En una planta de ingeniería industrial se registra el peso (kg) de 12 piezas seleccionadas de una línea de producción:
+Las medias muestrales no son exactamente iguales entre sí, pero tienden a ubicarse alrededor de la media poblacional.
 
-```{r eval=FALSE}
-peso <- c(15.2, 15.5, 15.1, 15.6, 15.3, 15.4, 15.2, 15.7, 15.3, 15.5, 15.4, 15.6)
+Esto ilustra una idea fundamental:
+
+> Una muestra puede variar, pero si el muestreo es adecuado, los estadísticos muestrales tienden a aproximarse a los parámetros poblacionales.
+
+---
+
+## Simulación 2: efecto del tamaño muestral
+
+Ahora comparamos muestras pequeñas y grandes.
+
+```{r}
+set.seed(123)
+
+medias_n5 <- replicate(500, mean(rnorm(5, mean = 26, sd = 2)))
+medias_n30 <- replicate(500, mean(rnorm(30, mean = 26, sd = 2)))
+medias_n100 <- replicate(500, mean(rnorm(100, mean = 26, sd = 2)))
+
+sd(medias_n5)
+sd(medias_n30)
+sd(medias_n100)
 ```
 
-Realice lo siguiente:
+---
 
-1. Identifique la población y la muestra.
-2. Calcule la media muestral.
-3. Calcule la varianza y la desviación estándar.
-4. Interprete el significado del estadístico obtenido.
-5. Explique por qué no se puede asegurar que la media muestral sea exactamente igual a la media poblacional.
+## Gráfica comparativa
 
-## Caso real (ingeniería)
+```{r}
+boxplot(medias_n5, medias_n30, medias_n100,
+        names = c("n=5", "n=30", "n=100"),
+        col = c("lightblue", "lightgreen", "lightyellow"),
+        main = "Efecto del tamaño muestral",
+        ylab = "Media muestral")
+abline(h = 26, col = "red", lwd = 2, lty = 2)
+```
 
-En **ingeniería civil**, la inferencia estadística se aplica al estimar resistencia promedio del hormigón, capacidad de soporte del suelo o deformaciones en elementos estructurales.
+---
 
-En **ingeniería eléctrica**, se utiliza para estimar niveles medios de voltaje, corriente o carga en una red.
+## Interpretación
 
-En **ingeniería industrial**, es fundamental para control de calidad, productividad y validación de procesos.
+Cuando el tamaño muestral aumenta, las medias muestrales se vuelven menos variables y se concentran más cerca de la media poblacional.
 
-En **energías renovables**, permite estimar generación promedio, comportamiento de radiación solar o velocidad del viento a partir de muestras registradas.
+Esto explica por qué las muestras grandes suelen producir estimaciones más precisas.
 
-En todos estos contextos, la inferencia estadística permite pasar de los datos observados a decisiones con alcance poblacional.
+---
 
-## Conclusión
+## Tipos de inferencia estadística
 
-La inferencia estadística constituye el puente entre la muestra y la población. Su estudio permite comprender cómo usar datos muestrales para estimar parámetros, cuantificar incertidumbre y tomar decisiones fundamentadas en ingeniería. Esta unidad introduce los conceptos base que serán desarrollados en las siguientes: estimación puntual, intervalos de confianza y pruebas de hipótesis.
+La inferencia estadística se desarrolla principalmente mediante dos enfoques:
+
+### Estimación
+
+Busca aproximar el valor de un parámetro poblacional.
+
+Ejemplos:
+
+- Estimar la resistencia promedio del hormigón.
+- Estimar el voltaje promedio de una red.
+- Estimar el porcentaje de piezas defectuosas.
+- Estimar la generación solar promedio diaria.
+
+### Pruebas de hipótesis
+
+Buscan evaluar afirmaciones sobre parámetros poblacionales.
+
+Ejemplos:
+
+- Verificar si la resistencia media supera 25 MPa.
+- Comprobar si el voltaje promedio es 220 V.
+- Evaluar si una máquina produce más defectos que otra.
+- Determinar si un sistema solar genera menos de lo esperado.
+
+---
+
+## Ejercicio guiado
+
+En una planta de producción se selecciona una muestra de 6 piezas y se mide su peso en kg:
+
+\[
+15.2,\ 15.5,\ 15.1,\ 15.6,\ 15.3,\ 15.4
+\]
+
+Calcular:
+
+1. La media muestral.
+2. La varianza muestral.
+3. La desviación estándar muestral.
+4. Interpretar los resultados.
+
+---
+
+## Solución del ejercicio guiado
+
+### Paso 1: calcular la media
+
+\[
+\bar{x}=\frac{15.2+15.5+15.1+15.6+15.3+15.4}{6}
+\]
+
+\[
+\bar{x}=\frac{92.1}{6}
+\]
+
+\[
+\bar{x}=15.35
+\]
+
+---
+
+### Paso 2: calcular desviaciones respecto a la media
+
+| \(x_i\) | \(x_i-\bar{x}\) | \((x_i-\bar{x})^2\) |
+|---:|---:|---:|
+| 15.2 | -0.15 | 0.0225 |
+| 15.5 | 0.15 | 0.0225 |
+| 15.1 | -0.25 | 0.0625 |
+| 15.6 | 0.25 | 0.0625 |
+| 15.3 | -0.05 | 0.0025 |
+| 15.4 | 0.05 | 0.0025 |
+
+Suma de cuadrados:
+
+\[
+0.0225+0.0225+0.0625+0.0625+0.0025+0.0025=0.175
+\]
+
+---
+
+### Paso 3: varianza muestral
+
+\[
+s^2=\frac{0.175}{6-1}
+\]
+
+\[
+s^2=\frac{0.175}{5}
+\]
+
+\[
+s^2=0.035
+\]
+
+---
+
+### Paso 4: desviación estándar
+
+\[
+s=\sqrt{0.035}
+\]
+
+\[
+s=0.187
+\]
+
+---
+
+### Interpretación
+
+El peso promedio muestral es 15.35 kg. La desviación estándar de 0.187 kg indica que los pesos presentan baja variabilidad alrededor de la media.
+
+---
+
+## Verificación en R
+
+```{r}
+peso <- c(15.2, 15.5, 15.1, 15.6, 15.3, 15.4)
+
+mean(peso)
+var(peso)
+sd(peso)
+```
+
+---
+
+## Actividad práctica
+
+Seleccione uno de los siguientes contextos:
+
+1. Resistencia de probetas.
+2. Voltaje medido en una red.
+3. Peso de piezas fabricadas.
+4. Producción diaria de energía solar.
+5. Tiempo de operación de una máquina.
+
+Realice:
+
+- Defina la población.
+- Defina una muestra.
+- Calcule media, varianza y desviación estándar.
+- Interprete los resultados.
+- Verifique los cálculos en R.
+- Explique qué parámetro poblacional se está intentando estimar.
+
+---
+
+## Aplicaciones por carrera
+
+### Ingeniería Civil
+
+La inferencia permite estimar propiedades de materiales, capacidad de soporte de suelos, resistencia promedio de mezclas y comportamiento de elementos estructurales.
+
+### Ingeniería Eléctrica
+
+Se utiliza para estimar voltaje promedio, corriente media, frecuencia de interrupciones y estabilidad de sistemas eléctricos.
+
+### Ingeniería Industrial
+
+Permite estimar productividad, tiempos de operación, proporciones de defectos y variabilidad de procesos.
+
+### Energías Renovables
+
+Se aplica para estimar generación media, irradiancia promedio, velocidad del viento y desempeño de sistemas fotovoltaicos o eólicos.
+
+---
+
+## Preguntas de autoevaluación
+
+1. ¿Qué es inferencia estadística?
+2. ¿Qué diferencia existe entre población y muestra?
+3. ¿Qué es un parámetro?
+4. ¿Qué es un estadístico?
+5. ¿Qué parámetro estima la media muestral?
+6. ¿Qué representa el error de muestreo?
+7. ¿Por qué diferentes muestras pueden tener medias distintas?
+8. ¿Qué ocurre cuando aumenta el tamaño muestral?
+9. ¿Cuál es la diferencia entre estimación y prueba de hipótesis?
+10. Dé un ejemplo de inferencia estadística en su carrera.
+
+---
+
+## Resumen de la unidad
+
+La inferencia estadística permite obtener conclusiones sobre una población a partir de una muestra. Para ello se utilizan estadísticos muestrales como la media, la varianza, la desviación estándar y la proporción.
+
+Una muestra no reproduce exactamente a la población, por lo que aparece el error de muestreo. Sin embargo, si la muestra es adecuada, permite estimar parámetros poblacionales con utilidad técnica.
+
+Esta unidad constituye la base para estudiar estimación puntual, intervalos de confianza y pruebas de hipótesis.
+
+---
+
+## Bibliografía sugerida
+
+- Devore, J. L. (2008). *Probabilidad y estadística para ingeniería y ciencias*. Cengage Learning.
+- Montgomery, D. C., & Runger, G. C. (2016). *Probabilidad y estadística aplicada a la ingeniería*. Limusa.
+- OpenStax. (2023). *Introducción a la estadística*. Rice University.
 
 <!--chapter:end:14-bloque3-unidad1-inferencia.Rmd-->
 
