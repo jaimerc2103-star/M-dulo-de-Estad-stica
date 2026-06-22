@@ -19,7 +19,6 @@ rmd_files:
   - 13-bloque2-unidad6-distribuciones.Rmd
   - 14-bloque3-unidad1-inferencia.Rmd
   - 15-bloque3-unidad2-estimacion.Rmd
-  - 16-bloque3-unidad3-intervalos-confianza.Rmd
   - 17-bloque3-unidad4-pruebas-hipotesis.Rmd
   - 18-bloque3-unidad5-pvalor-errores.Rmd
   - 19-bloque3-unidad6-comparacion-medias.Rmd

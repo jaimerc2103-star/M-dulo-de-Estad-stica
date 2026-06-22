@@ -7319,354 +7319,950 @@ Los intervalos de confianza proporcionan un rango plausible para el parámetro p
 
 <!--chapter:end:15-bloque3-unidad2-estimacion.Rmd-->
 
-# Intervalos de confianza
+# Pruebas de hipótesis
 
-## Concepto teórico
+## Motivación ingenieril
 
-Un intervalo de confianza es un rango de valores construido a partir de una muestra, dentro del cual se espera que se encuentre un parámetro poblacional con un determinado nivel de confianza. A diferencia de la estimación puntual, que entrega un único valor, el intervalo de confianza incorpora la incertidumbre asociada al muestreo.
-
-En ingeniería, los intervalos de confianza permiten expresar resultados con un margen de error, lo cual es fundamental para evaluar resistencia de materiales, voltajes, productividad, generación energética, tiempos de operación y otros fenómenos técnicos.
-
-### Nivel de confianza
-
-El nivel de confianza se representa generalmente como:
-
-\[
-1-\alpha
-\]
+En la unidad anterior se estudió cómo estimar parámetros poblacionales mediante estimaciones puntuales e intervalos de confianza. Sin embargo, en ingeniería muchas veces no solo se desea estimar, sino **tomar una decisión** frente a una afirmación técnica.
 
 Por ejemplo:
 
-- 90%
-- 95%
-- 99%
+- ¿La resistencia promedio del hormigón cumple con la especificación mínima?
+- ¿El voltaje promedio de una red es realmente 220 V?
+- ¿Una máquina produce más defectos que el límite permitido?
+- ¿La generación promedio de un sistema solar es menor que la esperada?
+- ¿Un nuevo método de producción reduce el tiempo promedio de fabricación?
 
-Un intervalo de confianza del 95% indica que, si se repitiera el proceso de muestreo muchas veces, aproximadamente el 95% de los intervalos construidos contendrían el verdadero parámetro poblacional.
+Las **pruebas de hipótesis** permiten responder estas preguntas usando evidencia muestral.
 
-## Formulación matemática
+Una prueba de hipótesis no demuestra una verdad absoluta. Lo que hace es evaluar si los datos observados proporcionan suficiente evidencia para rechazar una afirmación inicial.
 
-### Intervalo de confianza para la media con desviación poblacional conocida
+---
 
-\[
-IC = \bar{x} \pm z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
-\]
+## Resultados de aprendizaje
 
-donde:
+Al finalizar esta unidad, el estudiante será capaz de:
 
-- \(\bar{x}\): media muestral
-- \(z_{\alpha/2}\): valor crítico de la distribución normal estándar
-- \(\sigma\): desviación estándar poblacional
-- \(n\): tamaño de la muestra
+1. Comprender el objetivo de una prueba de hipótesis.
+2. Formular hipótesis nula e hipótesis alternativa.
+3. Identificar pruebas bilaterales y unilaterales.
+4. Comprender el nivel de significancia.
+5. Calcular estadísticos de prueba para la media.
+6. Aplicar el criterio del valor crítico.
+7. Aplicar el criterio del p-valor.
+8. Resolver ejercicios manuales paso a paso.
+9. Verificar resultados mediante R.
+10. Interpretar conclusiones estadísticas en contexto de ingeniería.
 
-### Intervalo de confianza para la media con desviación poblacional desconocida
-
-Cuando \(\sigma\) no se conoce, se usa la distribución t de Student:
-
-\[
-IC = \bar{x} \pm t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}
-\]
-
-donde:
-
-- \(s\): desviación estándar muestral
-- \(t_{\alpha/2, n-1}\): valor crítico t con \(n-1\) grados de libertad
-
-## Ejemplo aplicado
-
-En un laboratorio de ingeniería civil se mide la resistencia a compresión de 12 probetas de hormigón:
-
-```{r}
-resistencia <- c(24.8, 25.1, 24.5, 25.7, 26.0, 24.9,
-                 25.3, 25.8, 24.7, 25.0, 25.4, 25.2)
-resistencia
-```
-
-Se desea construir un intervalo de confianza del 95% para la resistencia media poblacional.
-
-## Implementación en R
-
-### Estadísticos básicos
-
-```{r}
-n <- length(resistencia)
-media <- mean(resistencia)
-s <- sd(resistencia)
-
-c(n = n, media = media, desviacion = s)
-```
-
-### Intervalo de confianza con t de Student
-
-```{r}
-nivel_confianza <- 0.95
-alpha <- 1 - nivel_confianza
-
-t_critico <- qt(1 - alpha/2, df = n - 1)
-error_estandar <- s / sqrt(n)
-margen_error <- t_critico * error_estandar
-
-limite_inferior <- media - margen_error
-limite_superior <- media + margen_error
-
-c(LI = limite_inferior, LS = limite_superior)
-```
-
-### Usando `t.test()`
-
-```{r}
-t.test(resistencia, conf.level = 0.95)
-```
-
-## Gráfica
-
-```{r}
-plot(1, media,
-     ylim = c(limite_inferior - 0.2, limite_superior + 0.2),
-     pch = 19,
-     col = "blue",
-     xaxt = "n",
-     xlab = "",
-     ylab = "Resistencia (MPa)",
-     main = "Intervalo de confianza para la media")
-arrows(1, limite_inferior, 1, limite_superior,
-       angle = 90, code = 3, length = 0.1, col = "red", lwd = 2)
-abline(h = media, col = "blue", lty = 2)
-axis(1, at = 1, labels = "Media muestral")
-```
-
-## Simulación
-
-Simulamos varios intervalos de confianza para observar que no todos contienen necesariamente el valor poblacional.
-
-```{r}
-set.seed(123)
-
-mu <- 25
-sigma <- 1
-n <- 10
-B <- 100
-
-contiene_mu <- logical(B)
-li <- numeric(B)
-ls <- numeric(B)
-
-for(i in 1:B){
-  muestra <- rnorm(n, mean = mu, sd = sigma)
-  test <- t.test(muestra, conf.level = 0.95)
-  li[i] <- test$conf.int[1]
-  ls[i] <- test$conf.int[2]
-  contiene_mu[i] <- li[i] <= mu & ls[i] >= mu
-}
-
-mean(contiene_mu)
-```
-
-### Visualización de intervalos simulados
-
-```{r}
-plot(1:B, rep(mu, B),
-     type = "n",
-     ylim = range(c(li, ls)),
-     xlab = "Simulación",
-     ylab = "Intervalo de confianza",
-     main = "Intervalos de confianza simulados")
-
-for(i in 1:B){
-  color <- ifelse(contiene_mu[i], "gray40", "red")
-  segments(i, li[i], i, ls[i], col = color)
-}
-abline(h = mu, col = "blue", lwd = 2)
-```
-
-## Ejercicio propuesto
-
-En un sistema eléctrico se registran los siguientes valores de voltaje:
-
-```{r eval=FALSE}
-voltaje <- c(219, 221, 220, 222, 218, 223,
-             221, 220, 219, 222, 221, 220)
-```
-
-Realice:
-
-1. Calcule la media y desviación estándar.
-2. Construya un intervalo de confianza del 95%.
-3. Interprete el resultado.
-4. Repita el cálculo con 99% de confianza.
-5. Explique cómo cambia el ancho del intervalo.
-
-## Caso real (ingeniería)
-
-En **ingeniería civil**, los intervalos de confianza permiten estimar resistencia promedio de materiales con incertidumbre cuantificada.
-
-En **ingeniería eléctrica**, se emplean para estimar niveles medios de voltaje o corriente.
-
-En **ingeniería industrial**, permiten evaluar tiempos promedio de producción o productividad media.
-
-En **energías renovables**, ayudan a estimar generación promedio o irradiancia media con un margen de error.
-
-## Conclusión
-
-Los intervalos de confianza permiten pasar de una estimación puntual a una estimación con incertidumbre explícita. Son herramientas esenciales para comunicar resultados técnicos con rigor estadístico.
-
-<!--chapter:end:16-bloque3-unidad3-intervalos-confianza.Rmd-->
-
-# Pruebas de hipótesis
+---
 
 ## Concepto teórico
 
-Una prueba de hipótesis es un procedimiento estadístico que permite evaluar una afirmación sobre un parámetro poblacional utilizando evidencia muestral. En ingeniería, se usa para verificar si un proceso cumple una especificación, si un material alcanza una resistencia mínima o si un sistema opera dentro de valores esperados.
+Una **prueba de hipótesis** es un procedimiento estadístico utilizado para evaluar una afirmación acerca de un parámetro poblacional.
 
-### Hipótesis nula
+La idea general es:
 
-La hipótesis nula se representa como:
+1. Se plantea una afirmación inicial.
+2. Se toma una muestra.
+3. Se calcula un estadístico de prueba.
+4. Se compara la evidencia con un criterio de decisión.
+5. Se concluye si existe evidencia suficiente para rechazar la afirmación inicial.
+
+---
+
+## Hipótesis nula
+
+La **hipótesis nula** se representa como:
 
 \[
 H_0
 \]
 
-Generalmente expresa una condición de igualdad, referencia o ausencia de cambio.
+Generalmente expresa una condición de igualdad, ausencia de cambio o cumplimiento de una especificación.
 
-### Hipótesis alternativa
+Ejemplos:
 
-La hipótesis alternativa se representa como:
+\[
+H_0:\mu=220
+\]
+
+\[
+H_0:p=0.05
+\]
+
+\[
+H_0:\mu\geq 25
+\]
+
+---
+
+## Hipótesis alternativa
+
+La **hipótesis alternativa** se representa como:
 
 \[
 H_1
 \]
 
-Expresa la afirmación que se desea evaluar frente a la hipótesis nula.
+También puede escribirse como \(H_a\).
 
-### Nivel de significancia
+Representa la afirmación que se acepta si la evidencia muestral es suficiente para rechazar \(H_0\).
 
-El nivel de significancia se denota por \(\alpha\). Representa la probabilidad máxima aceptada de rechazar \(H_0\) cuando en realidad es verdadera.
-
-Valores frecuentes:
-
-- \(\alpha = 0.10\)
-- \(\alpha = 0.05\)
-- \(\alpha = 0.01\)
-
-## Formulación matemática
-
-### Prueba para una media con desviación poblacional desconocida
+Ejemplos:
 
 \[
-t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}
-\]
-
-donde:
-
-- \(\bar{x}\): media muestral
-- \(\mu_0\): valor hipotético de la media
-- \(s\): desviación estándar muestral
-- \(n\): tamaño de la muestra
-
-## Ejemplo aplicado
-
-Una empresa de producción indica que el tiempo promedio de ensamblaje de una pieza es de 50 minutos. Se registra una muestra de tiempos:
-
-```{r}
-tiempos <- c(48, 51, 49, 52, 50, 47, 49, 51, 50, 48, 52, 49)
-tiempos
-```
-
-Se desea evaluar si el tiempo promedio difiere de 50 minutos.
-
-\[
-H_0: \mu = 50
+H_1:\mu\neq220
 \]
 
 \[
-H_1: \mu \neq 50
+H_1:p>0.05
 \]
 
-## Implementación en R
+\[
+H_1:\mu<25
+\]
 
-### Estadísticos básicos
+---
+
+## Ejemplo cotidiano introductorio
+
+Una fábrica afirma que sus botellas contienen en promedio 500 ml.
+
+Un inspector sospecha que contienen menos.
+
+La hipótesis nula sería:
+
+\[
+H_0:\mu=500
+\]
+
+La hipótesis alternativa sería:
+
+\[
+H_1:\mu<500
+\]
+
+La muestra permitirá decidir si existe evidencia suficiente para afirmar que el contenido promedio es menor a 500 ml.
+
+---
+
+## Tipos de pruebas
+
+## Prueba bilateral
+
+Se usa cuando se desea detectar cualquier diferencia respecto al valor hipotético.
+
+\[
+H_0:\mu=\mu_0
+\]
+
+\[
+H_1:\mu\neq\mu_0
+\]
+
+Ejemplo:
+
+> Verificar si el voltaje promedio es diferente de 220 V.
+
+---
+
+## Prueba unilateral derecha
+
+Se usa cuando se desea detectar si el parámetro es mayor que un valor.
+
+\[
+H_0:\mu=\mu_0
+\]
+
+\[
+H_1:\mu>\mu_0
+\]
+
+Ejemplo:
+
+> Verificar si el tiempo promedio de producción es mayor que el límite permitido.
+
+---
+
+## Prueba unilateral izquierda
+
+Se usa cuando se desea detectar si el parámetro es menor que un valor.
+
+\[
+H_0:\mu=\mu_0
+\]
+
+\[
+H_1:\mu<\mu_0
+\]
+
+Ejemplo:
+
+> Verificar si la resistencia promedio del hormigón es menor que la especificación mínima.
+
+---
+
+## Nivel de significancia
+
+El **nivel de significancia** se representa con:
+
+\[
+\alpha
+\]
+
+Es la probabilidad máxima aceptada de cometer error tipo I, es decir, rechazar \(H_0\) cuando en realidad es verdadera.
+
+Valores comunes:
+
+\[
+\alpha=0.10
+\]
+
+\[
+\alpha=0.05
+\]
+
+\[
+\alpha=0.01
+\]
+
+El valor más usado es:
+
+\[
+\alpha=0.05
+\]
+
+---
+
+## Errores en pruebas de hipótesis
+
+## Error tipo I
+
+Ocurre cuando se rechaza \(H_0\), aunque \(H_0\) es verdadera.
+
+\[
+P(\text{Error tipo I})=\alpha
+\]
+
+Ejemplo en ingeniería civil:
+
+> Rechazar un lote de hormigón que realmente sí cumple la resistencia requerida.
+
+---
+
+## Error tipo II
+
+Ocurre cuando no se rechaza \(H_0\), aunque \(H_0\) es falsa.
+
+\[
+P(\text{Error tipo II})=\beta
+\]
+
+Ejemplo en ingeniería industrial:
+
+> Aceptar que una máquina funciona correctamente cuando en realidad produce demasiados defectos.
+
+---
+
+## Estadístico de prueba para la media con \(\sigma\) conocida
+
+Cuando se conoce la desviación estándar poblacional, se utiliza la prueba Z:
+
+\[
+Z=\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}
+\]
+
+Donde:
+
+- \(\bar{x}\): media muestral.
+- \(\mu_0\): valor hipotético de la media.
+- \(\sigma\): desviación estándar poblacional.
+- \(n\): tamaño de la muestra.
+
+---
+
+## Estadístico de prueba para la media con \(\sigma\) desconocida
+
+Cuando no se conoce \(\sigma\), se utiliza la prueba t de Student:
+
+\[
+t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+\]
+
+Donde:
+
+- \(s\): desviación estándar muestral.
+- \(n-1\): grados de libertad.
+
+Esta es la situación más común en aplicaciones reales.
+
+---
+
+# Prueba de hipótesis para la media con \(\sigma\) conocida
+
+## Ejemplo resuelto 1: voltaje promedio
+
+Una red eléctrica debería operar con voltaje promedio de 220 V. Se toma una muestra de 36 mediciones y se obtiene:
+
+\[
+\bar{x}=221.2
+\]
+
+Se conoce que la desviación estándar poblacional es:
+
+\[
+\sigma=3.6
+\]
+
+Con nivel de significancia:
+
+\[
+\alpha=0.05
+\]
+
+Se desea verificar si el voltaje promedio es diferente de 220 V.
+
+---
+
+## Paso 1: plantear hipótesis
+
+Como se desea saber si es diferente:
+
+\[
+H_0:\mu=220
+\]
+
+\[
+H_1:\mu\neq220
+\]
+
+Es una prueba bilateral.
+
+---
+
+## Paso 2: identificar datos
+
+\[
+\bar{x}=221.2
+\]
+
+\[
+\mu_0=220
+\]
+
+\[
+\sigma=3.6
+\]
+
+\[
+n=36
+\]
+
+---
+
+## Paso 3: calcular estadístico Z
+
+\[
+Z=\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}
+\]
+
+\[
+Z=\frac{221.2-220}{3.6/\sqrt{36}}
+\]
+
+\[
+Z=\frac{1.2}{3.6/6}
+\]
+
+\[
+Z=\frac{1.2}{0.6}
+\]
+
+\[
+Z=2.00
+\]
+
+---
+
+## Paso 4: valor crítico
+
+Para una prueba bilateral con:
+
+\[
+\alpha=0.05
+\]
+
+los valores críticos son:
+
+\[
+Z_{\alpha/2}=\pm1.96
+\]
+
+---
+
+## Paso 5: decisión
+
+Como:
+
+\[
+Z=2.00
+\]
+
+y:
+
+\[
+2.00>1.96
+\]
+
+se rechaza \(H_0\).
+
+---
+
+## Conclusión técnica
+
+Existe evidencia estadística, al 5% de significancia, para afirmar que el voltaje promedio de la red es diferente de 220 V.
+
+---
+
+## Verificación en R
 
 ```{r}
-mean(tiempos)
-sd(tiempos)
-length(tiempos)
+xbar <- 221.2
+mu0 <- 220
+sigma <- 3.6
+n <- 36
+
+Z <- (xbar - mu0) / (sigma / sqrt(n))
+Z
 ```
 
-### Prueba t para una muestra
-
 ```{r}
-t.test(tiempos, mu = 50, alternative = "two.sided")
+# p-valor para prueba bilateral
+p_valor <- 2 * (1 - pnorm(abs(Z)))
+p_valor
 ```
 
-## Gráfica
+```{r}
+alpha <- 0.05
+
+if(p_valor < alpha){
+  "Se rechaza H0"
+} else {
+  "No se rechaza H0"
+}
+```
+
+---
+
+## Gráfica de la prueba Z
 
 ```{r}
-hist(tiempos,
+z <- seq(-4, 4, length.out = 300)
+densidad <- dnorm(z)
+
+plot(z, densidad,
+     type = "l",
+     lwd = 2,
+     col = "blue",
+     main = "Prueba Z bilateral",
+     xlab = "Z",
+     ylab = "Densidad")
+
+abline(v = c(-1.96, 1.96), col = "red", lty = 2, lwd = 2)
+abline(v = Z, col = "darkgreen", lwd = 2)
+
+legend("topright",
+       legend = c("Distribución Z", "Valores críticos", "Z observado"),
+       col = c("blue", "red", "darkgreen"),
+       lty = c(1,2,1),
+       lwd = 2)
+```
+
+---
+
+# Prueba de hipótesis para la media con \(\sigma\) desconocida
+
+## Ejemplo resuelto 2: resistencia de hormigón
+
+Una norma técnica indica que la resistencia promedio mínima del hormigón debe ser 25 MPa. Se ensayan 10 probetas y se obtienen los siguientes resultados:
+
+\[
+24.8,\ 25.1,\ 24.5,\ 25.7,\ 26.0,\ 24.9,\ 25.3,\ 25.8,\ 24.7,\ 25.0
+\]
+
+Se desea verificar si la resistencia promedio es menor que 25 MPa.
+
+Nivel de significancia:
+
+\[
+\alpha=0.05
+\]
+
+---
+
+## Paso 1: plantear hipótesis
+
+Como se desea verificar si es menor:
+
+\[
+H_0:\mu=25
+\]
+
+\[
+H_1:\mu<25
+\]
+
+Es una prueba unilateral izquierda.
+
+---
+
+## Paso 2: calcular estadísticos muestrales
+
+```{r}
+resistencia <- c(24.8, 25.1, 24.5, 25.7, 26.0,
+                 24.9, 25.3, 25.8, 24.7, 25.0)
+
+mean(resistencia)
+sd(resistencia)
+length(resistencia)
+```
+
+Los valores aproximados son:
+
+\[
+\bar{x}=25.18
+\]
+
+\[
+s=0.50
+\]
+
+\[
+n=10
+\]
+
+---
+
+## Paso 3: calcular estadístico t
+
+\[
+t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+\]
+
+Usando los valores calculados:
+
+\[
+t=\frac{25.18-25}{0.50/\sqrt{10}}
+\]
+
+\[
+t \approx 1.14
+\]
+
+---
+
+## Verificación del estadístico en R
+
+```{r}
+xbar <- mean(resistencia)
+s <- sd(resistencia)
+n <- length(resistencia)
+mu0 <- 25
+
+t_obs <- (xbar - mu0) / (s / sqrt(n))
+t_obs
+```
+
+---
+
+## Paso 4: valor crítico
+
+Para una prueba unilateral izquierda:
+
+\[
+\alpha=0.05
+\]
+
+\[
+gl=n-1=9
+\]
+
+El valor crítico es:
+
+```{r}
+qt(0.05, df = 9)
+```
+
+---
+
+## Paso 5: decisión
+
+Como el estadístico observado no cae en la región crítica izquierda, no se rechaza \(H_0\).
+
+---
+
+## Conclusión técnica
+
+No existe evidencia estadística suficiente para afirmar que la resistencia promedio del hormigón sea menor que 25 MPa.
+
+---
+
+## Verificación completa con R
+
+```{r}
+t.test(resistencia, mu = 25, alternative = "less")
+```
+
+---
+
+## Gráfica de los datos
+
+```{r}
+hist(resistencia,
      col = "lightblue",
      border = "white",
-     main = "Distribución de tiempos de ensamblaje",
-     xlab = "Tiempo (min)")
-abline(v = mean(tiempos), col = "red", lwd = 2)
-abline(v = 50, col = "blue", lwd = 2, lty = 2)
+     main = "Resistencia de probetas",
+     xlab = "Resistencia (MPa)")
+
+abline(v = mean(resistencia), col = "red", lwd = 2)
+abline(v = 25, col = "blue", lty = 2, lwd = 2)
+
 legend("topright",
        legend = c("Media muestral", "Valor hipotético"),
        col = c("red", "blue"),
-       lwd = 2,
-       lty = c(1,2))
+       lty = c(1,2),
+       lwd = 2)
 ```
 
-## Simulación
+---
 
-Simulamos muestras bajo la hipótesis nula \(\mu = 50\) para observar la variabilidad del estadístico.
+# Criterio del p-valor
+
+El p-valor mide qué tan probable sería obtener un resultado como el observado si \(H_0\) fuera verdadera.
+
+Regla de decisión:
+
+\[
+\text{Si } p\text{-valor}<\alpha,\ \text{se rechaza } H_0
+\]
+
+\[
+\text{Si } p\text{-valor}\geq\alpha,\ \text{no se rechaza } H_0
+\]
+
+---
+
+## Ejemplo resuelto 3: tiempo de producción
+
+Una empresa afirma que el tiempo promedio de ensamblaje es 50 minutos. Se toma una muestra:
+
+\[
+48,\ 51,\ 49,\ 52,\ 50,\ 47,\ 49,\ 51,\ 50,\ 48,\ 52,\ 49
+\]
+
+Se desea verificar si el tiempo promedio es diferente de 50 minutos.
+
+---
+
+## Planteamiento
+
+\[
+H_0:\mu=50
+\]
+
+\[
+H_1:\mu\neq50
+\]
+
+\[
+\alpha=0.05
+\]
+
+---
+
+## Verificación en R
+
+```{r}
+tiempos <- c(48, 51, 49, 52, 50, 47, 49, 51, 50, 48, 52, 49)
+
+t.test(tiempos, mu = 50, alternative = "two.sided")
+```
+
+---
+
+## Interpretación
+
+Si el p-valor es mayor que 0.05, no se rechaza \(H_0\). Esto significa que no existe evidencia suficiente para afirmar que el tiempo promedio sea diferente de 50 minutos.
+
+---
+
+# Prueba de hipótesis para una proporción
+
+## Formulación
+
+Cuando se desea evaluar una proporción poblacional, se usa:
+
+\[
+Z=\frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
+\]
+
+Donde:
+
+- \(\hat{p}\): proporción muestral.
+- \(p_0\): proporción hipotética.
+- \(n\): tamaño de muestra.
+
+---
+
+## Ejemplo resuelto 4: piezas defectuosas
+
+Una empresa afirma que la proporción de piezas defectuosas es como máximo 5%. En una muestra de 200 piezas se encuentran 16 defectuosas. Se desea evaluar si la proporción de defectos es mayor que 5%.
+
+---
+
+## Paso 1: hipótesis
+
+\[
+H_0:p=0.05
+\]
+
+\[
+H_1:p>0.05
+\]
+
+---
+
+## Paso 2: datos
+
+\[
+x=16
+\]
+
+\[
+n=200
+\]
+
+\[
+\hat{p}=\frac{16}{200}=0.08
+\]
+
+---
+
+## Paso 3: estadístico Z
+
+\[
+Z=\frac{0.08-0.05}{\sqrt{\frac{0.05(0.95)}{200}}}
+\]
+
+\[
+Z=\frac{0.03}{\sqrt{0.0002375}}
+\]
+
+\[
+Z=\frac{0.03}{0.01541}
+\]
+
+\[
+Z=1.947
+\]
+
+---
+
+## Paso 4: p-valor
+
+```{r}
+p_hat <- 16/200
+p0 <- 0.05
+n <- 200
+
+Z_prop <- (p_hat - p0) / sqrt(p0*(1-p0)/n)
+Z_prop
+
+p_valor_prop <- 1 - pnorm(Z_prop)
+p_valor_prop
+```
+
+---
+
+## Paso 5: decisión
+
+Si:
+
+\[
+p\text{-valor}<0.05
+\]
+
+se rechaza \(H_0\).
+
+En este caso el p-valor está cerca de 0.05, por lo que la conclusión debe redactarse cuidadosamente.
+
+---
+
+## Verificación con R
+
+```{r}
+prop.test(x = 16, n = 200, p = 0.05, alternative = "greater", correct = FALSE)
+```
+
+---
+
+## Ejercicio guiado
+
+Un sistema fotovoltaico debería producir en promedio 520 kWh diarios. Se registran 12 días:
+
+\[
+510,\ 525,\ 518,\ 530,\ 522,\ 515,\ 519,\ 527,\ 521,\ 524,\ 528,\ 520
+\]
+
+Verificar si la generación promedio es diferente de 520 kWh con \(\alpha=0.05\).
+
+---
+
+## Solución del ejercicio guiado
+
+### Paso 1: hipótesis
+
+\[
+H_0:\mu=520
+\]
+
+\[
+H_1:\mu\neq520
+\]
+
+---
+
+### Paso 2: usar prueba t
+
+Como \(\sigma\) es desconocida y \(n=12\), se usa prueba t.
+
+---
+
+### Verificación en R
+
+```{r}
+energia <- c(510, 525, 518, 530, 522, 515,
+             519, 527, 521, 524, 528, 520)
+
+mean(energia)
+sd(energia)
+
+t.test(energia, mu = 520, alternative = "two.sided")
+```
+
+---
+
+### Interpretación
+
+Si el p-valor es mayor que 0.05, no se rechaza \(H_0\). Esto significa que no existe evidencia suficiente para afirmar que la generación promedio sea diferente de 520 kWh.
+
+---
+
+## Simulación de error tipo I
+
+Simulamos muchas pruebas cuando \(H_0\) es verdadera.
 
 ```{r}
 set.seed(123)
 
-B <- 500
-n <- 12
-t_est <- numeric(B)
+B <- 1000
+pvalores <- numeric(B)
 
 for(i in 1:B){
-  muestra <- rnorm(n, mean = 50, sd = 2)
-  t_est[i] <- (mean(muestra) - 50) / (sd(muestra) / sqrt(n))
+  muestra <- rnorm(20, mean = 100, sd = 10)
+  pvalores[i] <- t.test(muestra, mu = 100)$p.value
 }
 
-hist(t_est,
+mean(pvalores < 0.05)
+```
+
+El resultado debe aproximarse a 0.05, que es el nivel de significancia.
+
+---
+
+## Gráfica de p-valores
+
+```{r}
+hist(pvalores,
      col = "lightgray",
      border = "white",
-     main = "Distribución simulada del estadístico t",
-     xlab = "t")
+     main = "Distribución de p-valores bajo H0",
+     xlab = "p-valor")
+
+abline(v = 0.05, col = "red", lwd = 2)
 ```
 
-## Ejercicio propuesto
+---
 
-Una especificación técnica indica que el voltaje promedio debe ser 220 V. Se toma la muestra:
+## Actividad práctica
 
-```{r eval=FALSE}
-voltaje <- c(219, 221, 220, 222, 218, 223,
-             221, 220, 219, 222, 221, 220)
-```
+Seleccione uno de los siguientes contextos:
 
-Realice:
+1. Resistencia del hormigón.
+2. Voltaje de una red.
+3. Tiempo de producción.
+4. Porcentaje de defectos.
+5. Generación solar diaria.
 
-1. Plantee \(H_0\) y \(H_1\).
-2. Ejecute la prueba t en R.
-3. Interprete el p-valor.
-4. Concluya con \(\alpha = 0.05\).
-5. Explique la implicación técnica del resultado.
+Para su caso:
 
-## Caso real (ingeniería)
+- Plantee \(H_0\) y \(H_1\).
+- Identifique si la prueba es bilateral o unilateral.
+- Calcule el estadístico de prueba.
+- Calcule o interprete el p-valor.
+- Verifique en R.
+- Redacte una conclusión técnica.
 
-En **ingeniería civil**, las pruebas de hipótesis permiten verificar si la resistencia media de un material cumple una norma.
+---
 
-En **ingeniería eléctrica**, se usan para comprobar si el voltaje medio difiere de un valor nominal.
+## Aplicaciones por carrera
 
-En **ingeniería industrial**, permiten validar si el tiempo promedio de proceso cumple especificaciones.
+### Ingeniería Civil
 
-En **energías renovables**, ayudan a evaluar si la generación media observada difiere de la esperada.
+Las pruebas de hipótesis permiten verificar si un material cumple resistencia mínima o si un proceso constructivo alcanza los valores requeridos.
 
-## Conclusión
+### Ingeniería Eléctrica
 
-Las pruebas de hipótesis permiten tomar decisiones estadísticas con base en evidencia muestral. Son fundamentales para validar especificaciones, comparar resultados y sustentar decisiones técnicas.
+Se usan para verificar si el voltaje promedio, la corriente o la frecuencia se mantienen dentro de valores nominales.
+
+### Ingeniería Industrial
+
+Permiten evaluar si un proceso cumple especificaciones de calidad, tiempo o proporción de defectos.
+
+### Energías Renovables
+
+Se aplican para evaluar si la generación promedio cumple expectativas o si un sistema presenta disminución significativa de rendimiento.
+
+---
+
+## Preguntas de autoevaluación
+
+1. ¿Qué es una prueba de hipótesis?
+2. ¿Qué representa \(H_0\)?
+3. ¿Qué representa \(H_1\)?
+4. ¿Qué es el nivel de significancia?
+5. ¿Qué es un error tipo I?
+6. ¿Qué es un error tipo II?
+7. ¿Cuándo se usa prueba Z?
+8. ¿Cuándo se usa prueba t?
+9. ¿Qué significa el p-valor?
+10. ¿Cómo se toma una decisión usando el p-valor?
+
+---
+
+## Resumen de la unidad
+
+Las pruebas de hipótesis permiten evaluar afirmaciones sobre parámetros poblacionales usando datos muestrales. El procedimiento incluye formular hipótesis, seleccionar un nivel de significancia, calcular un estadístico de prueba, obtener un p-valor o comparar con un valor crítico, y redactar una conclusión.
+
+En ingeniería, estas pruebas son fundamentales para validar especificaciones, evaluar procesos, controlar calidad y sustentar decisiones técnicas.
+
+---
+
+## Bibliografía sugerida
+
+- Devore, J. L. (2008). *Probabilidad y estadística para ingeniería y ciencias*. Cengage Learning.
+- Montgomery, D. C., & Runger, G. C. (2016). *Probabilidad y estadística aplicada a la ingeniería*. Limusa.
+- OpenStax. (2023). *Introducción a la estadística*. Rice University.
 
 <!--chapter:end:17-bloque3-unidad4-pruebas-hipotesis.Rmd-->
 

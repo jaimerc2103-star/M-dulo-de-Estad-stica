@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>22 Comparación de medias | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="22 Comparación de medias | Estadística Aplicada para Ingeniería" />
+  <title>20 Prueba de hipótesis para una proporción | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="20 Prueba de hipótesis para una proporción | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="22 Comparación de medias | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="20 Prueba de hipótesis para una proporción | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="22 Comparación de medias | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="20 Prueba de hipótesis para una proporción | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="p-valor-nivel-de-significancia-y-errores-de-decisión.html"/>
-<link rel="next" href="aplicaciones-de-inferencia-estadística-en-ingeniería.html"/>
+<link rel="prev" href="criterio-del-p-valor.html"/>
+<link rel="next" href="p-valor-nivel-de-significancia-y-errores-de-decisión.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -1115,153 +1115,261 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="comparación-de-medias" class="section level1 hasAnchor" number="22">
-<h1><span class="header-section-number">22</span> Comparación de medias<a href="comparación-de-medias.html#comparaci%C3%B3n-de-medias" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="concepto-teórico-15" class="section level2 hasAnchor" number="22.1">
-<h2><span class="header-section-number">22.1</span> Concepto teórico<a href="comparación-de-medias.html#concepto-te%C3%B3rico-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La comparación de medias permite evaluar si dos grupos o sistemas presentan diferencias estadísticamente significativas. En ingeniería, esto es útil para comparar métodos constructivos, tecnologías, líneas de producción, configuraciones eléctricas o sistemas energéticos.</p>
-<p>Existen diferentes escenarios:</p>
-<ul>
-<li>Comparación de una media contra un valor de referencia.</li>
-<li>Comparación de dos medias independientes.</li>
-<li>Comparación de medias pareadas.</li>
-</ul>
-</div>
-<div id="formulación-matemática-8" class="section level2 hasAnchor" number="22.2">
-<h2><span class="header-section-number">22.2</span> Formulación matemática<a href="comparación-de-medias.html#formulaci%C3%B3n-matem%C3%A1tica-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="prueba-t-para-dos-muestras-independientes" class="section level3 hasAnchor" number="22.2.1">
-<h3><span class="header-section-number">22.2.1</span> Prueba t para dos muestras independientes<a href="comparación-de-medias.html#prueba-t-para-dos-muestras-independientes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Cuando se comparan dos grupos independientes:</p>
+<div id="prueba-de-hipótesis-para-una-proporción" class="section level1 hasAnchor" number="20">
+<h1><span class="header-section-number">20</span> Prueba de hipótesis para una proporción<a href="prueba-de-hipótesis-para-una-proporción.html#prueba-de-hip%C3%B3tesis-para-una-proporci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="formulación" class="section level2 hasAnchor" number="20.1">
+<h2><span class="header-section-number">20.1</span> Formulación<a href="prueba-de-hipótesis-para-una-proporción.html#formulaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cuando se desea evaluar una proporción poblacional, se usa:</p>
 <p><span class="math display">\[
-t = \frac{\bar{x}_1-\bar{x}_2}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}
+Z=\frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
 \]</span></p>
-<p>donde:</p>
+<p>Donde:</p>
 <ul>
-<li><span class="math inline">\(\bar{x}_1, \bar{x}_2\)</span>: medias muestrales</li>
-<li><span class="math inline">\(s_1^2, s_2^2\)</span>: varianzas muestrales</li>
-<li><span class="math inline">\(n_1, n_2\)</span>: tamaños muestrales</li>
+<li><span class="math inline">\(\hat{p}\)</span>: proporción muestral.</li>
+<li><span class="math inline">\(p_0\)</span>: proporción hipotética.</li>
+<li><span class="math inline">\(n\)</span>: tamaño de muestra.</li>
 </ul>
+<hr />
 </div>
+<div id="ejemplo-resuelto-4-piezas-defectuosas" class="section level2 hasAnchor" number="20.2">
+<h2><span class="header-section-number">20.2</span> Ejemplo resuelto 4: piezas defectuosas<a href="prueba-de-hipótesis-para-una-proporción.html#ejemplo-resuelto-4-piezas-defectuosas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una empresa afirma que la proporción de piezas defectuosas es como máximo 5%. En una muestra de 200 piezas se encuentran 16 defectuosas. Se desea evaluar si la proporción de defectos es mayor que 5%.</p>
+<hr />
 </div>
-<div id="ejemplo-aplicado-9" class="section level2 hasAnchor" number="22.3">
-<h2><span class="header-section-number">22.3</span> Ejemplo aplicado<a href="comparación-de-medias.html#ejemplo-aplicado-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Se desea comparar la generación diaria de dos sistemas fotovoltaicos:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="comparación-de-medias.html#cb360-1" tabindex="-1"></a>sistema_A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">510</span>, <span class="dv">515</span>, <span class="dv">520</span>, <span class="dv">518</span>, <span class="dv">522</span>, <span class="dv">519</span>, <span class="dv">521</span>, <span class="dv">517</span>, <span class="dv">523</span>, <span class="dv">520</span>)</span>
-<span id="cb360-2"><a href="comparación-de-medias.html#cb360-2" tabindex="-1"></a>sistema_B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">505</span>, <span class="dv">508</span>, <span class="dv">512</span>, <span class="dv">510</span>, <span class="dv">511</span>, <span class="dv">509</span>, <span class="dv">513</span>, <span class="dv">507</span>, <span class="dv">514</span>, <span class="dv">510</span>)</span>
-<span id="cb360-3"><a href="comparación-de-medias.html#cb360-3" tabindex="-1"></a></span>
-<span id="cb360-4"><a href="comparación-de-medias.html#cb360-4" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb360-5"><a href="comparación-de-medias.html#cb360-5" tabindex="-1"></a>  <span class="at">generacion =</span> <span class="fu">c</span>(sistema_A, sistema_B),</span>
-<span id="cb360-6"><a href="comparación-de-medias.html#cb360-6" tabindex="-1"></a>  <span class="at">sistema =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Sistema A&quot;</span>, <span class="st">&quot;Sistema B&quot;</span>), <span class="at">each =</span> <span class="dv">10</span>)</span>
-<span id="cb360-7"><a href="comparación-de-medias.html#cb360-7" tabindex="-1"></a>)</span>
-<span id="cb360-8"><a href="comparación-de-medias.html#cb360-8" tabindex="-1"></a></span>
-<span id="cb360-9"><a href="comparación-de-medias.html#cb360-9" tabindex="-1"></a>datos</span></code></pre></div>
-<pre><code>##    generacion   sistema
-## 1         510 Sistema A
-## 2         515 Sistema A
-## 3         520 Sistema A
-## 4         518 Sistema A
-## 5         522 Sistema A
-## 6         519 Sistema A
-## 7         521 Sistema A
-## 8         517 Sistema A
-## 9         523 Sistema A
-## 10        520 Sistema A
-## 11        505 Sistema B
-## 12        508 Sistema B
-## 13        512 Sistema B
-## 14        510 Sistema B
-## 15        511 Sistema B
-## 16        509 Sistema B
-## 17        513 Sistema B
-## 18        507 Sistema B
-## 19        514 Sistema B
-## 20        510 Sistema B</code></pre>
+<div id="paso-1-hipótesis" class="section level2 hasAnchor" number="20.3">
+<h2><span class="header-section-number">20.3</span> Paso 1: hipótesis<a href="prueba-de-hipótesis-para-una-proporción.html#paso-1-hip%C3%B3tesis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[
+H_0:p=0.05
+\]</span></p>
+<p><span class="math display">\[
+H_1:p&gt;0.05
+\]</span></p>
+<hr />
 </div>
-<div id="implementación-en-r-9" class="section level2 hasAnchor" number="22.4">
-<h2><span class="header-section-number">22.4</span> Implementación en R<a href="comparación-de-medias.html#implementaci%C3%B3n-en-r-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="estadísticos-descriptivos" class="section level3 hasAnchor" number="22.4.1">
-<h3><span class="header-section-number">22.4.1</span> Estadísticos descriptivos<a href="comparación-de-medias.html#estad%C3%ADsticos-descriptivos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="comparación-de-medias.html#cb362-1" tabindex="-1"></a><span class="fu">tapply</span>(datos<span class="sc">$</span>generacion, datos<span class="sc">$</span>sistema, mean)</span></code></pre></div>
-<pre><code>## Sistema A Sistema B 
-##     518.5     509.9</code></pre>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="comparación-de-medias.html#cb364-1" tabindex="-1"></a><span class="fu">tapply</span>(datos<span class="sc">$</span>generacion, datos<span class="sc">$</span>sistema, sd)</span></code></pre></div>
-<pre><code>## Sistema A Sistema B 
-##  3.807887  2.766867</code></pre>
+<div id="paso-2-datos" class="section level2 hasAnchor" number="20.4">
+<h2><span class="header-section-number">20.4</span> Paso 2: datos<a href="prueba-de-hipótesis-para-una-proporción.html#paso-2-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[
+x=16
+\]</span></p>
+<p><span class="math display">\[
+n=200
+\]</span></p>
+<p><span class="math display">\[
+\hat{p}=\frac{16}{200}=0.08
+\]</span></p>
+<hr />
 </div>
-<div id="prueba-t-para-dos-muestras-independientes-1" class="section level3 hasAnchor" number="22.4.2">
-<h3><span class="header-section-number">22.4.2</span> Prueba t para dos muestras independientes<a href="comparación-de-medias.html#prueba-t-para-dos-muestras-independientes-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="comparación-de-medias.html#cb366-1" tabindex="-1"></a><span class="fu">t.test</span>(sistema_A, sistema_B, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div id="paso-3-estadístico-z" class="section level2 hasAnchor" number="20.5">
+<h2><span class="header-section-number">20.5</span> Paso 3: estadístico Z<a href="prueba-de-hipótesis-para-una-proporción.html#paso-3-estad%C3%ADstico-z" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[
+Z=\frac{0.08-0.05}{\sqrt{\frac{0.05(0.95)}{200}}}
+\]</span></p>
+<p><span class="math display">\[
+Z=\frac{0.03}{\sqrt{0.0002375}}
+\]</span></p>
+<p><span class="math display">\[
+Z=\frac{0.03}{0.01541}
+\]</span></p>
+<p><span class="math display">\[
+Z=1.947
+\]</span></p>
+<hr />
+</div>
+<div id="paso-4-p-valor" class="section level2 hasAnchor" number="20.6">
+<h2><span class="header-section-number">20.6</span> Paso 4: p-valor<a href="prueba-de-hipótesis-para-una-proporción.html#paso-4-p-valor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="prueba-de-hipótesis-para-una-proporción.html#cb332-1" tabindex="-1"></a>p_hat <span class="ot">&lt;-</span> <span class="dv">16</span><span class="sc">/</span><span class="dv">200</span></span>
+<span id="cb332-2"><a href="prueba-de-hipótesis-para-una-proporción.html#cb332-2" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb332-3"><a href="prueba-de-hipótesis-para-una-proporción.html#cb332-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb332-4"><a href="prueba-de-hipótesis-para-una-proporción.html#cb332-4" tabindex="-1"></a></span>
+<span id="cb332-5"><a href="prueba-de-hipótesis-para-una-proporción.html#cb332-5" tabindex="-1"></a>Z_prop <span class="ot">&lt;-</span> (p_hat <span class="sc">-</span> p0) <span class="sc">/</span> <span class="fu">sqrt</span>(p0<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p0)<span class="sc">/</span>n)</span>
+<span id="cb332-6"><a href="prueba-de-hipótesis-para-una-proporción.html#cb332-6" tabindex="-1"></a>Z_prop</span></code></pre></div>
+<pre><code>## [1] 1.946657</code></pre>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="prueba-de-hipótesis-para-una-proporción.html#cb334-1" tabindex="-1"></a>p_valor_prop <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(Z_prop)</span>
+<span id="cb334-2"><a href="prueba-de-hipótesis-para-una-proporción.html#cb334-2" tabindex="-1"></a>p_valor_prop</span></code></pre></div>
+<pre><code>## [1] 0.02578793</code></pre>
+<hr />
+</div>
+<div id="paso-5-decisión-2" class="section level2 hasAnchor" number="20.7">
+<h2><span class="header-section-number">20.7</span> Paso 5: decisión<a href="prueba-de-hipótesis-para-una-proporción.html#paso-5-decisi%C3%B3n-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Si:</p>
+<p><span class="math display">\[
+p\text{-valor}&lt;0.05
+\]</span></p>
+<p>se rechaza <span class="math inline">\(H_0\)</span>.</p>
+<p>En este caso el p-valor está cerca de 0.05, por lo que la conclusión debe redactarse cuidadosamente.</p>
+<hr />
+</div>
+<div id="verificación-con-r" class="section level2 hasAnchor" number="20.8">
+<h2><span class="header-section-number">20.8</span> Verificación con R<a href="prueba-de-hipótesis-para-una-proporción.html#verificaci%C3%B3n-con-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="prueba-de-hipótesis-para-una-proporción.html#cb336-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">16</span>, <span class="at">n =</span> <span class="dv">200</span>, <span class="at">p =</span> <span class="fl">0.05</span>, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
-##  Welch Two Sample t-test
+##  1-sample proportions test without continuity correction
 ## 
-## data:  sistema_A and sistema_B
-## t = 5.7777, df = 16.432, p-value = 2.547e-05
-## alternative hypothesis: true difference in means is not equal to 0
+## data:  16 out of 200, null probability 0.05
+## X-squared = 3.7895, df = 1, p-value = 0.02579
+## alternative hypothesis: true p is greater than 0.05
 ## 95 percent confidence interval:
-##   5.451302 11.748698
+##  0.05376596 1.00000000
 ## sample estimates:
-## mean of x mean of y 
-##     518.5     509.9</code></pre>
+##    p 
+## 0.08</code></pre>
+<hr />
+</div>
+<div id="ejercicio-guiado-7" class="section level2 hasAnchor" number="20.9">
+<h2><span class="header-section-number">20.9</span> Ejercicio guiado<a href="prueba-de-hipótesis-para-una-proporción.html#ejercicio-guiado-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un sistema fotovoltaico debería producir en promedio 520 kWh diarios. Se registran 12 días:</p>
+<p><span class="math display">\[
+510,\ 525,\ 518,\ 530,\ 522,\ 515,\ 519,\ 527,\ 521,\ 524,\ 528,\ 520
+\]</span></p>
+<p>Verificar si la generación promedio es diferente de 520 kWh con <span class="math inline">\(\alpha=0.05\)</span>.</p>
+<hr />
+</div>
+<div id="solución-del-ejercicio-guiado-7" class="section level2 hasAnchor" number="20.10">
+<h2><span class="header-section-number">20.10</span> Solución del ejercicio guiado<a href="prueba-de-hipótesis-para-una-proporción.html#soluci%C3%B3n-del-ejercicio-guiado-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paso-1-hipótesis-1" class="section level3 hasAnchor" number="20.10.1">
+<h3><span class="header-section-number">20.10.1</span> Paso 1: hipótesis<a href="prueba-de-hipótesis-para-una-proporción.html#paso-1-hip%C3%B3tesis-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+H_0:\mu=520
+\]</span></p>
+<p><span class="math display">\[
+H_1:\mu\neq520
+\]</span></p>
+<hr />
+</div>
+<div id="paso-2-usar-prueba-t" class="section level3 hasAnchor" number="20.10.2">
+<h3><span class="header-section-number">20.10.2</span> Paso 2: usar prueba t<a href="prueba-de-hipótesis-para-una-proporción.html#paso-2-usar-prueba-t" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Como <span class="math inline">\(\sigma\)</span> es desconocida y <span class="math inline">\(n=12\)</span>, se usa prueba t.</p>
+<hr />
+</div>
+<div id="verificación-en-r-53" class="section level3 hasAnchor" number="20.10.3">
+<h3><span class="header-section-number">20.10.3</span> Verificación en R<a href="prueba-de-hipótesis-para-una-proporción.html#verificaci%C3%B3n-en-r-53" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="prueba-de-hipótesis-para-una-proporción.html#cb338-1" tabindex="-1"></a>energia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">510</span>, <span class="dv">525</span>, <span class="dv">518</span>, <span class="dv">530</span>, <span class="dv">522</span>, <span class="dv">515</span>,</span>
+<span id="cb338-2"><a href="prueba-de-hipótesis-para-una-proporción.html#cb338-2" tabindex="-1"></a>             <span class="dv">519</span>, <span class="dv">527</span>, <span class="dv">521</span>, <span class="dv">524</span>, <span class="dv">528</span>, <span class="dv">520</span>)</span>
+<span id="cb338-3"><a href="prueba-de-hipótesis-para-una-proporción.html#cb338-3" tabindex="-1"></a></span>
+<span id="cb338-4"><a href="prueba-de-hipótesis-para-una-proporción.html#cb338-4" tabindex="-1"></a><span class="fu">mean</span>(energia)</span></code></pre></div>
+<pre><code>## [1] 521.5833</code></pre>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="prueba-de-hipótesis-para-una-proporción.html#cb340-1" tabindex="-1"></a><span class="fu">sd</span>(energia)</span></code></pre></div>
+<pre><code>## [1] 5.712161</code></pre>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="prueba-de-hipótesis-para-una-proporción.html#cb342-1" tabindex="-1"></a><span class="fu">t.test</span>(energia, <span class="at">mu =</span> <span class="dv">520</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  energia
+## t = 0.9602, df = 11, p-value = 0.3576
+## alternative hypothesis: true mean is not equal to 520
+## 95 percent confidence interval:
+##  517.9540 525.2127
+## sample estimates:
+## mean of x 
+##  521.5833</code></pre>
+<hr />
+</div>
+<div id="interpretación-36" class="section level3 hasAnchor" number="20.10.4">
+<h3><span class="header-section-number">20.10.4</span> Interpretación<a href="prueba-de-hipótesis-para-una-proporción.html#interpretaci%C3%B3n-36" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Si el p-valor es mayor que 0.05, no se rechaza <span class="math inline">\(H_0\)</span>. Esto significa que no existe evidencia suficiente para afirmar que la generación promedio sea diferente de 520 kWh.</p>
+<hr />
 </div>
 </div>
-<div id="gráfica-4" class="section level2 hasAnchor" number="22.5">
-<h2><span class="header-section-number">22.5</span> Gráfica<a href="comparación-de-medias.html#gr%C3%A1fica-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="comparación-de-medias.html#cb368-1" tabindex="-1"></a><span class="fu">boxplot</span>(generacion <span class="sc">~</span> sistema,</span>
-<span id="cb368-2"><a href="comparación-de-medias.html#cb368-2" tabindex="-1"></a>        <span class="at">data =</span> datos,</span>
-<span id="cb368-3"><a href="comparación-de-medias.html#cb368-3" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;lightgreen&quot;</span>),</span>
-<span id="cb368-4"><a href="comparación-de-medias.html#cb368-4" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Comparación de generación entre sistemas&quot;</span>,</span>
-<span id="cb368-5"><a href="comparación-de-medias.html#cb368-5" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Sistema&quot;</span>,</span>
-<span id="cb368-6"><a href="comparación-de-medias.html#cb368-6" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Generación diaria (kWh)&quot;</span>)</span></code></pre></div>
-<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-183-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<div id="simulación-de-error-tipo-i" class="section level2 hasAnchor" number="20.11">
+<h2><span class="header-section-number">20.11</span> Simulación de error tipo I<a href="prueba-de-hipótesis-para-una-proporción.html#simulaci%C3%B3n-de-error-tipo-i" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Simulamos muchas pruebas cuando <span class="math inline">\(H_0\)</span> es verdadera.</p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb344-2"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-2" tabindex="-1"></a></span>
+<span id="cb344-3"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-3" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb344-4"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-4" tabindex="-1"></a>pvalores <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb344-5"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-5" tabindex="-1"></a></span>
+<span id="cb344-6"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-6" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb344-7"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-7" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb344-8"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-8" tabindex="-1"></a>  pvalores[i] <span class="ot">&lt;-</span> <span class="fu">t.test</span>(muestra, <span class="at">mu =</span> <span class="dv">100</span>)<span class="sc">$</span>p.value</span>
+<span id="cb344-9"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-9" tabindex="-1"></a>}</span>
+<span id="cb344-10"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-10" tabindex="-1"></a></span>
+<span id="cb344-11"><a href="prueba-de-hipótesis-para-una-proporción.html#cb344-11" tabindex="-1"></a><span class="fu">mean</span>(pvalores <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<pre><code>## [1] 0.054</code></pre>
+<p>El resultado debe aproximarse a 0.05, que es el nivel de significancia.</p>
+<hr />
 </div>
-<div id="simulación-2" class="section level2 hasAnchor" number="22.6">
-<h2><span class="header-section-number">22.6</span> Simulación<a href="comparación-de-medias.html#simulaci%C3%B3n-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Simulación de dos sistemas con medias distintas para observar el comportamiento de los p-valores.</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="comparación-de-medias.html#cb369-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb369-2"><a href="comparación-de-medias.html#cb369-2" tabindex="-1"></a></span>
-<span id="cb369-3"><a href="comparación-de-medias.html#cb369-3" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb369-4"><a href="comparación-de-medias.html#cb369-4" tabindex="-1"></a>pvalores <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
-<span id="cb369-5"><a href="comparación-de-medias.html#cb369-5" tabindex="-1"></a></span>
-<span id="cb369-6"><a href="comparación-de-medias.html#cb369-6" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
-<span id="cb369-7"><a href="comparación-de-medias.html#cb369-7" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">520</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
-<span id="cb369-8"><a href="comparación-de-medias.html#cb369-8" tabindex="-1"></a>  B_sys <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">510</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
-<span id="cb369-9"><a href="comparación-de-medias.html#cb369-9" tabindex="-1"></a>  pvalores[i] <span class="ot">&lt;-</span> <span class="fu">t.test</span>(A, B_sys)<span class="sc">$</span>p.value</span>
-<span id="cb369-10"><a href="comparación-de-medias.html#cb369-10" tabindex="-1"></a>}</span>
-<span id="cb369-11"><a href="comparación-de-medias.html#cb369-11" tabindex="-1"></a></span>
-<span id="cb369-12"><a href="comparación-de-medias.html#cb369-12" tabindex="-1"></a><span class="fu">mean</span>(pvalores <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
-<pre><code>## [1] 0.992</code></pre>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="comparación-de-medias.html#cb371-1" tabindex="-1"></a><span class="fu">hist</span>(pvalores,</span>
-<span id="cb371-2"><a href="comparación-de-medias.html#cb371-2" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>,</span>
-<span id="cb371-3"><a href="comparación-de-medias.html#cb371-3" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb371-4"><a href="comparación-de-medias.html#cb371-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;p-valores en comparación de medias&quot;</span>,</span>
-<span id="cb371-5"><a href="comparación-de-medias.html#cb371-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;p-valor&quot;</span>)</span>
-<span id="cb371-6"><a href="comparación-de-medias.html#cb371-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.05</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-185-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<div id="gráfica-de-p-valores" class="section level2 hasAnchor" number="20.12">
+<h2><span class="header-section-number">20.12</span> Gráfica de p-valores<a href="prueba-de-hipótesis-para-una-proporción.html#gr%C3%A1fica-de-p-valores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="prueba-de-hipótesis-para-una-proporción.html#cb346-1" tabindex="-1"></a><span class="fu">hist</span>(pvalores,</span>
+<span id="cb346-2"><a href="prueba-de-hipótesis-para-una-proporción.html#cb346-2" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>,</span>
+<span id="cb346-3"><a href="prueba-de-hipótesis-para-una-proporción.html#cb346-3" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb346-4"><a href="prueba-de-hipótesis-para-una-proporción.html#cb346-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribución de p-valores bajo H0&quot;</span>,</span>
+<span id="cb346-5"><a href="prueba-de-hipótesis-para-una-proporción.html#cb346-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;p-valor&quot;</span>)</span>
+<span id="cb346-6"><a href="prueba-de-hipótesis-para-una-proporción.html#cb346-6" tabindex="-1"></a></span>
+<span id="cb346-7"><a href="prueba-de-hipótesis-para-una-proporción.html#cb346-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.05</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-170-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<hr />
 </div>
-<div id="ejercicio-propuesto-8" class="section level2 hasAnchor" number="22.7">
-<h2><span class="header-section-number">22.7</span> Ejercicio propuesto<a href="comparación-de-medias.html#ejercicio-propuesto-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Se comparan dos mezclas de hormigón mediante sus resistencias a compresión:</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="comparación-de-medias.html#cb372-1" tabindex="-1"></a>mezcla_A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">25.1</span>, <span class="fl">25.5</span>, <span class="fl">25.3</span>, <span class="fl">25.8</span>, <span class="fl">26.0</span>, <span class="fl">25.7</span>, <span class="fl">25.6</span>, <span class="fl">25.4</span>)</span>
-<span id="cb372-2"><a href="comparación-de-medias.html#cb372-2" tabindex="-1"></a>mezcla_B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">24.2</span>, <span class="fl">24.6</span>, <span class="fl">24.5</span>, <span class="fl">24.8</span>, <span class="fl">24.9</span>, <span class="fl">24.7</span>, <span class="fl">24.4</span>, <span class="fl">24.6</span>)</span></code></pre></div>
-<p>Realice:</p>
+<div id="actividad-práctica-7" class="section level2 hasAnchor" number="20.13">
+<h2><span class="header-section-number">20.13</span> Actividad práctica<a href="prueba-de-hipótesis-para-una-proporción.html#actividad-pr%C3%A1ctica-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Seleccione uno de los siguientes contextos:</p>
 <ol style="list-style-type: decimal">
-<li>Calcule medias y desviaciones estándar.</li>
-<li>Construya diagramas de caja.</li>
-<li>Ejecute una prueba t.</li>
-<li>Interprete el p-valor.</li>
-<li>Concluya si existe diferencia significativa.</li>
+<li>Resistencia del hormigón.</li>
+<li>Voltaje de una red.</li>
+<li>Tiempo de producción.</li>
+<li>Porcentaje de defectos.</li>
+<li>Generación solar diaria.</li>
 </ol>
+<p>Para su caso:</p>
+<ul>
+<li>Plantee <span class="math inline">\(H_0\)</span> y <span class="math inline">\(H_1\)</span>.</li>
+<li>Identifique si la prueba es bilateral o unilateral.</li>
+<li>Calcule el estadístico de prueba.</li>
+<li>Calcule o interprete el p-valor.</li>
+<li>Verifique en R.</li>
+<li>Redacte una conclusión técnica.</li>
+</ul>
+<hr />
 </div>
-<div id="caso-real-ingeniería-9" class="section level2 hasAnchor" number="22.8">
-<h2><span class="header-section-number">22.8</span> Caso real (ingeniería)<a href="comparación-de-medias.html#caso-real-ingenier%C3%ADa-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En <strong>ingeniería civil</strong>, se comparan resistencias entre mezclas o métodos constructivos.</p>
-<p>En <strong>ingeniería eléctrica</strong>, se comparan niveles de pérdidas entre dos configuraciones de red.</p>
-<p>En <strong>ingeniería industrial</strong>, se comparan tiempos de producción entre dos líneas.</p>
-<p>En <strong>energías renovables</strong>, se compara la generación entre dos tecnologías o configuraciones.</p>
+<div id="aplicaciones-por-carrera-7" class="section level2 hasAnchor" number="20.14">
+<h2><span class="header-section-number">20.14</span> Aplicaciones por carrera<a href="prueba-de-hipótesis-para-una-proporción.html#aplicaciones-por-carrera-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ingeniería-civil-7" class="section level3 hasAnchor" number="20.14.1">
+<h3><span class="header-section-number">20.14.1</span> Ingeniería Civil<a href="prueba-de-hipótesis-para-una-proporción.html#ingenier%C3%ADa-civil-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las pruebas de hipótesis permiten verificar si un material cumple resistencia mínima o si un proceso constructivo alcanza los valores requeridos.</p>
 </div>
-<div id="conclusión-2" class="section level2 hasAnchor" number="22.9">
-<h2><span class="header-section-number">22.9</span> Conclusión<a href="comparación-de-medias.html#conclusi%C3%B3n-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La comparación de medias es una herramienta estadística clave para evaluar diferencias entre sistemas, procesos o tratamientos. Su aplicación permite sustentar decisiones técnicas basadas en evidencia cuantitativa.</p>
+<div id="ingeniería-eléctrica-7" class="section level3 hasAnchor" number="20.14.2">
+<h3><span class="header-section-number">20.14.2</span> Ingeniería Eléctrica<a href="prueba-de-hipótesis-para-una-proporción.html#ingenier%C3%ADa-el%C3%A9ctrica-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se usan para verificar si el voltaje promedio, la corriente o la frecuencia se mantienen dentro de valores nominales.</p>
+</div>
+<div id="ingeniería-industrial-7" class="section level3 hasAnchor" number="20.14.3">
+<h3><span class="header-section-number">20.14.3</span> Ingeniería Industrial<a href="prueba-de-hipótesis-para-una-proporción.html#ingenier%C3%ADa-industrial-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Permiten evaluar si un proceso cumple especificaciones de calidad, tiempo o proporción de defectos.</p>
+</div>
+<div id="energías-renovables-7" class="section level3 hasAnchor" number="20.14.4">
+<h3><span class="header-section-number">20.14.4</span> Energías Renovables<a href="prueba-de-hipótesis-para-una-proporción.html#energ%C3%ADas-renovables-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se aplican para evaluar si la generación promedio cumple expectativas o si un sistema presenta disminución significativa de rendimiento.</p>
+<hr />
+</div>
+</div>
+<div id="preguntas-de-autoevaluación-7" class="section level2 hasAnchor" number="20.15">
+<h2><span class="header-section-number">20.15</span> Preguntas de autoevaluación<a href="prueba-de-hipótesis-para-una-proporción.html#preguntas-de-autoevaluaci%C3%B3n-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>¿Qué es una prueba de hipótesis?</li>
+<li>¿Qué representa <span class="math inline">\(H_0\)</span>?</li>
+<li>¿Qué representa <span class="math inline">\(H_1\)</span>?</li>
+<li>¿Qué es el nivel de significancia?</li>
+<li>¿Qué es un error tipo I?</li>
+<li>¿Qué es un error tipo II?</li>
+<li>¿Cuándo se usa prueba Z?</li>
+<li>¿Cuándo se usa prueba t?</li>
+<li>¿Qué significa el p-valor?</li>
+<li>¿Cómo se toma una decisión usando el p-valor?</li>
+</ol>
+<hr />
+</div>
+<div id="resumen-de-la-unidad-7" class="section level2 hasAnchor" number="20.16">
+<h2><span class="header-section-number">20.16</span> Resumen de la unidad<a href="prueba-de-hipótesis-para-una-proporción.html#resumen-de-la-unidad-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las pruebas de hipótesis permiten evaluar afirmaciones sobre parámetros poblacionales usando datos muestrales. El procedimiento incluye formular hipótesis, seleccionar un nivel de significancia, calcular un estadístico de prueba, obtener un p-valor o comparar con un valor crítico, y redactar una conclusión.</p>
+<p>En ingeniería, estas pruebas son fundamentales para validar especificaciones, evaluar procesos, controlar calidad y sustentar decisiones técnicas.</p>
+<hr />
+</div>
+<div id="bibliografía-sugerida-7" class="section level2 hasAnchor" number="20.17">
+<h2><span class="header-section-number">20.17</span> Bibliografía sugerida<a href="prueba-de-hipótesis-para-una-proporción.html#bibliograf%C3%ADa-sugerida-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Devore, J. L. (2008). <em>Probabilidad y estadística para ingeniería y ciencias</em>. Cengage Learning.</li>
+<li>Montgomery, D. C., &amp; Runger, G. C. (2016). <em>Probabilidad y estadística aplicada a la ingeniería</em>. Limusa.</li>
+<li>OpenStax. (2023). <em>Introducción a la estadística</em>. Rice University.</li>
+</ul>
 
 </div>
 </div>
@@ -1270,8 +1378,8 @@ t = \frac{\bar{x}_1-\bar{x}_2}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}
           </div>
         </div>
       </div>
-<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="aplicaciones-de-inferencia-estadística-en-ingeniería.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="criterio-del-p-valor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="p-valor-nivel-de-significancia-y-errores-de-decisión.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
