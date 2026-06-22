@@ -4502,7 +4502,7 @@ En esta unidad se estudian:
 
 ---
 
-# Distribución Bernoulli
+## Distribución Bernoulli
 
 ## Concepto
 
@@ -4674,7 +4674,7 @@ barplot(tabla_bern,
 
 ---
 
-# Distribución binomial
+## Distribución binomial
 
 ## Concepto
 
