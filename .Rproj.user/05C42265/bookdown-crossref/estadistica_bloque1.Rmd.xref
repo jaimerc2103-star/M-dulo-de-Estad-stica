@@ -491,73 +491,106 @@ h2:preguntas-de-autoevaluación-4 Preguntas de autoevaluación
 h2:resumen-de-la-unidad-4 Resumen de la unidad
 h2:bibliografía-sugerida-4 Bibliografía sugerida
 h1:introducción-a-la-inferencia-estadística Introducción a la inferencia estadística
+h2:motivación-ingenieril-5 Motivación ingenieril
+h2:resultados-de-aprendizaje-5 Resultados de aprendizaje
 h2:concepto-teórico-12 Concepto teórico
-h3:población-y-muestra Población y muestra
-h3:parámetro-y-estadístico Parámetro y estadístico
-h3:error-de-muestreo Error de muestreo
-h3:objetivos-de-la-inferencia-estadística Objetivos de la inferencia estadística
-h3:importancia-en-ingeniería Importancia en ingeniería
-h2:formulación-matemática-8 Formulación matemática
+h2:ejemplo-cotidiano-introductorio Ejemplo cotidiano introductorio
+h2:población Población
+h2:muestra Muestra
+h2:parámetro Parámetro
+h2:estadístico Estadístico
+h2:diferencia-entre-parámetro-y-estadístico Diferencia entre parámetro y estadístico
+h2:formulación-matemática-básica Formulación matemática básica
 h3:media-muestral Media muestral
 h3:varianza-muestral Varianza muestral
+h3:desviación-estándar-muestral Desviación estándar muestral
 h3:proporción-muestral Proporción muestral
+h2:error-de-muestreo Error de muestreo
+h2:ejemplo-resuelto-1-resistencia-de-hormigón Ejemplo resuelto 1: resistencia de hormigón
+h2:solución-manual-18 Solución manual
+h3:paso-1-escribir-los-datos Paso 1: escribir los datos
+h3:paso-2-aplicar-la-fórmula Paso 2: aplicar la fórmula
+h3:paso-3-sumar Paso 3: sumar
+h3:paso-4-dividir Paso 4: dividir
+h3:interpretación-23 Interpretación
+h2:verificación-en-r-40 Verificación en R
+h2:cálculo-manual-de-la-varianza-muestral Cálculo manual de la varianza muestral
+h2:verificación-en-r-41 Verificación en R
+h2:ejemplo-resuelto-2-proporción-de-piezas-defectuosas Ejemplo resuelto 2: proporción de piezas defectuosas
+h2:solución-manual-19 Solución manual
+h3:interpretación-24 Interpretación
+h2:verificación-en-r-42 Verificación en R
+h2:inferencia-y-variabilidad-muestral Inferencia y variabilidad muestral
+h2:simulación-1-muchas-muestras-de-resistencia Simulación 1: muchas muestras de resistencia
+h2:gráfica-de-medias-muestrales Gráfica de medias muestrales
+h2:interpretación-de-la-simulación Interpretación de la simulación
+h2:simulación-2-efecto-del-tamaño-muestral Simulación 2: efecto del tamaño muestral
+h2:gráfica-comparativa Gráfica comparativa
+h2:interpretación-25 Interpretación
+h2:tipos-de-inferencia-estadística Tipos de inferencia estadística
+h3:estimación Estimación
+h3:pruebas-de-hipótesis Pruebas de hipótesis
+h2:ejercicio-guiado-5 Ejercicio guiado
+h2:solución-del-ejercicio-guiado-5 Solución del ejercicio guiado
+h3:paso-1-calcular-la-media Paso 1: calcular la media
+h3:paso-2-calcular-desviaciones-respecto-a-la-media Paso 2: calcular desviaciones respecto a la media
+h3:paso-3-varianza-muestral Paso 3: varianza muestral
+h3:paso-4-desviación-estándar Paso 4: desviación estándar
+h3:interpretación-26 Interpretación
+h2:verificación-en-r-43 Verificación en R
+h2:actividad-práctica-5 Actividad práctica
+h2:aplicaciones-por-carrera-5 Aplicaciones por carrera
+h3:ingeniería-civil-5 Ingeniería Civil
+h3:ingeniería-eléctrica-5 Ingeniería Eléctrica
+h3:ingeniería-industrial-5 Ingeniería Industrial
+h3:energías-renovables-5 Energías Renovables
+h2:preguntas-de-autoevaluación-5 Preguntas de autoevaluación
+h2:resumen-de-la-unidad-5 Resumen de la unidad
+h2:bibliografía-sugerida-5 Bibliografía sugerida
+h1:estimación-puntual Estimación puntual
+h2:concepto-teórico-13 Concepto teórico
+h2:media-muestral-1 Media muestral
 h2:ejemplo-aplicado-8 Ejemplo aplicado
 h2:implementación-en-r-8 Implementación en R
-h3:tamaño-de-la-muestra-1 Tamaño de la muestra
-h3:media-muestral-1 Media muestral
-h3:varianza-muestral-1 Varianza muestral
-h3:desviación-estándar-muestral Desviación estándar muestral
-h3:resumen-general Resumen general
 h2:gráfica-3 Gráfica
+h2:error-estándar Error estándar
 h2:simulación-1 Simulación
-h3:visualización-de-las-medias-muestrales Visualización de las medias muestrales
 h2:ejercicio-propuesto-7 Ejercicio propuesto
 h2:caso-real-ingeniería-8 Caso real (ingeniería)
 h2:conclusión-1 Conclusión
-h1:estimación-puntual Estimación puntual
-h2:concepto-teórico-13 Concepto teórico
-h2:media-muestral-2 Media muestral
-h2:ejemplo-aplicado-9 Ejemplo aplicado
-h2:implementación-en-r-9 Implementación en R
-h2:gráfica-4 Gráfica
-h2:error-estándar Error estándar
-h2:simulación-2 Simulación
-h2:ejercicio-propuesto-8 Ejercicio propuesto
-h2:caso-real-ingeniería-9 Caso real (ingeniería)
-h2:conclusión-2 Conclusión
 h1:intervalos-de-confianza Intervalos de confianza
 h2:concepto-teórico-14 Concepto teórico
 h3:nivel-de-confianza Nivel de confianza
-h2:formulación-matemática-9 Formulación matemática
+h2:formulación-matemática-8 Formulación matemática
 h3:intervalo-de-confianza-para-la-media-con-desviación-poblacional-conocida Intervalo de confianza para la media con desviación poblacional conocida
 h3:intervalo-de-confianza-para-la-media-con-desviación-poblacional-desconocida Intervalo de confianza para la media con desviación poblacional desconocida
-h2:ejemplo-aplicado-10 Ejemplo aplicado
-h2:implementación-en-r-10 Implementación en R
+h2:ejemplo-aplicado-9 Ejemplo aplicado
+h2:implementación-en-r-9 Implementación en R
 h3:estadísticos-básicos Estadísticos básicos
 h3:intervalo-de-confianza-con-t-de-student Intervalo de confianza con t de Student
 h3:usando-t.test Usando 
-h2:gráfica-5 Gráfica
-h2:simulación-3 Simulación
+h2:gráfica-4 Gráfica
+h2:simulación-2 Simulación
 h3:visualización-de-intervalos-simulados Visualización de intervalos simulados
-h2:ejercicio-propuesto-9 Ejercicio propuesto
-h2:caso-real-ingeniería-10 Caso real (ingeniería)
-h2:conclusión-3 Conclusión
-h1:pruebas-de-hipótesis Pruebas de hipótesis
+h2:ejercicio-propuesto-8 Ejercicio propuesto
+h2:caso-real-ingeniería-9 Caso real (ingeniería)
+h2:conclusión-2 Conclusión
+h1:pruebas-de-hipótesis-1 Pruebas de hipótesis
 h2:concepto-teórico-15 Concepto teórico
 h3:hipótesis-nula Hipótesis nula
 h3:hipótesis-alternativa Hipótesis alternativa
 h3:nivel-de-significancia Nivel de significancia
-h2:formulación-matemática-10 Formulación matemática
+h2:formulación-matemática-9 Formulación matemática
 h3:prueba-para-una-media-con-desviación-poblacional-desconocida Prueba para una media con desviación poblacional desconocida
-h2:ejemplo-aplicado-11 Ejemplo aplicado
-h2:implementación-en-r-11 Implementación en R
+h2:ejemplo-aplicado-10 Ejemplo aplicado
+h2:implementación-en-r-10 Implementación en R
 h3:estadísticos-básicos-1 Estadísticos básicos
 h3:prueba-t-para-una-muestra Prueba t para una muestra
-h2:gráfica-6 Gráfica
-h2:simulación-4 Simulación
-h2:ejercicio-propuesto-10 Ejercicio propuesto
-h2:caso-real-ingeniería-11 Caso real (ingeniería)
-h2:conclusión-4 Conclusión
+h2:gráfica-5 Gráfica
+h2:simulación-3 Simulación
+h2:ejercicio-propuesto-9 Ejercicio propuesto
+h2:caso-real-ingeniería-10 Caso real (ingeniería)
+h2:conclusión-3 Conclusión
 h1:p-valor-nivel-de-significancia-y-errores-de-decisión p-valor, nivel de significancia y errores de decisión
 h2:concepto-teórico-16 Concepto teórico
 h3:interpretación-del-p-valor Interpretación del p-valor
@@ -565,44 +598,44 @@ h2:errores-de-decisión Errores de decisión
 h3:error-tipo-i Error tipo I
 h3:error-tipo-ii Error tipo II
 h3:potencia-de-una-prueba Potencia de una prueba
-h2:ejemplo-aplicado-12 Ejemplo aplicado
-h2:implementación-en-r-12 Implementación en R
+h2:ejemplo-aplicado-11 Ejemplo aplicado
+h2:implementación-en-r-11 Implementación en R
 h3:extraer-p-valor Extraer p-valor
 h3:decisión-con-0.05 Decisión con (= 0.05)
+h2:gráfica-6 Gráfica
+h2:simulación-4 Simulación
+h3:proporción-de-rechazos-con-0.05 Proporción de rechazos con (= 0.05)
+h2:ejercicio-propuesto-10 Ejercicio propuesto
+h2:caso-real-ingeniería-11 Caso real (ingeniería)
+h2:conclusión-4 Conclusión
+h1:comparación-de-medias Comparación de medias
+h2:concepto-teórico-17 Concepto teórico
+h2:formulación-matemática-10 Formulación matemática
+h3:prueba-t-para-dos-muestras-independientes Prueba t para dos muestras independientes
+h2:ejemplo-aplicado-12 Ejemplo aplicado
+h2:implementación-en-r-12 Implementación en R
+h3:estadísticos-descriptivos Estadísticos descriptivos
+h3:prueba-t-para-dos-muestras-independientes-1 Prueba t para dos muestras independientes
 h2:gráfica-7 Gráfica
 h2:simulación-5 Simulación
-h3:proporción-de-rechazos-con-0.05 Proporción de rechazos con (= 0.05)
 h2:ejercicio-propuesto-11 Ejercicio propuesto
 h2:caso-real-ingeniería-12 Caso real (ingeniería)
 h2:conclusión-5 Conclusión
-h1:comparación-de-medias Comparación de medias
-h2:concepto-teórico-17 Concepto teórico
-h2:formulación-matemática-11 Formulación matemática
-h3:prueba-t-para-dos-muestras-independientes Prueba t para dos muestras independientes
-h2:ejemplo-aplicado-13 Ejemplo aplicado
-h2:implementación-en-r-13 Implementación en R
-h3:estadísticos-descriptivos Estadísticos descriptivos
-h3:prueba-t-para-dos-muestras-independientes-1 Prueba t para dos muestras independientes
-h2:gráfica-8 Gráfica
-h2:simulación-6 Simulación
-h2:ejercicio-propuesto-12 Ejercicio propuesto
-h2:caso-real-ingeniería-13 Caso real (ingeniería)
-h2:conclusión-6 Conclusión
 h1:aplicaciones-de-inferencia-estadística-en-ingeniería Aplicaciones de inferencia estadística en ingeniería
 h2:concepto-teórico-18 Concepto teórico
 h2:caso-integrador-1-control-de-calidad-industrial Caso integrador 1: control de calidad industrial
 h3:estimación-puntual-1 Estimación puntual
 h3:intervalo-de-confianza Intervalo de confianza
 h3:prueba-de-hipótesis Prueba de hipótesis
-h2:gráfica-9 Gráfica
+h2:gráfica-8 Gráfica
 h2:caso-integrador-2-comparación-de-sistemas-energéticos Caso integrador 2: comparación de sistemas energéticos
-h2:gráfica-comparativa Gráfica comparativa
-h2:simulación-7 Simulación
-h2:ejercicio-propuesto-13 Ejercicio propuesto
+h2:gráfica-comparativa-1 Gráfica comparativa
+h2:simulación-6 Simulación
+h2:ejercicio-propuesto-12 Ejercicio propuesto
 h2:caso-real-por-carrera Caso real por carrera
-h3:ingeniería-civil-5 Ingeniería civil
-h3:ingeniería-eléctrica-5 Ingeniería eléctrica
-h3:ingeniería-industrial-5 Ingeniería industrial
-h3:energías-renovables-5 Energías renovables
-h2:conclusión-7 Conclusión
+h3:ingeniería-civil-6 Ingeniería civil
+h3:ingeniería-eléctrica-6 Ingeniería eléctrica
+h3:ingeniería-industrial-6 Ingeniería industrial
+h3:energías-renovables-6 Energías renovables
+h2:conclusión-6 Conclusión
 

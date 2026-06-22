@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <title>16 Intervalos de confianza | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="16 Intervalos de confianza | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="16 Intervalos de confianza | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="16 Intervalos de confianza | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="medidas-de-tendencia-central-y-de-posición.html"/>
-<link rel="next" href="muestras-población-y-muestreo.html"/>
+<link rel="prev" href="estimación-puntual-e-intervalos-de-confianza.html"/>
+<link rel="next" href="pruebas-de-hipótesis-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -1083,138 +1083,189 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="medidas-de-dispersión-y-forma" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> Medidas de dispersión y forma<a href="medidas-de-dispersión-y-forma.html#medidas-de-dispersi%C3%B3n-y-forma" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="concepto-teórico-4" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Concepto teórico<a href="medidas-de-dispersión-y-forma.html#concepto-te%C3%B3rico-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Las medidas de dispersión indican cuánto se alejan los datos respecto a un valor central. Mientras las medidas de tendencia central responden dónde se concentran los datos, las de dispersión indican qué tan homogéneo o variable es el conjunto.</p>
-<div id="rango" class="section level3 hasAnchor" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Rango<a href="medidas-de-dispersión-y-forma.html#rango" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Es la diferencia entre el valor máximo y el mínimo:</p>
+<div id="intervalos-de-confianza-1" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">16</span> Intervalos de confianza<a href="intervalos-de-confianza-1.html#intervalos-de-confianza-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="concepto-teórico-13" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Concepto teórico<a href="intervalos-de-confianza-1.html#concepto-te%C3%B3rico-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un intervalo de confianza es un rango de valores construido a partir de una muestra, dentro del cual se espera que se encuentre un parámetro poblacional con un determinado nivel de confianza. A diferencia de la estimación puntual, que entrega un único valor, el intervalo de confianza incorpora la incertidumbre asociada al muestreo.</p>
+<p>En ingeniería, los intervalos de confianza permiten expresar resultados con un margen de error, lo cual es fundamental para evaluar resistencia de materiales, voltajes, productividad, generación energética, tiempos de operación y otros fenómenos técnicos.</p>
+<div id="nivel-de-confianza" class="section level3 hasAnchor" number="16.1.1">
+<h3><span class="header-section-number">16.1.1</span> Nivel de confianza<a href="intervalos-de-confianza-1.html#nivel-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El nivel de confianza se representa generalmente como:</p>
 <p><span class="math display">\[
-R = x_{\max} - x_{\min}
+1-\alpha
 \]</span></p>
+<p>Por ejemplo:</p>
+<ul>
+<li>90%</li>
+<li>95%</li>
+<li>99%</li>
+</ul>
+<p>Un intervalo de confianza del 95% indica que, si se repitiera el proceso de muestreo muchas veces, aproximadamente el 95% de los intervalos construidos contendrían el verdadero parámetro poblacional.</p>
 </div>
-<div id="varianza" class="section level3 hasAnchor" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Varianza<a href="medidas-de-dispersión-y-forma.html#varianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La varianza muestral se define como:</p>
+</div>
+<div id="formulación-matemática-8" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Formulación matemática<a href="intervalos-de-confianza-1.html#formulaci%C3%B3n-matem%C3%A1tica-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="intervalo-de-confianza-para-la-media-con-desviación-poblacional-conocida" class="section level3 hasAnchor" number="16.2.1">
+<h3><span class="header-section-number">16.2.1</span> Intervalo de confianza para la media con desviación poblacional conocida<a href="intervalos-de-confianza-1.html#intervalo-de-confianza-para-la-media-con-desviaci%C3%B3n-poblacional-conocida" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="math display">\[
-s^2 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}
+IC = \bar{x} \pm z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
 \]</span></p>
-<p>Mide la dispersión cuadrática de los datos respecto a la media.</p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\bar{x}\)</span>: media muestral</li>
+<li><span class="math inline">\(z_{\alpha/2}\)</span>: valor crítico de la distribución normal estándar</li>
+<li><span class="math inline">\(\sigma\)</span>: desviación estándar poblacional</li>
+<li><span class="math inline">\(n\)</span>: tamaño de la muestra</li>
+</ul>
 </div>
-<div id="desviación-estándar" class="section level3 hasAnchor" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Desviación estándar<a href="medidas-de-dispersión-y-forma.html#desviaci%C3%B3n-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Es la raíz cuadrada de la varianza:</p>
+<div id="intervalo-de-confianza-para-la-media-con-desviación-poblacional-desconocida" class="section level3 hasAnchor" number="16.2.2">
+<h3><span class="header-section-number">16.2.2</span> Intervalo de confianza para la media con desviación poblacional desconocida<a href="intervalos-de-confianza-1.html#intervalo-de-confianza-para-la-media-con-desviaci%C3%B3n-poblacional-desconocida" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cuando <span class="math inline">\(\sigma\)</span> no se conoce, se usa la distribución t de Student:</p>
 <p><span class="math display">\[
-s = \sqrt{s^2}
+IC = \bar{x} \pm t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}
 \]</span></p>
-<p>Tiene la ventaja de expresarse en las mismas unidades que los datos originales.</p>
-</div>
-<div id="coeficiente-de-variación" class="section level3 hasAnchor" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> Coeficiente de variación<a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Permite comparar dispersión relativa entre conjuntos de datos con distintas escalas:</p>
-<p><span class="math display">\[
-CV = \frac{s}{\bar{x}} \times 100
-\]</span></p>
-</div>
-<div id="asimetría" class="section level3 hasAnchor" number="5.1.5">
-<h3><span class="header-section-number">5.1.5</span> Asimetría<a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Indica si la distribución es simétrica o si presenta sesgo hacia la izquierda o hacia la derecha.</p>
-</div>
-<div id="curtosis" class="section level3 hasAnchor" number="5.1.6">
-<h3><span class="header-section-number">5.1.6</span> Curtosis<a href="medidas-de-dispersión-y-forma.html#curtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Mide el grado de concentración de los datos alrededor de la media y el peso de las colas de la distribución.</p>
-</div>
-<div id="teorema-de-chebyshev" class="section level3 hasAnchor" number="5.1.7">
-<h3><span class="header-section-number">5.1.7</span> Teorema de Chebyshev<a href="medidas-de-dispersión-y-forma.html#teorema-de-chebyshev" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Para cualquier conjunto de datos y para <span class="math inline">\(k &gt; 1\)</span>, al menos:</p>
-<p><span class="math display">\[
-1 - \frac{1}{k^2}
-\]</span></p>
-<p>de las observaciones se encuentra dentro del intervalo:</p>
-<p><span class="math display">\[
-\bar{x} \pm ks
-\]</span></p>
-<p>Este teorema es útil cuando no se conoce la forma exacta de la distribución.</p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(s\)</span>: desviación estándar muestral</li>
+<li><span class="math inline">\(t_{\alpha/2, n-1}\)</span>: valor crítico t con <span class="math inline">\(n-1\)</span> grados de libertad</li>
+</ul>
 </div>
 </div>
-<div id="ejemplo-aplicado-4" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Ejemplo aplicado<a href="medidas-de-dispersión-y-forma.html#ejemplo-aplicado-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Se registran voltajes de operación (V) en un sistema eléctrico:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="medidas-de-dispersión-y-forma.html#cb48-1" tabindex="-1"></a>voltaje <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">218</span>, <span class="dv">220</span>, <span class="dv">221</span>, <span class="dv">219</span>, <span class="dv">222</span>, <span class="dv">223</span>, <span class="dv">217</span>, <span class="dv">218</span>, <span class="dv">220</span>, <span class="dv">221</span>,</span>
-<span id="cb48-2"><a href="medidas-de-dispersión-y-forma.html#cb48-2" tabindex="-1"></a>             <span class="dv">224</span>, <span class="dv">219</span>, <span class="dv">220</span>, <span class="dv">222</span>, <span class="dv">223</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">219</span>, <span class="dv">218</span>, <span class="dv">222</span>)</span>
-<span id="cb48-3"><a href="medidas-de-dispersión-y-forma.html#cb48-3" tabindex="-1"></a>voltaje</span></code></pre></div>
-<pre><code>##  [1] 218 220 221 219 222 223 217 218 220 221 224 219 220 222 223 221 220 219 218 222</code></pre>
+<div id="ejemplo-aplicado-8" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> Ejemplo aplicado<a href="intervalos-de-confianza-1.html#ejemplo-aplicado-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un laboratorio de ingeniería civil se mide la resistencia a compresión de 12 probetas de hormigón:</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="intervalos-de-confianza-1.html#cb310-1" tabindex="-1"></a>resistencia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">24.8</span>, <span class="fl">25.1</span>, <span class="fl">24.5</span>, <span class="fl">25.7</span>, <span class="fl">26.0</span>, <span class="fl">24.9</span>,</span>
+<span id="cb310-2"><a href="intervalos-de-confianza-1.html#cb310-2" tabindex="-1"></a>                 <span class="fl">25.3</span>, <span class="fl">25.8</span>, <span class="fl">24.7</span>, <span class="fl">25.0</span>, <span class="fl">25.4</span>, <span class="fl">25.2</span>)</span>
+<span id="cb310-3"><a href="intervalos-de-confianza-1.html#cb310-3" tabindex="-1"></a>resistencia</span></code></pre></div>
+<pre><code>##  [1] 24.8 25.1 24.5 25.7 26.0 24.9 25.3 25.8 24.7 25.0 25.4 25.2</code></pre>
+<p>Se desea construir un intervalo de confianza del 95% para la resistencia media poblacional.</p>
 </div>
-<div id="implementación-en-r-4" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Implementación en R<a href="medidas-de-dispersión-y-forma.html#implementaci%C3%B3n-en-r-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="rango-1" class="section level3 hasAnchor" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Rango<a href="medidas-de-dispersión-y-forma.html#rango-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="medidas-de-dispersión-y-forma.html#cb50-1" tabindex="-1"></a><span class="fu">max</span>(voltaje) <span class="sc">-</span> <span class="fu">min</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 7</code></pre>
+<div id="implementación-en-r-8" class="section level2 hasAnchor" number="16.4">
+<h2><span class="header-section-number">16.4</span> Implementación en R<a href="intervalos-de-confianza-1.html#implementaci%C3%B3n-en-r-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estadísticos-básicos" class="section level3 hasAnchor" number="16.4.1">
+<h3><span class="header-section-number">16.4.1</span> Estadísticos básicos<a href="intervalos-de-confianza-1.html#estad%C3%ADsticos-b%C3%A1sicos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="intervalos-de-confianza-1.html#cb312-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(resistencia)</span>
+<span id="cb312-2"><a href="intervalos-de-confianza-1.html#cb312-2" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(resistencia)</span>
+<span id="cb312-3"><a href="intervalos-de-confianza-1.html#cb312-3" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(resistencia)</span>
+<span id="cb312-4"><a href="intervalos-de-confianza-1.html#cb312-4" tabindex="-1"></a></span>
+<span id="cb312-5"><a href="intervalos-de-confianza-1.html#cb312-5" tabindex="-1"></a><span class="fu">c</span>(<span class="at">n =</span> n, <span class="at">media =</span> media, <span class="at">desviacion =</span> s)</span></code></pre></div>
+<pre><code>##          n      media desviacion 
+## 12.0000000 25.2000000  0.4612237</code></pre>
 </div>
-<div id="varianza-y-desviación-estándar" class="section level3 hasAnchor" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Varianza y desviación estándar<a href="medidas-de-dispersión-y-forma.html#varianza-y-desviaci%C3%B3n-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="medidas-de-dispersión-y-forma.html#cb52-1" tabindex="-1"></a><span class="fu">var</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 3.713158</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="medidas-de-dispersión-y-forma.html#cb54-1" tabindex="-1"></a><span class="fu">sd</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 1.926956</code></pre>
+<div id="intervalo-de-confianza-con-t-de-student" class="section level3 hasAnchor" number="16.4.2">
+<h3><span class="header-section-number">16.4.2</span> Intervalo de confianza con t de Student<a href="intervalos-de-confianza-1.html#intervalo-de-confianza-con-t-de-student" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="intervalos-de-confianza-1.html#cb314-1" tabindex="-1"></a>nivel_confianza <span class="ot">&lt;-</span> <span class="fl">0.95</span></span>
+<span id="cb314-2"><a href="intervalos-de-confianza-1.html#cb314-2" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> nivel_confianza</span>
+<span id="cb314-3"><a href="intervalos-de-confianza-1.html#cb314-3" tabindex="-1"></a></span>
+<span id="cb314-4"><a href="intervalos-de-confianza-1.html#cb314-4" tabindex="-1"></a>t_critico <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb314-5"><a href="intervalos-de-confianza-1.html#cb314-5" tabindex="-1"></a>error_estandar <span class="ot">&lt;-</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb314-6"><a href="intervalos-de-confianza-1.html#cb314-6" tabindex="-1"></a>margen_error <span class="ot">&lt;-</span> t_critico <span class="sc">*</span> error_estandar</span>
+<span id="cb314-7"><a href="intervalos-de-confianza-1.html#cb314-7" tabindex="-1"></a></span>
+<span id="cb314-8"><a href="intervalos-de-confianza-1.html#cb314-8" tabindex="-1"></a>limite_inferior <span class="ot">&lt;-</span> media <span class="sc">-</span> margen_error</span>
+<span id="cb314-9"><a href="intervalos-de-confianza-1.html#cb314-9" tabindex="-1"></a>limite_superior <span class="ot">&lt;-</span> media <span class="sc">+</span> margen_error</span>
+<span id="cb314-10"><a href="intervalos-de-confianza-1.html#cb314-10" tabindex="-1"></a></span>
+<span id="cb314-11"><a href="intervalos-de-confianza-1.html#cb314-11" tabindex="-1"></a><span class="fu">c</span>(<span class="at">LI =</span> limite_inferior, <span class="at">LS =</span> limite_superior)</span></code></pre></div>
+<pre><code>##       LI       LS 
+## 24.90695 25.49305</code></pre>
 </div>
-<div id="coeficiente-de-variación-1" class="section level3 hasAnchor" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> Coeficiente de variación<a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="medidas-de-dispersión-y-forma.html#cb56-1" tabindex="-1"></a>(<span class="fu">sd</span>(voltaje) <span class="sc">/</span> <span class="fu">mean</span>(voltaje)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
-<pre><code>## [1] 0.8744977</code></pre>
-</div>
-<div id="asimetría-y-curtosis" class="section level3 hasAnchor" number="5.3.4">
-<h3><span class="header-section-number">5.3.4</span> Asimetría y curtosis<a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa-y-curtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="medidas-de-dispersión-y-forma.html#cb58-1" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb58-2"><a href="medidas-de-dispersión-y-forma.html#cb58-2" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="medidas-de-dispersión-y-forma.html#cb58-3" tabindex="-1"></a><span class="fu">skewness</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 0.1212412</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="medidas-de-dispersión-y-forma.html#cb60-1" tabindex="-1"></a><span class="fu">kurtosis</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 2.11502</code></pre>
-</div>
-<div id="aplicación-del-teorema-de-chebyshev-para-k-2" class="section level3 hasAnchor" number="5.3.5">
-<h3><span class="header-section-number">5.3.5</span> Aplicación del teorema de Chebyshev para <span class="math inline">\(k = 2\)</span><a href="medidas-de-dispersión-y-forma.html#aplicaci%C3%B3n-del-teorema-de-chebyshev-para-k-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="medidas-de-dispersión-y-forma.html#cb62-1" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(voltaje)</span>
-<span id="cb62-2"><a href="medidas-de-dispersión-y-forma.html#cb62-2" tabindex="-1"></a>desv <span class="ot">&lt;-</span> <span class="fu">sd</span>(voltaje)</span>
-<span id="cb62-3"><a href="medidas-de-dispersión-y-forma.html#cb62-3" tabindex="-1"></a></span>
-<span id="cb62-4"><a href="medidas-de-dispersión-y-forma.html#cb62-4" tabindex="-1"></a>lim_inf <span class="ot">&lt;-</span> media <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> desv</span>
-<span id="cb62-5"><a href="medidas-de-dispersión-y-forma.html#cb62-5" tabindex="-1"></a>lim_sup <span class="ot">&lt;-</span> media <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> desv</span>
-<span id="cb62-6"><a href="medidas-de-dispersión-y-forma.html#cb62-6" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="medidas-de-dispersión-y-forma.html#cb62-7" tabindex="-1"></a><span class="fu">sum</span>(voltaje <span class="sc">&gt;=</span> lim_inf <span class="sc">&amp;</span> voltaje <span class="sc">&lt;=</span> lim_sup) <span class="sc">/</span> <span class="fu">length</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 1</code></pre>
-</div>
-<div id="visualización-de-la-dispersión" class="section level3 hasAnchor" number="5.3.6">
-<h3><span class="header-section-number">5.3.6</span> Visualización de la dispersión<a href="medidas-de-dispersión-y-forma.html#visualizaci%C3%B3n-de-la-dispersi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="medidas-de-dispersión-y-forma.html#cb64-1" tabindex="-1"></a><span class="fu">hist</span>(voltaje, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Distribución del voltaje&quot;</span>,</span>
-<span id="cb64-2"><a href="medidas-de-dispersión-y-forma.html#cb64-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Voltaje (V)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frecuencia&quot;</span>)</span>
-<span id="cb64-3"><a href="medidas-de-dispersión-y-forma.html#cb64-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(voltaje), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-35-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<div id="usando-t.test" class="section level3 hasAnchor" number="16.4.3">
+<h3><span class="header-section-number">16.4.3</span> Usando <code>t.test()</code><a href="intervalos-de-confianza-1.html#usando-t.test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="intervalos-de-confianza-1.html#cb316-1" tabindex="-1"></a><span class="fu">t.test</span>(resistencia, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  resistencia
+## t = 189.27, df = 11, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  24.90695 25.49305
+## sample estimates:
+## mean of x 
+##      25.2</code></pre>
 </div>
 </div>
-<div id="ejercicio-propuesto-4" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Ejercicio propuesto<a href="medidas-de-dispersión-y-forma.html#ejercicio-propuesto-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En una práctica de ingeniería civil se registran resistencias a compresión (MPa) de probetas de hormigón:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="medidas-de-dispersión-y-forma.html#cb65-1" tabindex="-1"></a>resistencia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">24.8</span>, <span class="fl">25.1</span>, <span class="fl">24.5</span>, <span class="fl">25.7</span>, <span class="fl">26.0</span>, <span class="fl">24.9</span>, <span class="fl">25.3</span>, <span class="fl">25.8</span>,</span>
-<span id="cb65-2"><a href="medidas-de-dispersión-y-forma.html#cb65-2" tabindex="-1"></a>                 <span class="fl">24.7</span>, <span class="fl">25.0</span>, <span class="fl">25.4</span>, <span class="fl">25.9</span>, <span class="fl">24.6</span>, <span class="fl">25.2</span>, <span class="fl">25.6</span>)</span></code></pre></div>
-<p>Realice lo siguiente:</p>
+<div id="gráfica-3" class="section level2 hasAnchor" number="16.5">
+<h2><span class="header-section-number">16.5</span> Gráfica<a href="intervalos-de-confianza-1.html#gr%C3%A1fica-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="intervalos-de-confianza-1.html#cb318-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, media,</span>
+<span id="cb318-2"><a href="intervalos-de-confianza-1.html#cb318-2" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(limite_inferior <span class="sc">-</span> <span class="fl">0.2</span>, limite_superior <span class="sc">+</span> <span class="fl">0.2</span>),</span>
+<span id="cb318-3"><a href="intervalos-de-confianza-1.html#cb318-3" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb318-4"><a href="intervalos-de-confianza-1.html#cb318-4" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb318-5"><a href="intervalos-de-confianza-1.html#cb318-5" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb318-6"><a href="intervalos-de-confianza-1.html#cb318-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb318-7"><a href="intervalos-de-confianza-1.html#cb318-7" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Resistencia (MPa)&quot;</span>,</span>
+<span id="cb318-8"><a href="intervalos-de-confianza-1.html#cb318-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Intervalo de confianza para la media&quot;</span>)</span>
+<span id="cb318-9"><a href="intervalos-de-confianza-1.html#cb318-9" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">1</span>, limite_inferior, <span class="dv">1</span>, limite_superior,</span>
+<span id="cb318-10"><a href="intervalos-de-confianza-1.html#cb318-10" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">length =</span> <span class="fl">0.1</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb318-11"><a href="intervalos-de-confianza-1.html#cb318-11" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> media, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb318-12"><a href="intervalos-de-confianza-1.html#cb318-12" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span>, <span class="at">labels =</span> <span class="st">&quot;Media muestral&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-160-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="simulación-1" class="section level2 hasAnchor" number="16.6">
+<h2><span class="header-section-number">16.6</span> Simulación<a href="intervalos-de-confianza-1.html#simulaci%C3%B3n-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Simulamos varios intervalos de confianza para observar que no todos contienen necesariamente el valor poblacional.</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="intervalos-de-confianza-1.html#cb319-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb319-2"><a href="intervalos-de-confianza-1.html#cb319-2" tabindex="-1"></a></span>
+<span id="cb319-3"><a href="intervalos-de-confianza-1.html#cb319-3" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb319-4"><a href="intervalos-de-confianza-1.html#cb319-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb319-5"><a href="intervalos-de-confianza-1.html#cb319-5" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb319-6"><a href="intervalos-de-confianza-1.html#cb319-6" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb319-7"><a href="intervalos-de-confianza-1.html#cb319-7" tabindex="-1"></a></span>
+<span id="cb319-8"><a href="intervalos-de-confianza-1.html#cb319-8" tabindex="-1"></a>contiene_mu <span class="ot">&lt;-</span> <span class="fu">logical</span>(B)</span>
+<span id="cb319-9"><a href="intervalos-de-confianza-1.html#cb319-9" tabindex="-1"></a>li <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb319-10"><a href="intervalos-de-confianza-1.html#cb319-10" tabindex="-1"></a>ls <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb319-11"><a href="intervalos-de-confianza-1.html#cb319-11" tabindex="-1"></a></span>
+<span id="cb319-12"><a href="intervalos-de-confianza-1.html#cb319-12" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb319-13"><a href="intervalos-de-confianza-1.html#cb319-13" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb319-14"><a href="intervalos-de-confianza-1.html#cb319-14" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(muestra, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb319-15"><a href="intervalos-de-confianza-1.html#cb319-15" tabindex="-1"></a>  li[i] <span class="ot">&lt;-</span> test<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span>
+<span id="cb319-16"><a href="intervalos-de-confianza-1.html#cb319-16" tabindex="-1"></a>  ls[i] <span class="ot">&lt;-</span> test<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span>
+<span id="cb319-17"><a href="intervalos-de-confianza-1.html#cb319-17" tabindex="-1"></a>  contiene_mu[i] <span class="ot">&lt;-</span> li[i] <span class="sc">&lt;=</span> mu <span class="sc">&amp;</span> ls[i] <span class="sc">&gt;=</span> mu</span>
+<span id="cb319-18"><a href="intervalos-de-confianza-1.html#cb319-18" tabindex="-1"></a>}</span>
+<span id="cb319-19"><a href="intervalos-de-confianza-1.html#cb319-19" tabindex="-1"></a></span>
+<span id="cb319-20"><a href="intervalos-de-confianza-1.html#cb319-20" tabindex="-1"></a><span class="fu">mean</span>(contiene_mu)</span></code></pre></div>
+<pre><code>## [1] 0.98</code></pre>
+<div id="visualización-de-intervalos-simulados" class="section level3 hasAnchor" number="16.6.1">
+<h3><span class="header-section-number">16.6.1</span> Visualización de intervalos simulados<a href="intervalos-de-confianza-1.html#visualizaci%C3%B3n-de-intervalos-simulados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="intervalos-de-confianza-1.html#cb321-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>B, <span class="fu">rep</span>(mu, B),</span>
+<span id="cb321-2"><a href="intervalos-de-confianza-1.html#cb321-2" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb321-3"><a href="intervalos-de-confianza-1.html#cb321-3" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">c</span>(li, ls)),</span>
+<span id="cb321-4"><a href="intervalos-de-confianza-1.html#cb321-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Simulación&quot;</span>,</span>
+<span id="cb321-5"><a href="intervalos-de-confianza-1.html#cb321-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Intervalo de confianza&quot;</span>,</span>
+<span id="cb321-6"><a href="intervalos-de-confianza-1.html#cb321-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Intervalos de confianza simulados&quot;</span>)</span>
+<span id="cb321-7"><a href="intervalos-de-confianza-1.html#cb321-7" tabindex="-1"></a></span>
+<span id="cb321-8"><a href="intervalos-de-confianza-1.html#cb321-8" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb321-9"><a href="intervalos-de-confianza-1.html#cb321-9" tabindex="-1"></a>  color <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(contiene_mu[i], <span class="st">&quot;gray40&quot;</span>, <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb321-10"><a href="intervalos-de-confianza-1.html#cb321-10" tabindex="-1"></a>  <span class="fu">segments</span>(i, li[i], i, ls[i], <span class="at">col =</span> color)</span>
+<span id="cb321-11"><a href="intervalos-de-confianza-1.html#cb321-11" tabindex="-1"></a>}</span>
+<span id="cb321-12"><a href="intervalos-de-confianza-1.html#cb321-12" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> mu, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-162-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="ejercicio-propuesto-7" class="section level2 hasAnchor" number="16.7">
+<h2><span class="header-section-number">16.7</span> Ejercicio propuesto<a href="intervalos-de-confianza-1.html#ejercicio-propuesto-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un sistema eléctrico se registran los siguientes valores de voltaje:</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="intervalos-de-confianza-1.html#cb322-1" tabindex="-1"></a>voltaje <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">219</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">222</span>, <span class="dv">218</span>, <span class="dv">223</span>,</span>
+<span id="cb322-2"><a href="intervalos-de-confianza-1.html#cb322-2" tabindex="-1"></a>             <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">219</span>, <span class="dv">222</span>, <span class="dv">221</span>, <span class="dv">220</span>)</span></code></pre></div>
+<p>Realice:</p>
 <ol style="list-style-type: decimal">
-<li>Calcule rango, varianza y desviación estándar.</li>
-<li>Obtenga el coeficiente de variación.</li>
-<li>Calcule asimetría y curtosis.</li>
-<li>Aplique el teorema de Chebyshev para <span class="math inline">\(k = 2\)</span>.</li>
-<li>Interprete la estabilidad del conjunto de datos.</li>
+<li>Calcule la media y desviación estándar.</li>
+<li>Construya un intervalo de confianza del 95%.</li>
+<li>Interprete el resultado.</li>
+<li>Repita el cálculo con 99% de confianza.</li>
+<li>Explique cómo cambia el ancho del intervalo.</li>
 </ol>
 </div>
-<div id="caso-real-ingeniería-4" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> Caso real (ingeniería)<a href="medidas-de-dispersión-y-forma.html#caso-real-ingenier%C3%ADa-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En <strong>ingeniería eléctrica</strong>, una baja dispersión en el voltaje indica estabilidad del sistema y menor probabilidad de fallos.</p>
-<p>En <strong>ingeniería industrial</strong>, la desviación estándar permite evaluar la consistencia de tiempos de producción, masas, dimensiones o consumos.</p>
-<p>En <strong>ingeniería civil</strong>, el coeficiente de variación se usa para juzgar la uniformidad de resultados en ensayos de materiales.</p>
-<p>En <strong>energías renovables</strong>, la variabilidad de la generación solar o eólica puede analizarse mediante rango, desviación estándar y asimetría, identificando condiciones de operación estables o inestables.</p>
-<p>Estas medidas permiten pasar de una descripción básica a una evaluación rigurosa de la confiabilidad de los datos.</p>
+<div id="caso-real-ingeniería-8" class="section level2 hasAnchor" number="16.8">
+<h2><span class="header-section-number">16.8</span> Caso real (ingeniería)<a href="intervalos-de-confianza-1.html#caso-real-ingenier%C3%ADa-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En <strong>ingeniería civil</strong>, los intervalos de confianza permiten estimar resistencia promedio de materiales con incertidumbre cuantificada.</p>
+<p>En <strong>ingeniería eléctrica</strong>, se emplean para estimar niveles medios de voltaje o corriente.</p>
+<p>En <strong>ingeniería industrial</strong>, permiten evaluar tiempos promedio de producción o productividad media.</p>
+<p>En <strong>energías renovables</strong>, ayudan a estimar generación promedio o irradiancia media con un margen de error.</p>
+</div>
+<div id="conclusión-1" class="section level2 hasAnchor" number="16.9">
+<h2><span class="header-section-number">16.9</span> Conclusión<a href="intervalos-de-confianza-1.html#conclusi%C3%B3n-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los intervalos de confianza permiten pasar de una estimación puntual a una estimación con incertidumbre explícita. Son herramientas esenciales para comunicar resultados técnicos con rigor estadístico.</p>
 
 </div>
 </div>
@@ -1223,8 +1274,8 @@ CV = \frac{s}{\bar{x}} \times 100
           </div>
         </div>
       </div>
-<a href="medidas-de-tendencia-central-y-de-posición.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="muestras-población-y-muestreo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estimación-puntual-e-intervalos-de-confianza.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pruebas-de-hipótesis-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

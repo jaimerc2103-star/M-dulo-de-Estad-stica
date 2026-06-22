@@ -1,87 +1,983 @@
-# Estimación puntual
+# Estimación puntual e intervalos de confianza
 
-## Concepto teórico
+## Motivación ingenieril
 
-La estimación puntual es una técnica de inferencia estadística que consiste en utilizar un estadístico muestral para aproximar el valor desconocido de un parámetro poblacional.
+En la Unidad 14 se estudió que la inferencia estadística permite obtener conclusiones sobre una población usando información de una muestra. En esta unidad se aborda una pregunta central:
 
-## Media muestral
+> ¿Cómo estimar un valor poblacional desconocido usando datos muestrales?
+
+En ingeniería esta situación aparece constantemente.
+
+Ejemplos:
+
+- En ingeniería civil se desea estimar la resistencia promedio del hormigón de toda una obra, pero solo se ensayan algunas probetas.
+- En ingeniería eléctrica se desea estimar el voltaje promedio de una red, pero solo se dispone de un conjunto limitado de mediciones.
+- En ingeniería industrial se desea estimar el porcentaje de piezas defectuosas de toda una producción, pero solo se inspecciona una muestra.
+- En energías renovables se desea estimar la generación promedio diaria de una planta solar a partir de algunos registros.
+
+La estimación estadística permite responder estas preguntas de dos maneras:
+
+1. Mediante un solo valor: **estimación puntual**.
+2. Mediante un rango de valores: **intervalo de confianza**.
+
+---
+
+## Resultados de aprendizaje
+
+Al finalizar esta unidad, el estudiante será capaz de:
+
+1. Comprender el concepto de estimación puntual.
+2. Identificar estimadores para la media, proporción y varianza.
+3. Calcular estimaciones puntuales manualmente.
+4. Comprender el error estándar.
+5. Interpretar el Teorema Central del Límite de forma intuitiva.
+6. Construir intervalos de confianza para la media.
+7. Construir intervalos de confianza para una proporción.
+8. Verificar cálculos manuales utilizando R.
+9. Simular intervalos de confianza.
+10. Aplicar estimación estadística en problemas de ingeniería.
+
+---
+
+## Concepto de estimación
+
+La **estimación** consiste en utilizar información muestral para aproximar un parámetro poblacional desconocido.
+
+La idea general es:
 
 \[
-\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i
+\text{Estadístico muestral} \longrightarrow \text{Estimación del parámetro poblacional}
 \]
 
-## Ejemplo aplicado
+Por ejemplo:
+
+\[
+\bar{x} \longrightarrow \mu
+\]
+
+\[
+\hat{p} \longrightarrow p
+\]
+
+\[
+s^2 \longrightarrow \sigma^2
+\]
+
+---
+
+## Estimación puntual
+
+Una **estimación puntual** es un único valor calculado a partir de una muestra y utilizado para aproximar un parámetro poblacional.
+
+Ejemplos:
+
+| Parámetro poblacional | Estimador puntual |
+|---|---|
+| Media poblacional \(\mu\) | Media muestral \(\bar{x}\) |
+| Proporción poblacional \(p\) | Proporción muestral \(\hat{p}\) |
+| Varianza poblacional \(\sigma^2\) | Varianza muestral \(s^2\) |
+
+---
+
+## Ejemplo cotidiano
+
+Suponga que una persona desea conocer el peso promedio de todos los sacos de arroz producidos por una fábrica en un día. Revisar todos los sacos puede ser costoso. Entonces toma una muestra de 5 sacos y calcula el promedio.
+
+Si los pesos son:
+
+\[
+49.8,\ 50.1,\ 50.0,\ 49.9,\ 50.2
+\]
+
+el promedio muestral sirve como estimación puntual del peso promedio poblacional.
+
+---
+
+## Media muestral como estimador puntual
+
+La media muestral se calcula mediante:
+
+\[
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i
+\]
+
+Donde:
+
+- \(\bar{x}\): media muestral.
+- \(x_i\): cada observación.
+- \(n\): tamaño de la muestra.
+
+---
+
+## Ejemplo resuelto 1: resistencia de hormigón
+
+En una obra se ensayan 6 probetas de hormigón y se obtienen las siguientes resistencias en MPa:
+
+\[
+25,\ 27,\ 26,\ 28,\ 24,\ 26
+\]
+
+Estimar puntualmente la resistencia promedio del hormigón.
+
+---
+
+## Solución manual
+
+### Paso 1: identificar los datos
+
+\[
+x_1=25,\ x_2=27,\ x_3=26,\ x_4=28,\ x_5=24,\ x_6=26
+\]
+
+\[
+n=6
+\]
+
+### Paso 2: aplicar la fórmula
+
+\[
+\bar{x}=\frac{25+27+26+28+24+26}{6}
+\]
+
+### Paso 3: sumar
+
+\[
+25+27+26+28+24+26=156
+\]
+
+### Paso 4: dividir
+
+\[
+\bar{x}=\frac{156}{6}
+\]
+
+\[
+\bar{x}=26
+\]
+
+### Interpretación
+
+La estimación puntual de la resistencia promedio poblacional es:
+
+\[
+26\text{ MPa}
+\]
+
+---
+
+## Verificación en R
 
 ```{r}
-energia <- c(510, 525, 518, 530, 522, 515,
-             519, 527, 521, 524, 528, 520)
-energia
+resistencia <- c(25, 27, 26, 28, 24, 26)
+
+mean(resistencia)
 ```
 
-## Implementación en R
+---
+
+## Proporción muestral como estimador puntual
+
+Cuando se estudia una característica del tipo éxito/fracaso, se utiliza la proporción muestral:
+
+\[
+\hat{p}=\frac{x}{n}
+\]
+
+Donde:
+
+- \(x\): número de casos favorables.
+- \(n\): tamaño de la muestra.
+- \(\hat{p}\): proporción muestral.
+
+---
+
+## Ejemplo resuelto 2: piezas defectuosas
+
+En una muestra de 80 piezas producidas, 6 resultan defectuosas. Estimar la proporción poblacional de piezas defectuosas.
+
+---
+
+## Solución manual
+
+\[
+x=6
+\]
+
+\[
+n=80
+\]
+
+\[
+\hat{p}=\frac{6}{80}
+\]
+
+\[
+\hat{p}=0.075
+\]
+
+\[
+\hat{p}=7.5\%
+\]
+
+### Interpretación
+
+La estimación puntual de la proporción de piezas defectuosas es 7.5%.
+
+---
+
+## Verificación en R
 
 ```{r}
-mean(energia)
+defectuosas <- 6
+total <- 80
+
+p_hat <- defectuosas / total
+p_hat
 ```
 
-```{r}
-var(energia)
-```
+---
 
-```{r}
-sd(energia)
-```
+## Error de estimación
 
-## Gráfica
+Una estimación puntual puede estar cerca o lejos del verdadero parámetro poblacional. La diferencia se conoce como error de estimación.
 
-```{r}
-plot(energia,
-     type = 'b',
-     pch = 19,
-     col = 'blue',
-     main = 'Generación diaria de energía',
-     xlab = 'Día',
-     ylab = 'Energía (kWh)')
-abline(h = mean(energia), col = 'red', lwd = 2)
-```
+Para la media:
+
+\[
+Error = \bar{x}-\mu
+\]
+
+En la práctica, normalmente \(\mu\) es desconocida. Por eso se usan intervalos de confianza para expresar la incertidumbre.
+
+---
 
 ## Error estándar
 
+El **error estándar** mide la variabilidad esperada de un estadístico muestral entre diferentes muestras.
+
+Para la media, si se conoce \(\sigma\):
+
 \[
-SE = \frac{s}{\sqrt{n}}
+SE=\frac{\sigma}{\sqrt{n}}
 \]
 
+Si no se conoce \(\sigma\), se utiliza \(s\):
+
+\[
+SE=\frac{s}{\sqrt{n}}
+\]
+
+---
+
+## Ejemplo resuelto 3: error estándar
+
+Suponga que una muestra de 25 mediciones de voltaje tiene desviación estándar muestral:
+
+\[
+s=4\text{ V}
+\]
+
+Calcular el error estándar.
+
+---
+
+## Solución manual
+
+\[
+SE=\frac{s}{\sqrt{n}}
+\]
+
+\[
+SE=\frac{4}{\sqrt{25}}
+\]
+
+\[
+SE=\frac{4}{5}
+\]
+
+\[
+SE=0.8
+\]
+
+### Interpretación
+
+El error estándar de la media es 0.8 V. Esto indica la variabilidad esperada de la media muestral entre muestras similares.
+
+---
+
+## Verificación en R
+
 ```{r}
-sd(energia)/sqrt(length(energia))
+s <- 4
+n <- 25
+
+SE <- s / sqrt(n)
+SE
 ```
 
-## Simulación
+---
+
+## Teorema Central del Límite
+
+El **Teorema Central del Límite** establece que, si se toman muchas muestras de tamaño suficientemente grande de una población, la distribución de las medias muestrales tiende a aproximarse a una distribución normal, incluso si la población original no es normal.
+
+Esto es muy importante porque permite construir intervalos de confianza y pruebas de hipótesis usando la distribución normal o t de Student.
+
+---
+
+## Interpretación intuitiva
+
+Si se toma una sola muestra, su media puede variar. Pero si se toman muchas muestras:
+
+- cada muestra tiene su propia media,
+- las medias muestrales se agrupan alrededor de la media poblacional,
+- mientras mayor sea el tamaño muestral, menor será la variabilidad de esas medias.
+
+---
+
+## Simulación del Teorema Central del Límite
+
+Simulamos una población no normal y luego tomamos muchas muestras.
 
 ```{r}
 set.seed(123)
-medias <- numeric(200)
 
-for(i in 1:200){
-  muestra <- rnorm(15, mean = 520, sd = 10)
-  medias[i] <- mean(muestra)
-}
+poblacion <- rexp(10000, rate = 0.2)
 
-hist(medias,
-     col = 'lightgreen',
-     main = 'Distribución de medias muestrales',
-     xlab = 'Media muestral')
+hist(poblacion,
+     col = "lightblue",
+     border = "white",
+     main = "Población original no normal",
+     xlab = "Valores")
 ```
 
-## Ejercicio propuesto
+---
 
-1. Calcule la media muestral.
-2. Determine el error estándar.
-3. Interprete los resultados.
+## Distribución de medias muestrales
 
-## Caso real (ingeniería)
+```{r}
+set.seed(123)
 
-En ingeniería eléctrica y energías renovables, la estimación puntual permite aproximar generación energética, voltaje promedio y comportamiento operativo de sistemas.
+medias <- replicate(1000, mean(sample(poblacion, size = 30)))
 
-## Conclusión
+hist(medias,
+     col = "lightgreen",
+     border = "white",
+     main = "Distribución de medias muestrales",
+     xlab = "Media muestral")
+```
 
-La estimación puntual constituye la base inicial de la inferencia estadística y permite aproximar parámetros poblacionales mediante información muestral.
+### Interpretación
+
+Aunque la población original no es normal, la distribución de las medias muestrales se aproxima a una forma normal.
+
+---
+
+## Intervalos de confianza
+
+Una estimación puntual entrega un solo valor. Sin embargo, ese valor puede variar de una muestra a otra.
+
+Un **intervalo de confianza** proporciona un rango de valores dentro del cual se espera que se encuentre el parámetro poblacional.
+
+La forma general es:
+
+\[
+\text{Estimación} \pm \text{Margen de error}
+\]
+
+---
+
+## Interpretación correcta
+
+Un intervalo de confianza del 95% no significa que haya 95% de probabilidad de que el parámetro esté dentro de un intervalo ya calculado.
+
+La interpretación correcta es:
+
+> Si se repitiera el proceso de muestreo muchas veces, aproximadamente el 95% de los intervalos construidos contendrían el verdadero parámetro poblacional.
+
+---
+
+## Intervalo de confianza para la media con \(\sigma\) conocida
+
+Cuando se conoce la desviación estándar poblacional \(\sigma\), se utiliza:
+
+\[
+IC=\bar{x}\pm Z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
+\]
+
+Donde:
+
+- \(\bar{x}\): media muestral.
+- \(Z_{\alpha/2}\): valor crítico de la normal estándar.
+- \(\sigma\): desviación estándar poblacional.
+- \(n\): tamaño de muestra.
+
+Para un 95% de confianza:
+
+\[
+Z_{\alpha/2}=1.96
+\]
+
+---
+
+## Ejemplo resuelto 4: intervalo con sigma conocida
+
+En una planta de producción se obtiene una muestra de 36 piezas. El peso promedio muestral es:
+
+\[
+\bar{x}=50.2\text{ kg}
+\]
+
+Se conoce que la desviación estándar poblacional es:
+
+\[
+\sigma=1.8\text{ kg}
+\]
+
+Construir un intervalo de confianza del 95% para el peso promedio poblacional.
+
+---
+
+## Solución manual
+
+### Paso 1: identificar datos
+
+\[
+\bar{x}=50.2
+\]
+
+\[
+\sigma=1.8
+\]
+
+\[
+n=36
+\]
+
+\[
+Z=1.96
+\]
+
+### Paso 2: calcular error estándar
+
+\[
+SE=\frac{\sigma}{\sqrt{n}}
+\]
+
+\[
+SE=\frac{1.8}{\sqrt{36}}
+\]
+
+\[
+SE=\frac{1.8}{6}
+\]
+
+\[
+SE=0.30
+\]
+
+### Paso 3: calcular margen de error
+
+\[
+ME=Z\cdot SE
+\]
+
+\[
+ME=1.96(0.30)
+\]
+
+\[
+ME=0.588
+\]
+
+### Paso 4: construir intervalo
+
+\[
+IC=50.2\pm0.588
+\]
+
+Límite inferior:
+
+\[
+LI=50.2-0.588=49.612
+\]
+
+Límite superior:
+
+\[
+LS=50.2+0.588=50.788
+\]
+
+### Resultado
+
+\[
+IC_{95\%}=(49.612,\ 50.788)
+\]
+
+### Interpretación
+
+Con 95% de confianza, el peso promedio poblacional se encuentra entre 49.612 kg y 50.788 kg.
+
+---
+
+## Verificación en R
+
+```{r}
+xbar <- 50.2
+sigma <- 1.8
+n <- 36
+z <- qnorm(0.975)
+
+SE <- sigma / sqrt(n)
+ME <- z * SE
+
+LI <- xbar - ME
+LS <- xbar + ME
+
+c(LI = LI, LS = LS)
+```
+
+---
+
+## Intervalo de confianza para la media con \(\sigma\) desconocida
+
+En la práctica, casi nunca se conoce \(\sigma\). Por eso se utiliza la desviación estándar muestral \(s\) y la distribución t de Student.
+
+\[
+IC=\bar{x}\pm t_{\alpha/2,n-1}\frac{s}{\sqrt{n}}
+\]
+
+Donde:
+
+- \(t_{\alpha/2,n-1}\): valor crítico t.
+- \(n-1\): grados de libertad.
+- \(s\): desviación estándar muestral.
+
+---
+
+## Ejemplo resuelto 5: intervalo con t de Student
+
+Se mide el voltaje en una red eléctrica durante 10 momentos:
+
+\[
+219,\ 221,\ 220,\ 222,\ 218,\ 223,\ 221,\ 220,\ 219,\ 222
+\]
+
+Construir un intervalo de confianza del 95% para el voltaje promedio.
+
+---
+
+## Solución manual
+
+### Paso 1: calcular media y desviación estándar
+
+Con los datos se obtiene:
+
+\[
+\bar{x}=220.5
+\]
+
+\[
+s=1.581
+\]
+
+\[
+n=10
+\]
+
+### Paso 2: grados de libertad
+
+\[
+gl=n-1=9
+\]
+
+### Paso 3: valor crítico t
+
+Para 95% de confianza y 9 grados de libertad:
+
+\[
+t_{0.025,9}=2.262
+\]
+
+### Paso 4: error estándar
+
+\[
+SE=\frac{s}{\sqrt{n}}
+\]
+
+\[
+SE=\frac{1.581}{\sqrt{10}}
+\]
+
+\[
+SE=0.500
+\]
+
+### Paso 5: margen de error
+
+\[
+ME=2.262(0.500)
+\]
+
+\[
+ME=1.131
+\]
+
+### Paso 6: intervalo
+
+\[
+IC=220.5\pm1.131
+\]
+
+\[
+LI=219.369
+\]
+
+\[
+LS=221.631
+\]
+
+### Interpretación
+
+Con 95% de confianza, el voltaje promedio poblacional está entre 219.369 V y 221.631 V.
+
+---
+
+## Verificación en R
+
+```{r}
+voltaje <- c(219, 221, 220, 222, 218, 223, 221, 220, 219, 222)
+
+mean(voltaje)
+sd(voltaje)
+t.test(voltaje, conf.level = 0.95)
+```
+
+---
+
+## Intervalo de confianza para una proporción
+
+Cuando se desea estimar una proporción poblacional, se usa:
+
+\[
+IC=\hat{p}\pm Z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+\]
+
+Donde:
+
+- \(\hat{p}\): proporción muestral.
+- \(n\): tamaño de muestra.
+- \(Z_{\alpha/2}\): valor crítico normal.
+
+---
+
+## Ejemplo resuelto 6: proporción de defectos
+
+En una muestra de 200 piezas, 18 son defectuosas. Construir un intervalo de confianza del 95% para la proporción poblacional de defectos.
+
+---
+
+## Solución manual
+
+### Paso 1: calcular proporción muestral
+
+\[
+\hat{p}=\frac{18}{200}
+\]
+
+\[
+\hat{p}=0.09
+\]
+
+### Paso 2: valor crítico
+
+\[
+Z=1.96
+\]
+
+### Paso 3: error estándar
+
+\[
+SE=\sqrt{\frac{0.09(1-0.09)}{200}}
+\]
+
+\[
+SE=\sqrt{\frac{0.09(0.91)}{200}}
+\]
+
+\[
+SE=\sqrt{0.0004095}
+\]
+
+\[
+SE=0.02024
+\]
+
+### Paso 4: margen de error
+
+\[
+ME=1.96(0.02024)
+\]
+
+\[
+ME=0.03967
+\]
+
+### Paso 5: intervalo
+
+\[
+IC=0.09\pm0.03967
+\]
+
+\[
+LI=0.0503
+\]
+
+\[
+LS=0.1297
+\]
+
+### Interpretación
+
+Con 95% de confianza, la proporción poblacional de piezas defectuosas se encuentra entre 5.03% y 12.97%.
+
+---
+
+## Verificación en R
+
+```{r}
+x <- 18
+n <- 200
+
+p_hat <- x/n
+z <- qnorm(0.975)
+
+SE <- sqrt(p_hat*(1-p_hat)/n)
+ME <- z * SE
+
+LI <- p_hat - ME
+LS <- p_hat + ME
+
+c(LI = LI, LS = LS)
+```
+
+---
+
+## Simulación de intervalos de confianza
+
+Simulamos 100 intervalos de confianza para observar cuántos contienen la media poblacional verdadera.
+
+```{r}
+set.seed(123)
+
+mu <- 100
+sigma <- 15
+n <- 25
+B <- 100
+
+LI <- numeric(B)
+LS <- numeric(B)
+
+for(i in 1:B){
+  muestra <- rnorm(n, mean = mu, sd = sigma)
+  xbar <- mean(muestra)
+  s <- sd(muestra)
+  tcrit <- qt(0.975, df = n-1)
+  ME <- tcrit * s / sqrt(n)
+  LI[i] <- xbar - ME
+  LS[i] <- xbar + ME
+}
+
+contiene <- LI <= mu & LS >= mu
+mean(contiene)
+```
+
+---
+
+## Gráfica de intervalos simulados
+
+```{r}
+plot(1:B, rep(mu, B),
+     type = "n",
+     ylim = range(c(LI, LS)),
+     xlab = "Intervalo",
+     ylab = "Valor",
+     main = "Intervalos de confianza simulados")
+
+for(i in 1:B){
+  color <- ifelse(contiene[i], "gray40", "red")
+  segments(i, LI[i], i, LS[i], col = color)
+}
+
+abline(h = mu, col = "blue", lwd = 2)
+```
+
+Los intervalos en rojo son aquellos que no contienen la media poblacional.
+
+---
+
+## Ejercicio guiado
+
+En un laboratorio de ingeniería civil se miden resistencias de 12 probetas:
+
+\[
+27,\ 28,\ 26,\ 29,\ 30,\ 28,\ 27,\ 29,\ 28,\ 26,\ 30,\ 29
+\]
+
+Construir un intervalo de confianza del 95% para la resistencia promedio poblacional.
+
+---
+
+## Solución del ejercicio guiado
+
+### Paso 1: calcular valores muestrales
+
+Con los datos:
+
+\[
+n=12
+\]
+
+\[
+\bar{x}=28.083
+\]
+
+\[
+s=1.240
+\]
+
+### Paso 2: grados de libertad
+
+\[
+gl=12-1=11
+\]
+
+### Paso 3: valor crítico t
+
+Para 95% y 11 grados de libertad:
+
+\[
+t=2.201
+\]
+
+### Paso 4: error estándar
+
+\[
+SE=\frac{1.240}{\sqrt{12}}
+\]
+
+\[
+SE=0.358
+\]
+
+### Paso 5: margen de error
+
+\[
+ME=2.201(0.358)
+\]
+
+\[
+ME=0.788
+\]
+
+### Paso 6: intervalo
+
+\[
+IC=28.083\pm0.788
+\]
+
+\[
+LI=27.295
+\]
+
+\[
+LS=28.871
+\]
+
+### Interpretación
+
+Con 95% de confianza, la resistencia promedio poblacional está entre 27.295 MPa y 28.871 MPa.
+
+---
+
+## Verificación en R
+
+```{r}
+resistencia2 <- c(27, 28, 26, 29, 30, 28, 27, 29, 28, 26, 30, 29)
+
+mean(resistencia2)
+sd(resistencia2)
+t.test(resistencia2, conf.level = 0.95)
+```
+
+---
+
+## Actividad práctica
+
+Seleccione uno de los siguientes contextos:
+
+1. Resistencia de hormigón.
+2. Voltaje de una red eléctrica.
+3. Peso de piezas industriales.
+4. Producción diaria de energía solar.
+5. Tiempo de operación de una máquina.
+
+Para su problema:
+
+- Proponga una muestra de datos.
+- Calcule una estimación puntual.
+- Calcule el error estándar.
+- Construya un intervalo de confianza del 95%.
+- Verifique en R.
+- Interprete técnicamente el resultado.
+
+---
+
+## Aplicaciones por carrera
+
+### Ingeniería Civil
+
+Los intervalos de confianza permiten estimar resistencia promedio del hormigón, compactación, CBR, densidades y asentamientos.
+
+### Ingeniería Eléctrica
+
+Se utilizan para estimar voltajes promedio, corrientes, frecuencia, consumo y estabilidad de sistemas.
+
+### Ingeniería Industrial
+
+Permiten estimar tiempos promedio, productividad, pesos, dimensiones y proporción de defectos.
+
+### Energías Renovables
+
+Ayudan a estimar generación promedio, irradiancia, velocidad del viento y rendimiento energético.
+
+---
+
+## Preguntas de autoevaluación
+
+1. ¿Qué es una estimación puntual?
+2. ¿Qué estimador se usa para \(\mu\)?
+3. ¿Qué estimador se usa para \(p\)?
+4. ¿Qué es el error estándar?
+5. ¿Qué indica un intervalo de confianza?
+6. ¿Cuál es la diferencia entre usar \(Z\) y usar \(t\)?
+7. ¿Qué ocurre con el intervalo si aumenta \(n\)?
+8. ¿Qué ocurre con el intervalo si aumenta la variabilidad?
+9. ¿Cómo se interpreta un intervalo de confianza del 95%?
+10. ¿Por qué una estimación puntual no es suficiente en ingeniería?
+
+---
+
+## Resumen de la unidad
+
+La estimación puntual permite aproximar un parámetro poblacional usando un único valor muestral, como la media o la proporción. Sin embargo, debido a la variabilidad muestral, es necesario acompañar la estimación con una medida de incertidumbre.
+
+Los intervalos de confianza proporcionan un rango plausible para el parámetro poblacional. En ingeniería, son esenciales para comunicar resultados con rigor técnico y tomar decisiones fundamentadas.
+
+---
+
+## Bibliografía sugerida
+
+- Devore, J. L. (2008). *Probabilidad y estadística para ingeniería y ciencias*. Cengage Learning.
+- Montgomery, D. C., & Runger, G. C. (2016). *Probabilidad y estadística aplicada a la ingeniería*. Limusa.
+- OpenStax. (2023). *Introducción a la estadística*. Rice University.

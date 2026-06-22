@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería</title>
-  <meta name="description" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <title>15 Estimación puntual e intervalos de confianza | Estadística Aplicada para Ingeniería</title>
+  <meta name="description" content="15 Estimación puntual e intervalos de confianza | Estadística Aplicada para Ingeniería" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <meta property="og:title" content="15 Estimación puntual e intervalos de confianza | Estadística Aplicada para Ingeniería" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Medidas de dispersión y forma | Estadística Aplicada para Ingeniería" />
+  <meta name="twitter:title" content="15 Estimación puntual e intervalos de confianza | Estadística Aplicada para Ingeniería" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="medidas-de-tendencia-central-y-de-posición.html"/>
-<link rel="next" href="muestras-población-y-muestreo.html"/>
+<link rel="prev" href="introducción-a-la-inferencia-estadística.html"/>
+<link rel="next" href="intervalos-de-confianza-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -1083,138 +1083,898 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="medidas-de-dispersión-y-forma" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> Medidas de dispersión y forma<a href="medidas-de-dispersión-y-forma.html#medidas-de-dispersi%C3%B3n-y-forma" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="concepto-teórico-4" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Concepto teórico<a href="medidas-de-dispersión-y-forma.html#concepto-te%C3%B3rico-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Las medidas de dispersión indican cuánto se alejan los datos respecto a un valor central. Mientras las medidas de tendencia central responden dónde se concentran los datos, las de dispersión indican qué tan homogéneo o variable es el conjunto.</p>
-<div id="rango" class="section level3 hasAnchor" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Rango<a href="medidas-de-dispersión-y-forma.html#rango" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Es la diferencia entre el valor máximo y el mínimo:</p>
-<p><span class="math display">\[
-R = x_{\max} - x_{\min}
-\]</span></p>
-</div>
-<div id="varianza" class="section level3 hasAnchor" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Varianza<a href="medidas-de-dispersión-y-forma.html#varianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La varianza muestral se define como:</p>
-<p><span class="math display">\[
-s^2 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}
-\]</span></p>
-<p>Mide la dispersión cuadrática de los datos respecto a la media.</p>
-</div>
-<div id="desviación-estándar" class="section level3 hasAnchor" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Desviación estándar<a href="medidas-de-dispersión-y-forma.html#desviaci%C3%B3n-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Es la raíz cuadrada de la varianza:</p>
-<p><span class="math display">\[
-s = \sqrt{s^2}
-\]</span></p>
-<p>Tiene la ventaja de expresarse en las mismas unidades que los datos originales.</p>
-</div>
-<div id="coeficiente-de-variación" class="section level3 hasAnchor" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> Coeficiente de variación<a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Permite comparar dispersión relativa entre conjuntos de datos con distintas escalas:</p>
-<p><span class="math display">\[
-CV = \frac{s}{\bar{x}} \times 100
-\]</span></p>
-</div>
-<div id="asimetría" class="section level3 hasAnchor" number="5.1.5">
-<h3><span class="header-section-number">5.1.5</span> Asimetría<a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Indica si la distribución es simétrica o si presenta sesgo hacia la izquierda o hacia la derecha.</p>
-</div>
-<div id="curtosis" class="section level3 hasAnchor" number="5.1.6">
-<h3><span class="header-section-number">5.1.6</span> Curtosis<a href="medidas-de-dispersión-y-forma.html#curtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Mide el grado de concentración de los datos alrededor de la media y el peso de las colas de la distribución.</p>
-</div>
-<div id="teorema-de-chebyshev" class="section level3 hasAnchor" number="5.1.7">
-<h3><span class="header-section-number">5.1.7</span> Teorema de Chebyshev<a href="medidas-de-dispersión-y-forma.html#teorema-de-chebyshev" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Para cualquier conjunto de datos y para <span class="math inline">\(k &gt; 1\)</span>, al menos:</p>
-<p><span class="math display">\[
-1 - \frac{1}{k^2}
-\]</span></p>
-<p>de las observaciones se encuentra dentro del intervalo:</p>
-<p><span class="math display">\[
-\bar{x} \pm ks
-\]</span></p>
-<p>Este teorema es útil cuando no se conoce la forma exacta de la distribución.</p>
-</div>
-</div>
-<div id="ejemplo-aplicado-4" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Ejemplo aplicado<a href="medidas-de-dispersión-y-forma.html#ejemplo-aplicado-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Se registran voltajes de operación (V) en un sistema eléctrico:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="medidas-de-dispersión-y-forma.html#cb48-1" tabindex="-1"></a>voltaje <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">218</span>, <span class="dv">220</span>, <span class="dv">221</span>, <span class="dv">219</span>, <span class="dv">222</span>, <span class="dv">223</span>, <span class="dv">217</span>, <span class="dv">218</span>, <span class="dv">220</span>, <span class="dv">221</span>,</span>
-<span id="cb48-2"><a href="medidas-de-dispersión-y-forma.html#cb48-2" tabindex="-1"></a>             <span class="dv">224</span>, <span class="dv">219</span>, <span class="dv">220</span>, <span class="dv">222</span>, <span class="dv">223</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">219</span>, <span class="dv">218</span>, <span class="dv">222</span>)</span>
-<span id="cb48-3"><a href="medidas-de-dispersión-y-forma.html#cb48-3" tabindex="-1"></a>voltaje</span></code></pre></div>
-<pre><code>##  [1] 218 220 221 219 222 223 217 218 220 221 224 219 220 222 223 221 220 219 218 222</code></pre>
-</div>
-<div id="implementación-en-r-4" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Implementación en R<a href="medidas-de-dispersión-y-forma.html#implementaci%C3%B3n-en-r-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="rango-1" class="section level3 hasAnchor" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Rango<a href="medidas-de-dispersión-y-forma.html#rango-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="medidas-de-dispersión-y-forma.html#cb50-1" tabindex="-1"></a><span class="fu">max</span>(voltaje) <span class="sc">-</span> <span class="fu">min</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 7</code></pre>
-</div>
-<div id="varianza-y-desviación-estándar" class="section level3 hasAnchor" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Varianza y desviación estándar<a href="medidas-de-dispersión-y-forma.html#varianza-y-desviaci%C3%B3n-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="medidas-de-dispersión-y-forma.html#cb52-1" tabindex="-1"></a><span class="fu">var</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 3.713158</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="medidas-de-dispersión-y-forma.html#cb54-1" tabindex="-1"></a><span class="fu">sd</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 1.926956</code></pre>
-</div>
-<div id="coeficiente-de-variación-1" class="section level3 hasAnchor" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> Coeficiente de variación<a href="medidas-de-dispersión-y-forma.html#coeficiente-de-variaci%C3%B3n-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="medidas-de-dispersión-y-forma.html#cb56-1" tabindex="-1"></a>(<span class="fu">sd</span>(voltaje) <span class="sc">/</span> <span class="fu">mean</span>(voltaje)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
-<pre><code>## [1] 0.8744977</code></pre>
-</div>
-<div id="asimetría-y-curtosis" class="section level3 hasAnchor" number="5.3.4">
-<h3><span class="header-section-number">5.3.4</span> Asimetría y curtosis<a href="medidas-de-dispersión-y-forma.html#asimetr%C3%ADa-y-curtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="medidas-de-dispersión-y-forma.html#cb58-1" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb58-2"><a href="medidas-de-dispersión-y-forma.html#cb58-2" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="medidas-de-dispersión-y-forma.html#cb58-3" tabindex="-1"></a><span class="fu">skewness</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 0.1212412</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="medidas-de-dispersión-y-forma.html#cb60-1" tabindex="-1"></a><span class="fu">kurtosis</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 2.11502</code></pre>
-</div>
-<div id="aplicación-del-teorema-de-chebyshev-para-k-2" class="section level3 hasAnchor" number="5.3.5">
-<h3><span class="header-section-number">5.3.5</span> Aplicación del teorema de Chebyshev para <span class="math inline">\(k = 2\)</span><a href="medidas-de-dispersión-y-forma.html#aplicaci%C3%B3n-del-teorema-de-chebyshev-para-k-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="medidas-de-dispersión-y-forma.html#cb62-1" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(voltaje)</span>
-<span id="cb62-2"><a href="medidas-de-dispersión-y-forma.html#cb62-2" tabindex="-1"></a>desv <span class="ot">&lt;-</span> <span class="fu">sd</span>(voltaje)</span>
-<span id="cb62-3"><a href="medidas-de-dispersión-y-forma.html#cb62-3" tabindex="-1"></a></span>
-<span id="cb62-4"><a href="medidas-de-dispersión-y-forma.html#cb62-4" tabindex="-1"></a>lim_inf <span class="ot">&lt;-</span> media <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> desv</span>
-<span id="cb62-5"><a href="medidas-de-dispersión-y-forma.html#cb62-5" tabindex="-1"></a>lim_sup <span class="ot">&lt;-</span> media <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> desv</span>
-<span id="cb62-6"><a href="medidas-de-dispersión-y-forma.html#cb62-6" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="medidas-de-dispersión-y-forma.html#cb62-7" tabindex="-1"></a><span class="fu">sum</span>(voltaje <span class="sc">&gt;=</span> lim_inf <span class="sc">&amp;</span> voltaje <span class="sc">&lt;=</span> lim_sup) <span class="sc">/</span> <span class="fu">length</span>(voltaje)</span></code></pre></div>
-<pre><code>## [1] 1</code></pre>
-</div>
-<div id="visualización-de-la-dispersión" class="section level3 hasAnchor" number="5.3.6">
-<h3><span class="header-section-number">5.3.6</span> Visualización de la dispersión<a href="medidas-de-dispersión-y-forma.html#visualizaci%C3%B3n-de-la-dispersi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="medidas-de-dispersión-y-forma.html#cb64-1" tabindex="-1"></a><span class="fu">hist</span>(voltaje, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Distribución del voltaje&quot;</span>,</span>
-<span id="cb64-2"><a href="medidas-de-dispersión-y-forma.html#cb64-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Voltaje (V)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frecuencia&quot;</span>)</span>
-<span id="cb64-3"><a href="medidas-de-dispersión-y-forma.html#cb64-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(voltaje), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-35-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="ejercicio-propuesto-4" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Ejercicio propuesto<a href="medidas-de-dispersión-y-forma.html#ejercicio-propuesto-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En una práctica de ingeniería civil se registran resistencias a compresión (MPa) de probetas de hormigón:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="medidas-de-dispersión-y-forma.html#cb65-1" tabindex="-1"></a>resistencia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">24.8</span>, <span class="fl">25.1</span>, <span class="fl">24.5</span>, <span class="fl">25.7</span>, <span class="fl">26.0</span>, <span class="fl">24.9</span>, <span class="fl">25.3</span>, <span class="fl">25.8</span>,</span>
-<span id="cb65-2"><a href="medidas-de-dispersión-y-forma.html#cb65-2" tabindex="-1"></a>                 <span class="fl">24.7</span>, <span class="fl">25.0</span>, <span class="fl">25.4</span>, <span class="fl">25.9</span>, <span class="fl">24.6</span>, <span class="fl">25.2</span>, <span class="fl">25.6</span>)</span></code></pre></div>
-<p>Realice lo siguiente:</p>
+<div id="estimación-puntual-e-intervalos-de-confianza" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">15</span> Estimación puntual e intervalos de confianza<a href="estimación-puntual-e-intervalos-de-confianza.html#estimaci%C3%B3n-puntual-e-intervalos-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="motivación-ingenieril-6" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Motivación ingenieril<a href="estimación-puntual-e-intervalos-de-confianza.html#motivaci%C3%B3n-ingenieril-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En la Unidad 14 se estudió que la inferencia estadística permite obtener conclusiones sobre una población usando información de una muestra. En esta unidad se aborda una pregunta central:</p>
+<blockquote>
+<p>¿Cómo estimar un valor poblacional desconocido usando datos muestrales?</p>
+</blockquote>
+<p>En ingeniería esta situación aparece constantemente.</p>
+<p>Ejemplos:</p>
+<ul>
+<li>En ingeniería civil se desea estimar la resistencia promedio del hormigón de toda una obra, pero solo se ensayan algunas probetas.</li>
+<li>En ingeniería eléctrica se desea estimar el voltaje promedio de una red, pero solo se dispone de un conjunto limitado de mediciones.</li>
+<li>En ingeniería industrial se desea estimar el porcentaje de piezas defectuosas de toda una producción, pero solo se inspecciona una muestra.</li>
+<li>En energías renovables se desea estimar la generación promedio diaria de una planta solar a partir de algunos registros.</li>
+</ul>
+<p>La estimación estadística permite responder estas preguntas de dos maneras:</p>
 <ol style="list-style-type: decimal">
-<li>Calcule rango, varianza y desviación estándar.</li>
-<li>Obtenga el coeficiente de variación.</li>
-<li>Calcule asimetría y curtosis.</li>
-<li>Aplique el teorema de Chebyshev para <span class="math inline">\(k = 2\)</span>.</li>
-<li>Interprete la estabilidad del conjunto de datos.</li>
+<li>Mediante un solo valor: <strong>estimación puntual</strong>.</li>
+<li>Mediante un rango de valores: <strong>intervalo de confianza</strong>.</li>
 </ol>
+<hr />
 </div>
-<div id="caso-real-ingeniería-4" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> Caso real (ingeniería)<a href="medidas-de-dispersión-y-forma.html#caso-real-ingenier%C3%ADa-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En <strong>ingeniería eléctrica</strong>, una baja dispersión en el voltaje indica estabilidad del sistema y menor probabilidad de fallos.</p>
-<p>En <strong>ingeniería industrial</strong>, la desviación estándar permite evaluar la consistencia de tiempos de producción, masas, dimensiones o consumos.</p>
-<p>En <strong>ingeniería civil</strong>, el coeficiente de variación se usa para juzgar la uniformidad de resultados en ensayos de materiales.</p>
-<p>En <strong>energías renovables</strong>, la variabilidad de la generación solar o eólica puede analizarse mediante rango, desviación estándar y asimetría, identificando condiciones de operación estables o inestables.</p>
-<p>Estas medidas permiten pasar de una descripción básica a una evaluación rigurosa de la confiabilidad de los datos.</p>
+<div id="resultados-de-aprendizaje-6" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Resultados de aprendizaje<a href="estimación-puntual-e-intervalos-de-confianza.html#resultados-de-aprendizaje-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Al finalizar esta unidad, el estudiante será capaz de:</p>
+<ol style="list-style-type: decimal">
+<li>Comprender el concepto de estimación puntual.</li>
+<li>Identificar estimadores para la media, proporción y varianza.</li>
+<li>Calcular estimaciones puntuales manualmente.</li>
+<li>Comprender el error estándar.</li>
+<li>Interpretar el Teorema Central del Límite de forma intuitiva.</li>
+<li>Construir intervalos de confianza para la media.</li>
+<li>Construir intervalos de confianza para una proporción.</li>
+<li>Verificar cálculos manuales utilizando R.</li>
+<li>Simular intervalos de confianza.</li>
+<li>Aplicar estimación estadística en problemas de ingeniería.</li>
+</ol>
+<hr />
+</div>
+<div id="concepto-de-estimación" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Concepto de estimación<a href="estimación-puntual-e-intervalos-de-confianza.html#concepto-de-estimaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La <strong>estimación</strong> consiste en utilizar información muestral para aproximar un parámetro poblacional desconocido.</p>
+<p>La idea general es:</p>
+<p><span class="math display">\[
+\text{Estadístico muestral} \longrightarrow \text{Estimación del parámetro poblacional}
+\]</span></p>
+<p>Por ejemplo:</p>
+<p><span class="math display">\[
+\bar{x} \longrightarrow \mu
+\]</span></p>
+<p><span class="math display">\[
+\hat{p} \longrightarrow p
+\]</span></p>
+<p><span class="math display">\[
+s^2 \longrightarrow \sigma^2
+\]</span></p>
+<hr />
+</div>
+<div id="estimación-puntual" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> Estimación puntual<a href="estimación-puntual-e-intervalos-de-confianza.html#estimaci%C3%B3n-puntual" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una <strong>estimación puntual</strong> es un único valor calculado a partir de una muestra y utilizado para aproximar un parámetro poblacional.</p>
+<p>Ejemplos:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Parámetro poblacional</th>
+<th>Estimador puntual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Media poblacional <span class="math inline">\(\mu\)</span></td>
+<td>Media muestral <span class="math inline">\(\bar{x}\)</span></td>
+</tr>
+<tr class="even">
+<td>Proporción poblacional <span class="math inline">\(p\)</span></td>
+<td>Proporción muestral <span class="math inline">\(\hat{p}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Varianza poblacional <span class="math inline">\(\sigma^2\)</span></td>
+<td>Varianza muestral <span class="math inline">\(s^2\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="ejemplo-cotidiano-2" class="section level2 hasAnchor" number="15.5">
+<h2><span class="header-section-number">15.5</span> Ejemplo cotidiano<a href="estimación-puntual-e-intervalos-de-confianza.html#ejemplo-cotidiano-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suponga que una persona desea conocer el peso promedio de todos los sacos de arroz producidos por una fábrica en un día. Revisar todos los sacos puede ser costoso. Entonces toma una muestra de 5 sacos y calcula el promedio.</p>
+<p>Si los pesos son:</p>
+<p><span class="math display">\[
+49.8,\ 50.1,\ 50.0,\ 49.9,\ 50.2
+\]</span></p>
+<p>el promedio muestral sirve como estimación puntual del peso promedio poblacional.</p>
+<hr />
+</div>
+<div id="media-muestral-como-estimador-puntual" class="section level2 hasAnchor" number="15.6">
+<h2><span class="header-section-number">15.6</span> Media muestral como estimador puntual<a href="estimación-puntual-e-intervalos-de-confianza.html#media-muestral-como-estimador-puntual" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La media muestral se calcula mediante:</p>
+<p><span class="math display">\[
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i
+\]</span></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(\bar{x}\)</span>: media muestral.</li>
+<li><span class="math inline">\(x_i\)</span>: cada observación.</li>
+<li><span class="math inline">\(n\)</span>: tamaño de la muestra.</li>
+</ul>
+<hr />
+</div>
+<div id="ejemplo-resuelto-1-resistencia-de-hormigón-1" class="section level2 hasAnchor" number="15.7">
+<h2><span class="header-section-number">15.7</span> Ejemplo resuelto 1: resistencia de hormigón<a href="estimación-puntual-e-intervalos-de-confianza.html#ejemplo-resuelto-1-resistencia-de-hormig%C3%B3n-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En una obra se ensayan 6 probetas de hormigón y se obtienen las siguientes resistencias en MPa:</p>
+<p><span class="math display">\[
+25,\ 27,\ 26,\ 28,\ 24,\ 26
+\]</span></p>
+<p>Estimar puntualmente la resistencia promedio del hormigón.</p>
+<hr />
+</div>
+<div id="solución-manual-20" class="section level2 hasAnchor" number="15.8">
+<h2><span class="header-section-number">15.8</span> Solución manual<a href="estimación-puntual-e-intervalos-de-confianza.html#soluci%C3%B3n-manual-20" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paso-1-identificar-los-datos" class="section level3 hasAnchor" number="15.8.1">
+<h3><span class="header-section-number">15.8.1</span> Paso 1: identificar los datos<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-1-identificar-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+x_1=25,\ x_2=27,\ x_3=26,\ x_4=28,\ x_5=24,\ x_6=26
+\]</span></p>
+<p><span class="math display">\[
+n=6
+\]</span></p>
+</div>
+<div id="paso-2-aplicar-la-fórmula-1" class="section level3 hasAnchor" number="15.8.2">
+<h3><span class="header-section-number">15.8.2</span> Paso 2: aplicar la fórmula<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-2-aplicar-la-f%C3%B3rmula-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+\bar{x}=\frac{25+27+26+28+24+26}{6}
+\]</span></p>
+</div>
+<div id="paso-3-sumar-1" class="section level3 hasAnchor" number="15.8.3">
+<h3><span class="header-section-number">15.8.3</span> Paso 3: sumar<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-3-sumar-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+25+27+26+28+24+26=156
+\]</span></p>
+</div>
+<div id="paso-4-dividir-1" class="section level3 hasAnchor" number="15.8.4">
+<h3><span class="header-section-number">15.8.4</span> Paso 4: dividir<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-4-dividir-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+\bar{x}=\frac{156}{6}
+\]</span></p>
+<p><span class="math display">\[
+\bar{x}=26
+\]</span></p>
+</div>
+<div id="interpretación-27" class="section level3 hasAnchor" number="15.8.5">
+<h3><span class="header-section-number">15.8.5</span> Interpretación<a href="estimación-puntual-e-intervalos-de-confianza.html#interpretaci%C3%B3n-27" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La estimación puntual de la resistencia promedio poblacional es:</p>
+<p><span class="math display">\[
+26\text{ MPa}
+\]</span></p>
+<hr />
+</div>
+</div>
+<div id="verificación-en-r-44" class="section level2 hasAnchor" number="15.9">
+<h2><span class="header-section-number">15.9</span> Verificación en R<a href="estimación-puntual-e-intervalos-de-confianza.html#verificaci%C3%B3n-en-r-44" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb283-1" tabindex="-1"></a>resistencia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">27</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">24</span>, <span class="dv">26</span>)</span>
+<span id="cb283-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb283-2" tabindex="-1"></a></span>
+<span id="cb283-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb283-3" tabindex="-1"></a><span class="fu">mean</span>(resistencia)</span></code></pre></div>
+<pre><code>## [1] 26</code></pre>
+<hr />
+</div>
+<div id="proporción-muestral-como-estimador-puntual" class="section level2 hasAnchor" number="15.10">
+<h2><span class="header-section-number">15.10</span> Proporción muestral como estimador puntual<a href="estimación-puntual-e-intervalos-de-confianza.html#proporci%C3%B3n-muestral-como-estimador-puntual" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cuando se estudia una característica del tipo éxito/fracaso, se utiliza la proporción muestral:</p>
+<p><span class="math display">\[
+\hat{p}=\frac{x}{n}
+\]</span></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(x\)</span>: número de casos favorables.</li>
+<li><span class="math inline">\(n\)</span>: tamaño de la muestra.</li>
+<li><span class="math inline">\(\hat{p}\)</span>: proporción muestral.</li>
+</ul>
+<hr />
+</div>
+<div id="ejemplo-resuelto-2-piezas-defectuosas" class="section level2 hasAnchor" number="15.11">
+<h2><span class="header-section-number">15.11</span> Ejemplo resuelto 2: piezas defectuosas<a href="estimación-puntual-e-intervalos-de-confianza.html#ejemplo-resuelto-2-piezas-defectuosas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En una muestra de 80 piezas producidas, 6 resultan defectuosas. Estimar la proporción poblacional de piezas defectuosas.</p>
+<hr />
+</div>
+<div id="solución-manual-21" class="section level2 hasAnchor" number="15.12">
+<h2><span class="header-section-number">15.12</span> Solución manual<a href="estimación-puntual-e-intervalos-de-confianza.html#soluci%C3%B3n-manual-21" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[
+x=6
+\]</span></p>
+<p><span class="math display">\[
+n=80
+\]</span></p>
+<p><span class="math display">\[
+\hat{p}=\frac{6}{80}
+\]</span></p>
+<p><span class="math display">\[
+\hat{p}=0.075
+\]</span></p>
+<p><span class="math display">\[
+\hat{p}=7.5\%
+\]</span></p>
+<div id="interpretación-28" class="section level3 hasAnchor" number="15.12.1">
+<h3><span class="header-section-number">15.12.1</span> Interpretación<a href="estimación-puntual-e-intervalos-de-confianza.html#interpretaci%C3%B3n-28" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La estimación puntual de la proporción de piezas defectuosas es 7.5%.</p>
+<hr />
+</div>
+</div>
+<div id="verificación-en-r-45" class="section level2 hasAnchor" number="15.13">
+<h2><span class="header-section-number">15.13</span> Verificación en R<a href="estimación-puntual-e-intervalos-de-confianza.html#verificaci%C3%B3n-en-r-45" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb285-1" tabindex="-1"></a>defectuosas <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb285-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb285-2" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb285-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb285-3" tabindex="-1"></a></span>
+<span id="cb285-4"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb285-4" tabindex="-1"></a>p_hat <span class="ot">&lt;-</span> defectuosas <span class="sc">/</span> total</span>
+<span id="cb285-5"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb285-5" tabindex="-1"></a>p_hat</span></code></pre></div>
+<pre><code>## [1] 0.075</code></pre>
+<hr />
+</div>
+<div id="error-de-estimación" class="section level2 hasAnchor" number="15.14">
+<h2><span class="header-section-number">15.14</span> Error de estimación<a href="estimación-puntual-e-intervalos-de-confianza.html#error-de-estimaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una estimación puntual puede estar cerca o lejos del verdadero parámetro poblacional. La diferencia se conoce como error de estimación.</p>
+<p>Para la media:</p>
+<p><span class="math display">\[
+Error = \bar{x}-\mu
+\]</span></p>
+<p>En la práctica, normalmente <span class="math inline">\(\mu\)</span> es desconocida. Por eso se usan intervalos de confianza para expresar la incertidumbre.</p>
+<hr />
+</div>
+<div id="error-estándar" class="section level2 hasAnchor" number="15.15">
+<h2><span class="header-section-number">15.15</span> Error estándar<a href="estimación-puntual-e-intervalos-de-confianza.html#error-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El <strong>error estándar</strong> mide la variabilidad esperada de un estadístico muestral entre diferentes muestras.</p>
+<p>Para la media, si se conoce <span class="math inline">\(\sigma\)</span>:</p>
+<p><span class="math display">\[
+SE=\frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>Si no se conoce <span class="math inline">\(\sigma\)</span>, se utiliza <span class="math inline">\(s\)</span>:</p>
+<p><span class="math display">\[
+SE=\frac{s}{\sqrt{n}}
+\]</span></p>
+<hr />
+</div>
+<div id="ejemplo-resuelto-3-error-estándar" class="section level2 hasAnchor" number="15.16">
+<h2><span class="header-section-number">15.16</span> Ejemplo resuelto 3: error estándar<a href="estimación-puntual-e-intervalos-de-confianza.html#ejemplo-resuelto-3-error-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suponga que una muestra de 25 mediciones de voltaje tiene desviación estándar muestral:</p>
+<p><span class="math display">\[
+s=4\text{ V}
+\]</span></p>
+<p>Calcular el error estándar.</p>
+<hr />
+</div>
+<div id="solución-manual-22" class="section level2 hasAnchor" number="15.17">
+<h2><span class="header-section-number">15.17</span> Solución manual<a href="estimación-puntual-e-intervalos-de-confianza.html#soluci%C3%B3n-manual-22" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[
+SE=\frac{s}{\sqrt{n}}
+\]</span></p>
+<p><span class="math display">\[
+SE=\frac{4}{\sqrt{25}}
+\]</span></p>
+<p><span class="math display">\[
+SE=\frac{4}{5}
+\]</span></p>
+<p><span class="math display">\[
+SE=0.8
+\]</span></p>
+<div id="interpretación-29" class="section level3 hasAnchor" number="15.17.1">
+<h3><span class="header-section-number">15.17.1</span> Interpretación<a href="estimación-puntual-e-intervalos-de-confianza.html#interpretaci%C3%B3n-29" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El error estándar de la media es 0.8 V. Esto indica la variabilidad esperada de la media muestral entre muestras similares.</p>
+<hr />
+</div>
+</div>
+<div id="verificación-en-r-46" class="section level2 hasAnchor" number="15.18">
+<h2><span class="header-section-number">15.18</span> Verificación en R<a href="estimación-puntual-e-intervalos-de-confianza.html#verificaci%C3%B3n-en-r-46" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb287-1" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb287-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb287-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb287-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb287-3" tabindex="-1"></a></span>
+<span id="cb287-4"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb287-4" tabindex="-1"></a>SE <span class="ot">&lt;-</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb287-5"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb287-5" tabindex="-1"></a>SE</span></code></pre></div>
+<pre><code>## [1] 0.8</code></pre>
+<hr />
+</div>
+<div id="teorema-central-del-límite" class="section level2 hasAnchor" number="15.19">
+<h2><span class="header-section-number">15.19</span> Teorema Central del Límite<a href="estimación-puntual-e-intervalos-de-confianza.html#teorema-central-del-l%C3%ADmite" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El <strong>Teorema Central del Límite</strong> establece que, si se toman muchas muestras de tamaño suficientemente grande de una población, la distribución de las medias muestrales tiende a aproximarse a una distribución normal, incluso si la población original no es normal.</p>
+<p>Esto es muy importante porque permite construir intervalos de confianza y pruebas de hipótesis usando la distribución normal o t de Student.</p>
+<hr />
+</div>
+<div id="interpretación-intuitiva-1" class="section level2 hasAnchor" number="15.20">
+<h2><span class="header-section-number">15.20</span> Interpretación intuitiva<a href="estimación-puntual-e-intervalos-de-confianza.html#interpretaci%C3%B3n-intuitiva-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Si se toma una sola muestra, su media puede variar. Pero si se toman muchas muestras:</p>
+<ul>
+<li>cada muestra tiene su propia media,</li>
+<li>las medias muestrales se agrupan alrededor de la media poblacional,</li>
+<li>mientras mayor sea el tamaño muestral, menor será la variabilidad de esas medias.</li>
+</ul>
+<hr />
+</div>
+<div id="simulación-del-teorema-central-del-límite" class="section level2 hasAnchor" number="15.21">
+<h2><span class="header-section-number">15.21</span> Simulación del Teorema Central del Límite<a href="estimación-puntual-e-intervalos-de-confianza.html#simulaci%C3%B3n-del-teorema-central-del-l%C3%ADmite" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Simulamos una población no normal y luego tomamos muchas muestras.</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb289-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb289-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb289-2" tabindex="-1"></a></span>
+<span id="cb289-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb289-3" tabindex="-1"></a>poblacion <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">10000</span>, <span class="at">rate =</span> <span class="fl">0.2</span>)</span>
+<span id="cb289-4"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb289-4" tabindex="-1"></a></span>
+<span id="cb289-5"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb289-5" tabindex="-1"></a><span class="fu">hist</span>(poblacion,</span>
+<span id="cb289-6"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb289-6" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
+<span id="cb289-7"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb289-7" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb289-8"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb289-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Población original no normal&quot;</span>,</span>
+<span id="cb289-9"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb289-9" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Valores&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-148-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="distribución-de-medias-muestrales" class="section level2 hasAnchor" number="15.22">
+<h2><span class="header-section-number">15.22</span> Distribución de medias muestrales<a href="estimación-puntual-e-intervalos-de-confianza.html#distribuci%C3%B3n-de-medias-muestrales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb290-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb290-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb290-2" tabindex="-1"></a></span>
+<span id="cb290-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb290-3" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">sample</span>(poblacion, <span class="at">size =</span> <span class="dv">30</span>)))</span>
+<span id="cb290-4"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb290-4" tabindex="-1"></a></span>
+<span id="cb290-5"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb290-5" tabindex="-1"></a><span class="fu">hist</span>(medias,</span>
+<span id="cb290-6"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb290-6" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightgreen&quot;</span>,</span>
+<span id="cb290-7"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb290-7" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb290-8"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb290-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Distribución de medias muestrales&quot;</span>,</span>
+<span id="cb290-9"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb290-9" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Media muestral&quot;</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-149-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<div id="interpretación-30" class="section level3 hasAnchor" number="15.22.1">
+<h3><span class="header-section-number">15.22.1</span> Interpretación<a href="estimación-puntual-e-intervalos-de-confianza.html#interpretaci%C3%B3n-30" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Aunque la población original no es normal, la distribución de las medias muestrales se aproxima a una forma normal.</p>
+<hr />
+</div>
+</div>
+<div id="intervalos-de-confianza" class="section level2 hasAnchor" number="15.23">
+<h2><span class="header-section-number">15.23</span> Intervalos de confianza<a href="estimación-puntual-e-intervalos-de-confianza.html#intervalos-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una estimación puntual entrega un solo valor. Sin embargo, ese valor puede variar de una muestra a otra.</p>
+<p>Un <strong>intervalo de confianza</strong> proporciona un rango de valores dentro del cual se espera que se encuentre el parámetro poblacional.</p>
+<p>La forma general es:</p>
+<p><span class="math display">\[
+\text{Estimación} \pm \text{Margen de error}
+\]</span></p>
+<hr />
+</div>
+<div id="interpretación-correcta" class="section level2 hasAnchor" number="15.24">
+<h2><span class="header-section-number">15.24</span> Interpretación correcta<a href="estimación-puntual-e-intervalos-de-confianza.html#interpretaci%C3%B3n-correcta" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un intervalo de confianza del 95% no significa que haya 95% de probabilidad de que el parámetro esté dentro de un intervalo ya calculado.</p>
+<p>La interpretación correcta es:</p>
+<blockquote>
+<p>Si se repitiera el proceso de muestreo muchas veces, aproximadamente el 95% de los intervalos construidos contendrían el verdadero parámetro poblacional.</p>
+</blockquote>
+<hr />
+</div>
+<div id="intervalo-de-confianza-para-la-media-con-sigma-conocida" class="section level2 hasAnchor" number="15.25">
+<h2><span class="header-section-number">15.25</span> Intervalo de confianza para la media con <span class="math inline">\(\sigma\)</span> conocida<a href="estimación-puntual-e-intervalos-de-confianza.html#intervalo-de-confianza-para-la-media-con-sigma-conocida" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cuando se conoce la desviación estándar poblacional <span class="math inline">\(\sigma\)</span>, se utiliza:</p>
+<p><span class="math display">\[
+IC=\bar{x}\pm Z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(\bar{x}\)</span>: media muestral.</li>
+<li><span class="math inline">\(Z_{\alpha/2}\)</span>: valor crítico de la normal estándar.</li>
+<li><span class="math inline">\(\sigma\)</span>: desviación estándar poblacional.</li>
+<li><span class="math inline">\(n\)</span>: tamaño de muestra.</li>
+</ul>
+<p>Para un 95% de confianza:</p>
+<p><span class="math display">\[
+Z_{\alpha/2}=1.96
+\]</span></p>
+<hr />
+</div>
+<div id="ejemplo-resuelto-4-intervalo-con-sigma-conocida" class="section level2 hasAnchor" number="15.26">
+<h2><span class="header-section-number">15.26</span> Ejemplo resuelto 4: intervalo con sigma conocida<a href="estimación-puntual-e-intervalos-de-confianza.html#ejemplo-resuelto-4-intervalo-con-sigma-conocida" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En una planta de producción se obtiene una muestra de 36 piezas. El peso promedio muestral es:</p>
+<p><span class="math display">\[
+\bar{x}=50.2\text{ kg}
+\]</span></p>
+<p>Se conoce que la desviación estándar poblacional es:</p>
+<p><span class="math display">\[
+\sigma=1.8\text{ kg}
+\]</span></p>
+<p>Construir un intervalo de confianza del 95% para el peso promedio poblacional.</p>
+<hr />
+</div>
+<div id="solución-manual-23" class="section level2 hasAnchor" number="15.27">
+<h2><span class="header-section-number">15.27</span> Solución manual<a href="estimación-puntual-e-intervalos-de-confianza.html#soluci%C3%B3n-manual-23" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paso-1-identificar-datos-3" class="section level3 hasAnchor" number="15.27.1">
+<h3><span class="header-section-number">15.27.1</span> Paso 1: identificar datos<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-1-identificar-datos-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+\bar{x}=50.2
+\]</span></p>
+<p><span class="math display">\[
+\sigma=1.8
+\]</span></p>
+<p><span class="math display">\[
+n=36
+\]</span></p>
+<p><span class="math display">\[
+Z=1.96
+\]</span></p>
+</div>
+<div id="paso-2-calcular-error-estándar" class="section level3 hasAnchor" number="15.27.2">
+<h3><span class="header-section-number">15.27.2</span> Paso 2: calcular error estándar<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-2-calcular-error-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+SE=\frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p><span class="math display">\[
+SE=\frac{1.8}{\sqrt{36}}
+\]</span></p>
+<p><span class="math display">\[
+SE=\frac{1.8}{6}
+\]</span></p>
+<p><span class="math display">\[
+SE=0.30
+\]</span></p>
+</div>
+<div id="paso-3-calcular-margen-de-error" class="section level3 hasAnchor" number="15.27.3">
+<h3><span class="header-section-number">15.27.3</span> Paso 3: calcular margen de error<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-3-calcular-margen-de-error" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+ME=Z\cdot SE
+\]</span></p>
+<p><span class="math display">\[
+ME=1.96(0.30)
+\]</span></p>
+<p><span class="math display">\[
+ME=0.588
+\]</span></p>
+</div>
+<div id="paso-4-construir-intervalo" class="section level3 hasAnchor" number="15.27.4">
+<h3><span class="header-section-number">15.27.4</span> Paso 4: construir intervalo<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-4-construir-intervalo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+IC=50.2\pm0.588
+\]</span></p>
+<p>Límite inferior:</p>
+<p><span class="math display">\[
+LI=50.2-0.588=49.612
+\]</span></p>
+<p>Límite superior:</p>
+<p><span class="math display">\[
+LS=50.2+0.588=50.788
+\]</span></p>
+</div>
+<div id="resultado" class="section level3 hasAnchor" number="15.27.5">
+<h3><span class="header-section-number">15.27.5</span> Resultado<a href="estimación-puntual-e-intervalos-de-confianza.html#resultado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+IC_{95\%}=(49.612,\ 50.788)
+\]</span></p>
+</div>
+<div id="interpretación-31" class="section level3 hasAnchor" number="15.27.6">
+<h3><span class="header-section-number">15.27.6</span> Interpretación<a href="estimación-puntual-e-intervalos-de-confianza.html#interpretaci%C3%B3n-31" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con 95% de confianza, el peso promedio poblacional se encuentra entre 49.612 kg y 50.788 kg.</p>
+<hr />
+</div>
+</div>
+<div id="verificación-en-r-47" class="section level2 hasAnchor" number="15.28">
+<h2><span class="header-section-number">15.28</span> Verificación en R<a href="estimación-puntual-e-intervalos-de-confianza.html#verificaci%C3%B3n-en-r-47" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-1" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fl">50.2</span></span>
+<span id="cb291-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-2" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">1.8</span></span>
+<span id="cb291-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">36</span></span>
+<span id="cb291-4"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-4" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb291-5"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-5" tabindex="-1"></a></span>
+<span id="cb291-6"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-6" tabindex="-1"></a>SE <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb291-7"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-7" tabindex="-1"></a>ME <span class="ot">&lt;-</span> z <span class="sc">*</span> SE</span>
+<span id="cb291-8"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-8" tabindex="-1"></a></span>
+<span id="cb291-9"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-9" tabindex="-1"></a>LI <span class="ot">&lt;-</span> xbar <span class="sc">-</span> ME</span>
+<span id="cb291-10"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-10" tabindex="-1"></a>LS <span class="ot">&lt;-</span> xbar <span class="sc">+</span> ME</span>
+<span id="cb291-11"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-11" tabindex="-1"></a></span>
+<span id="cb291-12"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb291-12" tabindex="-1"></a><span class="fu">c</span>(<span class="at">LI =</span> LI, <span class="at">LS =</span> LS)</span></code></pre></div>
+<pre><code>##       LI       LS 
+## 49.61201 50.78799</code></pre>
+<hr />
+</div>
+<div id="intervalo-de-confianza-para-la-media-con-sigma-desconocida" class="section level2 hasAnchor" number="15.29">
+<h2><span class="header-section-number">15.29</span> Intervalo de confianza para la media con <span class="math inline">\(\sigma\)</span> desconocida<a href="estimación-puntual-e-intervalos-de-confianza.html#intervalo-de-confianza-para-la-media-con-sigma-desconocida" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En la práctica, casi nunca se conoce <span class="math inline">\(\sigma\)</span>. Por eso se utiliza la desviación estándar muestral <span class="math inline">\(s\)</span> y la distribución t de Student.</p>
+<p><span class="math display">\[
+IC=\bar{x}\pm t_{\alpha/2,n-1}\frac{s}{\sqrt{n}}
+\]</span></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(t_{\alpha/2,n-1}\)</span>: valor crítico t.</li>
+<li><span class="math inline">\(n-1\)</span>: grados de libertad.</li>
+<li><span class="math inline">\(s\)</span>: desviación estándar muestral.</li>
+</ul>
+<hr />
+</div>
+<div id="ejemplo-resuelto-5-intervalo-con-t-de-student" class="section level2 hasAnchor" number="15.30">
+<h2><span class="header-section-number">15.30</span> Ejemplo resuelto 5: intervalo con t de Student<a href="estimación-puntual-e-intervalos-de-confianza.html#ejemplo-resuelto-5-intervalo-con-t-de-student" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se mide el voltaje en una red eléctrica durante 10 momentos:</p>
+<p><span class="math display">\[
+219,\ 221,\ 220,\ 222,\ 218,\ 223,\ 221,\ 220,\ 219,\ 222
+\]</span></p>
+<p>Construir un intervalo de confianza del 95% para el voltaje promedio.</p>
+<hr />
+</div>
+<div id="solución-manual-24" class="section level2 hasAnchor" number="15.31">
+<h2><span class="header-section-number">15.31</span> Solución manual<a href="estimación-puntual-e-intervalos-de-confianza.html#soluci%C3%B3n-manual-24" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paso-1-calcular-media-y-desviación-estándar" class="section level3 hasAnchor" number="15.31.1">
+<h3><span class="header-section-number">15.31.1</span> Paso 1: calcular media y desviación estándar<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-1-calcular-media-y-desviaci%C3%B3n-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con los datos se obtiene:</p>
+<p><span class="math display">\[
+\bar{x}=220.5
+\]</span></p>
+<p><span class="math display">\[
+s=1.581
+\]</span></p>
+<p><span class="math display">\[
+n=10
+\]</span></p>
+</div>
+<div id="paso-2-grados-de-libertad" class="section level3 hasAnchor" number="15.31.2">
+<h3><span class="header-section-number">15.31.2</span> Paso 2: grados de libertad<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-2-grados-de-libertad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+gl=n-1=9
+\]</span></p>
+</div>
+<div id="paso-3-valor-crítico-t" class="section level3 hasAnchor" number="15.31.3">
+<h3><span class="header-section-number">15.31.3</span> Paso 3: valor crítico t<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-3-valor-cr%C3%ADtico-t" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para 95% de confianza y 9 grados de libertad:</p>
+<p><span class="math display">\[
+t_{0.025,9}=2.262
+\]</span></p>
+</div>
+<div id="paso-4-error-estándar" class="section level3 hasAnchor" number="15.31.4">
+<h3><span class="header-section-number">15.31.4</span> Paso 4: error estándar<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-4-error-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+SE=\frac{s}{\sqrt{n}}
+\]</span></p>
+<p><span class="math display">\[
+SE=\frac{1.581}{\sqrt{10}}
+\]</span></p>
+<p><span class="math display">\[
+SE=0.500
+\]</span></p>
+</div>
+<div id="paso-5-margen-de-error" class="section level3 hasAnchor" number="15.31.5">
+<h3><span class="header-section-number">15.31.5</span> Paso 5: margen de error<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-5-margen-de-error" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+ME=2.262(0.500)
+\]</span></p>
+<p><span class="math display">\[
+ME=1.131
+\]</span></p>
+</div>
+<div id="paso-6-intervalo" class="section level3 hasAnchor" number="15.31.6">
+<h3><span class="header-section-number">15.31.6</span> Paso 6: intervalo<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-6-intervalo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+IC=220.5\pm1.131
+\]</span></p>
+<p><span class="math display">\[
+LI=219.369
+\]</span></p>
+<p><span class="math display">\[
+LS=221.631
+\]</span></p>
+</div>
+<div id="interpretación-32" class="section level3 hasAnchor" number="15.31.7">
+<h3><span class="header-section-number">15.31.7</span> Interpretación<a href="estimación-puntual-e-intervalos-de-confianza.html#interpretaci%C3%B3n-32" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con 95% de confianza, el voltaje promedio poblacional está entre 219.369 V y 221.631 V.</p>
+<hr />
+</div>
+</div>
+<div id="verificación-en-r-48" class="section level2 hasAnchor" number="15.32">
+<h2><span class="header-section-number">15.32</span> Verificación en R<a href="estimación-puntual-e-intervalos-de-confianza.html#verificaci%C3%B3n-en-r-48" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb293-1" tabindex="-1"></a>voltaje <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">219</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">222</span>, <span class="dv">218</span>, <span class="dv">223</span>, <span class="dv">221</span>, <span class="dv">220</span>, <span class="dv">219</span>, <span class="dv">222</span>)</span>
+<span id="cb293-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb293-2" tabindex="-1"></a></span>
+<span id="cb293-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb293-3" tabindex="-1"></a><span class="fu">mean</span>(voltaje)</span></code></pre></div>
+<pre><code>## [1] 220.5</code></pre>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb295-1" tabindex="-1"></a><span class="fu">sd</span>(voltaje)</span></code></pre></div>
+<pre><code>## [1] 1.581139</code></pre>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb297-1" tabindex="-1"></a><span class="fu">t.test</span>(voltaje, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  voltaje
+## t = 441, df = 9, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  219.3689 221.6311
+## sample estimates:
+## mean of x 
+##     220.5</code></pre>
+<hr />
+</div>
+<div id="intervalo-de-confianza-para-una-proporción" class="section level2 hasAnchor" number="15.33">
+<h2><span class="header-section-number">15.33</span> Intervalo de confianza para una proporción<a href="estimación-puntual-e-intervalos-de-confianza.html#intervalo-de-confianza-para-una-proporci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cuando se desea estimar una proporción poblacional, se usa:</p>
+<p><span class="math display">\[
+IC=\hat{p}\pm Z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+\]</span></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(\hat{p}\)</span>: proporción muestral.</li>
+<li><span class="math inline">\(n\)</span>: tamaño de muestra.</li>
+<li><span class="math inline">\(Z_{\alpha/2}\)</span>: valor crítico normal.</li>
+</ul>
+<hr />
+</div>
+<div id="ejemplo-resuelto-6-proporción-de-defectos" class="section level2 hasAnchor" number="15.34">
+<h2><span class="header-section-number">15.34</span> Ejemplo resuelto 6: proporción de defectos<a href="estimación-puntual-e-intervalos-de-confianza.html#ejemplo-resuelto-6-proporci%C3%B3n-de-defectos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En una muestra de 200 piezas, 18 son defectuosas. Construir un intervalo de confianza del 95% para la proporción poblacional de defectos.</p>
+<hr />
+</div>
+<div id="solución-manual-25" class="section level2 hasAnchor" number="15.35">
+<h2><span class="header-section-number">15.35</span> Solución manual<a href="estimación-puntual-e-intervalos-de-confianza.html#soluci%C3%B3n-manual-25" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paso-1-calcular-proporción-muestral" class="section level3 hasAnchor" number="15.35.1">
+<h3><span class="header-section-number">15.35.1</span> Paso 1: calcular proporción muestral<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-1-calcular-proporci%C3%B3n-muestral" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+\hat{p}=\frac{18}{200}
+\]</span></p>
+<p><span class="math display">\[
+\hat{p}=0.09
+\]</span></p>
+</div>
+<div id="paso-2-valor-crítico" class="section level3 hasAnchor" number="15.35.2">
+<h3><span class="header-section-number">15.35.2</span> Paso 2: valor crítico<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-2-valor-cr%C3%ADtico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+Z=1.96
+\]</span></p>
+</div>
+<div id="paso-3-error-estándar" class="section level3 hasAnchor" number="15.35.3">
+<h3><span class="header-section-number">15.35.3</span> Paso 3: error estándar<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-3-error-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+SE=\sqrt{\frac{0.09(1-0.09)}{200}}
+\]</span></p>
+<p><span class="math display">\[
+SE=\sqrt{\frac{0.09(0.91)}{200}}
+\]</span></p>
+<p><span class="math display">\[
+SE=\sqrt{0.0004095}
+\]</span></p>
+<p><span class="math display">\[
+SE=0.02024
+\]</span></p>
+</div>
+<div id="paso-4-margen-de-error" class="section level3 hasAnchor" number="15.35.4">
+<h3><span class="header-section-number">15.35.4</span> Paso 4: margen de error<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-4-margen-de-error" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+ME=1.96(0.02024)
+\]</span></p>
+<p><span class="math display">\[
+ME=0.03967
+\]</span></p>
+</div>
+<div id="paso-5-intervalo" class="section level3 hasAnchor" number="15.35.5">
+<h3><span class="header-section-number">15.35.5</span> Paso 5: intervalo<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-5-intervalo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+IC=0.09\pm0.03967
+\]</span></p>
+<p><span class="math display">\[
+LI=0.0503
+\]</span></p>
+<p><span class="math display">\[
+LS=0.1297
+\]</span></p>
+</div>
+<div id="interpretación-33" class="section level3 hasAnchor" number="15.35.6">
+<h3><span class="header-section-number">15.35.6</span> Interpretación<a href="estimación-puntual-e-intervalos-de-confianza.html#interpretaci%C3%B3n-33" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con 95% de confianza, la proporción poblacional de piezas defectuosas se encuentra entre 5.03% y 12.97%.</p>
+<hr />
+</div>
+</div>
+<div id="verificación-en-r-49" class="section level2 hasAnchor" number="15.36">
+<h2><span class="header-section-number">15.36</span> Verificación en R<a href="estimación-puntual-e-intervalos-de-confianza.html#verificaci%C3%B3n-en-r-49" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">18</span></span>
+<span id="cb299-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb299-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-3" tabindex="-1"></a></span>
+<span id="cb299-4"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-4" tabindex="-1"></a>p_hat <span class="ot">&lt;-</span> x<span class="sc">/</span>n</span>
+<span id="cb299-5"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-5" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb299-6"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-6" tabindex="-1"></a></span>
+<span id="cb299-7"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-7" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_hat)<span class="sc">/</span>n)</span>
+<span id="cb299-8"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-8" tabindex="-1"></a>ME <span class="ot">&lt;-</span> z <span class="sc">*</span> SE</span>
+<span id="cb299-9"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-9" tabindex="-1"></a></span>
+<span id="cb299-10"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-10" tabindex="-1"></a>LI <span class="ot">&lt;-</span> p_hat <span class="sc">-</span> ME</span>
+<span id="cb299-11"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-11" tabindex="-1"></a>LS <span class="ot">&lt;-</span> p_hat <span class="sc">+</span> ME</span>
+<span id="cb299-12"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-12" tabindex="-1"></a></span>
+<span id="cb299-13"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb299-13" tabindex="-1"></a><span class="fu">c</span>(<span class="at">LI =</span> LI, <span class="at">LS =</span> LS)</span></code></pre></div>
+<pre><code>##         LI         LS 
+## 0.05033796 0.12966204</code></pre>
+<hr />
+</div>
+<div id="simulación-de-intervalos-de-confianza" class="section level2 hasAnchor" number="15.37">
+<h2><span class="header-section-number">15.37</span> Simulación de intervalos de confianza<a href="estimación-puntual-e-intervalos-de-confianza.html#simulaci%C3%B3n-de-intervalos-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Simulamos 100 intervalos de confianza para observar cuántos contienen la media poblacional verdadera.</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb301-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-2" tabindex="-1"></a></span>
+<span id="cb301-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-3" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb301-4"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb301-5"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-5" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb301-6"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-6" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb301-7"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-7" tabindex="-1"></a></span>
+<span id="cb301-8"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-8" tabindex="-1"></a>LI <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb301-9"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-9" tabindex="-1"></a>LS <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb301-10"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-10" tabindex="-1"></a></span>
+<span id="cb301-11"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-11" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb301-12"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-12" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb301-13"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-13" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(muestra)</span>
+<span id="cb301-14"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-14" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(muestra)</span>
+<span id="cb301-15"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-15" tabindex="-1"></a>  tcrit <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> n<span class="dv">-1</span>)</span>
+<span id="cb301-16"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-16" tabindex="-1"></a>  ME <span class="ot">&lt;-</span> tcrit <span class="sc">*</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb301-17"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-17" tabindex="-1"></a>  LI[i] <span class="ot">&lt;-</span> xbar <span class="sc">-</span> ME</span>
+<span id="cb301-18"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-18" tabindex="-1"></a>  LS[i] <span class="ot">&lt;-</span> xbar <span class="sc">+</span> ME</span>
+<span id="cb301-19"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-19" tabindex="-1"></a>}</span>
+<span id="cb301-20"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-20" tabindex="-1"></a></span>
+<span id="cb301-21"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-21" tabindex="-1"></a>contiene <span class="ot">&lt;-</span> LI <span class="sc">&lt;=</span> mu <span class="sc">&amp;</span> LS <span class="sc">&gt;=</span> mu</span>
+<span id="cb301-22"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb301-22" tabindex="-1"></a><span class="fu">mean</span>(contiene)</span></code></pre></div>
+<pre><code>## [1] 0.95</code></pre>
+<hr />
+</div>
+<div id="gráfica-de-intervalos-simulados" class="section level2 hasAnchor" number="15.38">
+<h2><span class="header-section-number">15.38</span> Gráfica de intervalos simulados<a href="estimación-puntual-e-intervalos-de-confianza.html#gr%C3%A1fica-de-intervalos-simulados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>B, <span class="fu">rep</span>(mu, B),</span>
+<span id="cb303-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-2" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb303-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-3" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">c</span>(LI, LS)),</span>
+<span id="cb303-4"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Intervalo&quot;</span>,</span>
+<span id="cb303-5"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Valor&quot;</span>,</span>
+<span id="cb303-6"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Intervalos de confianza simulados&quot;</span>)</span>
+<span id="cb303-7"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-7" tabindex="-1"></a></span>
+<span id="cb303-8"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-8" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B){</span>
+<span id="cb303-9"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-9" tabindex="-1"></a>  color <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(contiene[i], <span class="st">&quot;gray40&quot;</span>, <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb303-10"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-10" tabindex="-1"></a>  <span class="fu">segments</span>(i, LI[i], i, LS[i], <span class="at">col =</span> color)</span>
+<span id="cb303-11"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-11" tabindex="-1"></a>}</span>
+<span id="cb303-12"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-12" tabindex="-1"></a></span>
+<span id="cb303-13"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb303-13" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> mu, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="estadistica_bloque1_files/figure-html/unnamed-chunk-154-1.png" alt="" width="85%" style="display: block; margin: auto;" /></p>
+<p>Los intervalos en rojo son aquellos que no contienen la media poblacional.</p>
+<hr />
+</div>
+<div id="ejercicio-guiado-6" class="section level2 hasAnchor" number="15.39">
+<h2><span class="header-section-number">15.39</span> Ejercicio guiado<a href="estimación-puntual-e-intervalos-de-confianza.html#ejercicio-guiado-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un laboratorio de ingeniería civil se miden resistencias de 12 probetas:</p>
+<p><span class="math display">\[
+27,\ 28,\ 26,\ 29,\ 30,\ 28,\ 27,\ 29,\ 28,\ 26,\ 30,\ 29
+\]</span></p>
+<p>Construir un intervalo de confianza del 95% para la resistencia promedio poblacional.</p>
+<hr />
+</div>
+<div id="solución-del-ejercicio-guiado-6" class="section level2 hasAnchor" number="15.40">
+<h2><span class="header-section-number">15.40</span> Solución del ejercicio guiado<a href="estimación-puntual-e-intervalos-de-confianza.html#soluci%C3%B3n-del-ejercicio-guiado-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paso-1-calcular-valores-muestrales" class="section level3 hasAnchor" number="15.40.1">
+<h3><span class="header-section-number">15.40.1</span> Paso 1: calcular valores muestrales<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-1-calcular-valores-muestrales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con los datos:</p>
+<p><span class="math display">\[
+n=12
+\]</span></p>
+<p><span class="math display">\[
+\bar{x}=28.083
+\]</span></p>
+<p><span class="math display">\[
+s=1.240
+\]</span></p>
+</div>
+<div id="paso-2-grados-de-libertad-1" class="section level3 hasAnchor" number="15.40.2">
+<h3><span class="header-section-number">15.40.2</span> Paso 2: grados de libertad<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-2-grados-de-libertad-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+gl=12-1=11
+\]</span></p>
+</div>
+<div id="paso-3-valor-crítico-t-1" class="section level3 hasAnchor" number="15.40.3">
+<h3><span class="header-section-number">15.40.3</span> Paso 3: valor crítico t<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-3-valor-cr%C3%ADtico-t-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para 95% y 11 grados de libertad:</p>
+<p><span class="math display">\[
+t=2.201
+\]</span></p>
+</div>
+<div id="paso-4-error-estándar-1" class="section level3 hasAnchor" number="15.40.4">
+<h3><span class="header-section-number">15.40.4</span> Paso 4: error estándar<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-4-error-est%C3%A1ndar-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+SE=\frac{1.240}{\sqrt{12}}
+\]</span></p>
+<p><span class="math display">\[
+SE=0.358
+\]</span></p>
+</div>
+<div id="paso-5-margen-de-error-1" class="section level3 hasAnchor" number="15.40.5">
+<h3><span class="header-section-number">15.40.5</span> Paso 5: margen de error<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-5-margen-de-error-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+ME=2.201(0.358)
+\]</span></p>
+<p><span class="math display">\[
+ME=0.788
+\]</span></p>
+</div>
+<div id="paso-6-intervalo-1" class="section level3 hasAnchor" number="15.40.6">
+<h3><span class="header-section-number">15.40.6</span> Paso 6: intervalo<a href="estimación-puntual-e-intervalos-de-confianza.html#paso-6-intervalo-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+IC=28.083\pm0.788
+\]</span></p>
+<p><span class="math display">\[
+LI=27.295
+\]</span></p>
+<p><span class="math display">\[
+LS=28.871
+\]</span></p>
+</div>
+<div id="interpretación-34" class="section level3 hasAnchor" number="15.40.7">
+<h3><span class="header-section-number">15.40.7</span> Interpretación<a href="estimación-puntual-e-intervalos-de-confianza.html#interpretaci%C3%B3n-34" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con 95% de confianza, la resistencia promedio poblacional está entre 27.295 MPa y 28.871 MPa.</p>
+<hr />
+</div>
+</div>
+<div id="verificación-en-r-50" class="section level2 hasAnchor" number="15.41">
+<h2><span class="header-section-number">15.41</span> Verificación en R<a href="estimación-puntual-e-intervalos-de-confianza.html#verificaci%C3%B3n-en-r-50" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb304-1" tabindex="-1"></a>resistencia2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">28</span>, <span class="dv">26</span>, <span class="dv">29</span>, <span class="dv">30</span>, <span class="dv">28</span>, <span class="dv">27</span>, <span class="dv">29</span>, <span class="dv">28</span>, <span class="dv">26</span>, <span class="dv">30</span>, <span class="dv">29</span>)</span>
+<span id="cb304-2"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb304-2" tabindex="-1"></a></span>
+<span id="cb304-3"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb304-3" tabindex="-1"></a><span class="fu">mean</span>(resistencia2)</span></code></pre></div>
+<pre><code>## [1] 28.08333</code></pre>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb306-1" tabindex="-1"></a><span class="fu">sd</span>(resistencia2)</span></code></pre></div>
+<pre><code>## [1] 1.378954</code></pre>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="estimación-puntual-e-intervalos-de-confianza.html#cb308-1" tabindex="-1"></a><span class="fu">t.test</span>(resistencia2, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  resistencia2
+## t = 70.549, df = 11, p-value = 5.765e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  27.20719 28.95948
+## sample estimates:
+## mean of x 
+##  28.08333</code></pre>
+<hr />
+</div>
+<div id="actividad-práctica-6" class="section level2 hasAnchor" number="15.42">
+<h2><span class="header-section-number">15.42</span> Actividad práctica<a href="estimación-puntual-e-intervalos-de-confianza.html#actividad-pr%C3%A1ctica-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Seleccione uno de los siguientes contextos:</p>
+<ol style="list-style-type: decimal">
+<li>Resistencia de hormigón.</li>
+<li>Voltaje de una red eléctrica.</li>
+<li>Peso de piezas industriales.</li>
+<li>Producción diaria de energía solar.</li>
+<li>Tiempo de operación de una máquina.</li>
+</ol>
+<p>Para su problema:</p>
+<ul>
+<li>Proponga una muestra de datos.</li>
+<li>Calcule una estimación puntual.</li>
+<li>Calcule el error estándar.</li>
+<li>Construya un intervalo de confianza del 95%.</li>
+<li>Verifique en R.</li>
+<li>Interprete técnicamente el resultado.</li>
+</ul>
+<hr />
+</div>
+<div id="aplicaciones-por-carrera-6" class="section level2 hasAnchor" number="15.43">
+<h2><span class="header-section-number">15.43</span> Aplicaciones por carrera<a href="estimación-puntual-e-intervalos-de-confianza.html#aplicaciones-por-carrera-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ingeniería-civil-6" class="section level3 hasAnchor" number="15.43.1">
+<h3><span class="header-section-number">15.43.1</span> Ingeniería Civil<a href="estimación-puntual-e-intervalos-de-confianza.html#ingenier%C3%ADa-civil-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los intervalos de confianza permiten estimar resistencia promedio del hormigón, compactación, CBR, densidades y asentamientos.</p>
+</div>
+<div id="ingeniería-eléctrica-6" class="section level3 hasAnchor" number="15.43.2">
+<h3><span class="header-section-number">15.43.2</span> Ingeniería Eléctrica<a href="estimación-puntual-e-intervalos-de-confianza.html#ingenier%C3%ADa-el%C3%A9ctrica-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se utilizan para estimar voltajes promedio, corrientes, frecuencia, consumo y estabilidad de sistemas.</p>
+</div>
+<div id="ingeniería-industrial-6" class="section level3 hasAnchor" number="15.43.3">
+<h3><span class="header-section-number">15.43.3</span> Ingeniería Industrial<a href="estimación-puntual-e-intervalos-de-confianza.html#ingenier%C3%ADa-industrial-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Permiten estimar tiempos promedio, productividad, pesos, dimensiones y proporción de defectos.</p>
+</div>
+<div id="energías-renovables-6" class="section level3 hasAnchor" number="15.43.4">
+<h3><span class="header-section-number">15.43.4</span> Energías Renovables<a href="estimación-puntual-e-intervalos-de-confianza.html#energ%C3%ADas-renovables-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ayudan a estimar generación promedio, irradiancia, velocidad del viento y rendimiento energético.</p>
+<hr />
+</div>
+</div>
+<div id="preguntas-de-autoevaluación-6" class="section level2 hasAnchor" number="15.44">
+<h2><span class="header-section-number">15.44</span> Preguntas de autoevaluación<a href="estimación-puntual-e-intervalos-de-confianza.html#preguntas-de-autoevaluaci%C3%B3n-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>¿Qué es una estimación puntual?</li>
+<li>¿Qué estimador se usa para <span class="math inline">\(\mu\)</span>?</li>
+<li>¿Qué estimador se usa para <span class="math inline">\(p\)</span>?</li>
+<li>¿Qué es el error estándar?</li>
+<li>¿Qué indica un intervalo de confianza?</li>
+<li>¿Cuál es la diferencia entre usar <span class="math inline">\(Z\)</span> y usar <span class="math inline">\(t\)</span>?</li>
+<li>¿Qué ocurre con el intervalo si aumenta <span class="math inline">\(n\)</span>?</li>
+<li>¿Qué ocurre con el intervalo si aumenta la variabilidad?</li>
+<li>¿Cómo se interpreta un intervalo de confianza del 95%?</li>
+<li>¿Por qué una estimación puntual no es suficiente en ingeniería?</li>
+</ol>
+<hr />
+</div>
+<div id="resumen-de-la-unidad-6" class="section level2 hasAnchor" number="15.45">
+<h2><span class="header-section-number">15.45</span> Resumen de la unidad<a href="estimación-puntual-e-intervalos-de-confianza.html#resumen-de-la-unidad-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La estimación puntual permite aproximar un parámetro poblacional usando un único valor muestral, como la media o la proporción. Sin embargo, debido a la variabilidad muestral, es necesario acompañar la estimación con una medida de incertidumbre.</p>
+<p>Los intervalos de confianza proporcionan un rango plausible para el parámetro poblacional. En ingeniería, son esenciales para comunicar resultados con rigor técnico y tomar decisiones fundamentadas.</p>
+<hr />
+</div>
+<div id="bibliografía-sugerida-6" class="section level2 hasAnchor" number="15.46">
+<h2><span class="header-section-number">15.46</span> Bibliografía sugerida<a href="estimación-puntual-e-intervalos-de-confianza.html#bibliograf%C3%ADa-sugerida-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Devore, J. L. (2008). <em>Probabilidad y estadística para ingeniería y ciencias</em>. Cengage Learning.</li>
+<li>Montgomery, D. C., &amp; Runger, G. C. (2016). <em>Probabilidad y estadística aplicada a la ingeniería</em>. Limusa.</li>
+<li>OpenStax. (2023). <em>Introducción a la estadística</em>. Rice University.</li>
+</ul>
 
 </div>
 </div>
@@ -1223,8 +1983,8 @@ CV = \frac{s}{\bar{x}} \times 100
           </div>
         </div>
       </div>
-<a href="medidas-de-tendencia-central-y-de-posición.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="muestras-población-y-muestreo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introducción-a-la-inferencia-estadística.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intervalos-de-confianza-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
