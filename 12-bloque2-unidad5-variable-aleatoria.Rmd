@@ -1,147 +1,743 @@
 # Variables aleatorias
 
+## Motivación ingenieril
+
+En las unidades anteriores se estudiaron eventos, probabilidades, conteo, probabilidad condicional y el teorema de Bayes. Ahora se introduce un concepto central para conectar la probabilidad con datos numéricos: la **variable aleatoria**.
+
+En muchos problemas reales no basta con decir si ocurre o no ocurre un evento. También interesa medir un resultado numérico.
+
+Ejemplos cotidianos:
+
+- Número de llamadas que recibe una persona en un día.
+- Número de buses que pasan por una parada en una hora.
+- Tiempo que tarda una persona en llegar a clases.
+- Número de productos defectuosos en una caja.
+- Cantidad de energía consumida en una vivienda.
+
+Ejemplos en ingeniería:
+
+- Número de fallas en un sistema eléctrico durante una semana.
+- Número de piezas defectuosas en un lote.
+- Resistencia a compresión de una probeta de hormigón.
+- Velocidad del viento en un sitio de generación eólica.
+- Producción diaria de energía solar en kWh.
+- Tiempo de operación de una máquina antes de requerir mantenimiento.
+
+Una variable aleatoria permite transformar resultados inciertos en valores numéricos que pueden ser analizados matemáticamente.
+
+---
+
+## Resultados de aprendizaje
+
+Al finalizar esta unidad, el estudiante será capaz de:
+
+1. Definir qué es una variable aleatoria.
+2. Diferenciar variables aleatorias discretas y continuas.
+3. Construir una distribución de probabilidad discreta.
+4. Calcular el valor esperado de una variable aleatoria.
+5. Calcular varianza y desviación estándar.
+6. Interpretar el significado de esperanza y varianza.
+7. Resolver ejercicios manuales paso a paso.
+8. Verificar cálculos mediante R.
+9. Simular variables aleatorias con R.
+10. Aplicar variables aleatorias en problemas de ingeniería civil, eléctrica, industrial y energías renovables.
+
+---
+
 ## Concepto teórico
 
-Una variable aleatoria es una función que asigna valores numéricos a los resultados de un experimento aleatorio. Se representa usualmente por \(X\).
+Una **variable aleatoria** es una función que asigna un valor numérico a cada resultado de un experimento aleatorio.
 
-### Tipos de variables aleatorias
+Se representa generalmente con letras mayúsculas:
 
-- **Discreta**: toma valores aislados o contables.
-- **Continua**: puede tomar cualquier valor en un intervalo.
+\[
+X, Y, Z
+\]
 
-### Función de probabilidad para variable discreta
+El valor observado de una variable aleatoria se representa con letras minúsculas:
 
-Si \(X\) es discreta:
+\[
+x, y, z
+\]
+
+---
+
+## Ejemplo cotidiano
+
+Experimento: lanzar una moneda tres veces.
+
+Un posible resultado es:
+
+\[
+\text{Cara, Sello, Cara}
+\]
+
+Podemos definir la variable aleatoria:
+
+\[
+X = \text{número de caras obtenidas}
+\]
+
+Entonces, para ese resultado:
+
+\[
+X=2
+\]
+
+La variable aleatoria convierte un resultado cualitativo en un valor numérico.
+
+---
+
+## Tipos de variables aleatorias
+
+Existen dos tipos principales:
+
+1. Variables aleatorias discretas.
+2. Variables aleatorias continuas.
+
+---
+
+## Variable aleatoria discreta
+
+Una variable aleatoria discreta toma valores contables o separados.
+
+### Ejemplos cotidianos
+
+- Número de hermanos.
+- Número de llamadas recibidas.
+- Número de materias aprobadas.
+- Número de productos defectuosos.
+- Número de buses que pasan por una avenida.
+
+### Ejemplos en ingeniería
+
+| Carrera | Variable aleatoria discreta |
+|---|---|
+| Ingeniería Civil | Número de fisuras visibles en una losa |
+| Ingeniería Eléctrica | Número de interrupciones eléctricas por semana |
+| Ingeniería Industrial | Número de piezas defectuosas por lote |
+| Energías Renovables | Número de días con baja generación solar |
+
+---
+
+## Variable aleatoria continua
+
+Una variable aleatoria continua puede tomar cualquier valor dentro de un intervalo.
+
+### Ejemplos cotidianos
+
+- Tiempo de viaje.
+- Estatura.
+- Peso.
+- Temperatura.
+- Consumo de agua.
+
+### Ejemplos en ingeniería
+
+| Carrera | Variable aleatoria continua |
+|---|---|
+| Ingeniería Civil | Resistencia a compresión del hormigón |
+| Ingeniería Eléctrica | Voltaje medido en una red |
+| Ingeniería Industrial | Tiempo de producción de una pieza |
+| Energías Renovables | Velocidad del viento o irradiancia solar |
+
+---
+
+## Distribución de probabilidad de una variable discreta
+
+Una distribución de probabilidad asigna una probabilidad a cada valor posible de la variable aleatoria.
+
+Si \(X\) es una variable aleatoria discreta, entonces:
 
 \[
 P(X=x_i)=p_i
 \]
 
-con:
+donde:
+
+- \(x_i\): valor posible de la variable.
+- \(p_i\): probabilidad asociada al valor \(x_i\).
+
+Debe cumplirse:
+
+\[
+0 \leq p_i \leq 1
+\]
+
+y:
 
 \[
 \sum p_i = 1
 \]
 
-### Esperanza matemática
+---
 
-La esperanza o valor esperado de una variable aleatoria discreta es:
+## Ejemplo resuelto 1: número de defectos en un lote
+
+Una línea de producción registra el número de piezas defectuosas en pequeños lotes. La variable aleatoria \(X\) representa el número de defectos por lote.
+
+La distribución es:
+
+| \(X\) | \(P(X)\) |
+|---:|---:|
+| 0 | 0.20 |
+| 1 | 0.50 |
+| 2 | 0.30 |
+
+---
+
+## Verificación de la distribución
+
+Para que sea una distribución válida, las probabilidades deben sumar 1:
+
+\[
+0.20+0.50+0.30=1.00
+\]
+
+Por tanto, sí es una distribución de probabilidad válida.
+
+---
+
+## Verificación en R
+
+```{r}
+x <- c(0, 1, 2)
+p <- c(0.20, 0.50, 0.30)
+
+sum(p)
+```
+
+---
+
+## Valor esperado
+
+El **valor esperado** o **esperanza matemática** representa el promedio teórico de una variable aleatoria si el experimento se repitiera muchas veces.
+
+Para una variable aleatoria discreta:
 
 \[
 E(X)=\sum x_iP(X=x_i)
 \]
 
-### Varianza
+---
+
+## Cálculo manual del valor esperado
+
+Usando la tabla:
+
+\[
+E(X)=0(0.20)+1(0.50)+2(0.30)
+\]
+
+\[
+E(X)=0+0.50+0.60
+\]
+
+\[
+E(X)=1.10
+\]
+
+---
+
+## Interpretación
+
+El valor esperado es:
+
+\[
+E(X)=1.10
+\]
+
+Esto significa que, en promedio, se espera observar 1.10 defectos por lote.
+
+No significa que un lote específico tendrá exactamente 1.10 defectos. El valor esperado es un promedio a largo plazo.
+
+---
+
+## Verificación en R
+
+```{r}
+esperanza <- sum(x*p)
+esperanza
+```
+
+---
+
+## Varianza de una variable aleatoria
+
+La varianza mide qué tan dispersos están los valores de la variable aleatoria respecto a su valor esperado.
+
+Una forma práctica de calcularla es:
 
 \[
 Var(X)=E(X^2)-[E(X)]^2
 \]
 
-### Desviación estándar
+Donde:
 
 \[
-\sigma = \sqrt{Var(X)}
+E(X^2)=\sum x_i^2P(X=x_i)
 \]
 
-## Ejemplo aplicado
+---
 
-Sea \(X\) el número de fallas detectadas en un día en un sistema pequeño. Supóngase:
+## Cálculo manual de \(E(X^2)\)
 
 \[
-X=\{0,1,2,3\}
+E(X^2)=0^2(0.20)+1^2(0.50)+2^2(0.30)
 \]
-
-con probabilidades:
 
 \[
-P(X)=\{0.30, 0.40, 0.20, 0.10\}
+E(X^2)=0(0.20)+1(0.50)+4(0.30)
 \]
 
-## Implementación en R
+\[
+E(X^2)=0+0.50+1.20
+\]
+
+\[
+E(X^2)=1.70
+\]
+
+---
+
+## Cálculo manual de la varianza
+
+\[
+Var(X)=E(X^2)-[E(X)]^2
+\]
+
+\[
+Var(X)=1.70-(1.10)^2
+\]
+
+\[
+Var(X)=1.70-1.21
+\]
+
+\[
+Var(X)=0.49
+\]
+
+---
+
+## Desviación estándar
+
+La desviación estándar es la raíz cuadrada de la varianza:
+
+\[
+\sigma=\sqrt{Var(X)}
+\]
+
+\[
+\sigma=\sqrt{0.49}
+\]
+
+\[
+\sigma=0.70
+\]
+
+---
+
+## Verificación en R
 
 ```{r}
-x <- c(0, 1, 2, 3)
-p <- c(0.30, 0.40, 0.20, 0.10)
+E_X2 <- sum(x^2 * p)
+varianza <- E_X2 - esperanza^2
+desviacion <- sqrt(varianza)
 
-sum(p)
+c(Esperanza = esperanza,
+  E_X2 = E_X2,
+  Varianza = varianza,
+  Desviacion = desviacion)
 ```
 
-### Esperanza
+---
+
+## Gráfica de la distribución
 
 ```{r}
-E_X <- sum(x * p)
-E_X
-```
-
-### Segundo momento
-
-```{r}
-E_X2 <- sum((x^2) * p)
-E_X2
-```
-
-### Varianza y desviación estándar
-
-```{r}
-Var_X <- E_X2 - E_X^2
-Var_X
-```
-
-```{r}
-sqrt(Var_X)
-```
-
-## Gráfica
-
-```{r}
-barplot(p, names.arg = x, col = "mediumpurple",
+barplot(p,
+        names.arg = x,
+        col = "lightblue",
         main = "Distribución de probabilidad de X",
-        xlab = "Número de fallas",
+        xlab = "Número de defectos",
         ylab = "Probabilidad")
 ```
 
-## Simulación
+---
+
+## Ejemplo resuelto 2: número de fallas eléctricas
+
+Un sistema eléctrico puede presentar 0, 1, 2 o 3 fallas en una semana. La distribución de probabilidad es:
+
+| \(X\) | \(P(X)\) |
+|---:|---:|
+| 0 | 0.40 |
+| 1 | 0.35 |
+| 2 | 0.20 |
+| 3 | 0.05 |
+
+Calcular:
+
+1. El valor esperado.
+2. La varianza.
+3. La desviación estándar.
+
+---
+
+## Solución manual
+
+### Paso 1: verificar probabilidades
+
+\[
+0.40+0.35+0.20+0.05=1.00
+\]
+
+La distribución es válida.
+
+### Paso 2: calcular \(E(X)\)
+
+\[
+E(X)=0(0.40)+1(0.35)+2(0.20)+3(0.05)
+\]
+
+\[
+E(X)=0+0.35+0.40+0.15
+\]
+
+\[
+E(X)=0.90
+\]
+
+### Paso 3: calcular \(E(X^2)\)
+
+\[
+E(X^2)=0^2(0.40)+1^2(0.35)+2^2(0.20)+3^2(0.05)
+\]
+
+\[
+E(X^2)=0+0.35+0.80+0.45
+\]
+
+\[
+E(X^2)=1.60
+\]
+
+### Paso 4: calcular varianza
+
+\[
+Var(X)=1.60-(0.90)^2
+\]
+
+\[
+Var(X)=1.60-0.81
+\]
+
+\[
+Var(X)=0.79
+\]
+
+### Paso 5: calcular desviación estándar
+
+\[
+\sigma=\sqrt{0.79}=0.889
+\]
+
+---
+
+## Verificación en R
 
 ```{r}
-set.seed(654)
-sim_x <- sample(x, size = 1000, replace = TRUE, prob = p)
+x_fallas <- c(0, 1, 2, 3)
+p_fallas <- c(0.40, 0.35, 0.20, 0.05)
 
-mean(sim_x)
-var(sim_x)
+E_fallas <- sum(x_fallas * p_fallas)
+E2_fallas <- sum(x_fallas^2 * p_fallas)
+Var_fallas <- E2_fallas - E_fallas^2
+SD_fallas <- sqrt(Var_fallas)
+
+c(Esperanza = E_fallas,
+  Varianza = Var_fallas,
+  Desviacion = SD_fallas)
 ```
 
-### Comparación gráfica entre distribución teórica y empírica
+---
+
+## Simulación de una variable aleatoria discreta
+
+Se puede simular una variable aleatoria utilizando `sample()`.
+
+Simularemos 1000 semanas de operación del sistema eléctrico.
 
 ```{r}
-tabla_emp <- prop.table(table(sim_x))
-barplot(rbind(p, as.numeric(tabla_emp)),
+set.seed(123)
+
+sim_fallas <- sample(x_fallas,
+                     size = 1000,
+                     replace = TRUE,
+                     prob = p_fallas)
+
+head(sim_fallas)
+```
+
+---
+
+## Comparación entre teoría y simulación
+
+```{r}
+mean(sim_fallas)
+var(sim_fallas)
+sd(sim_fallas)
+```
+
+La media simulada debe aproximarse al valor esperado teórico si el número de simulaciones es grande.
+
+---
+
+## Gráfica de frecuencias simuladas
+
+```{r}
+tabla_sim <- prop.table(table(sim_fallas))
+
+barplot(tabla_sim,
+        col = "lightgreen",
+        main = "Distribución simulada de fallas",
+        xlab = "Número de fallas",
+        ylab = "Frecuencia relativa")
+```
+
+---
+
+## Comparación gráfica: probabilidad teórica vs simulada
+
+```{r}
+prob_sim <- as.numeric(tabla_sim)
+
+barplot(rbind(p_fallas, prob_sim),
         beside = TRUE,
-        names.arg = x,
+        names.arg = x_fallas,
         col = c("orange", "lightblue"),
-        main = "Distribución teórica vs empírica",
-        xlab = "X", ylab = "Probabilidad")
-legend("topright", legend = c("Teórica", "Empírica"),
+        main = "Probabilidad teórica vs simulada",
+        xlab = "Número de fallas",
+        ylab = "Probabilidad")
+
+legend("topright",
+       legend = c("Teórica", "Simulada"),
        fill = c("orange", "lightblue"))
 ```
 
-## Ejercicios propuestos
+---
 
-1. Defina una variable aleatoria discreta relacionada con su carrera.
-2. Construya una tabla de probabilidades válida.
-3. Calcule \(E(X)\), \(Var(X)\) y \(\sigma\).
-4. Realice una simulación de 1000 observaciones.
-5. Compare resultados teóricos y simulados.
+## Variable aleatoria continua
 
-## Caso real (ingeniería)
+Una variable aleatoria continua puede tomar cualquier valor dentro de un intervalo.
 
-En **ingeniería industrial**, una variable aleatoria puede representar defectos por lote, retrasos por jornada o número de paradas de máquina.
+Ejemplos:
 
-En **ingeniería civil**, puede representar el número de fisuras observadas, eventos de sobrecarga o conteos de tránsito.
+- El voltaje puede ser 219.5 V, 220.1 V o 220.35 V.
+- La resistencia del hormigón puede ser 25.2 MPa o 25.27 MPa.
+- El tiempo de producción puede ser 12.4 minutos.
+- La generación solar puede ser 520.8 kWh.
 
-En **ingeniería eléctrica**, puede modelar número de interrupciones, fallas o alarmas por unidad de tiempo.
+En variables continuas, la probabilidad exacta de un único valor es prácticamente cero. Por eso se calculan probabilidades en intervalos.
 
-En **energías renovables**, puede representar el número de días con baja generación o el número de eventos de desconexión de un sistema.
+Ejemplo:
 
-## Conclusión
+\[
+P(218<X<222)
+\]
 
-Las variables aleatorias permiten pasar del conteo simple a la modelación probabilística cuantitativa. Constituyen la base conceptual para estudiar distribuciones discretas y continuas.
+---
+
+## Ejemplo conceptual de variable continua
+
+Suponga que \(X\) representa el voltaje de una red eléctrica.
+
+No se suele preguntar:
+
+\[
+P(X=220)
+\]
+
+sino:
+
+\[
+P(218<X<222)
+\]
+
+Esto se debe a que el voltaje puede tomar muchos valores decimales dentro de un intervalo.
+
+---
+
+## Ejercicio guiado
+
+Una variable aleatoria \(X\) representa el número de días con baja generación solar durante una semana.
+
+La distribución es:
+
+| \(X\) | \(P(X)\) |
+|---:|---:|
+| 0 | 0.10 |
+| 1 | 0.30 |
+| 2 | 0.40 |
+| 3 | 0.20 |
+
+Calcular:
+
+1. Verificar si la distribución es válida.
+2. Calcular \(E(X)\).
+3. Calcular \(Var(X)\).
+4. Calcular la desviación estándar.
+5. Verificar los resultados en R.
+
+---
+
+## Solución del ejercicio guiado
+
+### Paso 1: verificar probabilidades
+
+\[
+0.10+0.30+0.40+0.20=1.00
+\]
+
+La distribución es válida.
+
+### Paso 2: calcular esperanza
+
+\[
+E(X)=0(0.10)+1(0.30)+2(0.40)+3(0.20)
+\]
+
+\[
+E(X)=0+0.30+0.80+0.60
+\]
+
+\[
+E(X)=1.70
+\]
+
+### Paso 3: calcular \(E(X^2)\)
+
+\[
+E(X^2)=0^2(0.10)+1^2(0.30)+2^2(0.40)+3^2(0.20)
+\]
+
+\[
+E(X^2)=0+0.30+1.60+1.80
+\]
+
+\[
+E(X^2)=3.70
+\]
+
+### Paso 4: calcular varianza
+
+\[
+Var(X)=3.70-(1.70)^2
+\]
+
+\[
+Var(X)=3.70-2.89
+\]
+
+\[
+Var(X)=0.81
+\]
+
+### Paso 5: desviación estándar
+
+\[
+\sigma=\sqrt{0.81}=0.90
+\]
+
+---
+
+## Verificación en R
+
+```{r}
+x_solar <- c(0, 1, 2, 3)
+p_solar <- c(0.10, 0.30, 0.40, 0.20)
+
+E_solar <- sum(x_solar * p_solar)
+E2_solar <- sum(x_solar^2 * p_solar)
+Var_solar <- E2_solar - E_solar^2
+SD_solar <- sqrt(Var_solar)
+
+c(Esperanza = E_solar,
+  Varianza = Var_solar,
+  Desviacion = SD_solar)
+```
+
+---
+
+## Actividad práctica
+
+Construya una variable aleatoria discreta en uno de los siguientes contextos:
+
+1. Número de piezas defectuosas en un lote.
+2. Número de fallas eléctricas por semana.
+3. Número de probetas que no cumplen resistencia mínima.
+4. Número de días con baja generación solar.
+5. Número de vehículos que llegan a una intersección en un minuto.
+
+Para su variable:
+
+- Defina los valores posibles de \(X\).
+- Asigne probabilidades.
+- Verifique que las probabilidades suman 1.
+- Calcule \(E(X)\), \(Var(X)\) y \(\sigma\).
+- Verifique los resultados en R.
+- Interprete técnicamente.
+
+---
+
+## Aplicaciones por carrera
+
+### Ingeniería Civil
+
+Las variables aleatorias pueden representar el número de probetas que fallan, cantidad de fisuras, número de vehículos o resistencia de materiales.
+
+### Ingeniería Eléctrica
+
+Pueden representar número de interrupciones, número de equipos fallados, voltaje, corriente o tiempo de operación.
+
+### Ingeniería Industrial
+
+Se usan para modelar defectos por lote, tiempos de producción, número de reclamos o cantidad de productos rechazados.
+
+### Energías Renovables
+
+Permiten estudiar días de baja generación, producción energética, velocidad del viento, irradiancia solar o fallas de inversores.
+
+---
+
+## Preguntas de autoevaluación
+
+1. ¿Qué es una variable aleatoria?
+2. ¿Cuál es la diferencia entre variable aleatoria discreta y continua?
+3. ¿Qué condiciones debe cumplir una distribución de probabilidad discreta?
+4. ¿Qué representa el valor esperado?
+5. ¿Cómo se calcula \(E(X)\)?
+6. ¿Cómo se calcula \(Var(X)\)?
+7. ¿Qué representa la desviación estándar?
+8. ¿Por qué en variables continuas se calculan probabilidades en intervalos?
+9. Dé un ejemplo de variable aleatoria discreta en ingeniería industrial.
+10. Dé un ejemplo de variable aleatoria continua en ingeniería eléctrica.
+
+---
+
+## Resumen de la unidad
+
+Una variable aleatoria permite asignar valores numéricos a los resultados de un experimento aleatorio. Puede ser discreta si toma valores contables o continua si toma valores dentro de un intervalo.
+
+Las variables aleatorias discretas se describen mediante distribuciones de probabilidad. A partir de estas distribuciones se pueden calcular el valor esperado, la varianza y la desviación estándar.
+
+Estos conceptos son fundamentales para avanzar hacia las distribuciones de probabilidad, que permiten modelar formalmente fenómenos aleatorios en ingeniería.
+
+---
+
+## Bibliografía sugerida
+
+- Devore, J. L. (2008). *Probabilidad y estadística para ingeniería y ciencias*. Cengage Learning.
+- Montgomery, D. C., & Runger, G. C. (2016). *Probabilidad y estadística aplicada a la ingeniería*. Limusa.
+- OpenStax. (2023). *Introducción a la estadística*. Rice University.
