@@ -339,23 +339,62 @@ h2:ejercicios-propuestos Ejercicios propuestos
 h2:caso-real-ingeniería-7 Caso real (ingeniería)
 h2:conclusión Conclusión
 h1:variables-aleatorias Variables aleatorias
+h2:motivación-ingenieril-3 Motivación ingenieril
+h2:resultados-de-aprendizaje-3 Resultados de aprendizaje
 h2:concepto-teórico-10 Concepto teórico
-h3:tipos-de-variables-aleatorias Tipos de variables aleatorias
-h3:función-de-probabilidad-para-variable-discreta Función de probabilidad para variable discreta
-h3:esperanza-matemática Esperanza matemática
-h3:varianza-1 Varianza
-h3:desviación-estándar-1 Desviación estándar
-h2:ejemplo-aplicado-8 Ejemplo aplicado
-h2:implementación-en-r-8 Implementación en R
-h3:esperanza Esperanza
-h3:segundo-momento Segundo momento
-h3:varianza-y-desviación-estándar-1 Varianza y desviación estándar
-h2:gráfica-3 Gráfica
-h2:simulación-1 Simulación
-h3:comparación-gráfica-entre-distribución-teórica-y-empírica Comparación gráfica entre distribución teórica y empírica
-h2:ejercicios-propuestos-1 Ejercicios propuestos
-h2:caso-real-ingeniería-8 Caso real (ingeniería)
-h2:conclusión-1 Conclusión
+h2:ejemplo-cotidiano-1 Ejemplo cotidiano
+h2:tipos-de-variables-aleatorias Tipos de variables aleatorias
+h2:variable-aleatoria-discreta Variable aleatoria discreta
+h3:ejemplos-cotidianos-1 Ejemplos cotidianos
+h3:ejemplos-en-ingeniería-1 Ejemplos en ingeniería
+h2:variable-aleatoria-continua Variable aleatoria continua
+h3:ejemplos-cotidianos-2 Ejemplos cotidianos
+h3:ejemplos-en-ingeniería-2 Ejemplos en ingeniería
+h2:distribución-de-probabilidad-de-una-variable-discreta Distribución de probabilidad de una variable discreta
+h2:ejemplo-resuelto-1-número-de-defectos-en-un-lote Ejemplo resuelto 1: número de defectos en un lote
+h2:verificación-de-la-distribución Verificación de la distribución
+h2:verificación-en-r-26 Verificación en R
+h2:valor-esperado Valor esperado
+h2:cálculo-manual-del-valor-esperado Cálculo manual del valor esperado
+h2:interpretación-19 Interpretación
+h2:verificación-en-r-27 Verificación en R
+h2:varianza-de-una-variable-aleatoria Varianza de una variable aleatoria
+h2:cálculo-manual-de-ex2 Cálculo manual de (E(X^2))
+h2:cálculo-manual-de-la-varianza Cálculo manual de la varianza
+h2:desviación-estándar-1 Desviación estándar
+h2:verificación-en-r-28 Verificación en R
+h2:gráfica-de-la-distribución Gráfica de la distribución
+h2:ejemplo-resuelto-2-número-de-fallas-eléctricas Ejemplo resuelto 2: número de fallas eléctricas
+h2:solución-manual-10 Solución manual
+h3:paso-1-verificar-probabilidades Paso 1: verificar probabilidades
+h3:paso-2-calcular-ex Paso 2: calcular (E(X))
+h3:paso-3-calcular-ex2 Paso 3: calcular (E(X^2))
+h3:paso-4-calcular-varianza Paso 4: calcular varianza
+h3:paso-5-calcular-desviación-estándar Paso 5: calcular desviación estándar
+h2:verificación-en-r-29 Verificación en R
+h2:simulación-de-una-variable-aleatoria-discreta Simulación de una variable aleatoria discreta
+h2:comparación-entre-teoría-y-simulación Comparación entre teoría y simulación
+h2:gráfica-de-frecuencias-simuladas Gráfica de frecuencias simuladas
+h2:comparación-gráfica-probabilidad-teórica-vs-simulada Comparación gráfica: probabilidad teórica vs simulada
+h2:variable-aleatoria-continua-1 Variable aleatoria continua
+h2:ejemplo-conceptual-de-variable-continua Ejemplo conceptual de variable continua
+h2:ejercicio-guiado-3 Ejercicio guiado
+h2:solución-del-ejercicio-guiado-3 Solución del ejercicio guiado
+h3:paso-1-verificar-probabilidades-1 Paso 1: verificar probabilidades
+h3:paso-2-calcular-esperanza Paso 2: calcular esperanza
+h3:paso-3-calcular-ex2-1 Paso 3: calcular (E(X^2))
+h3:paso-4-calcular-varianza-1 Paso 4: calcular varianza
+h3:paso-5-desviación-estándar Paso 5: desviación estándar
+h2:verificación-en-r-30 Verificación en R
+h2:actividad-práctica-3 Actividad práctica
+h2:aplicaciones-por-carrera-3 Aplicaciones por carrera
+h3:ingeniería-civil-3 Ingeniería Civil
+h3:ingeniería-eléctrica-3 Ingeniería Eléctrica
+h3:ingeniería-industrial-3 Ingeniería Industrial
+h3:energías-renovables-3 Energías Renovables
+h2:preguntas-de-autoevaluación-3 Preguntas de autoevaluación
+h2:resumen-de-la-unidad-3 Resumen de la unidad
+h2:bibliografía-sugerida-3 Bibliografía sugerida
 h1:distribuciones-de-probabilidad Distribuciones de probabilidad
 h2:concepto-teórico-11 Concepto teórico
 h2:distribuciones-discretas Distribuciones discretas
@@ -363,9 +402,9 @@ h3:distribución-bernoulli Distribución Bernoulli
 h3:distribución-binomial Distribución Binomial
 h2:distribuciones-continuas Distribuciones continuas
 h3:distribución-normal Distribución Normal
-h2:ejemplo-aplicado-9 Ejemplo aplicado
+h2:ejemplo-aplicado-8 Ejemplo aplicado
 h3:distribución-binomial-1 Distribución binomial
-h2:implementación-en-r-9 Implementación en R
+h2:implementación-en-r-8 Implementación en R
 h3:probabilidad-acumulada-binomial Probabilidad acumulada binomial
 h3:esperanza-y-varianza-binomial Esperanza y varianza binomial
 h2:gráfica-binomial Gráfica binomial
@@ -373,12 +412,12 @@ h2:ejemplo-con-distribución-normal Ejemplo con distribución normal
 h3:probabilidad-de-que-el-voltaje-sea-menor-que-218-v Probabilidad de que el voltaje sea menor que 218 V
 h3:probabilidad-de-que-el-voltaje-esté-entre-218-v-y-223-v Probabilidad de que el voltaje esté entre 218 V y 223 V
 h2:gráfica-normal Gráfica normal
-h2:simulación-2 Simulación
+h2:simulación-1 Simulación
 h3:simulación-binomial Simulación binomial
 h3:simulación-normal Simulación normal
-h2:ejercicios-propuestos-2 Ejercicios propuestos
-h2:caso-real-ingeniería-9 Caso real (ingeniería)
-h2:conclusión-2 Conclusión
+h2:ejercicios-propuestos-1 Ejercicios propuestos
+h2:caso-real-ingeniería-8 Caso real (ingeniería)
+h2:conclusión-1 Conclusión
 h1:introducción-a-la-inferencia-estadística Introducción a la inferencia estadística
 h2:concepto-teórico-12 Concepto teórico
 h3:población-y-muestra Población y muestra
@@ -390,47 +429,47 @@ h2:formulación-matemática-2 Formulación matemática
 h3:media-muestral Media muestral
 h3:varianza-muestral Varianza muestral
 h3:proporción-muestral Proporción muestral
-h2:ejemplo-aplicado-10 Ejemplo aplicado
-h2:implementación-en-r-10 Implementación en R
+h2:ejemplo-aplicado-9 Ejemplo aplicado
+h2:implementación-en-r-9 Implementación en R
 h3:tamaño-de-la-muestra-1 Tamaño de la muestra
 h3:media-muestral-1 Media muestral
 h3:varianza-muestral-1 Varianza muestral
 h3:desviación-estándar-muestral Desviación estándar muestral
 h3:resumen-general Resumen general
-h2:gráfica-4 Gráfica
-h2:simulación-3 Simulación
+h2:gráfica-3 Gráfica
+h2:simulación-2 Simulación
 h3:visualización-de-las-medias-muestrales Visualización de las medias muestrales
 h2:ejercicio-propuesto-7 Ejercicio propuesto
-h2:caso-real-ingeniería-10 Caso real (ingeniería)
-h2:conclusión-3 Conclusión
+h2:caso-real-ingeniería-9 Caso real (ingeniería)
+h2:conclusión-2 Conclusión
 h1:estimación-puntual Estimación puntual
 h2:concepto-teórico-13 Concepto teórico
 h2:media-muestral-2 Media muestral
-h2:ejemplo-aplicado-11 Ejemplo aplicado
-h2:implementación-en-r-11 Implementación en R
-h2:gráfica-5 Gráfica
+h2:ejemplo-aplicado-10 Ejemplo aplicado
+h2:implementación-en-r-10 Implementación en R
+h2:gráfica-4 Gráfica
 h2:error-estándar Error estándar
-h2:simulación-4 Simulación
+h2:simulación-3 Simulación
 h2:ejercicio-propuesto-8 Ejercicio propuesto
-h2:caso-real-ingeniería-11 Caso real (ingeniería)
-h2:conclusión-4 Conclusión
+h2:caso-real-ingeniería-10 Caso real (ingeniería)
+h2:conclusión-3 Conclusión
 h1:intervalos-de-confianza Intervalos de confianza
 h2:concepto-teórico-14 Concepto teórico
 h3:nivel-de-confianza Nivel de confianza
 h2:formulación-matemática-3 Formulación matemática
 h3:intervalo-de-confianza-para-la-media-con-desviación-poblacional-conocida Intervalo de confianza para la media con desviación poblacional conocida
 h3:intervalo-de-confianza-para-la-media-con-desviación-poblacional-desconocida Intervalo de confianza para la media con desviación poblacional desconocida
-h2:ejemplo-aplicado-12 Ejemplo aplicado
-h2:implementación-en-r-12 Implementación en R
+h2:ejemplo-aplicado-11 Ejemplo aplicado
+h2:implementación-en-r-11 Implementación en R
 h3:estadísticos-básicos Estadísticos básicos
 h3:intervalo-de-confianza-con-t-de-student Intervalo de confianza con t de Student
 h3:usando-t.test Usando 
-h2:gráfica-6 Gráfica
-h2:simulación-5 Simulación
+h2:gráfica-5 Gráfica
+h2:simulación-4 Simulación
 h3:visualización-de-intervalos-simulados Visualización de intervalos simulados
 h2:ejercicio-propuesto-9 Ejercicio propuesto
-h2:caso-real-ingeniería-12 Caso real (ingeniería)
-h2:conclusión-5 Conclusión
+h2:caso-real-ingeniería-11 Caso real (ingeniería)
+h2:conclusión-4 Conclusión
 h1:pruebas-de-hipótesis Pruebas de hipótesis
 h2:concepto-teórico-15 Concepto teórico
 h3:hipótesis-nula Hipótesis nula
@@ -438,15 +477,15 @@ h3:hipótesis-alternativa Hipótesis alternativa
 h3:nivel-de-significancia Nivel de significancia
 h2:formulación-matemática-4 Formulación matemática
 h3:prueba-para-una-media-con-desviación-poblacional-desconocida Prueba para una media con desviación poblacional desconocida
-h2:ejemplo-aplicado-13 Ejemplo aplicado
-h2:implementación-en-r-13 Implementación en R
+h2:ejemplo-aplicado-12 Ejemplo aplicado
+h2:implementación-en-r-12 Implementación en R
 h3:estadísticos-básicos-1 Estadísticos básicos
 h3:prueba-t-para-una-muestra Prueba t para una muestra
-h2:gráfica-7 Gráfica
-h2:simulación-6 Simulación
+h2:gráfica-6 Gráfica
+h2:simulación-5 Simulación
 h2:ejercicio-propuesto-10 Ejercicio propuesto
-h2:caso-real-ingeniería-13 Caso real (ingeniería)
-h2:conclusión-6 Conclusión
+h2:caso-real-ingeniería-12 Caso real (ingeniería)
+h2:conclusión-5 Conclusión
 h1:p-valor-nivel-de-significancia-y-errores-de-decisión p-valor, nivel de significancia y errores de decisión
 h2:concepto-teórico-16 Concepto teórico
 h3:interpretación-del-p-valor Interpretación del p-valor
@@ -454,44 +493,44 @@ h2:errores-de-decisión Errores de decisión
 h3:error-tipo-i Error tipo I
 h3:error-tipo-ii Error tipo II
 h3:potencia-de-una-prueba Potencia de una prueba
-h2:ejemplo-aplicado-14 Ejemplo aplicado
-h2:implementación-en-r-14 Implementación en R
+h2:ejemplo-aplicado-13 Ejemplo aplicado
+h2:implementación-en-r-13 Implementación en R
 h3:extraer-p-valor Extraer p-valor
 h3:decisión-con-0.05 Decisión con (= 0.05)
-h2:gráfica-8 Gráfica
-h2:simulación-7 Simulación
+h2:gráfica-7 Gráfica
+h2:simulación-6 Simulación
 h3:proporción-de-rechazos-con-0.05 Proporción de rechazos con (= 0.05)
 h2:ejercicio-propuesto-11 Ejercicio propuesto
-h2:caso-real-ingeniería-14 Caso real (ingeniería)
-h2:conclusión-7 Conclusión
+h2:caso-real-ingeniería-13 Caso real (ingeniería)
+h2:conclusión-6 Conclusión
 h1:comparación-de-medias Comparación de medias
 h2:concepto-teórico-17 Concepto teórico
 h2:formulación-matemática-5 Formulación matemática
 h3:prueba-t-para-dos-muestras-independientes Prueba t para dos muestras independientes
-h2:ejemplo-aplicado-15 Ejemplo aplicado
-h2:implementación-en-r-15 Implementación en R
+h2:ejemplo-aplicado-14 Ejemplo aplicado
+h2:implementación-en-r-14 Implementación en R
 h3:estadísticos-descriptivos Estadísticos descriptivos
 h3:prueba-t-para-dos-muestras-independientes-1 Prueba t para dos muestras independientes
-h2:gráfica-9 Gráfica
-h2:simulación-8 Simulación
+h2:gráfica-8 Gráfica
+h2:simulación-7 Simulación
 h2:ejercicio-propuesto-12 Ejercicio propuesto
-h2:caso-real-ingeniería-15 Caso real (ingeniería)
-h2:conclusión-8 Conclusión
+h2:caso-real-ingeniería-14 Caso real (ingeniería)
+h2:conclusión-7 Conclusión
 h1:aplicaciones-de-inferencia-estadística-en-ingeniería Aplicaciones de inferencia estadística en ingeniería
 h2:concepto-teórico-18 Concepto teórico
 h2:caso-integrador-1-control-de-calidad-industrial Caso integrador 1: control de calidad industrial
 h3:estimación-puntual-1 Estimación puntual
 h3:intervalo-de-confianza Intervalo de confianza
 h3:prueba-de-hipótesis Prueba de hipótesis
-h2:gráfica-10 Gráfica
+h2:gráfica-9 Gráfica
 h2:caso-integrador-2-comparación-de-sistemas-energéticos Caso integrador 2: comparación de sistemas energéticos
 h2:gráfica-comparativa Gráfica comparativa
-h2:simulación-9 Simulación
+h2:simulación-8 Simulación
 h2:ejercicio-propuesto-13 Ejercicio propuesto
 h2:caso-real-por-carrera Caso real por carrera
-h3:ingeniería-civil-3 Ingeniería civil
-h3:ingeniería-eléctrica-3 Ingeniería eléctrica
-h3:ingeniería-industrial-3 Ingeniería industrial
-h3:energías-renovables-3 Energías renovables
-h2:conclusión-9 Conclusión
+h3:ingeniería-civil-4 Ingeniería civil
+h3:ingeniería-eléctrica-4 Ingeniería eléctrica
+h3:ingeniería-industrial-4 Ingeniería industrial
+h3:energías-renovables-4 Energías renovables
+h2:conclusión-8 Conclusión
 

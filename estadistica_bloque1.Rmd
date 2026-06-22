@@ -4397,164 +4397,1246 @@ Estos conceptos son fundamentales para avanzar hacia las distribuciones de proba
 
 # Distribuciones de probabilidad
 
+## Motivación ingenieril
+
+En las unidades anteriores se estudió cómo calcular probabilidades, cómo contar resultados posibles, cómo analizar probabilidades condicionadas y cómo trabajar con variables aleatorias. En esta unidad se estudian las **distribuciones de probabilidad**, que permiten modelar matemáticamente el comportamiento de una variable aleatoria.
+
+En la vida cotidiana aparecen muchos fenómenos que se comportan de manera aleatoria:
+
+- Número de llamadas que llegan a un teléfono.
+- Número de productos defectuosos en una caja.
+- Tiempo de espera en una fila.
+- Variación diaria de la temperatura.
+- Tiempo de duración de una batería.
+
+En ingeniería ocurre algo similar:
+
+- Número de fallas en una red eléctrica.
+- Número de piezas defectuosas en un lote.
+- Resistencia de probetas de hormigón.
+- Variación de voltaje en un sistema eléctrico.
+- Producción diaria de energía solar.
+- Velocidad del viento en un parque eólico.
+- Tiempo hasta la falla de un equipo.
+
+Las distribuciones de probabilidad permiten representar estos fenómenos, calcular probabilidades y tomar decisiones técnicas bajo incertidumbre.
+
+---
+
+## Resultados de aprendizaje
+
+Al finalizar esta unidad, el estudiante será capaz de:
+
+1. Comprender qué es una distribución de probabilidad.
+2. Diferenciar distribuciones discretas y continuas.
+3. Aplicar la distribución Bernoulli.
+4. Aplicar la distribución binomial.
+5. Aplicar la distribución de Poisson.
+6. Aplicar la distribución uniforme continua.
+7. Aplicar la distribución exponencial.
+8. Aplicar la distribución normal.
+9. Resolver ejercicios manuales paso a paso.
+10. Verificar resultados mediante R.
+11. Simular distribuciones de probabilidad en R.
+12. Aplicar distribuciones a problemas de ingeniería civil, eléctrica, industrial y energías renovables.
+
+---
+
 ## Concepto teórico
 
-Una distribución de probabilidad describe el comportamiento probabilístico de una variable aleatoria. En ingeniería, permite modelar fenómenos aleatorios y estimar la probabilidad de distintos resultados.
+Una **distribución de probabilidad** describe cómo se distribuyen las probabilidades de una variable aleatoria.
+
+Si la variable aleatoria es discreta, la distribución asigna probabilidades a valores específicos.
+
+Si la variable aleatoria es continua, la distribución describe probabilidades asociadas a intervalos.
+
+---
+
+## Clasificación general
+
+Las distribuciones de probabilidad se clasifican en:
+
+1. **Distribuciones discretas**
+2. **Distribuciones continuas**
+
+---
 
 ## Distribuciones discretas
 
-### Distribución Bernoulli
+Una distribución discreta se utiliza cuando la variable aleatoria toma valores contables.
 
-Describe experimentos con dos resultados posibles: éxito o fracaso.
+Ejemplos:
+
+- Número de defectos.
+- Número de fallas.
+- Número de vehículos.
+- Número de éxitos.
+- Número de eventos por unidad de tiempo.
+
+En esta unidad se estudian:
+
+- Bernoulli.
+- Binomial.
+- Poisson.
+
+---
+
+## Distribuciones continuas
+
+Una distribución continua se utiliza cuando la variable aleatoria puede tomar cualquier valor dentro de un intervalo.
+
+Ejemplos:
+
+- Voltaje.
+- Temperatura.
+- Tiempo.
+- Resistencia.
+- Velocidad del viento.
+- Producción energética.
+
+En esta unidad se estudian:
+
+- Uniforme continua.
+- Exponencial.
+- Normal.
+
+---
+
+# Distribución Bernoulli
+
+## Concepto
+
+La distribución Bernoulli modela experimentos con solo dos posibles resultados:
+
+- Éxito.
+- Fracaso.
+
+Ejemplos cotidianos:
+
+- Aprobar o reprobar.
+- Funciona o no funciona.
+- Cara o sello.
+- Defectuoso o no defectuoso.
+
+Ejemplos en ingeniería:
+
+- Un sensor funciona o falla.
+- Una pieza cumple o no cumple.
+- Un panel genera o no genera.
+- Una probeta supera o no supera la resistencia mínima.
+
+---
+
+## Formulación matemática
+
+Si \(X\) sigue una distribución Bernoulli con probabilidad de éxito \(p\), entonces:
 
 \[
-P(X=x)=p^x(1-p)^{1-x}, \qquad x\in\{0,1\}
+X \sim Bernoulli(p)
 \]
 
-### Distribución Binomial
+La función de probabilidad es:
 
-Modela el número de éxitos en \(n\) ensayos independientes con probabilidad \(p\) de éxito.
+\[
+P(X=x)=p^x(1-p)^{1-x}
+\]
+
+donde:
+
+\[
+x=0,1
+\]
+
+Además:
+
+\[
+E(X)=p
+\]
+
+\[
+Var(X)=p(1-p)
+\]
+
+---
+
+## Ejemplo resuelto 1: pieza defectuosa
+
+Una pieza puede ser defectuosa o buena. La probabilidad de que sea defectuosa es 0.08.
+
+Definimos:
+
+\[
+X=1
+\]
+
+si la pieza es defectuosa, y:
+
+\[
+X=0
+\]
+
+si la pieza no es defectuosa.
+
+Entonces:
+
+\[
+p=0.08
+\]
+
+---
+
+## Cálculo manual
+
+### Probabilidad de pieza defectuosa
+
+\[
+P(X=1)=p=0.08
+\]
+
+### Probabilidad de pieza buena
+
+\[
+P(X=0)=1-p
+\]
+
+\[
+P(X=0)=1-0.08
+\]
+
+\[
+P(X=0)=0.92
+\]
+
+### Valor esperado
+
+\[
+E(X)=p=0.08
+\]
+
+### Varianza
+
+\[
+Var(X)=p(1-p)
+\]
+
+\[
+Var(X)=0.08(0.92)
+\]
+
+\[
+Var(X)=0.0736
+\]
+
+---
+
+## Verificación en R
+
+```{r}
+p <- 0.08
+
+P_defectuosa <- p
+P_buena <- 1 - p
+esperanza <- p
+varianza <- p * (1 - p)
+
+c(P_defectuosa = P_defectuosa,
+  P_buena = P_buena,
+  Esperanza = esperanza,
+  Varianza = varianza)
+```
+
+---
+
+## Simulación Bernoulli
+
+```{r}
+set.seed(123)
+
+sim_bernoulli <- rbinom(n = 1000, size = 1, prob = 0.08)
+
+mean(sim_bernoulli)
+var(sim_bernoulli)
+```
+
+---
+
+## Gráfica Bernoulli
+
+```{r}
+tabla_bern <- prop.table(table(sim_bernoulli))
+
+barplot(tabla_bern,
+        col = c("lightgreen", "tomato"),
+        main = "Simulación Bernoulli",
+        xlab = "Resultado",
+        ylab = "Frecuencia relativa")
+```
+
+---
+
+# Distribución binomial
+
+## Concepto
+
+La distribución binomial modela el número de éxitos en \(n\) ensayos independientes, donde cada ensayo tiene la misma probabilidad de éxito \(p\).
+
+Se usa cuando:
+
+1. Hay un número fijo de ensayos \(n\).
+2. Cada ensayo tiene dos resultados: éxito o fracaso.
+3. La probabilidad de éxito \(p\) permanece constante.
+4. Los ensayos son independientes.
+
+---
+
+## Formulación matemática
+
+Si:
+
+\[
+X \sim Binomial(n,p)
+\]
+
+entonces:
 
 \[
 P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}
 \]
 
-Valor esperado y varianza:
+donde:
+
+- \(n\): número de ensayos.
+- \(k\): número de éxitos.
+- \(p\): probabilidad de éxito.
+- \(1-p\): probabilidad de fracaso.
+
+Además:
 
 \[
-E(X)=np,\qquad Var(X)=np(1-p)
+E(X)=np
 \]
 
-## Distribuciones continuas
+\[
+Var(X)=np(1-p)
+\]
 
-### Distribución Normal
+---
 
-Es una de las más importantes en estadística e ingeniería. Su función de densidad es:
+## Ejemplo resuelto 2: inspección de piezas
+
+Una línea de producción tiene una probabilidad de defecto de 0.10. Se inspeccionan 5 piezas. Calcular la probabilidad de encontrar exactamente 2 defectuosas.
+
+---
+
+## Solución manual
+
+### Paso 1: identificar datos
+
+\[
+n=5
+\]
+
+\[
+p=0.10
+\]
+
+\[
+k=2
+\]
+
+### Paso 2: aplicar la fórmula binomial
+
+\[
+P(X=2)=\binom{5}{2}(0.10)^2(0.90)^3
+\]
+
+### Paso 3: calcular combinación
+
+\[
+\binom{5}{2}=\frac{5!}{2!3!}=10
+\]
+
+### Paso 4: sustituir
+
+\[
+P(X=2)=10(0.10)^2(0.90)^3
+\]
+
+\[
+P(X=2)=10(0.01)(0.729)
+\]
+
+\[
+P(X=2)=0.0729
+\]
+
+### Interpretación
+
+La probabilidad de encontrar exactamente 2 piezas defectuosas en una muestra de 5 es:
+
+\[
+7.29\%
+\]
+
+---
+
+## Verificación en R
+
+```{r}
+dbinom(2, size = 5, prob = 0.10)
+```
+
+---
+
+## Probabilidad acumulada binomial
+
+A veces interesa calcular probabilidades como:
+
+\[
+P(X\leq k)
+\]
+
+En R se usa:
+
+```{r}
+pbinom(2, size = 5, prob = 0.10)
+```
+
+Esto calcula la probabilidad de encontrar como máximo 2 piezas defectuosas.
+
+---
+
+## Gráfica binomial
+
+```{r}
+k <- 0:5
+prob_bin <- dbinom(k, size = 5, prob = 0.10)
+
+barplot(prob_bin,
+        names.arg = k,
+        col = "lightblue",
+        main = "Distribución binomial",
+        xlab = "Número de piezas defectuosas",
+        ylab = "Probabilidad")
+```
+
+---
+
+## Simulación binomial
+
+```{r}
+set.seed(123)
+
+sim_bin <- rbinom(n = 1000, size = 5, prob = 0.10)
+
+mean(sim_bin)
+var(sim_bin)
+```
+
+```{r}
+hist(sim_bin,
+     breaks = seq(-0.5, 5.5, 1),
+     col = "lightgreen",
+     main = "Simulación binomial",
+     xlab = "Número de defectuosas")
+```
+
+---
+
+## Ejemplo aplicado a energías renovables
+
+Un sistema tiene 8 paneles solares. La probabilidad de que un panel presente una microfalla es 0.05. Calcular la probabilidad de que exactamente 1 panel presente microfalla.
+
+---
+
+## Solución manual
+
+\[
+n=8
+\]
+
+\[
+p=0.05
+\]
+
+\[
+k=1
+\]
+
+\[
+P(X=1)=\binom{8}{1}(0.05)^1(0.95)^7
+\]
+
+\[
+P(X=1)=8(0.05)(0.95)^7
+\]
+
+\[
+P(X=1)=0.2793
+\]
+
+aproximadamente.
+
+---
+
+## Verificación en R
+
+```{r}
+dbinom(1, size = 8, prob = 0.05)
+```
+
+---
+
+# Distribución de Poisson
+
+## Concepto
+
+La distribución de Poisson modela el número de eventos que ocurren en un intervalo fijo de tiempo, espacio, área o longitud, cuando los eventos ocurren de manera aleatoria.
+
+Ejemplos cotidianos:
+
+- Número de llamadas por hora.
+- Número de clientes por minuto.
+- Número de accidentes por semana.
+- Número de errores por página.
+
+Ejemplos en ingeniería:
+
+- Número de fallas eléctricas por mes.
+- Número de defectos por metro de cable.
+- Número de fisuras por metro cuadrado.
+- Número de vehículos que llegan a una intersección por minuto.
+- Número de interrupciones en una planta.
+
+---
+
+## Formulación matemática
+
+Si:
+
+\[
+X \sim Poisson(\lambda)
+\]
+
+entonces:
+
+\[
+P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}
+\]
+
+donde:
+
+- \(\lambda\): número promedio de ocurrencias en el intervalo.
+- \(k\): número de ocurrencias.
+- \(e\): constante matemática aproximadamente igual a 2.71828.
+
+Además:
+
+\[
+E(X)=\lambda
+\]
+
+\[
+Var(X)=\lambda
+\]
+
+---
+
+## Ejemplo resuelto 3: fallas eléctricas
+
+Un sistema eléctrico presenta en promedio 2 fallas por mes. Calcular la probabilidad de que en un mes ocurran exactamente 3 fallas.
+
+---
+
+## Solución manual
+
+### Paso 1: identificar datos
+
+\[
+\lambda=2
+\]
+
+\[
+k=3
+\]
+
+### Paso 2: aplicar fórmula
+
+\[
+P(X=3)=\frac{e^{-2}2^3}{3!}
+\]
+
+### Paso 3: calcular
+
+\[
+P(X=3)=\frac{e^{-2}(8)}{6}
+\]
+
+Como:
+
+\[
+e^{-2}=0.1353
+\]
+
+\[
+P(X=3)=\frac{0.1353(8)}{6}
+\]
+
+\[
+P(X=3)=0.1804
+\]
+
+### Interpretación
+
+La probabilidad de que ocurran exactamente 3 fallas en un mes es aproximadamente 18.04%.
+
+---
+
+## Verificación en R
+
+```{r}
+dpois(3, lambda = 2)
+```
+
+---
+
+## Probabilidad acumulada de Poisson
+
+Calcular la probabilidad de que ocurran como máximo 3 fallas:
+
+\[
+P(X\leq 3)
+\]
+
+```{r}
+ppois(3, lambda = 2)
+```
+
+---
+
+## Gráfica de Poisson
+
+```{r}
+k <- 0:8
+prob_pois <- dpois(k, lambda = 2)
+
+barplot(prob_pois,
+        names.arg = k,
+        col = "orange",
+        main = "Distribución de Poisson",
+        xlab = "Número de fallas",
+        ylab = "Probabilidad")
+```
+
+---
+
+## Simulación de Poisson
+
+```{r}
+set.seed(123)
+
+sim_pois <- rpois(1000, lambda = 2)
+
+mean(sim_pois)
+var(sim_pois)
+```
+
+```{r}
+hist(sim_pois,
+     breaks = seq(-0.5, max(sim_pois)+0.5, 1),
+     col = "lightblue",
+     main = "Simulación Poisson",
+     xlab = "Número de eventos")
+```
+
+---
+
+# Distribución uniforme continua
+
+## Concepto
+
+Una variable aleatoria continua sigue una distribución uniforme si todos los valores dentro de un intervalo tienen la misma densidad de probabilidad.
+
+Si:
+
+\[
+X \sim U(a,b)
+\]
+
+entonces \(X\) puede tomar cualquier valor entre \(a\) y \(b\).
+
+---
+
+## Formulación matemática
+
+La función de densidad es:
+
+\[
+f(x)=\frac{1}{b-a}
+\]
+
+para:
+
+\[
+a \leq x \leq b
+\]
+
+La probabilidad de que \(X\) esté entre \(c\) y \(d\) es:
+
+\[
+P(c<X<d)=\frac{d-c}{b-a}
+\]
+
+---
+
+## Ejemplo resuelto 4: tiempo de llegada
+
+Un bus puede llegar en cualquier momento entre 0 y 10 minutos. Suponiendo distribución uniforme, calcular la probabilidad de que llegue entre 3 y 7 minutos.
+
+---
+
+## Solución manual
+
+\[
+a=0
+\]
+
+\[
+b=10
+\]
+
+\[
+c=3
+\]
+
+\[
+d=7
+\]
+
+\[
+P(3<X<7)=\frac{7-3}{10-0}
+\]
+
+\[
+P(3<X<7)=\frac{4}{10}
+\]
+
+\[
+P(3<X<7)=0.40
+\]
+
+---
+
+## Verificación en R
+
+```{r}
+punif(7, min = 0, max = 10) - punif(3, min = 0, max = 10)
+```
+
+---
+
+## Gráfica uniforme
+
+```{r}
+x <- seq(0, 10, length.out = 100)
+y <- dunif(x, min = 0, max = 10)
+
+plot(x, y,
+     type = "l",
+     col = "blue",
+     lwd = 2,
+     main = "Distribución uniforme continua",
+     xlab = "Tiempo",
+     ylab = "Densidad")
+```
+
+---
+
+# Distribución exponencial
+
+## Concepto
+
+La distribución exponencial se utiliza para modelar tiempos de espera o tiempos hasta que ocurre un evento.
+
+Ejemplos:
+
+- Tiempo hasta la falla de un componente.
+- Tiempo entre llamadas.
+- Tiempo entre llegadas de vehículos.
+- Tiempo de vida de ciertos equipos.
+
+Si los eventos siguen un proceso de Poisson, el tiempo entre eventos puede modelarse mediante una distribución exponencial.
+
+---
+
+## Formulación matemática
+
+Si:
+
+\[
+X \sim Exp(\lambda)
+\]
+
+entonces:
+
+\[
+f(x)=\lambda e^{-\lambda x}
+\]
+
+para:
+
+\[
+x \geq 0
+\]
+
+La probabilidad acumulada es:
+
+\[
+P(X\leq x)=1-e^{-\lambda x}
+\]
+
+El valor esperado es:
+
+\[
+E(X)=\frac{1}{\lambda}
+\]
+
+---
+
+## Ejemplo resuelto 5: tiempo hasta falla
+
+Un componente eléctrico tiene una tasa promedio de falla de \(\lambda=0.2\) fallas por año. Calcular la probabilidad de que falle antes de 3 años.
+
+---
+
+## Solución manual
+
+\[
+P(X\leq 3)=1-e^{-0.2(3)}
+\]
+
+\[
+P(X\leq 3)=1-e^{-0.6}
+\]
+
+Como:
+
+\[
+e^{-0.6}=0.5488
+\]
+
+\[
+P(X\leq 3)=1-0.5488
+\]
+
+\[
+P(X\leq 3)=0.4512
+\]
+
+---
+
+## Verificación en R
+
+```{r}
+pexp(3, rate = 0.2)
+```
+
+---
+
+## Gráfica exponencial
+
+```{r}
+x <- seq(0, 20, length.out = 200)
+y <- dexp(x, rate = 0.2)
+
+plot(x, y,
+     type = "l",
+     col = "red",
+     lwd = 2,
+     main = "Distribución exponencial",
+     xlab = "Tiempo",
+     ylab = "Densidad")
+```
+
+---
+
+# Distribución normal
+
+## Concepto
+
+La distribución normal es una de las distribuciones más importantes de la estadística. Tiene forma de campana y se utiliza para modelar muchas variables continuas.
+
+Ejemplos cotidianos:
+
+- Estaturas.
+- Pesos.
+- Errores de medición.
+- Calificaciones.
+
+Ejemplos en ingeniería:
+
+- Resistencia del hormigón.
+- Voltaje de una red.
+- Dimensiones de piezas.
+- Temperatura de operación.
+- Producción energética promedio.
+- Errores instrumentales.
+
+---
+
+## Formulación matemática
+
+Si:
+
+\[
+X \sim N(\mu,\sigma)
+\]
+
+entonces la función de densidad es:
 
 \[
 f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 \]
 
 donde:
-- \(\mu\): media
-- \(\sigma\): desviación estándar
 
-## Ejemplo aplicado
+- \(\mu\): media.
+- \(\sigma\): desviación estándar.
 
-### Distribución binomial
+---
 
-Supóngase que la probabilidad de que un panel solar presente una microfalla es \(p=0.10\). Se inspeccionan \(n=8\) paneles y se desea conocer la probabilidad de encontrar exactamente 2 con microfalla.
+## Estandarización
 
-## Implementación en R
+Para trabajar con la normal estándar se usa:
+
+\[
+Z=\frac{X-\mu}{\sigma}
+\]
+
+donde:
+
+\[
+Z \sim N(0,1)
+\]
+
+---
+
+## Ejemplo resuelto 6: voltaje eléctrico
+
+El voltaje de una red se distribuye normalmente con media 220 V y desviación estándar 3 V.
+
+Calcular:
+
+\[
+P(X<224)
+\]
+
+---
+
+## Solución manual
+
+### Paso 1: identificar datos
+
+\[
+\mu=220
+\]
+
+\[
+\sigma=3
+\]
+
+\[
+X=224
+\]
+
+### Paso 2: calcular Z
+
+\[
+Z=\frac{X-\mu}{\sigma}
+\]
+
+\[
+Z=\frac{224-220}{3}
+\]
+
+\[
+Z=\frac{4}{3}
+\]
+
+\[
+Z=1.33
+\]
+
+### Paso 3: buscar en tabla normal
+
+\[
+P(Z<1.33)=0.9082
+\]
+
+### Interpretación
+
+La probabilidad de que el voltaje sea menor que 224 V es aproximadamente 90.82%.
+
+---
+
+## Verificación en R
 
 ```{r}
-dbinom(2, size = 8, prob = 0.10)
+pnorm(224, mean = 220, sd = 3)
 ```
 
-### Probabilidad acumulada binomial
+---
+
+## Ejemplo resuelto 7: intervalo de voltaje
+
+Calcular la probabilidad de que el voltaje esté entre 218 V y 224 V.
+
+\[
+P(218<X<224)
+\]
+
+---
+
+## Solución manual
+
+### Para 218 V
+
+\[
+Z_1=\frac{218-220}{3}
+\]
+
+\[
+Z_1=-0.67
+\]
+
+### Para 224 V
+
+\[
+Z_2=\frac{224-220}{3}
+\]
+
+\[
+Z_2=1.33
+\]
+
+Entonces:
+
+\[
+P(218<X<224)=P(Z<1.33)-P(Z<-0.67)
+\]
+
+Usando tabla:
+
+\[
+P(Z<1.33)=0.9082
+\]
+
+\[
+P(Z<-0.67)=0.2514
+\]
+
+\[
+P(218<X<224)=0.9082-0.2514
+\]
+
+\[
+P(218<X<224)=0.6568
+\]
+
+---
+
+## Verificación en R
 
 ```{r}
-pbinom(2, size = 8, prob = 0.10)
+pnorm(224, mean = 220, sd = 3) - pnorm(218, mean = 220, sd = 3)
 ```
 
-### Esperanza y varianza binomial
-
-```{r}
-n <- 8
-p <- 0.10
-c(Media = n * p, Varianza = n * p * (1 - p))
-```
-
-## Gráfica binomial
-
-```{r}
-k <- 0:8
-prob_bin <- dbinom(k, size = 8, prob = 0.10)
-
-barplot(prob_bin,
-        names.arg = k,
-        col = "lightblue",
-        main = "Distribución binomial",
-        xlab = "Número de paneles con microfalla",
-        ylab = "Probabilidad")
-```
-
-## Ejemplo con distribución normal
-
-Se supone que el voltaje de operación de un sistema sigue una distribución normal con media 220 V y desviación estándar 3 V.
-
-### Probabilidad de que el voltaje sea menor que 218 V
-
-```{r}
-pnorm(218, mean = 220, sd = 3)
-```
-
-### Probabilidad de que el voltaje esté entre 218 V y 223 V
-
-```{r}
-pnorm(223, mean = 220, sd = 3) - pnorm(218, mean = 220, sd = 3)
-```
+---
 
 ## Gráfica normal
 
 ```{r}
-x <- seq(210, 230, by = 0.1)
+x <- seq(210, 230, length.out = 300)
 y <- dnorm(x, mean = 220, sd = 3)
 
-plot(x, y, type = "l", lwd = 2, col = "blue",
+plot(x, y,
+     type = "l",
+     col = "blue",
+     lwd = 2,
      main = "Distribución normal del voltaje",
-     xlab = "Voltaje (V)", ylab = "Densidad")
-abline(v = 220, col = "red", lty = 2)
+     xlab = "Voltaje (V)",
+     ylab = "Densidad")
+abline(v = 220, col = "red", lty = 2, lwd = 2)
 ```
 
-## Simulación
+---
 
-### Simulación binomial
-
-```{r}
-set.seed(111)
-sim_bin <- rbinom(1000, size = 8, prob = 0.10)
-mean(sim_bin)
-var(sim_bin)
-```
-
-### Simulación normal
+## Simulación normal
 
 ```{r}
-set.seed(222)
-sim_norm <- rnorm(1000, mean = 220, sd = 3)
-mean(sim_norm)
-sd(sim_norm)
+set.seed(123)
+
+sim_normal <- rnorm(1000, mean = 220, sd = 3)
+
+mean(sim_normal)
+sd(sim_normal)
 ```
 
 ```{r}
-hist(sim_norm, breaks = 20, col = "lightgray",
-     main = "Simulación normal del voltaje",
+hist(sim_normal,
+     col = "lightgray",
+     border = "white",
+     main = "Simulación de voltaje normal",
      xlab = "Voltaje (V)")
 ```
 
-## Ejercicios propuestos
+---
 
-1. Modele un problema binomial asociado a su carrera.
-2. Calcule probabilidades puntuales y acumuladas.
-3. Modele una variable continua mediante una distribución normal.
-4. Calcule probabilidades con `pnorm()`.
-5. Simule ambas distribuciones en R.
-6. Compare propiedades teóricas y empíricas.
+## Ejercicio guiado
 
-## Caso real (ingeniería)
+La resistencia a compresión de un hormigón sigue una distribución normal con media 28 MPa y desviación estándar 2 MPa.
 
-En **ingeniería industrial**, la distribución binomial puede modelar defectos por lote y la normal, tiempos de producción o dimensiones de piezas.
+Calcular:
 
-En **ingeniería civil**, la normal se utiliza para representar resistencia de materiales, cargas o errores de medición.
+1. \(P(X<30)\)
+2. \(P(26<X<30)\)
+3. Verificar en R.
+4. Interpretar los resultados.
 
-En **ingeniería eléctrica**, la normal es útil en análisis de voltaje, corriente y errores instrumentales.
+---
 
-En **energías renovables**, la binomial puede modelar eventos discretos de falla y la normal ciertas variaciones continuas alrededor de un valor medio operativo.
+## Solución del ejercicio guiado
 
-## Conclusión
+### Parte 1: \(P(X<30)\)
 
-Las distribuciones de probabilidad permiten modelar formalmente variables aleatorias y constituyen una base indispensable para la inferencia estadística, el control de calidad y la confiabilidad en ingeniería.
+\[
+Z=\frac{30-28}{2}
+\]
+
+\[
+Z=1
+\]
+
+\[
+P(Z<1)=0.8413
+\]
+
+Entonces:
+
+\[
+P(X<30)=0.8413
+\]
+
+---
+
+### Parte 2: \(P(26<X<30)\)
+
+Para 26:
+
+\[
+Z_1=\frac{26-28}{2}
+\]
+
+\[
+Z_1=-1
+\]
+
+Para 30:
+
+\[
+Z_2=\frac{30-28}{2}
+\]
+
+\[
+Z_2=1
+\]
+
+\[
+P(26<X<30)=P(Z<1)-P(Z<-1)
+\]
+
+\[
+P(26<X<30)=0.8413-0.1587
+\]
+
+\[
+P(26<X<30)=0.6826
+\]
+
+---
+
+## Verificación en R
+
+```{r}
+pnorm(30, mean = 28, sd = 2)
+```
+
+```{r}
+pnorm(30, mean = 28, sd = 2) - pnorm(26, mean = 28, sd = 2)
+```
+
+---
+
+## Actividad práctica
+
+Resuelva manualmente y verifique en R:
+
+1. Una línea produce piezas con probabilidad de defecto de 0.08. Si se inspeccionan 10 piezas, calcule \(P(X=2)\).
+2. Un sistema recibe en promedio 4 llamadas por hora. Calcule la probabilidad de recibir exactamente 6 llamadas.
+3. Un bus llega uniformemente entre 0 y 15 minutos. Calcule la probabilidad de que llegue entre 5 y 10 minutos.
+4. Un componente tiene tasa de falla \(\lambda=0.1\). Calcule la probabilidad de que falle antes de 5 años.
+5. Una variable de voltaje sigue \(N(220,4)\). Calcule \(P(216<X<224)\).
+
+---
+
+## Aplicaciones por carrera
+
+### Ingeniería Civil
+
+La distribución normal se usa para modelar resistencia de materiales. La distribución de Poisson puede modelar número de fisuras o eventos de tránsito.
+
+### Ingeniería Eléctrica
+
+La normal permite analizar variaciones de voltaje y corriente. La exponencial se usa para modelar tiempos hasta falla de componentes.
+
+### Ingeniería Industrial
+
+La binomial permite analizar defectos por lote. La normal se usa en control de calidad y dimensiones de piezas. La Poisson puede modelar llegadas de clientes o fallas de máquinas.
+
+### Energías Renovables
+
+La binomial modela fallas discretas de paneles. La normal puede aproximar producción energética. La exponencial permite modelar tiempo hasta falla de inversores. La Poisson puede describir eventos de interrupción.
+
+---
+
+## Preguntas de autoevaluación
+
+1. ¿Qué es una distribución de probabilidad?
+2. ¿Cuál es la diferencia entre distribución discreta y continua?
+3. ¿Cuándo se usa Bernoulli?
+4. ¿Cuándo se usa binomial?
+5. ¿Cuándo se usa Poisson?
+6. ¿Qué modela la distribución exponencial?
+7. ¿Por qué la normal es importante en ingeniería?
+8. ¿Qué función de R calcula probabilidades binomiales puntuales?
+9. ¿Qué función de R calcula probabilidades normales acumuladas?
+10. ¿Por qué en variables continuas se calculan probabilidades por intervalos?
+
+---
+
+## Resumen de la unidad
+
+Las distribuciones de probabilidad permiten modelar el comportamiento de variables aleatorias. Las distribuciones discretas, como Bernoulli, binomial y Poisson, se utilizan para conteos y eventos discretos. Las distribuciones continuas, como uniforme, exponencial y normal, se aplican a variables medidas en intervalos continuos.
+
+En ingeniería, estas distribuciones son fundamentales para analizar defectos, fallas, tiempos, resistencias, voltajes, producción energética y confiabilidad de sistemas. R permite calcular, graficar y simular estas distribuciones de manera eficiente.
+
+---
+
+## Bibliografía sugerida
+
+- Devore, J. L. (2008). *Probabilidad y estadística para ingeniería y ciencias*. Cengage Learning.
+- Montgomery, D. C., & Runger, G. C. (2016). *Probabilidad y estadística aplicada a la ingeniería*. Limusa.
+- OpenStax. (2023). *Introducción a la estadística*. Rice University.
 
 <!--chapter:end:13-bloque2-unidad6-distribuciones.Rmd-->
 
