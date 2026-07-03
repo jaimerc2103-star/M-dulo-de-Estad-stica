@@ -632,84 +632,120 @@ h3:energías-renovables-6 Energías Renovables
 h2:preguntas-de-autoevaluación-6 Preguntas de autoevaluación
 h2:resumen-de-la-unidad-6 Resumen de la unidad
 h2:bibliografía-sugerida-6 Bibliografía sugerida
-h1:intervalos-de-confianza-1 Intervalos de confianza
+h1:pruebas-de-hipótesis-1 Pruebas de hipótesis
+h2:motivación-ingenieril-7 Motivación ingenieril
+h2:resultados-de-aprendizaje-7 Resultados de aprendizaje
 h2:concepto-teórico-13 Concepto teórico
-h3:nivel-de-confianza Nivel de confianza
-h2:formulación-matemática-8 Formulación matemática
-h3:intervalo-de-confianza-para-la-media-con-desviación-poblacional-conocida Intervalo de confianza para la media con desviación poblacional conocida
-h3:intervalo-de-confianza-para-la-media-con-desviación-poblacional-desconocida Intervalo de confianza para la media con desviación poblacional desconocida
+h2:hipótesis-nula Hipótesis nula
+h2:hipótesis-alternativa Hipótesis alternativa
+h2:ejemplo-cotidiano-introductorio-1 Ejemplo cotidiano introductorio
+h2:tipos-de-pruebas Tipos de pruebas
+h2:prueba-bilateral Prueba bilateral
+h2:prueba-unilateral-derecha Prueba unilateral derecha
+h2:prueba-unilateral-izquierda Prueba unilateral izquierda
+h2:nivel-de-significancia Nivel de significancia
+h2:errores-en-pruebas-de-hipótesis Errores en pruebas de hipótesis
+h2:error-tipo-i Error tipo I
+h2:error-tipo-ii Error tipo II
+h2:estadístico-de-prueba-para-la-media-con-conocida Estadístico de prueba para la media con () conocida
+h2:estadístico-de-prueba-para-la-media-con-desconocida Estadístico de prueba para la media con () desconocida
+h1:prueba-de-hipótesis-para-la-media-con-conocida Prueba de hipótesis para la media con () conocida
+h2:ejemplo-resuelto-1-voltaje-promedio Ejemplo resuelto 1: voltaje promedio
+h2:paso-1-plantear-hipótesis Paso 1: plantear hipótesis
+h2:paso-2-identificar-datos Paso 2: identificar datos
+h2:paso-3-calcular-estadístico-z Paso 3: calcular estadístico Z
+h2:paso-4-valor-crítico Paso 4: valor crítico
+h2:paso-5-decisión Paso 5: decisión
+h2:conclusión-técnica Conclusión técnica
+h2:verificación-en-r-51 Verificación en R
+h2:gráfica-de-la-prueba-z Gráfica de la prueba Z
+h1:prueba-de-hipótesis-para-la-media-con-desconocida Prueba de hipótesis para la media con () desconocida
+h2:ejemplo-resuelto-2-resistencia-de-hormigón Ejemplo resuelto 2: resistencia de hormigón
+h2:paso-1-plantear-hipótesis-1 Paso 1: plantear hipótesis
+h2:paso-2-calcular-estadísticos-muestrales Paso 2: calcular estadísticos muestrales
+h2:paso-3-calcular-estadístico-t Paso 3: calcular estadístico t
+h2:verificación-del-estadístico-en-r Verificación del estadístico en R
+h2:paso-4-valor-crítico-1 Paso 4: valor crítico
+h2:paso-5-decisión-1 Paso 5: decisión
+h2:conclusión-técnica-1 Conclusión técnica
+h2:verificación-completa-con-r Verificación completa con R
+h2:gráfica-de-los-datos Gráfica de los datos
+h1:criterio-del-p-valor Criterio del p-valor
+h2:ejemplo-resuelto-3-tiempo-de-producción Ejemplo resuelto 3: tiempo de producción
+h2:planteamiento Planteamiento
+h2:verificación-en-r-52 Verificación en R
+h2:interpretación-35 Interpretación
+h1:prueba-de-hipótesis-para-una-proporción Prueba de hipótesis para una proporción
+h2:formulación Formulación
+h2:ejemplo-resuelto-4-piezas-defectuosas Ejemplo resuelto 4: piezas defectuosas
+h2:paso-1-hipótesis Paso 1: hipótesis
+h2:paso-2-datos Paso 2: datos
+h2:paso-3-estadístico-z Paso 3: estadístico Z
+h2:paso-4-p-valor Paso 4: p-valor
+h2:paso-5-decisión-2 Paso 5: decisión
+h2:verificación-con-r Verificación con R
+h2:ejercicio-guiado-7 Ejercicio guiado
+h2:solución-del-ejercicio-guiado-7 Solución del ejercicio guiado
+h3:paso-1-hipótesis-1 Paso 1: hipótesis
+h3:paso-2-usar-prueba-t Paso 2: usar prueba t
+h3:verificación-en-r-53 Verificación en R
+h3:interpretación-36 Interpretación
+h2:simulación-de-error-tipo-i Simulación de error tipo I
+h2:gráfica-de-p-valores Gráfica de p-valores
+h2:actividad-práctica-7 Actividad práctica
+h2:aplicaciones-por-carrera-7 Aplicaciones por carrera
+h3:ingeniería-civil-7 Ingeniería Civil
+h3:ingeniería-eléctrica-7 Ingeniería Eléctrica
+h3:ingeniería-industrial-7 Ingeniería Industrial
+h3:energías-renovables-7 Energías Renovables
+h2:preguntas-de-autoevaluación-7 Preguntas de autoevaluación
+h2:resumen-de-la-unidad-7 Resumen de la unidad
+h2:bibliografía-sugerida-7 Bibliografía sugerida
+h1:p-valor-nivel-de-significancia-y-errores-de-decisión p-valor, nivel de significancia y errores de decisión
+h2:concepto-teórico-14 Concepto teórico
+h3:interpretación-del-p-valor Interpretación del p-valor
+h2:errores-de-decisión Errores de decisión
+h3:error-tipo-i-1 Error tipo I
+h3:error-tipo-ii-1 Error tipo II
+h3:potencia-de-una-prueba Potencia de una prueba
 h2:ejemplo-aplicado-8 Ejemplo aplicado
 h2:implementación-en-r-8 Implementación en R
-h3:estadísticos-básicos Estadísticos básicos
-h3:intervalo-de-confianza-con-t-de-student Intervalo de confianza con t de Student
-h3:usando-t.test Usando 
+h3:extraer-p-valor Extraer p-valor
+h3:decisión-con-0.05 Decisión con (= 0.05)
 h2:gráfica-3 Gráfica
 h2:simulación-1 Simulación
-h3:visualización-de-intervalos-simulados Visualización de intervalos simulados
+h3:proporción-de-rechazos-con-0.05 Proporción de rechazos con (= 0.05)
 h2:ejercicio-propuesto-7 Ejercicio propuesto
 h2:caso-real-ingeniería-8 Caso real (ingeniería)
 h2:conclusión-1 Conclusión
-h1:pruebas-de-hipótesis-1 Pruebas de hipótesis
-h2:concepto-teórico-14 Concepto teórico
-h3:hipótesis-nula Hipótesis nula
-h3:hipótesis-alternativa Hipótesis alternativa
-h3:nivel-de-significancia Nivel de significancia
-h2:formulación-matemática-9 Formulación matemática
-h3:prueba-para-una-media-con-desviación-poblacional-desconocida Prueba para una media con desviación poblacional desconocida
+h1:comparación-de-medias Comparación de medias
+h2:concepto-teórico-15 Concepto teórico
+h2:formulación-matemática-8 Formulación matemática
+h3:prueba-t-para-dos-muestras-independientes Prueba t para dos muestras independientes
 h2:ejemplo-aplicado-9 Ejemplo aplicado
 h2:implementación-en-r-9 Implementación en R
-h3:estadísticos-básicos-1 Estadísticos básicos
-h3:prueba-t-para-una-muestra Prueba t para una muestra
+h3:estadísticos-descriptivos Estadísticos descriptivos
+h3:prueba-t-para-dos-muestras-independientes-1 Prueba t para dos muestras independientes
 h2:gráfica-4 Gráfica
 h2:simulación-2 Simulación
 h2:ejercicio-propuesto-8 Ejercicio propuesto
 h2:caso-real-ingeniería-9 Caso real (ingeniería)
 h2:conclusión-2 Conclusión
-h1:p-valor-nivel-de-significancia-y-errores-de-decisión p-valor, nivel de significancia y errores de decisión
-h2:concepto-teórico-15 Concepto teórico
-h3:interpretación-del-p-valor Interpretación del p-valor
-h2:errores-de-decisión Errores de decisión
-h3:error-tipo-i Error tipo I
-h3:error-tipo-ii Error tipo II
-h3:potencia-de-una-prueba Potencia de una prueba
-h2:ejemplo-aplicado-10 Ejemplo aplicado
-h2:implementación-en-r-10 Implementación en R
-h3:extraer-p-valor Extraer p-valor
-h3:decisión-con-0.05 Decisión con (= 0.05)
-h2:gráfica-5 Gráfica
-h2:simulación-3 Simulación
-h3:proporción-de-rechazos-con-0.05 Proporción de rechazos con (= 0.05)
-h2:ejercicio-propuesto-9 Ejercicio propuesto
-h2:caso-real-ingeniería-10 Caso real (ingeniería)
-h2:conclusión-3 Conclusión
-h1:comparación-de-medias Comparación de medias
-h2:concepto-teórico-16 Concepto teórico
-h2:formulación-matemática-10 Formulación matemática
-h3:prueba-t-para-dos-muestras-independientes Prueba t para dos muestras independientes
-h2:ejemplo-aplicado-11 Ejemplo aplicado
-h2:implementación-en-r-11 Implementación en R
-h3:estadísticos-descriptivos Estadísticos descriptivos
-h3:prueba-t-para-dos-muestras-independientes-1 Prueba t para dos muestras independientes
-h2:gráfica-6 Gráfica
-h2:simulación-4 Simulación
-h2:ejercicio-propuesto-10 Ejercicio propuesto
-h2:caso-real-ingeniería-11 Caso real (ingeniería)
-h2:conclusión-4 Conclusión
 h1:aplicaciones-de-inferencia-estadística-en-ingeniería Aplicaciones de inferencia estadística en ingeniería
-h2:concepto-teórico-17 Concepto teórico
+h2:concepto-teórico-16 Concepto teórico
 h2:caso-integrador-1-control-de-calidad-industrial Caso integrador 1: control de calidad industrial
 h3:estimación-puntual-1 Estimación puntual
 h3:intervalo-de-confianza Intervalo de confianza
 h3:prueba-de-hipótesis Prueba de hipótesis
-h2:gráfica-7 Gráfica
+h2:gráfica-5 Gráfica
 h2:caso-integrador-2-comparación-de-sistemas-energéticos Caso integrador 2: comparación de sistemas energéticos
 h2:gráfica-comparativa-1 Gráfica comparativa
-h2:simulación-5 Simulación
-h2:ejercicio-propuesto-11 Ejercicio propuesto
+h2:simulación-3 Simulación
+h2:ejercicio-propuesto-9 Ejercicio propuesto
 h2:caso-real-por-carrera Caso real por carrera
-h3:ingeniería-civil-7 Ingeniería civil
-h3:ingeniería-eléctrica-7 Ingeniería eléctrica
-h3:ingeniería-industrial-7 Ingeniería industrial
-h3:energías-renovables-7 Energías renovables
-h2:conclusión-5 Conclusión
+h3:ingeniería-civil-8 Ingeniería civil
+h3:ingeniería-eléctrica-8 Ingeniería eléctrica
+h3:ingeniería-industrial-8 Ingeniería industrial
+h3:energías-renovables-8 Energías renovables
+h2:conclusión-3 Conclusión
 
