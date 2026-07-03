@@ -23,5 +23,7 @@ rmd_files:
   - 18-bloque3-unidad5-pvalor-errores.Rmd
   - 19-bloque3-unidad6-comparacion-medias.Rmd
   - 20-bloque3-unidad7-aplicaciones-inferencia.Rmd
-  - 21-bloque4-unidad1-correlacion-regresion.Rmd
+  - 21-bloque4-unidad1-correlacion-regresion.Rmd 
+  - 22-bloque4-unidad2-ecuacion-regresion-lineal.Rmd
+  
   

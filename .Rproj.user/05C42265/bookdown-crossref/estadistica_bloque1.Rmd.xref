@@ -1,5 +1,4 @@
 h1:portada Portada
-h1:presentación Presentación
 h2:objetivo-del-bloque Objetivo del bloque
 h2:estructura-del-bloque Estructura del bloque
 h1:introducción-al-análisis-descriptivo-de-datos Introducción al análisis descriptivo de datos
@@ -649,7 +648,6 @@ h2:error-tipo-i Error tipo I
 h2:error-tipo-ii Error tipo II
 h2:estadístico-de-prueba-para-la-media-con-conocida Estadístico de prueba para la media con () conocida
 h2:estadístico-de-prueba-para-la-media-con-desconocida Estadístico de prueba para la media con () desconocida
-h1:prueba-de-hipótesis-para-la-media-con-conocida Prueba de hipótesis para la media con () conocida
 h2:ejemplo-resuelto-1-voltaje-promedio Ejemplo resuelto 1: voltaje promedio
 h2:paso-1-plantear-hipótesis Paso 1: plantear hipótesis
 h2:paso-2-identificar-datos Paso 2: identificar datos
@@ -659,7 +657,6 @@ h2:paso-5-decisión Paso 5: decisión
 h2:conclusión-técnica Conclusión técnica
 h2:verificación-en-r-51 Verificación en R
 h2:gráfica-de-la-prueba-z Gráfica de la prueba Z
-h1:prueba-de-hipótesis-para-la-media-con-desconocida Prueba de hipótesis para la media con () desconocida
 h2:ejemplo-resuelto-2-resistencia-de-hormigón Ejemplo resuelto 2: resistencia de hormigón
 h2:paso-1-plantear-hipótesis-1 Paso 1: plantear hipótesis
 h2:paso-2-calcular-estadísticos-muestrales Paso 2: calcular estadísticos muestrales
@@ -670,12 +667,10 @@ h2:paso-5-decisión-1 Paso 5: decisión
 h2:conclusión-técnica-1 Conclusión técnica
 h2:verificación-completa-con-r Verificación completa con R
 h2:gráfica-de-los-datos Gráfica de los datos
-h1:criterio-del-p-valor Criterio del p-valor
 h2:ejemplo-resuelto-3-tiempo-de-producción Ejemplo resuelto 3: tiempo de producción
 h2:planteamiento Planteamiento
 h2:verificación-en-r-52 Verificación en R
 h2:interpretación-35 Interpretación
-h1:prueba-de-hipótesis-para-una-proporción Prueba de hipótesis para una proporción
 h2:formulación Formulación
 h2:ejemplo-resuelto-4-piezas-defectuosas Ejemplo resuelto 4: piezas defectuosas
 h2:paso-1-hipótesis Paso 1: hipótesis
@@ -748,4 +743,69 @@ h3:ingeniería-eléctrica-8 Ingeniería eléctrica
 h3:ingeniería-industrial-8 Ingeniería industrial
 h3:energías-renovables-8 Energías renovables
 h2:conclusión-3 Conclusión
+h1:correlación-y-regresión Correlación y regresión
+h2:motivación-ingenieril-8 Motivación ingenieril
+h2:resultados-de-aprendizaje-8 Resultados de aprendizaje
+h2:concepto-general Concepto general
+h2:variable-independiente-y-variable-dependiente Variable independiente y variable dependiente
+h3:variable-independiente Variable independiente
+h3:variable-dependiente Variable dependiente
+h2:ejemplo-cotidiano-3 Ejemplo cotidiano
+h2:diagrama-de-dispersión-1 Diagrama de dispersión
+h2:tipos-de-relación Tipos de relación
+h3:relación-positiva Relación positiva
+h3:relación-negativa Relación negativa
+h3:relación-nula Relación nula
+h3:relación-no-lineal Relación no lineal
+h2:ejemplo-inicial-en-r Ejemplo inicial en R
+h2:interpretación-del-gráfico Interpretación del gráfico
+h1:covarianza-2 Covarianza
+h2:concepto-14 Concepto
+h2:interpretación-de-la-covarianza Interpretación de la covarianza
+h2:ejemplo-resuelto-manual-1 Ejemplo resuelto manual 1
+h2:solución-manual-26 Solución manual
+h3:paso-1-calcular-medias Paso 1: calcular medias
+h3:paso-2-construir-tabla-de-desviaciones Paso 2: construir tabla de desviaciones
+h3:paso-3-sumar-productos Paso 3: sumar productos
+h3:paso-4-aplicar-fórmula Paso 4: aplicar fórmula
+h3:interpretación-37 Interpretación
+h2:verificación-en-r-54 Verificación en R
+h1:coeficiente-de-correlación-de-pearson Coeficiente de correlación de Pearson
+h2:concepto-15 Concepto
+h2:fórmula Fórmula
+h2:interpretación-del-coeficiente-r Interpretación del coeficiente (r)
+h2:ejemplo-resuelto-manual-2 Ejemplo resuelto manual 2
+h2:solución-manual-27 Solución manual
+h2:interpretación-38 Interpretación
+h2:verificación-en-r-55 Verificación en R
+h1:coeficiente-de-determinación Coeficiente de determinación
+h2:concepto-16 Concepto
+h2:ejemplo-1 Ejemplo
+h2:interpretación-39 Interpretación
+h2:verificación-en-r-56 Verificación en R
+h1:ejemplo-aplicado-a-energías-renovables-1 Ejemplo aplicado a energías renovables
+h2:análisis-en-r Análisis en R
+h2:correlación-1 Correlación
+h2:coeficiente-de-determinación-1 Coeficiente de determinación
+h2:interpretación-técnica Interpretación técnica
+h1:correlación-no-implica-causalidad Correlación no implica causalidad
+h2:ejemplo-de-correlación-espuria Ejemplo de correlación espuria
+h1:introducción-a-la-regresión Introducción a la regresión
+h2:ejemplo-visual-de-regresión-en-r Ejemplo visual de regresión en R
+h2:ejercicio-guiado-8 Ejercicio guiado
+h2:solución-del-ejercicio-guiado-8 Solución del ejercicio guiado
+h2:cálculo-de-correlación Cálculo de correlación
+h2:cálculo-de-r2 Cálculo de (R^2)
+h2:interpretación-40 Interpretación
+h2:simulación-relaciones-con-distintos-niveles-de-correlación Simulación: relaciones con distintos niveles de correlación
+h2:gráficas-comparativas Gráficas comparativas
+h2:actividad-práctica-8 Actividad práctica
+h2:aplicaciones-por-carrera-8 Aplicaciones por carrera
+h3:ingeniería-civil-9 Ingeniería Civil
+h3:ingeniería-eléctrica-9 Ingeniería Eléctrica
+h3:ingeniería-industrial-9 Ingeniería Industrial
+h3:energías-renovables-9 Energías Renovables
+h2:preguntas-de-autoevaluación-8 Preguntas de autoevaluación
+h2:resumen-de-la-unidad-8 Resumen de la unidad
+h2:bibliografía-sugerida-8 Bibliografía sugerida
 
