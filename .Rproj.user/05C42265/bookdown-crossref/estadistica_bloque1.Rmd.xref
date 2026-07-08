@@ -759,7 +759,6 @@ h3:relación-nula Relación nula
 h3:relación-no-lineal Relación no lineal
 h2:ejemplo-inicial-en-r Ejemplo inicial en R
 h2:interpretación-del-gráfico Interpretación del gráfico
-h1:covarianza-2 Covarianza
 h2:concepto-14 Concepto
 h2:interpretación-de-la-covarianza Interpretación de la covarianza
 h2:ejemplo-resuelto-manual-1 Ejemplo resuelto manual 1
@@ -770,7 +769,6 @@ h3:paso-3-sumar-productos Paso 3: sumar productos
 h3:paso-4-aplicar-fórmula Paso 4: aplicar fórmula
 h3:interpretación-37 Interpretación
 h2:verificación-en-r-54 Verificación en R
-h1:coeficiente-de-correlación-de-pearson Coeficiente de correlación de Pearson
 h2:concepto-15 Concepto
 h2:fórmula Fórmula
 h2:interpretación-del-coeficiente-r Interpretación del coeficiente (r)
@@ -778,19 +776,15 @@ h2:ejemplo-resuelto-manual-2 Ejemplo resuelto manual 2
 h2:solución-manual-27 Solución manual
 h2:interpretación-38 Interpretación
 h2:verificación-en-r-55 Verificación en R
-h1:coeficiente-de-determinación Coeficiente de determinación
 h2:concepto-16 Concepto
 h2:ejemplo-1 Ejemplo
 h2:interpretación-39 Interpretación
 h2:verificación-en-r-56 Verificación en R
-h1:ejemplo-aplicado-a-energías-renovables-1 Ejemplo aplicado a energías renovables
 h2:análisis-en-r Análisis en R
 h2:correlación-1 Correlación
-h2:coeficiente-de-determinación-1 Coeficiente de determinación
+h2:coeficiente-de-determinación Coeficiente de determinación
 h2:interpretación-técnica Interpretación técnica
-h1:correlación-no-implica-causalidad Correlación no implica causalidad
 h2:ejemplo-de-correlación-espuria Ejemplo de correlación espuria
-h1:introducción-a-la-regresión Introducción a la regresión
 h2:ejemplo-visual-de-regresión-en-r Ejemplo visual de regresión en R
 h2:ejercicio-guiado-8 Ejercicio guiado
 h2:solución-del-ejercicio-guiado-8 Solución del ejercicio guiado
@@ -808,4 +802,58 @@ h3:energías-renovables-9 Energías Renovables
 h2:preguntas-de-autoevaluación-8 Preguntas de autoevaluación
 h2:resumen-de-la-unidad-8 Resumen de la unidad
 h2:bibliografía-sugerida-8 Bibliografía sugerida
+h1:ecuación-de-regresión-lineal Ecuación de regresión lineal
+h2:motivación-ingenieril-9 Motivación ingenieril
+h2:resultados-de-aprendizaje-9 Resultados de aprendizaje
+h2:concepto-teórico-17 Concepto teórico
+h2:modelo-poblacional-de-regresión-lineal Modelo poblacional de regresión lineal
+h2:modelo-estimado Modelo estimado
+h2:interpretación-de-los-coeficientes Interpretación de los coeficientes
+h3:intercepto-b_0 Intercepto (b_0)
+h3:pendiente-b_1 Pendiente (b_1)
+h2:ejemplo-cotidiano-4 Ejemplo cotidiano
+h2:concepto-17 Concepto
+h2:fórmulas-para-la-pendiente-e-intercepto Fórmulas para la pendiente e intercepto
+h2:paso-1-calcular-medias-1 Paso 1: calcular medias
+h2:paso-2-construir-tabla-de-cálculo Paso 2: construir tabla de cálculo
+h2:paso-3-sumar-columnas-necesarias Paso 3: sumar columnas necesarias
+h2:paso-4-calcular-pendiente Paso 4: calcular pendiente
+h2:paso-5-calcular-intercepto Paso 5: calcular intercepto
+h2:paso-6-escribir-ecuación-de-regresión Paso 6: escribir ecuación de regresión
+h2:interpretación-41 Interpretación
+h2:verificación-en-r-57 Verificación en R
+h2:coeficientes-del-modelo Coeficientes del modelo
+h2:gráfico-con-recta-de-regresión Gráfico con recta de regresión
+h2:predicción-puntual Predicción puntual
+h2:verificación-en-r-58 Verificación en R
+h2:problema-carga-y-deflexión Problema: carga y deflexión
+h2:implementación-en-r-10 Implementación en R
+h2:coeficientes Coeficientes
+h2:gráfico Gráfico
+h2:predicción-para-35-kn Predicción para 35 kN
+h2:interpretación-técnica-1 Interpretación técnica
+h2:problema-radiación-solar-y-generación Problema: radiación solar y generación
+h2:ajuste-del-modelo-en-r Ajuste del modelo en R
+h2:ecuación-del-modelo Ecuación del modelo
+h2:gráfico-1 Gráfico
+h2:predicción-para-radiación-de-5.2 Predicción para radiación de 5.2
+h2:estimate Estimate
+h2:std.-error Std. Error
+h2:t-value t value
+h2:prt Pr(>|t|)
+h2:multiple-r-squared Multiple R-squared
+h2:residual-standard-error Residual standard error
+h2:solución-en-r Solución en R
+h2:gráfico-2 Gráfico
+h2:predicción-para-7-horas Predicción para 7 horas
+h2:interpretación-42 Interpretación
+h2:actividad-práctica-9 Actividad práctica
+h2:aplicaciones-por-carrera-9 Aplicaciones por carrera
+h3:ingeniería-civil-10 Ingeniería Civil
+h3:ingeniería-eléctrica-10 Ingeniería Eléctrica
+h3:ingeniería-industrial-10 Ingeniería Industrial
+h3:energías-renovables-10 Energías Renovables
+h2:preguntas-de-autoevaluación-9 Preguntas de autoevaluación
+h2:resumen-de-la-unidad-9 Resumen de la unidad
+h2:bibliografía-sugerida-9 Bibliografía sugerida
 

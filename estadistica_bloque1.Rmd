@@ -8743,22 +8743,21 @@ La inferencia estadística aplicada permite fundamentar decisiones técnicas med
 
 # Correlación y regresión
 
-## Motivación ingenieril
+## Presentación de la unidad
 
-En ingeniería es muy común estudiar si dos variables están relacionadas. No basta con observar datos de manera aislada; muchas veces interesa saber si una variable cambia cuando otra también cambia.
+Esta unidad inicia el análisis de relación entre variables. En ingeniería rara vez se analiza una variable aislada; normalmente se busca comprender cómo cambia una variable cuando otra aumenta, disminuye o se modifica.
 
-Por ejemplo:
+Ejemplos:
 
-- En ingeniería civil: ¿a mayor edad del hormigón, aumenta su resistencia?
-- En ingeniería eléctrica: ¿a mayor temperatura ambiente, aumenta el consumo eléctrico?
-- En ingeniería industrial: ¿a mayor tiempo de operación, aumenta la producción?
-- En energías renovables: ¿a mayor radiación solar, aumenta la generación fotovoltaica?
+- Ingeniería Civil: edad del hormigón y resistencia.
+- Ingeniería Eléctrica: temperatura ambiente y consumo eléctrico.
+- Ingeniería Industrial: horas de operación y producción.
+- Energías Renovables: radiación solar y generación fotovoltaica.
+- Telecomunicaciones: relación señal-ruido y velocidad de transmisión.
 
-Este tipo de preguntas se estudia inicialmente mediante **correlación** y luego mediante **regresión**.
+La **correlación** mide la fuerza y dirección de una relación lineal entre dos variables cuantitativas. La **regresión** permite construir una ecuación para estimar o predecir una variable a partir de otra.
 
-La **correlación** permite medir qué tan fuerte es la relación lineal entre dos variables.
-
-La **regresión** permite construir un modelo matemático para explicar o predecir una variable a partir de otra.
+En esta unidad se prioriza el procedimiento manual y luego se usa R para comprobar los resultados.
 
 ---
 
@@ -8766,47 +8765,43 @@ La **regresión** permite construir un modelo matemático para explicar o predec
 
 Al finalizar esta unidad, el estudiante será capaz de:
 
-1. Identificar variables dependientes e independientes.
-2. Construir e interpretar diagramas de dispersión.
+1. Diferenciar variable independiente y dependiente.
+2. Construir diagramas de dispersión.
 3. Reconocer relaciones positivas, negativas, nulas y no lineales.
-4. Calcular covarianza de forma manual.
-5. Calcular el coeficiente de correlación de Pearson.
-6. Interpretar el valor de \(r\).
-7. Calcular e interpretar el coeficiente de determinación \(R^2\).
-8. Diferenciar correlación de causalidad.
-9. Verificar cálculos manuales utilizando R.
-10. Aplicar correlación y regresión en contextos de ingeniería.
+4. Calcular manualmente la covarianza.
+5. Calcular manualmente el coeficiente de correlación de Pearson.
+6. Interpretar correctamente el valor de r.
+7. Calcular e interpretar el coeficiente de determinación.
+8. Comprender que correlación no implica causalidad.
+9. Introducir el concepto de regresión lineal.
+10. Verificar resultados en R.
 
 ---
 
-## Concepto general
+# 1. Relación entre variables
 
-Cuando se tienen dos variables cuantitativas, se puede estudiar si existe una relación entre ellas.
+Cuando se tienen dos variables cuantitativas, se puede analizar si existe un patrón entre ellas.
 
-Por ejemplo:
+Ejemplo cotidiano:
 
-| Horas de estudio | Calificación |
-|---:|---:|
-| 1 | 55 |
-| 2 | 60 |
-| 3 | 65 |
-| 4 | 72 |
-| 5 | 78 |
-| 6 | 85 |
+| Estudiante | Horas de estudio | Calificación |
+|---:|---:|---:|
+| 1 | 1 | 55 |
+| 2 | 2 | 60 |
+| 3 | 3 | 65 |
+| 4 | 4 | 72 |
+| 5 | 5 | 78 |
+| 6 | 6 | 85 |
 
-A simple vista se observa que cuando aumentan las horas de estudio, también tiende a aumentar la calificación.
-
-Este patrón puede analizarse de forma gráfica y matemática.
+A simple vista, cuando aumentan las horas de estudio, también aumenta la calificación. Sin embargo, en estadística no basta con observar la tabla: se debe representar gráficamente y calcular una medida numérica.
 
 ---
 
-## Variable independiente y variable dependiente
+# 2. Variable independiente y variable dependiente
 
-### Variable independiente
+## Variable independiente
 
-La variable independiente es la variable explicativa o predictora.
-
-Se representa usualmente como:
+La variable independiente es la variable explicativa o predictora. Se representa como:
 
 \[
 X
@@ -8818,15 +8813,12 @@ Ejemplos:
 - Edad del hormigón.
 - Radiación solar.
 - Temperatura ambiente.
-- Tiempo de operación.
+- Carga aplicada.
+- Velocidad del viento.
 
----
+## Variable dependiente
 
-### Variable dependiente
-
-La variable dependiente es la variable respuesta. Es la variable que se desea explicar o predecir.
-
-Se representa usualmente como:
+La variable dependiente es la variable respuesta. Se representa como:
 
 \[
 Y
@@ -8836,88 +8828,37 @@ Ejemplos:
 
 - Calificación.
 - Resistencia del hormigón.
-- Generación eléctrica.
-- Consumo energético.
-- Producción industrial.
+- Generación fotovoltaica.
+- Consumo eléctrico.
+- Deflexión de una viga.
+- Potencia eólica.
 
 ---
 
-## Ejemplo cotidiano
+# 3. Diagrama de dispersión
 
-Suponga que se desea estudiar si las horas de estudio influyen en la calificación obtenida por los estudiantes.
+Un diagrama de dispersión representa pares de datos \((X,Y)\). Cada punto del gráfico corresponde a una observación.
 
-En este caso:
+Permite identificar:
 
-\[
-X = \text{Horas de estudio}
-\]
-
-\[
-Y = \text{Calificación}
-\]
-
-La variable \(X\) puede ayudar a explicar el comportamiento de \(Y\).
-
----
-
-## Diagrama de dispersión
-
-Un **diagrama de dispersión** representa gráficamente pares de datos \((X,Y)\).
-
-Cada punto del gráfico representa una observación.
-
-Sirve para identificar visualmente:
-
-- si existe relación entre dos variables,
-- si la relación es positiva,
-- si la relación es negativa,
-- si la relación es lineal,
-- si existen datos atípicos.
-
----
+- dirección de la relación,
+- intensidad aproximada,
+- linealidad,
+- posibles valores atípicos,
+- patrones no lineales.
 
 ## Tipos de relación
 
-### Relación positiva
-
-Ocurre cuando al aumentar \(X\), también aumenta \(Y\).
-
-Ejemplo:
-
-- Más radiación solar, mayor generación fotovoltaica.
-- Más horas de estudio, mayor calificación.
+| Tipo | Descripción | Ejemplo |
+|---|---|---|
+| Positiva | Al aumentar X, aumenta Y | Radiación vs generación |
+| Negativa | Al aumentar X, disminuye Y | Temperatura del panel vs eficiencia |
+| Nula | No hay patrón claro | Número de calzado vs nota |
+| No lineal | Hay patrón, pero no recto | Velocidad del viento vs potencia |
 
 ---
 
-### Relación negativa
-
-Ocurre cuando al aumentar \(X\), disminuye \(Y\).
-
-Ejemplo:
-
-- Más antigüedad de una máquina, menor eficiencia.
-- Más temperatura, menor rendimiento de ciertos equipos.
-
----
-
-### Relación nula
-
-Ocurre cuando no se observa un patrón claro entre \(X\) y \(Y\).
-
----
-
-### Relación no lineal
-
-Ocurre cuando existe relación, pero no se ajusta adecuadamente a una recta.
-
-Ejemplo:
-
-- Potencia eólica y velocidad del viento.
-- Crecimiento de costos en ciertos procesos.
-
----
-
-## Ejemplo inicial en R
+# 4. Ejemplo introductorio con R
 
 ```{r}
 horas <- c(1, 2, 3, 4, 5, 6)
@@ -8931,23 +8872,15 @@ plot(horas, calificacion,
      ylab = "Calificación")
 ```
 
----
-
-## Interpretación del gráfico
-
-El gráfico muestra una tendencia ascendente. Esto sugiere que existe una relación positiva entre las horas de estudio y la calificación.
-
-Sin embargo, la observación visual no es suficiente. Se necesita una medida numérica para cuantificar la fuerza de la relación.
+El gráfico muestra una tendencia ascendente. Esto sugiere una relación positiva, pero todavía no cuantifica la fuerza de la relación.
 
 ---
 
-# Covarianza
+# 5. Covarianza
 
 ## Concepto
 
-La **covarianza** mide si dos variables tienden a variar juntas.
-
-Su fórmula muestral es:
+La covarianza mide si dos variables tienden a variar juntas.
 
 \[
 Cov(X,Y)=\frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{n-1}
@@ -8955,103 +8888,71 @@ Cov(X,Y)=\frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{n-1}
 
 Donde:
 
-- \(x_i\): cada valor de la variable \(X\),
-- \(y_i\): cada valor de la variable \(Y\),
-- \(\bar{x}\): media de \(X\),
-- \(\bar{y}\): media de \(Y\),
+- \(x_i\): valor individual de X.
+- \(y_i\): valor individual de Y.
+- \(\bar{x}\): media de X.
+- \(\bar{y}\): media de Y.
 - \(n\): número de pares de datos.
 
----
+## Interpretación
 
-## Interpretación de la covarianza
-
-| Valor de la covarianza | Interpretación |
+| Covarianza | Interpretación |
 |---:|---|
-| \(Cov(X,Y)>0\) | Relación positiva |
-| \(Cov(X,Y)<0\) | Relación negativa |
-| \(Cov(X,Y)\approx 0\) | Relación lineal débil o nula |
+| Positiva | X y Y aumentan conjuntamente |
+| Negativa | X aumenta y Y disminuye |
+| Cerca de cero | Relación lineal débil o nula |
 
-La covarianza indica la dirección de la relación, pero no es fácil de interpretar porque depende de las unidades de medida.
+La covarianza indica dirección, pero no es ideal para medir intensidad porque depende de las unidades de medida.
 
 ---
 
-## Ejemplo resuelto manual 1
+# 6. Ejemplo manual completo: covarianza
 
-Se tienen los siguientes datos:
+Datos:
 
-| \(X\) | \(Y\) |
+| X | Y |
 |---:|---:|
 | 1 | 2 |
 | 2 | 4 |
 | 3 | 5 |
 
-Calcular la covarianza.
-
----
-
-## Solución manual
-
-### Paso 1: calcular medias
+## Paso 1. Calcular la media de X
 
 \[
-\bar{x}=\frac{1+2+3}{3}
+\bar{x}=\frac{1+2+3}{3}=\frac{6}{3}=2
 \]
+
+## Paso 2. Calcular la media de Y
 
 \[
-\bar{x}=2
+\bar{y}=\frac{2+4+5}{3}=\frac{11}{3}=3.667
 \]
 
-\[
-\bar{y}=\frac{2+4+5}{3}
-\]
-
-\[
-\bar{y}=\frac{11}{3}=3.667
-\]
-
----
-
-### Paso 2: construir tabla de desviaciones
+## Paso 3. Tabla de desviaciones
 
 | \(x_i\) | \(y_i\) | \(x_i-\bar{x}\) | \(y_i-\bar{y}\) | Producto |
 |---:|---:|---:|---:|---:|
 | 1 | 2 | -1 | -1.667 | 1.667 |
-| 2 | 4 | 0 | 0.333 | 0 |
+| 2 | 4 | 0 | 0.333 | 0.000 |
 | 3 | 5 | 1 | 1.333 | 1.333 |
 
----
-
-### Paso 3: sumar productos
+## Paso 4. Sumar productos
 
 \[
-1.667+0+1.333=3
+\sum (x_i-\bar{x})(y_i-\bar{y})=1.667+0+1.333=3
 \]
 
----
-
-### Paso 4: aplicar fórmula
+## Paso 5. Aplicar fórmula
 
 \[
-Cov(X,Y)=\frac{3}{3-1}
+Cov(X,Y)=\frac{3}{3-1}=\frac{3}{2}=1.5
 \]
 
-\[
-Cov(X,Y)=\frac{3}{2}
-\]
+## Interpretación
 
-\[
-Cov(X,Y)=1.5
-\]
+La covarianza es positiva. Por lo tanto, cuando X aumenta, Y también tiende a aumentar.
 
----
-
-### Interpretación
-
-La covarianza es positiva, por lo tanto, existe una relación positiva entre \(X\) y \(Y\).
-
----
-
-## Verificación en R
+## Comprobación en R
 
 ```{r}
 x <- c(1, 2, 3)
@@ -9062,27 +8963,9 @@ cov(x, y)
 
 ---
 
-# Coeficiente de correlación de Pearson
+# 7. Coeficiente de correlación de Pearson
 
-## Concepto
-
-El coeficiente de correlación de Pearson mide la intensidad y dirección de la relación lineal entre dos variables cuantitativas.
-
-Se representa con:
-
-\[
-r
-\]
-
-Su valor siempre está entre -1 y 1:
-
-\[
--1 \leq r \leq 1
-\]
-
----
-
-## Fórmula
+La covarianza indica dirección, pero no intensidad estandarizada. Para medir fuerza y dirección se usa el coeficiente de correlación de Pearson:
 
 \[
 r=
@@ -9096,45 +8979,37 @@ También puede expresarse como:
 r=\frac{Cov(X,Y)}{s_xs_y}
 \]
 
-Donde:
+El valor de \(r\) siempre está entre -1 y 1:
 
-- \(Cov(X,Y)\): covarianza entre \(X\) y \(Y\),
-- \(s_x\): desviación estándar de \(X\),
-- \(s_y\): desviación estándar de \(Y\).
+\[
+-1\le r\le 1
+\]
 
----
+## Interpretación de r
 
-## Interpretación del coeficiente \(r\)
-
-| Valor de \(r\) | Interpretación |
+| Valor | Interpretación |
 |---:|---|
-| \(r=1\) | Relación positiva perfecta |
-| \(0.70 \leq r < 1\) | Relación positiva fuerte |
-| \(0.30 \leq r < 0.70\) | Relación positiva moderada |
-| \(-0.30 < r < 0.30\) | Relación lineal débil o nula |
-| \(-0.70 < r \leq -0.30\) | Relación negativa moderada |
-| \(-1 < r \leq -0.70\) | Relación negativa fuerte |
-| \(r=-1\) | Relación negativa perfecta |
+| 1 | Relación positiva perfecta |
+| 0.70 a 1.00 | Relación positiva fuerte |
+| 0.30 a 0.70 | Relación positiva moderada |
+| -0.30 a 0.30 | Relación lineal débil o nula |
+| -0.70 a -0.30 | Relación negativa moderada |
+| -1.00 a -0.70 | Relación negativa fuerte |
+| -1 | Relación negativa perfecta |
 
 ---
 
-## Ejemplo resuelto manual 2
+# 8. Ejemplo manual completo: correlación de Pearson
 
-Se tienen los datos:
+Datos:
 
-| \(X\) | \(Y\) |
+| X | Y |
 |---:|---:|
 | 1 | 2 |
 | 2 | 4 |
 | 3 | 5 |
 
-Calcular el coeficiente de correlación.
-
----
-
-## Solución manual
-
-Ya se calculó:
+Ya se tiene:
 
 \[
 \bar{x}=2
@@ -9144,13 +9019,15 @@ Ya se calculó:
 \bar{y}=3.667
 \]
 
-Se construye la tabla:
+## Paso 1. Tabla completa
 
 | \(x_i\) | \(y_i\) | \(x_i-\bar{x}\) | \(y_i-\bar{y}\) | Producto | \((x_i-\bar{x})^2\) | \((y_i-\bar{y})^2\) |
 |---:|---:|---:|---:|---:|---:|---:|
 | 1 | 2 | -1 | -1.667 | 1.667 | 1 | 2.778 |
-| 2 | 4 | 0 | 0.333 | 0 | 0 | 0.111 |
+| 2 | 4 | 0 | 0.333 | 0.000 | 0 | 0.111 |
 | 3 | 5 | 1 | 1.333 | 1.333 | 1 | 1.778 |
+
+## Paso 2. Sumas
 
 \[
 \sum (x_i-\bar{x})(y_i-\bar{y})=3
@@ -9164,7 +9041,7 @@ Se construye la tabla:
 \sum (y_i-\bar{y})^2=4.667
 \]
 
-Aplicamos:
+## Paso 3. Sustituir en la fórmula
 
 \[
 r=\frac{3}{\sqrt{2(4.667)}}
@@ -9182,15 +9059,11 @@ r=\frac{3}{3.055}
 r=0.982
 \]
 
----
-
 ## Interpretación
 
-Existe una relación lineal positiva muy fuerte entre \(X\) y \(Y\).
+Como \(r=0.982\), existe una relación lineal positiva muy fuerte.
 
----
-
-## Verificación en R
+## Comprobación en R
 
 ```{r}
 cor(x, y)
@@ -9198,21 +9071,15 @@ cor(x, y)
 
 ---
 
-# Coeficiente de determinación
+# 9. Coeficiente de determinación
 
-## Concepto
-
-El coeficiente de determinación mide la proporción de variabilidad de \(Y\) que puede explicarse linealmente mediante \(X\).
-
-Se calcula como:
+El coeficiente de determinación se calcula como:
 
 \[
 R^2=r^2
 \]
 
----
-
-## Ejemplo
+Indica qué proporción de la variabilidad de Y puede explicarse linealmente mediante X.
 
 Si:
 
@@ -9223,53 +9090,96 @@ r=0.982
 entonces:
 
 \[
-R^2=(0.982)^2
+R^2=(0.982)^2=0.964
 \]
 
-\[
-R^2=0.964
-\]
+Interpretación:
 
----
-
-## Interpretación
-
-Aproximadamente el 96.4% de la variabilidad de \(Y\) se explica linealmente por \(X\).
-
----
-
-## Verificación en R
+Aproximadamente el 96.4% de la variabilidad de Y se explica linealmente por X.
 
 ```{r}
 r <- cor(x, y)
 R2 <- r^2
-
 R2
 ```
 
 ---
 
-# Ejemplo aplicado a energías renovables
+# 10. Ejemplo aplicado a energías renovables
 
-Se registran datos diarios de radiación solar y generación eléctrica:
+Se registran datos diarios de radiación solar y generación eléctrica.
 
-| Radiación (kWh/m²) | Generación (kWh) |
-|---:|---:|
-| 3.5 | 420 |
-| 4.0 | 460 |
-| 4.5 | 500 |
-| 5.0 | 545 |
-| 5.5 | 590 |
-| 6.0 | 630 |
+| Día | Radiación X (kWh/m²) | Generación Y (kWh) |
+|---:|---:|---:|
+| 1 | 3.5 | 420 |
+| 2 | 4.0 | 460 |
+| 3 | 4.5 | 500 |
+| 4 | 5.0 | 545 |
+| 5 | 5.5 | 590 |
+| 6 | 6.0 | 630 |
 
----
+## Paso 1. Calcular medias
 
-## Análisis en R
+\[
+\bar{x}=\frac{3.5+4.0+4.5+5.0+5.5+6.0}{6}=4.75
+\]
+
+\[
+\bar{y}=\frac{420+460+500+545+590+630}{6}=524.167
+\]
+
+## Paso 2. Tabla de cálculo
+
+| X | Y | \(X-\bar X\) | \(Y-\bar Y\) | Producto | \((X-\bar X)^2\) | \((Y-\bar Y)^2\) |
+|---:|---:|---:|---:|---:|---:|---:|
+| 3.5 | 420 | -1.25 | -104.167 | 130.208 | 1.5625 | 10850.69 |
+| 4.0 | 460 | -0.75 | -64.167 | 48.125 | 0.5625 | 4117.36 |
+| 4.5 | 500 | -0.25 | -24.167 | 6.042 | 0.0625 | 584.03 |
+| 5.0 | 545 | 0.25 | 20.833 | 5.208 | 0.0625 | 434.03 |
+| 5.5 | 590 | 0.75 | 65.833 | 49.375 | 0.5625 | 4334.03 |
+| 6.0 | 630 | 1.25 | 105.833 | 132.292 | 1.5625 | 11200.69 |
+
+## Paso 3. Sumar columnas
+
+\[
+\sum (x_i-\bar{x})(y_i-\bar{y})=371.25
+\]
+
+\[
+\sum (x_i-\bar{x})^2=4.375
+\]
+
+\[
+\sum (y_i-\bar{y})^2=31520.83
+\]
+
+## Paso 4. Calcular r
+
+\[
+r=\frac{371.25}{\sqrt{4.375(31520.83)}}
+\]
+
+\[
+r\approx0.9997
+\]
+
+## Interpretación técnica
+
+La correlación entre radiación solar y generación eléctrica es positiva y extremadamente fuerte. Esto tiene sentido físico: un sistema fotovoltaico produce más energía cuando recibe mayor radiación solar.
+
+## Comprobación en R
 
 ```{r}
 radiacion <- c(3.5, 4.0, 4.5, 5.0, 5.5, 6.0)
 generacion <- c(420, 460, 500, 545, 590, 630)
 
+cor(radiacion, generacion)
+cor(radiacion, generacion)^2
+```
+
+## Diagrama de dispersión
+
+```{r}
 plot(radiacion, generacion,
      pch = 19,
      col = "darkgreen",
@@ -9280,54 +9190,92 @@ plot(radiacion, generacion,
 
 ---
 
-## Correlación
+# 11. Ejemplo aplicado a ingeniería civil
+
+Se desea estudiar la relación entre la edad del hormigón y su resistencia.
+
+| Edad X (días) | Resistencia Y (MPa) |
+|---:|---:|
+| 3 | 14 |
+| 7 | 20 |
+| 14 | 25 |
+| 21 | 28 |
+| 28 | 31 |
+
+Se espera una relación positiva: a mayor edad de curado, mayor resistencia, especialmente durante los primeros días.
 
 ```{r}
-r_solar <- cor(radiacion, generacion)
-r_solar
+edad <- c(3, 7, 14, 21, 28)
+resistencia <- c(14, 20, 25, 28, 31)
+
+plot(edad, resistencia,
+     pch = 19,
+     col = "blue",
+     main = "Edad del hormigón vs resistencia",
+     xlab = "Edad (días)",
+     ylab = "Resistencia (MPa)")
+
+cor(edad, resistencia)
+cor(edad, resistencia)^2
 ```
+
+Interpretación:
+
+Una correlación positiva alta indica que la resistencia aumenta con la edad. Sin embargo, para edades muy grandes la relación puede dejar de ser lineal, porque la resistencia tiende a estabilizarse.
 
 ---
 
-## Coeficiente de determinación
+# 12. Ejemplo aplicado a ingeniería eléctrica
+
+Se registra temperatura ambiente y consumo eléctrico.
+
+| Temperatura X (°C) | Consumo Y (kWh) |
+|---:|---:|
+| 18 | 120 |
+| 20 | 135 |
+| 22 | 150 |
+| 24 | 165 |
+| 26 | 180 |
 
 ```{r}
-R2_solar <- r_solar^2
-R2_solar
+temperatura <- c(18, 20, 22, 24, 26)
+consumo <- c(120, 135, 150, 165, 180)
+
+plot(temperatura, consumo,
+     pch = 19,
+     col = "orange",
+     main = "Temperatura vs consumo eléctrico",
+     xlab = "Temperatura (°C)",
+     ylab = "Consumo (kWh)")
+
+cor(temperatura, consumo)
 ```
 
----
+Interpretación:
 
-## Interpretación técnica
-
-Si \(r\) es cercano a 1, existe una relación positiva fuerte entre radiación solar y generación eléctrica. Esto tiene sentido físico, porque a mayor radiación disponible, mayor energía puede producir el sistema fotovoltaico.
+La relación es positiva. Técnicamente, esto puede explicarse por mayor uso de ventilación, climatización o refrigeración cuando la temperatura sube.
 
 ---
 
-# Correlación no implica causalidad
+# 13. Correlación no implica causalidad
 
 Una correlación alta no significa necesariamente que una variable cause directamente a la otra.
 
-Por ejemplo:
+Ejemplo cotidiano:
 
-- Puede existir correlación entre consumo de helados y uso de aire acondicionado.
-- Sin embargo, ambos pueden aumentar por una tercera variable: temperatura ambiental.
+- El consumo de helados puede estar correlacionado con el uso de aire acondicionado.
+- Pero comer helado no causa el uso de aire acondicionado.
+- Ambas variables dependen de una tercera variable: la temperatura ambiental.
 
-En ingeniería, la interpretación debe apoyarse en el conocimiento técnico del sistema.
-
----
-
-## Ejemplo de correlación espuria
-
-Suponga que se encuentra correlación entre el número de trabajadores en una obra y el consumo de agua. Esta relación puede ser real, pero la causa principal podría ser el tamaño de la obra, no necesariamente una relación directa entre trabajadores y consumo.
+En ingeniería, toda interpretación estadística debe apoyarse en criterio técnico.
 
 ---
 
-# Introducción a la regresión
+# 14. Introducción a la regresión
 
-La correlación mide la intensidad de la relación lineal, pero no proporciona una ecuación para predecir.
+La correlación mide la fuerza de la relación lineal, pero no entrega una ecuación para estimar valores.
 
-La regresión lineal simple busca construir una ecuación de la forma:
+La regresión lineal simple busca construir una ecuación:
 
 \[
 \hat{Y}=b_0+b_1X
@@ -9335,16 +9283,14 @@ La regresión lineal simple busca construir una ecuación de la forma:
 
 Donde:
 
-- \(\hat{Y}\): valor estimado de la variable dependiente.
-- \(b_0\): intercepto.
-- \(b_1\): pendiente.
+- \(\hat{Y}\): valor estimado de Y,
+- \(b_0\): intercepto,
+- \(b_1\): pendiente,
 - \(X\): variable independiente.
 
-La regresión será desarrollada con mayor profundidad en la siguiente unidad.
+La regresión se estudiará a profundidad en la siguiente unidad.
 
----
-
-## Ejemplo visual de regresión en R
+## Ejemplo visual en R
 
 ```{r}
 modelo_solar <- lm(generacion ~ radiacion)
@@ -9352,7 +9298,7 @@ modelo_solar <- lm(generacion ~ radiacion)
 plot(radiacion, generacion,
      pch = 19,
      col = "darkgreen",
-     main = "Correlación y recta de regresión",
+     main = "Recta de regresión preliminar",
      xlab = "Radiación solar (kWh/m²)",
      ylab = "Generación eléctrica (kWh)")
 
@@ -9361,71 +9307,7 @@ abline(modelo_solar, col = "red", lwd = 2)
 
 ---
 
-## Ejercicio guiado
-
-Se registran datos de temperatura y consumo eléctrico:
-
-| Temperatura (°C) | Consumo (kWh) |
-|---:|---:|
-| 18 | 120 |
-| 20 | 135 |
-| 22 | 150 |
-| 24 | 165 |
-| 26 | 180 |
-
-Calcular:
-
-1. Diagrama de dispersión.
-2. Coeficiente de correlación.
-3. Coeficiente de determinación.
-4. Interpretación técnica.
-5. Verificación con R.
-
----
-
-## Solución del ejercicio guiado
-
-```{r}
-temperatura <- c(18, 20, 22, 24, 26)
-consumo <- c(120, 135, 150, 165, 180)
-
-plot(temperatura, consumo,
-     pch = 19,
-     col = "blue",
-     main = "Temperatura vs consumo eléctrico",
-     xlab = "Temperatura (°C)",
-     ylab = "Consumo (kWh)")
-```
-
----
-
-## Cálculo de correlación
-
-```{r}
-r_temp <- cor(temperatura, consumo)
-r_temp
-```
-
----
-
-## Cálculo de \(R^2\)
-
-```{r}
-R2_temp <- r_temp^2
-R2_temp
-```
-
----
-
-## Interpretación
-
-La correlación es positiva y fuerte. Esto indica que, en los datos observados, a mayor temperatura se registra mayor consumo eléctrico.
-
-Desde el punto de vista técnico, esto puede relacionarse con el uso de equipos de enfriamiento o ventilación.
-
----
-
-## Simulación: relaciones con distintos niveles de correlación
+# 15. Simulación para comprender la correlación
 
 ```{r}
 set.seed(123)
@@ -9440,10 +9322,6 @@ cor(x_sim, y_fuerte)
 cor(x_sim, y_moderada)
 cor(x_sim, y_debil)
 ```
-
----
-
-## Gráficas comparativas
 
 ```{r}
 par(mfrow = c(1,3))
@@ -9474,102 +9352,184 @@ par(mfrow = c(1,1))
 
 ---
 
-## Actividad práctica
+# 16. Procedimiento manual para calcular correlación
 
-Seleccione un contexto de su carrera:
-
-1. Edad del hormigón y resistencia.
-2. Temperatura y consumo eléctrico.
-3. Tiempo de operación y producción.
-4. Radiación solar y generación.
-5. Velocidad del viento y potencia.
-
-Realice:
-
-- Defina \(X\) y \(Y\).
-- Construya una tabla de datos.
-- Grafique el diagrama de dispersión.
-- Calcule \(r\).
-- Calcule \(R^2\).
-- Interprete técnicamente.
-- Indique si tiene sentido físico o técnico hablar de causalidad.
+1. Organizar los pares de datos.
+2. Calcular \(\bar{x}\).
+3. Calcular \(\bar{y}\).
+4. Calcular \(x_i-\bar{x}\).
+5. Calcular \(y_i-\bar{y}\).
+6. Calcular los productos.
+7. Calcular los cuadrados.
+8. Sumar las columnas.
+9. Sustituir en la fórmula de \(r\).
+10. Interpretar el resultado.
 
 ---
 
-## Aplicaciones por carrera
+# 17. Ejercicio guiado con solución
 
-### Ingeniería Civil
+Se registran datos de velocidad del viento y potencia generada:
 
-La correlación permite estudiar relaciones como:
+| Velocidad X (m/s) | Potencia Y (kW) |
+|---:|---:|
+| 3 | 12 |
+| 4 | 20 |
+| 5 | 32 |
+| 6 | 45 |
+| 7 | 60 |
+
+## Verificación en R
+
+```{r}
+viento <- c(3, 4, 5, 6, 7)
+potencia <- c(12, 20, 32, 45, 60)
+
+plot(viento, potencia,
+     pch = 19,
+     col = "purple",
+     main = "Velocidad del viento vs potencia",
+     xlab = "Velocidad del viento (m/s)",
+     ylab = "Potencia (kW)")
+
+cor(viento, potencia)
+cor(viento, potencia)^2
+```
+
+Interpretación:
+
+La correlación es positiva y fuerte. Sin embargo, técnicamente la potencia eólica no crece linealmente con la velocidad del viento, sino aproximadamente con el cubo de la velocidad. Por tanto, aunque la correlación lineal sea alta en este rango, se debe tener cuidado al extrapolar.
+
+---
+
+# 18. Ejercicios propuestos
+
+## Ejercicio 1
+
+| Horas | Producción |
+|---:|---:|
+| 2 | 40 |
+| 4 | 78 |
+| 6 | 118 |
+| 8 | 159 |
+| 10 | 201 |
+
+Calcule covarianza, correlación y \(R^2\). Interprete.
+
+## Ejercicio 2
+
+| Carga (kN) | Deflexión (mm) |
+|---:|---:|
+| 10 | 2.1 |
+| 20 | 4.0 |
+| 30 | 6.2 |
+| 40 | 8.1 |
+| 50 | 10.3 |
+
+Calcule e interprete la correlación.
+
+## Ejercicio 3
+
+| Temperatura (°C) | Eficiencia (%) |
+|---:|---:|
+| 25 | 18.5 |
+| 30 | 18.0 |
+| 35 | 17.4 |
+| 40 | 16.9 |
+| 45 | 16.2 |
+
+Determine si la relación es positiva o negativa.
+
+---
+
+# 19. Actividad práctica
+
+Seleccione un problema de su carrera y construya una tabla con dos variables cuantitativas.
+
+Debe realizar:
+
+1. Definir variable independiente X.
+2. Definir variable dependiente Y.
+3. Construir una tabla de datos.
+4. Elaborar el diagrama de dispersión.
+5. Calcular manualmente la correlación.
+6. Verificar en R.
+7. Calcular \(R^2\).
+8. Interpretar técnicamente.
+9. Indicar si tiene sentido físico hablar de causalidad.
+
+---
+
+# 20. Aplicaciones por carrera
+
+## Ingeniería Civil
 
 - Edad del hormigón vs resistencia.
 - Carga vs deflexión.
 - Densidad seca vs humedad.
-- Tránsito vs deterioro de pavimento.
+- Tránsito vs deterioro del pavimento.
 
----
+## Ingeniería Eléctrica
 
-### Ingeniería Eléctrica
-
-Se aplica en relaciones como:
-
-- Temperatura vs consumo eléctrico.
+- Temperatura vs consumo.
 - Corriente vs potencia.
+- Carga vs pérdidas.
 - Demanda vs hora del día.
-- Carga vs pérdidas eléctricas.
 
----
+## Ingeniería Industrial
 
-### Ingeniería Industrial
-
-Permite analizar:
-
-- Horas trabajadas vs producción.
+- Horas de operación vs producción.
 - Velocidad de línea vs defectos.
-- Tiempo de operación vs desgaste.
+- Tiempo de proceso vs costo.
 - Capacitación vs productividad.
 
----
-
-### Energías Renovables
-
-Se utiliza para estudiar:
+## Energías Renovables
 
 - Radiación solar vs generación.
 - Velocidad del viento vs potencia.
-- Temperatura ambiente vs eficiencia.
-- Suciedad en paneles vs pérdida de generación.
+- Temperatura del panel vs eficiencia.
+- Suciedad del panel vs pérdida energética.
+
+## Telecomunicaciones
+
+- Relación señal-ruido vs velocidad de transmisión.
+- Distancia vs pérdida de señal.
+- Potencia recibida vs calidad de enlace.
+- Tráfico de red vs latencia.
 
 ---
 
-## Preguntas de autoevaluación
+# 21. Preguntas de autoevaluación
 
 1. ¿Qué es una variable independiente?
 2. ¿Qué es una variable dependiente?
 3. ¿Para qué sirve un diagrama de dispersión?
 4. ¿Qué mide la covarianza?
-5. ¿Qué mide el coeficiente de correlación de Pearson?
-6. ¿Qué significa \(r>0\)?
-7. ¿Qué significa \(r<0\)?
-8. ¿Qué significa \(r\approx0\)?
-9. ¿Qué representa \(R^2\)?
-10. ¿Por qué correlación no implica causalidad?
-11. ¿Qué diferencia hay entre correlación y regresión?
-12. Mencione un ejemplo de correlación en su carrera.
+5. ¿Por qué la covarianza no es suficiente para medir intensidad?
+6. ¿Qué mide el coeficiente de correlación de Pearson?
+7. ¿Qué significa \(r>0\)?
+8. ¿Qué significa \(r<0\)?
+9. ¿Qué significa \(r\approx0\)?
+10. ¿Qué representa \(R^2\)?
+11. ¿Por qué correlación no implica causalidad?
+12. ¿Qué diferencia hay entre correlación y regresión?
+13. ¿Cuándo una relación puede ser no lineal?
+14. Mencione un ejemplo de correlación en su carrera.
+15. ¿Por qué se debe interpretar con criterio técnico?
 
 ---
 
-## Resumen de la unidad
+# 22. Resumen
 
-La correlación permite medir la fuerza y dirección de una relación lineal entre dos variables cuantitativas. El diagrama de dispersión permite visualizar el patrón de relación, mientras que el coeficiente de Pearson \(r\) proporciona una medida numérica estandarizada.
+La correlación permite medir la dirección y fuerza de una relación lineal entre dos variables cuantitativas. El análisis inicia con un diagrama de dispersión, continúa con la covarianza y se formaliza mediante el coeficiente de Pearson.
 
-El coeficiente de determinación \(R^2\) indica qué proporción de la variabilidad de una variable puede explicarse linealmente por la otra. Sin embargo, una correlación alta no implica necesariamente causalidad.
+El coeficiente de determinación \(R^2\) indica la proporción de variabilidad de una variable que puede explicarse linealmente por la otra. Sin embargo, una correlación alta no implica causalidad.
 
-La regresión lineal, que se estudiará con mayor profundidad en la siguiente unidad, permite construir una ecuación para estimar y predecir valores.
+La regresión lineal, desarrollada en la siguiente unidad, permitirá construir una ecuación para estimar o predecir valores.
 
 ---
 
-## Bibliografía sugerida
+# 23. Bibliografía sugerida
 
 - Devore, J. L. (2008). *Probabilidad y estadística para ingeniería y ciencias*. Cengage Learning.
 - Montgomery, D. C., & Runger, G. C. (2016). *Probabilidad y estadística aplicada a la ingeniería*. Limusa.
